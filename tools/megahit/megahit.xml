@@ -1,0 +1,133 @@
+<tool id="megahit" name="MEGAHIT"  force_history_refresh="True" version="0.3.2">
+  <description>ultra-fast single-node solution for metagenomics assembly</description>
+
+<requirements>
+    <requirement type="package" version="0.3.2">megahit</requirement>
+</requirements>
+
+<command interpreter="python">
+megahit.py
+
+#if $input_option.choice == 'paired'
+  -1
+  #for $files in $input_option.paired_files
+	${files.file1}
+  #end for
+  -2
+  #for $files in $input_option.paired_files
+        ${files.file2}
+  #end for
+#elif $input_option.choice == 'single'
+  -r $input_option.single_files
+#else
+  -12 $input_option.interleaved_files
+#end if
+
+--min-contig-len $mincontiglen
+
+##basic assembly
+--min-count $basic_section.mincount
+--k-min $basic_section.kmin
+--k-max $basic_section.kmax
+--k-step $basic_section.kstep
+
+##advanced assembly
+--no-mercy $advanced_section.nomercy
+--no-bubble $advanced_section.nobubble
+--merge-level $advanced_section.mergelevel
+--prune-level $advanced_section.prunelevel
+--low-local-ratio $advanced_section.lowlocalratio
+--no-local $advanced_section.nolocal
+--kmin-1pass $advanced_section.kmin1pass
+
+##outputs
+--log $log
+--fasta $output
+</command>
+
+<inputs>
+	<conditional name="input_option">
+		<param name="choice" type="select" label="Select your input option">
+                        <option value="single" selected="true">Single</option>
+			<option value="paired">Paired-end</option>
+			<option value="interleaved">Interleaved paired-end</option>
+		</param>
+		<when value="paired">
+			<repeat name="paired_files" title="Paired files" min="1">
+			     <param name="file1" type="data" format="fastq,fasta,fastq.gz,fasta.gz" label="Paired-end #1" help="FASTQ/FASTA/FASTQ.GZ files accepted"/>
+			     <param name="file2" type="data" format="fastq,fasta,fastq.gz,fasta.gz" label="Paired-end #2" help="FASTQ/FASTA/FASTQ.GZ files accepted"/>
+			 </repeat> 
+                </when>
+		<when value="single">
+			<param name="single_files" multiple="true" format="fastq,fasta,fastq.gz,fasta" type="data" label="Single-end file(s)" help="FASTQ/FASTA/FASTQ.GZ files accepted" />
+		</when>
+		<when value="interleaved">
+			<param name="interleaved_files" multiple="true" format="fastq,fasta,fastq.gz,fasta" type="data" label="Interleaved Paired-end file(s)" help="FASTQ/FASTA/FASTQ.GZ files accepted" />
+		</when>
+	</conditional>
+	<param name="mincontiglen" type="integer" value="200" label="minimum length of contigs to output" />
+	<section name="basic_section" title="Basic assembly options" expanded="False">
+	        <param name="mincount" type="integer" value="2" label="minimum multiplicity for filtering (k_min+1)-mers"/>
+	        <param name="kmin" type="integer" value="21" label="minimum kmer size" max="127" help="must be odd number"/>
+        	<param name="kmax" type="integer" value="99" label="maximum kmer size" max="127" help="must be odd number"/>
+	        <param name="kstep" type="integer" value="10" label="increment of kmer size of each iteration" max="28" help="must be even number"/>
+	</section>
+	<section name="advanced_section" title="Advanced assembly options" expanded="False">
+		<param name="nomercy" type="boolean" checked="false" default="false" label="do not add mercy kmers" /> 
+                <param name="nobubble" type="boolean" checked="false" default="false" label="do not merge bubbles" />
+		<param name="mergelevel" type="text" label="merge complex bubbles" value="20,0.98" />
+			<param name="prunelevel" type="integer" value="2" min="0" max="2" label="strength of local low depth pruning" />
+		<param name="lowlocalratio" type="float" value="0.2" label="ratio threshold to define low local coverage contigs" />
+                <param name="nolocal" type="boolean" checked="false" default="false" label="disable local assembly" />
+		<param name="kmin1pass" type="boolean" checked="false" default="false" label="use 1pass mode to build SdBG of k_min" />
+	</section>
+
+</inputs>
+<outputs>
+    <data format="txt" name="log" label="log with ${tool.name} on ${on_string}" />
+    <data format="fasta" name="output" label="final.contigs.fa with ${tool.name} on ${on_string}" />
+</outputs>
+<stdio>
+	<exit_code range="1" level="fatal" description="Error" />
+</stdio>
+<help>
+
+.. class:: infomark
+
+**What it does**
+
+MEGAHIT is a single node assembler for large and complex metagenomics NGS reads, such as soil. It makes use of succinct de Bruijn graph (SdBG) to achieve low memory assembly. MEGAHIT can optionally utilize a CUDA-enabled GPU to accelerate its SdBG contstruction. The GPU-accelerated version of MEGAHIT has been tested on NVIDIA GTX680 (4G memory) and Tesla K40c (12G memory) with CUDA 5.5, 6.0 and 6.5.
+
+--------
+
+**Project links:**
+
+https://github.com/voutcn/megahit
+
+--------
+
+**Integrated by:**
+
+Cyril Monjeaud 
+
+GenOuest Bio-informatics Core Facility
+
+UMR 6074 IRISA INRIA-CNRS-UR1 Rennes (France)
+
+support@genouest.org
+
+</help>
+<citations>
+    <citation type="doi">10.1093/bioinformatics/btv033</citation>
+
+    <citation type="bibtex">@INPROCEEDINGS{JOBIM2013,
+    author = {Le Bras, Y. and ROULT, A. and Monjeaud, C. and Bahin, M. and Quenez, O. and Heriveau, C. and Bretaudeau, A. and Sallou, O. and Collin, O.},
+    title = {Towards a Life Sciences Virtual Research Environment: An e-Science initiative in Western France},
+    booktitle = {JOBIM 2013 Proceedings},
+    year = {2013},
+    url = {https://www.e-biogenouest.org/resources/128},
+    pages = {97-106}
+    }</citation>
+</citations>
+</tool>
+
