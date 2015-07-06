@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<tool_dependency>
+    <package name="commet" version="24.7.14">
+        <install version="1.0">
+        <actions>
+                <action type="download_by_url">http://github.com/pierrepeterlongo/commet/archive/master.zip</action>
+                <action type="shell_command">make</action>
+
+	<!-- move directories into $INSTALL_DIR -->
+        <action type="move_directory_files">
+        <source_directory>bin</source_directory>
+                    <destination_directory>$INSTALL_DIR/bin</destination_directory>
+	</action>
+
+	<!-- move files into $INSTALL_DIR -->
+	<action type="move_file">
+                     <source>dendro.R</source>
+                     <destination>$INSTALL_DIR/Rscript</destination>
+        </action>
+
+	<action type="move_file">
+                     <source>heatmap.r</source>
+                     <destination>$INSTALL_DIR/Rscript</destination>
+         </action>
+         <action type="move_file">
+                     <source>Commet.py</source>
+                     <destination>$INSTALL_DIR</destination>
+         </action>
+         <action type="shell_command">chmod +x $INSTALL_DIR/Commet.py</action>
+
+
+	<!-- create env.sh -->
+        <action type="set_environment">
+             <!--environment_variable name="PATH" action="prepend_to">$INSTALL_DIR/bin/</environment_variable-->
+             <environment_variable name="PATH" action="prepend_to">$INSTALL_DIR/</environment_variable>
+             <environment_variable name="BINARIES" action="set_to">$INSTALL_DIR/bin/</environment_variable>
+             <environment_variable name="RSCRIPTS" action="set_to">$INSTALL_DIR/Rscript/</environment_variable>
+         </action>                
+        </actions>
+        </install>
+        <readme>
+            This package installs commet from the sources available in the commet Github project
+        </readme>
+    </package>
+</tool_dependency>

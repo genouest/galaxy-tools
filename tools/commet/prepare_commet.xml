@@ -1,0 +1,61 @@
+<tool id="preparecommet" name="Prepare commet" version="1.0">
+  <description>input sets file</description>
+<command interpreter="python">
+prepare_commet.py
+${read_sets}
+#for $set in $sets
+    ${set.reads}
+    "${set.setname}"
+#end for
+
+</command>
+
+  <inputs>
+	<!-- Input data files -->
+	<repeat name="sets" title="Read sets" min="1">
+	    <param name="reads" type="data" multiple="true" format="fasta, fasta.gz, fastq, fastq.gz" label="Dataset"/>
+	    <param name="setname" type="text" label="Set name" value="set_name"/>
+	</repeat>
+  </inputs>
+
+  <outputs>
+      <data format="commet" name="read_sets" label="read_sets : ${tool.name} on ${on_string}" />
+  </outputs>
+  <help>
+
+**Description**
+
+Prepare a configuration file with sets for commet tool 
+
+-------
+
+**Created and integrated by**
+
+Yvan Le Bras and Cyril Monjeaud 
+
+GenOuest Bio-informatics Core Facility
+
+UMR 6074 IRISA INRIA-CNRS-UR1 Rennes (France)
+
+support@genouest.org
+
+If you use this tool in Galaxy, please cite :
+
+`Y. Le Bras, A. Roult, C. Monjeaud, M. Bahin, O. Quenez, C. Heriveau, A. Bretaudeau, O. Sallou, O. Collin, Towards a Life Sciences Virtual Research Environment : an e-Science initiative in Western France. JOBIM 2013. &lt;https://www.e-biogenouest.org/resources/128&gt;`_
+
+  </help>
+
+<citations>
+<citation type="bibtex">@INPROCEEDINGS{JOBIM2013,
+    author = {Le Bras, Y. and ROULT, A. and Monjeaud, C. and Bahin, M. and Quenez, O. and Heriveau, C. and Bretaudeau, A. and Sallou, O. and Collin, O.},
+    title = {Towards a Life Sciences Virtual Research Environment: An e-Science initiative in Western France},
+    booktitle = {JOBIM 2013 Proceedings},
+    year = {2013},
+    url = {https://www.e-biogenouest.org/resources/128},
+    pages = {97-106}
+    }
+</citation>
+</citations>
+
+</tool>
+

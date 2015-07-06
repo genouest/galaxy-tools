@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<tool_dependency>
+  <package name="commet" version="24.7.14">
+      <repository name="package_commet_24_07_14" owner="cmonjeau" prior_installation_required="True" />
+    </package>
+</tool_dependency>

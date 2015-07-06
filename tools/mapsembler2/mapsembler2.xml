@@ -1,0 +1,108 @@
+<tool id="mapsembler2" name="Mapsembler2" version="2.2.3">
+  <description>is a targeted assembly software.</description>
+  <requirements>
+    <requirement type="package" version="2.2.3">mapsembler2</requirement>
+  </requirements>
+<command interpreter="python">
+mapsembler2.py
+-s $input_starters
+-r $data_files
+-t $output_extension
+-k $kmer
+-c $coverage
+-d $substitutions
+-g $genome_size
+-f $process_search
+-x $max_length
+-y $max_depth
+--output $output
+-i $index_files
+</command>
+
+  <inputs>
+	<!-- Input data files -->
+	<param name="input_starters" type="data" format="fasta" label="Starters" help="set of input sequences" /> 	
+	<param name="data_files" type="data" multiple="true" format="fasta,fastq" label="Read file" help="Data loaded in the script" />
+	<param name="output_extension" type="select" label="Select your output extension type">
+		<option value="1">a strict sequence</option>
+		<option value="2">a consensus sequence</option>
+		<option value="3">a strict graph</option>
+		<option value="4">a consensus graph</option>
+	</param>
+	<param name="kmer" type="integer" label="Size of kmers" value="31" help="Set the length of used kmers. Must fit the compiled value. Only uneven number" />
+	<param name="coverage" type="integer" label="Minimal coverage" value="5" help="set the minimal coverage: Used by Phaser (don't use kmers with lower coverage) "/>
+        <param name="substitutions" type="integer" label="Number of authorized substitutions" value="1" help="set the number of authorized substitutions used while mapping reads on finding SNPs"/>
+	<param name="genome_size" type="integer" label="Estimated genome size" value="10000000" help="Used only to control memory usage. e.g.3 billion (3000000000) uses 4Gb of RAM." />
+        <param name="process_search" type="select" label="Process of search" help="Set the process of search in the graph" >
+		<option value="1">Breadth</option>
+                <option value="2">Depth</option>
+ 	</param>
+        <param name="max_length" type="integer" label="Max length of nodes" value="40" help="set the maximal length of nodes"/>
+        <param name="max_depth" type="integer" label="Max depth of nodes" value="10000" help="set the maximal depth of the graph"/>
+	<param name="index_files" type="boolean" checked="false" default="false" label="Include index output files" />
+  </inputs>
+
+  <outputs>
+      <data format="txt" name="output" label="${tool.name} on ${on_string}: out.txt" >
+		<discover_datasets pattern="__designation_and_ext__" directory="job_outputs" visible="true" />
+      </data>
+
+  </outputs>
+  <help>
+
+**Description**
+
+Mapsembler2 is a targeted assembly software. It takes as input a set of NGS raw reads (fasta or fastq, gzipped or not) and a set of input sequences (starters). It first determines if each starter is read-coherent, e.g. whether reads confirm the presence of each starter in the original sequence. Then for each read-coherent starter, Mapsembler2 outputs its sequence neighborhood as a linear sequence or as a graph, depending on the user choice.
+Mapsembler2 may be used for (not limited to):
+
+· Validate an assembled sequence (input as starter), e.g. from a de Bruijn graph assembly where read-coherence was not enforced.
+
+· Checks if a gene (input as starter) has an homolog in a set of reads.
+
+· Checks if a known enzyme is present in a metagenomic NGS read set.
+
+· Enrich unmappable reads by extending them, possibly making them mappable.
+
+· Checks what happens at the extremities of a contig.
+
+· Remove contaminants or symbiont reads from a read set
+
+-------
+
+**Web site**
+
+http://colibread.inria.fr/mapsembler2/
+
+-------
+
+**Integrated by**
+
+Cyril Monjeaud 
+
+GenOuest Bio-informatics Core Facility
+
+UMR 6074 IRISA INRIA-CNRS-UR1 Rennes (France)
+
+support@genouest.org
+
+If you use this tool in Galaxy, please cite :
+
+`Y. Le Bras, A. Roult, C. Monjeaud, M. Bahin, O. Quenez, C. Heriveau, A. Bretaudeau, O. Sallou, O. Collin, Towards a Life Sciences Virtual Research Environment : an e-Science initiative in Western France. JOBIM 2013. &lt;https://www.e-biogenouest.org/resources/128&gt;`_
+
+  </help>
+<citations>
+<citation type="doi">10.1186/1471-2105-13-48</citation>
+<citation type="bibtex">@INPROCEEDINGS{JOBIM2013,
+    author = {Le Bras, Y. and ROULT, A. and Monjeaud, C. and Bahin, M. and Quenez, O. and Heriveau, C. and Bretaudeau, A. and Sallou, O. and Collin, O.},
+    title = {Towards a Life Sciences Virtual Research Environment: An e-Science initiative in Western France},
+    booktitle = {JOBIM 2013 Proceedings},
+    year = {2013},
+    url = {https://www.e-biogenouest.org/resources/128},
+    pages = {97-106}
+    }
+</citation>
+
+</citations>
+
+</tool>
+

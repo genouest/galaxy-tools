@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<tool_dependency>
+    <package name="takeabreak" version="1.1.0">
+        <install version="1.0">
+            <actions>
+                <action type="download_by_url">http://colibread.inria.fr/files/2014/01/TakeABreak-1.1.0-Source.tar_.gz</action>
+                <action type="shell_command">/bin/bash INSTALL</action>
+
+		<action type="move_file">
+                        <source>build/TakeABreak</source>
+                         <destination>$INSTALL_DIR</destination>
+                </action>
+
+		<!-- create env.sh -->
+                <action type="set_environment">
+                    	<environment_variable name="PATH" action="prepend_to">$INSTALL_DIR/</environment_variable>
+                </action>                
+            </actions>
+        </install>
+        <readme>
+            This package installs dbgh5 and TakeABreak from the sources available in the Colib'reads web site
+        </readme>
+    </package>
+</tool_dependency>

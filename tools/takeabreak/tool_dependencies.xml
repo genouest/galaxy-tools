@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<tool_dependency>
+  <package name="takeabreak" version="1.1.0">
+      <repository name="package_takeabreak_1_1_0" owner="cmonjeau" />
+    </package>
+</tool_dependency>

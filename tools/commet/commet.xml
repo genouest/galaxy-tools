@@ -1,0 +1,103 @@
+<tool id="commet" name="commet" version="24.7.14">
+  <description>COmpare Multiple METagenomes</description>
+  <requirements>
+    <requirement type="package" version="24.7.14">commet</requirement>
+  </requirements>
+<command interpreter="python">
+commet.py
+--input $input
+-k $kmer
+-t $minsharedkmer
+-l $minlengthread
+-e $minshannonindex
+#if str( $options_advanced.options_advanced_selector ) == "advanced"
+-m $options_advanced.maxreads
+-n $options_advanced.maxn
+#end if
+--output $output
+--output_vectors $output_vectors
+--output_dendro $output_dendro
+--output_logs $output_logs
+--output_matrix $output_matrix
+--output_heatmap1 $output_heatmap1
+--output_heatmap2 $output_heatmap2
+--output_heatmap3 $output_heatmap3
+</command>
+
+  <inputs>
+	<!-- Input data files -->
+	<param name="input" type="data" format="commet" label="Read sets" help="input read sets a line = a set composed by “set_name: read_file; read_file...“. Generate with Prepare commet tool" /> 
+	<param name="kmer" type="integer" label="Size of kmers" value="33" help="Set the length of used kmers." />
+	<param name="minsharedkmer" type="integer" label="Mini shared kmers" value="2" help="Minimal number of shared kmers." />
+	<param name="minlengthread" type="integer" label="Read mini length" value="0" help="Minimal length a read should have to be kept." />
+	<param name="minshannonindex" type="float" label="Mini Shannon index" value="0" help="Minimal Shannon index a read should have to be kept. Float in [0,2.32]" />
+	<conditional name="options_advanced">
+		<param name="options_advanced_selector" type="select" label="Reads filter options" help="by default, all reads are kept with no Ns limitation">
+			<option value="default" selected="true">default</option>
+			<option value="advanced">advanced</option>
+		</param>
+		<when value="advanced">
+			<param name="maxreads" type="integer" value="600" label="Maximum number of selected reads in sets" help="Maximum number of selected reads in sets. If a set is composed by 3 read files, and this option = 600, then the first 200 reads from each read file will be treated" />
+			<param name="maxn" type="integer" value="5" label="Read maxi number of Ns" help="Maximal number of Ns a read should contain to be kept." />
+		</when>
+	</conditional>
+  </inputs>
+
+  <outputs>
+      <data format="txt" name="output" label="${tool.name} on ${on_string}: commet.log" />
+      <data format="zip" name="output_vectors" label="${tool.name} on ${on_string}: vector.zip" />
+      <data format="zip" name="output_logs" label="${tool.name} on ${on_string}: logs.zip" />
+      <data format="png" name="output_dendro" label="${tool.name} on ${on_string}: dendrogram.png" />
+      <data format="zip" name="output_matrix" label="${tool.name} on ${on_string}: matrix.zip" />
+      <data format="png" name="output_heatmap1" label="${tool.name} on ${on_string}: heatmap_normalized.png" />
+      <data format="png" name="output_heatmap2" label="${tool.name} on ${on_string}: heatmap_percentage.png" />
+      <data format="png" name="output_heatmap3" label="${tool.name} on ${on_string}: heatmap_plain.png" />
+  </outputs>
+  <help>
+
+**Description**
+
+COMMET (COmpare Multiple METagenomes”) provides a global similarity overview between all datasets of a large metagenomic project.
+
+Directly from non-assembled reads, all against all comparisons are performed through an efficient indexing strategy. Then, results are stored as bit vectors, a compressed representation of read files, that can be used to further combine read subsets by common logical operations. Finally, COMMET computes a clusterization of metagenomic datasets, which is visualized by dendrogram and heatmaps.
+
+
+-------
+
+**Web site**
+
+http://colibread.inria.fr/commet/
+
+-------
+
+**Integrated by**
+
+Yvan Le Bras and Cyril Monjeaud 
+
+GenOuest Bio-informatics Core Facility
+
+UMR 6074 IRISA INRIA-CNRS-UR1 Rennes (France)
+
+support@genouest.org
+
+If you use this tool in Galaxy, please cite :
+
+`Y. Le Bras, A. Roult, C. Monjeaud, M. Bahin, O. Quenez, C. Heriveau, A. Bretaudeau, O. Sallou, O. Collin, Towards a Life Sciences Virtual Research Environment : an e-Science initiative in Western France. JOBIM 2013. &lt;https://www.e-biogenouest.org/resources/128&gt;`_
+
+
+  </help>
+<citations>
+<citation type="doi">10.1186/1471-2105-13-S19-S10</citation>
+<citation type="bibtex">@INPROCEEDINGS{JOBIM2013,
+    author = {Le Bras, Y. and ROULT, A. and Monjeaud, C. and Bahin, M. and Quenez, O. and Heriveau, C. and Bretaudeau, A. and Sallou, O. and Collin, O.},
+    title = {Towards a Life Sciences Virtual Research Environment: An e-Science initiative in Western France},
+    booktitle = {JOBIM 2013 Proceedings},
+    year = {2013},
+    url = {https://www.e-biogenouest.org/resources/128},
+    pages = {97-106}
+    }
+</citation>
+</citations>
+
+</tool>
+

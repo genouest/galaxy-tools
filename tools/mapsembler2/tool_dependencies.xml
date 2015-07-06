@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<tool_dependency>
+  <package name="mapsembler2" version="2.2.3">
+      <repository name="package_mapsembler2_2_2_3" owner="cmonjeau" />
+    </package>
+</tool_dependency>
