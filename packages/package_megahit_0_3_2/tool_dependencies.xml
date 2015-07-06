@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<tool_dependency>
+    <package name="megahit" version="0.3.2">
+        <install version="1.0">
+            <actions>
+                <action type="download_by_url">https://github.com/voutcn/megahit/archive/v0.3.2-beta.zip</action>
+		<action type="shell_command">make</action>
+
+		<!-- move binary into $INSTALL_dir -->
+		<action type="move_file">
+		     <source>megahit</source>
+		     <destination>$INSTALL_DIR</destination>
+		</action>
+		<action type="move_file">
+		     <source>megahit_asm_core</source>
+		     <destination>$INSTALL_DIR</destination>
+		</action>
+		<action type="move_file">
+		     <source>megahit_toolkit</source>
+		     <destination>$INSTALL_DIR</destination>
+		</action>
+		<action type="move_file">
+		     <source>megahit_sdbg_build</source>
+		     <destination>$INSTALL_DIR</destination>
+		</action>
+
+		<!-- create env.sh -->
+                <action type="set_environment">
+                        <environment_variable name="PATH" action="prepend_to">$INSTALL_DIR</environment_variable>
+                </action>
+ 
+           </actions>
+
+        </install>
+        <readme>
+            This package installs Megahit 0.3.2-beta from the sources available
+        </readme>
+    </package>
+</tool_dependency>
