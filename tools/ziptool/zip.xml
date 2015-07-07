@@ -1,0 +1,39 @@
+<tool id="zip" name="Zip" version="1.0.1" >
+  <description>and name files</description>
+  <command interpreter="python">
+	zip.py
+	$output
+	#for $num_repeat in $files
+		${num_repeat.file}
+		${num_repeat.file_name}
+	#end for
+  </command>
+ <inputs>
+    <repeat name="files" title="File to zip" min="1">
+      <param name="file_name" type="text" format="txt" label="Zipped file name (without spaces)">
+        <validator type="empty_field" message="Required field" />
+        <validator type="expression" message="Forbidden value (fic.zip)">value != 'fic.zip'</validator>
+        <validator type="regex" message="Missing extension">.+\..+</validator>
+      </param>
+      <param name="file" type="data" label="File" />
+    </repeat>
+ </inputs>
+ <outputs>
+  <data format="zip" name="output" label="zipped files: archive.zip" />
+ </outputs>
+ <help>
+**Tool documentation**
+
+This tool simply creates a zip file aggregating the input files. The name for the files has to be chosen by the user, it can't be empty and has to be with a least one extension.
+
+The output is a zip file.
+
+CHANGELOG : This tool can manage large files
+
+--------
+
+**Integrated by:**
+
+Cyril Monjeaud
+ </help>
+</tool>

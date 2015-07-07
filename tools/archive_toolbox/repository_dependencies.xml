@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<repositories>
+    <repository changeset_revision="2bee1c737c6e" name="ziptool" owner="cmonjeau" toolshed="http://toolshed.genouest.org" />
+    <repository changeset_revision="4bfc68abe18e" name="decompress_an_archive_and_merge" owner="cmonjeau" toolshed="http://toolshed.genouest.org" />
+</repositories>

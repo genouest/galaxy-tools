@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<datatypes>
+    <datatype_files>
+        <datatype_file name="compressed.py"/>
+    </datatype_files>
+    <registration>
+	    <datatype extension="zip" type="galaxy.datatypes.compressed:Zip"  display_in_upload="true"/>
+	    <datatype extension="tar.gz" type="galaxy.datatypes.compressed:Tgz" display_in_upload="true"/>
+	    <datatype extension="tar.bz2" type="galaxy.datatypes.compressed:Tbz2" display_in_upload="true"/>
+	    <datatype extension="fastq.gz" type="galaxy.datatypes.compressed:Fastqgz" display_in_upload="true"/>
+	    <datatype extension="fastq.bz2" type="galaxy.datatypes.compressed:Fastqbz2" display_in_upload="true"/>
+    </registration>
+    <sniffers>
+    	<sniffer type="galaxy.datatypes.compressed:Zip"/>
+	<sniffer type="galaxy.datatypes.compressed:Tgdb"/>
+        <sniffer type="galaxy.datatypes.compressed:Tbz2"/>
+        <sniffer type="galaxy.datatypes.compressed:Fastqgz"/>
+        <sniffer type="galaxy.datatypes.compressed:Fastqbz2"/>
+    </sniffers>
+</datatypes>

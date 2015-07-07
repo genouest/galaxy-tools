@@ -1,0 +1,60 @@
+<tool id="extract_archive_merge" name="Decompress an archive" version="1.0.0" force_history_refresh="True" >
+  <description>in zip, gz, tar.gz, fastq.gz, fastq.bz2 or tar.bz2 format</description>
+  <command interpreter="python">
+	
+extract_archive_and_merge.py $input_archive "$input_archive.display_name" $log $log.id $__new_file_path__ $options_merge.merge
+#if str( $options_merge.merge ) == 'true'
+${options_merge.rm_header}
+$concat
+#end if
+
+  </command>
+ <inputs>
+    <param name="input_archive" type="data" format="zip,tar.gz,tar.bz2,fastq.gz,fastq.bz2" label="Archive name" help="Accepts zip, tar.gz and tar.bz2" />
+    <conditional name="options_merge">
+    <param name="merge" type="select" format="text" label="Merges all files into one">
+	<option value="false">No</option>
+	<option value="true">Yes</option>
+    </param>
+    <when value="false">
+    </when>
+    <when value="true">
+	<param name="rm_header" type="integer" value="0" label="Header lines to delete" help="number of lines to delete at the beginning of each file"/>
+    </when>
+    </conditional>
+ </inputs>
+ <outputs>
+    <data format="txt" name="log" label="decompress_an_archive.log" />
+    <data format="txt" name="additional" label="additional file with ${tool.name}" hidden="true">
+          <discover_datasets pattern="__designation_and_ext__" directory="decompress_files" visible="true" />
+    </data>  
+
+    <data format="txt" name="concat" label="merge_file">
+       <filter>(options_merge['merge'] == 'true')</filter>
+    </data>
+ </outputs>
+ <help>
+**Tool documentation**
+
+This tool simply decompresses an archive file (zip, gz, tar.gz, fastq.gz, fastq.bz2 or tar.bz2) and merges all files into only one. 
+If the merge option is enabled, you can delete as many header lines as you need.
+
+WARNING : the filename should not have special characters (space, brackets, ...), please rename it!!!
+
+--------
+
+**Created and integrated by:**
+
+Cyril Monjeaud 
+
+GenOuest Bio-informatics Core Facility
+
+UMR 6074 IRISA INRIA-CNRS-UR1 Rennes (France)
+
+support@genouest.org
+
+If you use this tool in Galaxy, please cite :
+
+`Y. Le Bras, A. Roult, C. Monjeaud, M. Bahin, O. Quenez, C. Heriveau, A. Bretaudeau, O. Sallou, O. Collin, Towards a Life Sciences Virtual Research Environment : an e-Science initiative in Western France. JOBIM 2013. &lt;https://www.e-biogenouest.org/resources/128&gt;`_
+ </help>
+</tool>

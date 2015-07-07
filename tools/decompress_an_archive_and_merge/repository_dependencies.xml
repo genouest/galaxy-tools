@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<repositories description="This tool requires archive datatypes definitions (e.g. zip, tar.gz, etc. format).">
+    <repository changeset_revision="37ad0b118119" name="archive_datatypes" owner="cmonjeau" toolshed="http://toolshed.genouest.org" />
+</repositories>
