@@ -5,7 +5,7 @@ This repository contains a subset of Galaxy repositories used in the Tool Shed (
 
 These repositories are maintained and developed by the GenOuest platform.
 
-Tool list:
+Tools:
 
   - Commet
   - DiscoSNP++
@@ -19,7 +19,7 @@ Tool list:
   - Decompress an archive and merge
   - Ziptool
 
-Package list:
+Packages:
 
   - Commet
   - DiscoSNP++
