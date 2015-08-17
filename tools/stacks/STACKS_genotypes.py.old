@@ -1,0 +1,146 @@
+#!/usr/bin/env python
+
+import sys, re
+import os
+import tempfile
+import shutil, subprocess, glob
+import optparse
+from os.path import basename
+import zipfile, tarfile, gzip
+from galaxy.datatypes.checkers import *
+from stacks import *
+
+"""
+
+Created by Yvan Le Bras
+yvan.le_bras@irisa.fr
+
+Last modifications : 01/10/2014
+
+WARNING :
+
+STACKS_genotypes.py needs:
+
+- STACKS scripts in your $PATH
+
+These scripts are available after compiling the sources of STACKS :
+
+http://creskolab.uoregon.edu/stacks/
+
+or with the galaxy_stacks package in the Genouest toolshed (http://toolshed.genouest.org)
+
+
+"""
+
+def __main__():
+	
+
+	# arguments recuperation
+	parser = optparse.OptionParser()
+	parser.add_option("-P")
+	parser.add_option("-b")
+	parser.add_option("-c")
+	parser.add_option("-t")
+	parser.add_option("-o")
+	parser.add_option("-e")
+	parser.add_option("-r")
+	parser.add_option("-m")
+	parser.add_option("-B")
+	parser.add_option("-W")
+	parser.add_option("--min_hom_seqs")
+	parser.add_option("--min_het_seqs")
+	parser.add_option("--max_het_seqs")
+	# multifile management
+	parser.add_option("--logfile")
+	parser.add_option("--compress_output")
+	# additionnal outputs
+	parser.add_option("--total_output")
+
+	(options, args) = parser.parse_args()
+
+        # create the working dir
+	os.mkdir("job_outputs")
+        os.mkdir("galaxy_outputs")
+
+	os.chdir("job_outputs")
+
+	# edit the command line
+	cmd_files=''
+
+	# STACKS_archive
+	# check if zipped files are into the tab
+	extract_compress_files(options.P, os.getcwd())
+
+	# create the genotypes command input line
+	cmd_files+=" -b "+options.b+" -P "+os.getcwd()
+		
+	# create the genotypes command line
+	cmd_options=''
+
+	if options.e:
+		cmd_options+=" -e "+options.e
+	if options.r:
+		cmd_options+=" -r "+options.r
+	if options.c and options.c == 'true':
+		cmd_options+=" -c "
+	if options.t:
+		cmd_options+=" -t "+options.t
+	if options.o:
+		cmd_options+=" -o "+options.o
+	if options.m:
+		cmd_options+=" -m "+options.m
+	if options.o:
+		cmd_options+=" -o "+options.o
+	if options.B:
+		cmd_options+=" -B "+options.B
+	if options.W:
+		cmd_options+=" -W "+options.W
+	if options.min_hom_seqs:
+		cmd_options+=" --min_hom_seqs "+options.min_hom_seqs
+	if options.W:
+		cmd_options+=" --min_het_seqs "+options.min_het_seqs
+	if options.W:
+		cmd_options+=" --max_het_seqs "+options.max_het_seqs
+
+
+	#command with dependencies installed
+	cmd = 'genotypes'+cmd_files+" "+cmd_options+" 2>&1"
+	proc = subprocess.Popen( args=cmd, shell=True )
+	returncode = proc.wait()
+
+	print "\n[INFO cmd] : "+cmd
+
+	# postprocesses
+	try:
+		shutil.copy('batch_1.haplotypes_1.tsv', options.logfile)
+	except:
+		sys.stderr.write('Error in genotypes execution; Please read the additional output (stdout)\n')
+
+	
+	# copy all files inside tmp_dir into workdir
+	list_files = glob.glob('*')
+	
+	# if compress output is total
+	if options.compress_output == 'total':
+		mytotalzipfile=zipfile.ZipFile('total.zip.temp', 'w')
+
+		for i in list_files:
+			if re.search("^batch", os.path.basename(i)) and not re.search("\.tsv$", os.path.basename(i)) or re.search(".*_[0-9]*\.tsv$", os.path.basename(i)) or re.search(".*genotypes.*", os.path.basename(i)):
+				mytotalzipfile.write(i, os.path.basename(i))
+
+		# return the unique archive
+		shutil.move("total.zip.temp", options.total_output)
+
+	# if compress output is default
+	if options.compress_output == 'default':
+		for i in list_files:
+			if re.search("^batch", os.path.basename(i)) and not re.search("\.tsv$", os.path.basename(i)) or re.search(".*_[0-9]*\.tsv$", os.path.basename(i)) or re.search(".*genotypes.*", os.path.basename(i)):
+				shutil.move(i, "../galaxy_outputs")
+	
+
+if __name__ == "__main__": __main__()
+
+
+
+
+
