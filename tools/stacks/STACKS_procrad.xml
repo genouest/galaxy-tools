@@ -25,87 +25,67 @@ ${input.display_name}::${input}
 </configfile>
 </configfiles>  
 <requirements>
-    <requirement type="package" version="1.1.0">stacks</requirement>
+    <requirement type="package" version="1.18">stacks</requirement>
   </requirements>
 <command interpreter="python">
 
 STACKS_procrad.py
---input_type=$options_type.options_type_selector
-#if str( $options_type.options_type_selector ) == "single":
---input_single="$input_single"
-#else
---input_paired1="$input_paired1"
---input_paired2="$input_paired2"
-#end if
---inputype=$inputype
---barcode $barcode
---sample_name $sample_name
---output_choice=$options_output_infos_selector
-#if str( $options_output_infos_selector ) != "1":
---output_archive=$output_archive
-#end if
---input_enzyme=$options_enzyme.options_enzyme_selector
---enzyme1=$options_enzyme.enzyme
-#if str( $options_enzyme.options_enzyme_selector ) == "2":
---enzyme2=$options_enzyme.enzyme2
-#end if
---outype=$outype
---qualitenc=$options_quality.qualitenc
-#if $capture
---D="-D"
---discard_file=$discard_file
-#else
---D=""
-#end if
---t="$options_advanced.truncate"
-#if $options_advanced.discard
---q="-q"
-#else
---q=""
-#end if
-#if $options_advanced.rescue
---r="-r"
-#else
---r=""
-#end if
---w="-w $options_advanced.sliding"
---s="-s $options_advanced.score"
-#if $options_advanced.remove
---c="-c"
-#else
---c=""
-#end if
-#if $options_advanced.inline
---inline_null="--inline_null"
-#else
---inline_null=""
-#end if
-#if $options_advanced.index
---index_null="--index_null"
-#else
---index_null="" 
-#end if
-#if $options_advanced.inlinein
---inline_inline="--inline_inline"
-#else
---inline_inline=""
-#end if
-#if $options_advanced.indexind
---index_index="--index_index"
-#else
---index_index=""
-#end if
-#if $options_advanced.inlineind
---inline_index="--inline_index"
-#else
---inline_index=""
-#end if
-#if $options_advanced.indexin
---index_inline="--index_inline"
-#else
---index_inline=""
-#end if
---logfile=$output
+    --input_type $options_type.options_type_selector
+    #if str( $options_type.options_type_selector ) == "single":
+        --input_single $input_single
+    #else
+        --input_paired1 $input_paired1
+        --input_paired2 $input_paired2
+    #end if
+    --inputype $inputype
+    --barcode $barcode
+    --sample_name $sample_name
+    --output_choice $options_output_infos_selector
+    #if str( $options_output_infos_selector ) != "1":
+        --output_archive $output_archive
+    #end if
+    --input_enzyme $options_enzyme.options_enzyme_selector
+    --enzyme1 $options_enzyme.enzyme
+    #if str( $options_enzyme.options_enzyme_selector ) == "2":
+        --enzyme2 $options_enzyme.enzyme2
+    #end if
+    --outype $outype
+    --qualitenc $options_quality.qualitenc
+    #if $capture:
+        -D
+    #end if
+    --activate_advanced_options $activate_advanced_options
+    -t $options_advanced.truncate
+    #if $options_advanced.discard:
+        -q
+    #end if
+    #if $options_advanced.rescue:
+        -r
+    #end if
+    -w $options_advanced.sliding
+    -s $options_advanced.score
+    #if $options_advanced.remove:
+        -c
+    #end if
+    #if $options_advanced.inline:
+        --inline_null
+    #end if
+    #if $options_advanced.index:
+        --index_null
+    #end if
+    #if $options_advanced.inlinein:
+        --inline_inline
+    #end if
+    #if $options_advanced.indexind:
+        --index_index
+    #end if
+    #if $options_advanced.inlineind:
+        --inline_index
+    #end if
+    #if $options_advanced.indexin:
+        --index_inline
+    #end if
+    --logfile $output
 
 </command>
 
@@ -225,6 +205,7 @@ STACKS_procrad.py
 		<option value="phred64">phred64</option>
 	</param>
 	</section>
+        <param name="activate_advanced_options" type="boolean" label="Activate advanced options" help="advanced options are defined below" />
 	<section name="options_advanced" title="advanced options" expanded="False">
     			<param name="sliding" type="float" value="0.15" label="set the size of the sliding window as a fraction of the read length, between 0 and 1 (default 0.15)" />
 			<param name="score" type="integer" value="10" label="Set the score limit. If the average score within the sliding window drops below this value, the read is discarded (default 10)" />

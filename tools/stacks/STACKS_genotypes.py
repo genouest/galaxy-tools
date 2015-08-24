@@ -28,10 +28,12 @@ def __main__():
     parser.add_argument('-t')
     parser.add_argument('-o')
     parser.add_argument('-e')
+    parser.add_argument('--active_advanced')
     parser.add_argument('-r')
     parser.add_argument('-m')
     parser.add_argument('-B')
     parser.add_argument('-W')
+    parser.add_argument('--active_autocorrect')
     parser.add_argument('--min_hom_seqs')
     parser.add_argument('--min_het_seqs')
     parser.add_argument('--max_het_seqs')
@@ -72,29 +74,30 @@ def __main__():
 
     if options.e:
        cmd_line.extend(["-e", options.e])
-    if options.r:
-        cmd_line.extend(["-r", options.r])
-    if options.c and options.c == 'true':
-        cmd_line.append("-c")
+    if options.c == 'true':
+       cmd_line.append("-c")
     if options.t:
         cmd_line.extend(["-t", options.t])
     if options.o:
         cmd_line.extend(["-o", options.o])
-    if options.m:
+
+    # if advanced is activate
+    if options.active_advanced == "true":
+        cmd_line.extend(["-r", options.r])
         cmd_line.extend(["-m", options.m])
-    if options.B:
-        cmd_line.extend(["-B", options.B])
-    if options.W:
-        cmd_line.extend(["-W", options.W])
-    if options.min_hom_seqs:
+        if options.B:
+            cmd_line.extend(["-B", options.B])
+        if options.W:
+            cmd_line.extend(["-W", options.W])
+
+    # if autocorrect is activate
+    if options.active_autocorrect == "true":
         cmd_line.extend(["--min_hom_seqs", options.min_hom_seqs])
-    if options.W:
         cmd_line.extend(["--min_het_seqs", options.min_het_seqs])
-    if options.W:
         cmd_line.extend(["--max_het_seqs", options.max_het_seqs])
 
     # command with dependencies installed
-
+    print "[CMD]:"+' '.join(cmd_line)
     subprocess.call(cmd_line)
 
     # postprocesses
@@ -125,7 +128,6 @@ def __main__():
         shutil.move('total.zip.temp', options.total_output)
 
     # if compress output is default
-
     if options.compress_output == 'default':
         for i in list_files:
             if re.search('^batch', os.path.basename(i)) \

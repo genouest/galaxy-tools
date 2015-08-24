@@ -3,7 +3,7 @@
 
 
 <requirements>
-    <requirement type="package" version="1.1.0">stacks</requirement>
+    <requirement type="package" version="1.18">stacks</requirement>
 </requirements>
 
 <command interpreter="python">
@@ -19,6 +19,7 @@ STACKS_genotypes.py
 #if str( $options_enzyme.options_enzyme_selector ) == "1":
 -e $options_enzyme.enzyme
 #end if
+--active_advanced $active_advanced
 -r $advanced_options.minprogeny
 -m $advanced_options.mindepth
 #if str( $advanced_options.blacklistselect.advanced_blackoptions_selector) == "advanced"
@@ -27,6 +28,7 @@ STACKS_genotypes.py
 #if str( $advanced_options.whitelistselect.advanced_whiteoptions_selector) == "advanced"
 -W $advanced_options.whitelistselect.whitelist
 #end if
+--active_autocorrect $active_autocorrect
 --min_hom_seqs $options_autocorrect.hom
 --min_het_seqs $options_autocorrect.het
 --max_het_seqs $options_autocorrect.hetmax
@@ -41,7 +43,6 @@ STACKS_genotypes.py
 <inputs>
 	<param name="STACKS_archive" format="zip,tar.gz" type="data" label="Archive from STACKS pipeline regrouping all outputs" />
 	<param name="batchid" type="integer" value="1" label="Batch ID" help="Batch ID to examine when exporting from the catalog" />
-	<param name="corrections" type="boolean" checked="false" default="false" label="make automated corrections to the data" />
 	<conditional name="options_output">
 	    <param name="options_output_selector" type="select" label="Did you want to use the file type output option?">
 			<option value="1">Yes</option>
@@ -100,36 +101,39 @@ STACKS_genotypes.py
 	    <when value="2">
 	    </when>
 	</conditional>
-	<section name="advanced_options" title="advanced options" expanded="False">
-		<conditional name="whitelistselect">
-			<param name="advanced_whiteoptions_selector" type="select" label="whitelist advanced options">
-				<option value="default" selected="true">Default</option>		
-				<option value="advanced">Advanced</option>
-			</param>
-			<when value="default"></when>
-			<when value="advanced">
-				<param name="whitelist" format="txt, tabular" type="data" label="specify a file containing Whitelisted markers to include in the export" />
-			</when>
-		</conditional>
-		<conditional name="blacklistselect">
-			<param name="advanced_blackoptions_selector" type="select" label="blacklist advanced options">
-				<option value="default" selected="true">Default</option>		
-				<option value="advanced">Advanced</option>
-			</param>
-			<when value="default"></when>
-			<when value="advanced">
-				<param name="blacklist" format="txt, tabular" type="data" label="specify a file containing Blacklisted markers to be excluded from the export" />
-			</when>
-		</conditional>
-		<param name="minprogeny" type="integer" value="50" label="min number of progeny" help="minimum number of progeny required to print a marker" />
-		<param name="mindepth" type="integer" value="1" label="min stack depth" help="specify a minimum stack depth required for individuals at a locus" />
-	</section>
+        <param name="corrections" type="boolean" checked="false" default="false" label="Activate automated corrections" />
+        <param name="active_autocorrect" type="boolean" checked="false" label="Activate automated corrections advanced options" help="autocorrect options are defined below" />
 	<section name="options_autocorrect" title="autocorrect options" expanded="False">
 			<param name="hom" type="integer" value="5" label="min number of reads for homozygous genotype" help="minimum number of reads required at a stack to call a homozygous genotype (default 5)" />
 			<param name="het" type="float" value="0.05" label="homozygote minor minimum allele frequency" help="below this minor allele frequency a stack is called a homozygote, above it (next choice) it is called unknown (default 0.05)" />
 			<param name="hetmax" type="float" value="0.1" label="heterozygote minor minimum allele frequency" help=" minimum frequency of minor allele to call a heterozygote (default 0.1)" />
 	</section>	
 	<!-- Output options -->
+        <param name="active_advanced" type="boolean" checked="false" label="Activate advanced options" help="advanced options are defined below" />
+        <section name="advanced_options" title="advanced options" expanded="False">
+                <conditional name="whitelistselect">
+                        <param name="advanced_whiteoptions_selector" type="select" label="whitelist advanced options">
+                                <option value="default" selected="true">Default</option>
+                                <option value="advanced">Advanced</option>
+                        </param>
+                        <when value="default"></when>
+                        <when value="advanced">
+                                <param name="whitelist" format="txt, tabular" type="data" label="specify a file containing Whitelisted markers to include in the export" />
+                        </when>
+                </conditional>
+                <conditional name="blacklistselect">
+                        <param name="advanced_blackoptions_selector" type="select" label="blacklist advanced options">
+                                <option value="default" selected="true">Default</option>
+                                <option value="advanced">Advanced</option>
+                        </param>
+                        <when value="default"></when>
+                        <when value="advanced">
+                                <param name="blacklist" format="txt, tabular" type="data" label="specify a file containing Blacklisted markers to be excluded from the export" />
+                        </when>
+                </conditional>
+                <param name="minprogeny" type="integer" value="50" label="min number of progeny" help="minimum number of progeny required to print a marker" />
+                <param name="mindepth" type="integer" value="1" label="min stack depth" help="specify a minimum stack depth required for individuals at a locus" />
+        </section>
 	<param name="output_compress" type="select" label="Output type" help="please see below for details">
 		<option value="default" selected="true">No compression</option>		
 		<option value="total">Compressed all outputs</option>

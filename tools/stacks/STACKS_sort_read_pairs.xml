@@ -2,7 +2,7 @@
   <description>Run the STACKS sort_read_pairs.pl and exec_velvet.pl wrappers</description>
 
 <requirements>
-    <requirement type="package" version="1.1.0">stacks</requirement>
+    <requirement type="package" version="1.18">stacks</requirement>
     <requirement type="package" version="1.2.10">velvet</requirement>
   </requirements>
 <command interpreter="python">

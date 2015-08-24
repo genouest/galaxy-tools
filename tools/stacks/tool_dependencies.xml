@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <tool_dependency>
-	<package name="stacks" version="1.1.0">
-        	<repository name="package_stacks" owner="cmonjeau" prior_installation_required="True"/>
-	</package>
-	<package name="bwa" version="0.6.2">
-                <repository name="package_bwa_0_6_2" owner="cmonjeau" prior_installation_required="True" />
-        </package>
-	<package name="velvet" version="1.2.10">
-		<repository name="package_velvet_1_2_10" owner="rjullien" prior_installation_required="True" />
-	</package>
+  <package name="stacks" version="1.18">
+      <repository name="package_stacks_1_18" owner="cmonjeau" />
+    </package>
+    <package name="bwa" version="0.6.2">
+      <repository name="package_bwa_0_6_2" owner="devteam" prior_installation_required="True" />
+    </package>
+    <package name="velvet" version="1.2.10">
+      <repository name="package_velvet_1_2_10" owner="rjullien" prior_installation_required="True" />
+    </package>
 </tool_dependency>

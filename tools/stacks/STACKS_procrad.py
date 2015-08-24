@@ -35,20 +35,20 @@ def __main__():
     parser.add_argument('--enzyme2')
     parser.add_argument('--outype')
     parser.add_argument('--qualitenc')
-    parser.add_argument('--D')
-    parser.add_argument('--t', default='-1')
-    parser.add_argument('--q', default='')
-    parser.add_argument('--discard_file')
-    parser.add_argument('--r', default='')
-    parser.add_argument('--w', default='-w 0.15')
-    parser.add_argument('--s', default='-s 10')
-    parser.add_argument('--c', default='')
-    parser.add_argument('--inline_null', default='--inline_null')
-    parser.add_argument('--index_null', default='')
-    parser.add_argument('--inline_inline', default='')
-    parser.add_argument('--index_index', default='')
-    parser.add_argument('--inline_index', default='')
-    parser.add_argument('--index_inline', default='')
+    parser.add_argument('-D', action='store_true')
+    parser.add_argument('-t')
+    parser.add_argument('-q', action='store_true')
+    parser.add_argument('--activate_advanced_options')
+    parser.add_argument('-r', action='store_true')
+    parser.add_argument('-w', default='0.15')
+    parser.add_argument('-s', default='10')
+    parser.add_argument('-c', action='store_true')
+    parser.add_argument('--inline_null', action='store_true')
+    parser.add_argument('--index_null', action='store_true')
+    parser.add_argument('--inline_inline', action='store_true')
+    parser.add_argument('--index_index', action='store_true')
+    parser.add_argument('--inline_index', action='store_true')
+    parser.add_argument('--index_inline', action='store_true')
     parser.add_argument('--logfile')
     options = parser.parse_args()
 
@@ -103,26 +103,40 @@ def __main__():
     # quality
     cmd_line.extend(['-E', options.qualitenc])
 
-    # test truncate value
-    if options.t != '-1':
-        cmd_line.extend(['-t', options.t])
-
+    # outputs
     cmd_line.extend(['-o', 'job_outputs/'])
     cmd_line.extend(['-y', options.outype])
-    cmd_line.extend([
-        options.D,
-        options.q,
-        options.r,
-        options.w,
-        options.s,
-        options.c,
-        options.inline_null,
-        options.index_null,
-        options.inline_inline,
-        options.index_index,
-        options.inline_index,
-        options.index_inline,
-        ])
+    
+    # test capture discards
+    if options.D:
+        cmd_line.append('-D')
+    
+    # optional options
+    if options.activate_advanced_options == "true":
+
+        if options.q:
+            cmd_line.append('-q')
+        if options.r:
+            cmd_line.append('-r')
+        
+        cmd_line.extend(['-w', options.w, '-s', options.s])
+        
+        if options.c:
+            cmd_line.append('-c')
+        if options.t != '-1':
+            cmd_line.extend(['-t', options.t])
+        if options.inline_null:
+            cmd_line.append('--inline_null')
+        if options.index_null:
+            cmd_line.append('--index_null')
+        if options.inline_inline:
+            cmd_line.append('--inline_inline')
+        if options.index_index:
+            cmd_line.append('--index_index')
+        if options.inline_index:
+            cmd_line.append('--inline_index')
+        if options.index_inline:
+            cmd_line.append('--index_inline')
 
     print '[CMD_LINE] : ' + ' '.join(cmd_line)
 
