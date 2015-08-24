@@ -53,6 +53,7 @@ STACKS_procrad.py
     --qualitenc $options_quality.qualitenc
     #if $capture:
         -D
+        --discard_file $discard_file
     #end if
     --activate_advanced_options $activate_advanced_options
     -t $options_advanced.truncate
@@ -244,8 +245,6 @@ STACKS_procrad.py
     <data format="fastq" name="discard_file" label="discard.fastq with ${tool.name} on ${on_string}: demultiplexed and cleaned reads ">
 	<filter>capture</filter>
     </data>
-
-
 </outputs>
 
 <stdio>

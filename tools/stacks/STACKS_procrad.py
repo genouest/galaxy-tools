@@ -36,6 +36,7 @@ def __main__():
     parser.add_argument('--outype')
     parser.add_argument('--qualitenc')
     parser.add_argument('-D', action='store_true')
+    parser.add_argument('--discard_file')
     parser.add_argument('-t')
     parser.add_argument('-q', action='store_true')
     parser.add_argument('--activate_advanced_options')
