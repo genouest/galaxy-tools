@@ -236,7 +236,7 @@ STACKS_procrad.py
 <outputs>
 
     <data format="txt" name="output" label="results.log with ${tool.name} on ${on_string}: demultiplexed and cleaned reads" />
-    <data format="txt" name="additional" label="fast(a/q) file with ${tool.name}" hidden="true">
+    <data format="txt" name="additional" label="fasta/fastq file with ${tool.name}" hidden="true">
           <discover_datasets pattern="__designation_and_ext__" directory="galaxy_outputs" visible="true" />
     </data>
     <data format="zip" name="output_archive" label="all_files.zip with ${tool.name} on ${on_string}: demultiplexed and cleaned reads ">

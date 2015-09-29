@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import sys, tempfile, subprocess, glob
-import os, re, shutil, optparse
+import os, re, shutil, argparse
 import zipfile, tarfile, gzip
 from os.path import basename
 
@@ -13,7 +13,7 @@ commet is available after compiling sources :
 
 http://github.com/pierrepeterlongo/commet
 
-or with the galaxy_commet package in the GenOuest toolshed (coming soon)
+or with the package_commet package in the GenOuest toolshed and the main toolshed
 
 NOTE : 
 
@@ -25,69 +25,51 @@ please add the line #!/usr/bin/env python in top of the Commet.py file if you've
 def __main__():
 
 	# arguments recuperation
-        parser = optparse.OptionParser()
-        parser.add_option("--input", dest="input")
-        parser.add_option("-k", dest="kmer")
-        parser.add_option("-t", dest="minsharedkmer")
-        parser.add_option("-l", dest="minlengthread")
-        parser.add_option("-n", dest="maxn")
-        parser.add_option("-e", dest="minshannonindex")
-        parser.add_option("-m", dest="maxreads")
+        parser = argparse.ArgumentParser()
 
-        parser.add_option("--output")
-        parser.add_option("--output_vectors")
-        parser.add_option("--output_dendro")
-        parser.add_option("--output_logs")
-        parser.add_option("--output_matrix")
-        parser.add_option("--output_heatmap1")
-        parser.add_option("--output_heatmap2")
-        parser.add_option("--output_heatmap3")
+        parser.add_argument("--set", dest="set", action='append')
+        parser.add_argument("-k", dest="kmer")
+        parser.add_argument("-t", dest="minsharedkmer")
+        parser.add_argument("-l", dest="minlengthread")
+        parser.add_argument("-n", dest="maxn")
+        parser.add_argument("-e", dest="minshannonindex")
+        parser.add_argument("-m", dest="maxreads")
 
-        (options, args) = parser.parse_args()
+        parser.add_argument("--output_logs")
+        parser.add_argument("--output_vectors")
+        parser.add_argument("--output_dendro")
+        parser.add_argument("--output_matrix")
+        parser.add_argument("--output_heatmap1")
+        parser.add_argument("--output_heatmap2")
+        parser.add_argument("--output_heatmap3")
 
+        options = parser.parse_args()
 
 	# copy R script into the current dir
 	shutil.copy(os.environ['RSCRIPTS']+"/heatmap.r", os.getcwd())
         shutil.copy(os.environ['RSCRIPTS']+"/dendro.R", os.getcwd())
 
-	# remove the first line of the input file
-	commet_file = open(options.input, "r")
-	commet_file_clean = open("commet_clean_file", "w")
-
-	# delete the first line
-	commet_file.readline()
-	for line in commet_file:
-		commet_file_clean.write(line)
-
-	# close files
-	commet_file.close()
-	commet_file_clean.close()
+        # prepare input file
+        commet_file=open('commet_config_file', 'w')
+ 
+        for set in options.set:
+            clean_set=set.replace(',', ';').replace('::', ':')
+            commet_file.write(clean_set+"\n")                     
+        commet_file.close()
 
 	# edit the command line
 	cmd_line=[]
 	cmd_line.append("Commet.py")
-	cmd_line.extend(["commet_clean_file","-b",os.environ['BINARIES'],"-k",options.kmer,"-t",options.minsharedkmer,"-l",options.minlengthread,"-e",options.minshannonindex])
+	cmd_line.extend(["commet_config_file","-b",os.environ['BINARIES'],"-k",options.kmer,"-t",options.minsharedkmer,"-l",options.minlengthread,"-e",options.minshannonindex])
 
 	# add options
 	if options.maxn:
-		
-		#cmd_line += ' -n '+options.maxn+' -m '+options.maxreads+' > '+options.output+' 2>>'+options.output
 		cmd_line.extend(["-n",options.maxn,"-m",options.maxreads])
-	#else:
-		#cmd_line += ' > '+options.output+' 2>>'+options.output
 
 	# execute job
-	p=subprocess.Popen(cmd_line,
-                   stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+	p=subprocess.call(cmd_line)
 
-	stdoutput, stderror = p.communicate()
-
-	# log file
-        logfile=open(options.output, "w")
-	logfile.write("[COMMAND LINE]"+' '.join(cmd_line)+"\n\n")
-	logfile.write(str(stdoutput))
-	logfile.write(str(stderror))
-	logfile.close()
+	print "[COMMAND LINE]"+' '.join(cmd_line)
 
 	# copy .bv files inside a .bv archive
 	tmp_output_dir=os.getcwd()+"/output_commet/"
@@ -120,10 +102,13 @@ def __main__():
         shutil.move(tmp_output_dir+'matrix.zip.temp', options.output_matrix)
 
 	# outputs
-        shutil.move(tmp_output_dir+'dendrogram_normalized.png', options.output_dendro)
-	shutil.move(tmp_output_dir+'heatmap_normalized.png', options.output_heatmap1)
-	shutil.move(tmp_output_dir+'heatmap_percentage.png', options.output_heatmap2)
-	shutil.move(tmp_output_dir+'heatmap_plain.png', options.output_heatmap3)
+        try:
+            shutil.move(tmp_output_dir+'dendrogram_normalized.png', options.output_dendro)
+            shutil.move(tmp_output_dir+'heatmap_percentage.png', options.output_heatmap2)
+            shutil.move(tmp_output_dir+'heatmap_normalized.png', options.output_heatmap1)
+            shutil.move(tmp_output_dir+'heatmap_plain.png', options.output_heatmap3)
+        except:
+            print "There is a problem with gplots execution"
 
 if __name__ == "__main__": __main__()
 

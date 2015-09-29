@@ -7,6 +7,7 @@
 mapsembler2.py
 -s $input_starters
 -r $data_files
+-e $extension_format
 -t $output_extension
 -k $kmer
 -c $coverage
@@ -23,6 +24,10 @@ mapsembler2.py
 	<!-- Input data files -->
 	<param name="input_starters" type="data" format="fasta" label="Starters" help="set of input sequences" /> 	
 	<param name="data_files" type="data" multiple="true" format="fasta,fastq" label="Read file" help="Data loaded in the script" />
+        <param name="extension_format" type="select" label="Input files">
+               <option value="fasta">fasta</option>
+               <option value="fastq">fastq</option>
+        </param>
 	<param name="output_extension" type="select" label="Select your output extension type">
 		<option value="1">a strict sequence</option>
 		<option value="2">a consensus sequence</option>
@@ -48,6 +53,9 @@ mapsembler2.py
       </data>
 
   </outputs>
+  <stdio>
+    <exit_code range="1" level="fatal" description="Error in Stacks Denovo execution" />
+  </stdio>
   <help>
 
 **Description**

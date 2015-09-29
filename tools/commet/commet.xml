@@ -2,10 +2,13 @@
   <description>COmpare Multiple METagenomes</description>
   <requirements>
     <requirement type="package" version="24.7.14">commet</requirement>
+    <requirement type="package" version="3.1.2">R</requirement>
   </requirements>
 <command interpreter="python">
 commet.py
---input $input
+#for $set in $sets
+    --set ${set.setname}::${set.reads}
+#end for
 -k $kmer
 -t $minsharedkmer
 -l $minlengthread
@@ -14,11 +17,10 @@ commet.py
 -m $options_advanced.maxreads
 -n $options_advanced.maxn
 #end if
---output $output
 --output_vectors $output_vectors
 --output_dendro $output_dendro
---output_logs $output_logs
 --output_matrix $output_matrix
+--output_logs $output_logs
 --output_heatmap1 $output_heatmap1
 --output_heatmap2 $output_heatmap2
 --output_heatmap3 $output_heatmap3
@@ -26,7 +28,10 @@ commet.py
 
   <inputs>
 	<!-- Input data files -->
-	<param name="input" type="data" format="commet" label="Read sets" help="input read sets a line = a set composed by “set_name: read_file; read_file...“. Generate with Prepare commet tool" /> 
+        <repeat name="sets" title="Read sets" min="1">
+            <param name="reads" type="data" multiple="true" format="fasta, fastq, fastq.gz" label="Dataset" help="Accept fasta/fastq/fastq.gz"/>
+            <param name="setname" type="text" label="Set name" value="set_name" help="Please don't use spaces or special characters"/>
+        </repeat>
 	<param name="kmer" type="integer" label="Size of kmers" value="33" help="Set the length of used kmers." />
 	<param name="minsharedkmer" type="integer" label="Mini shared kmers" value="2" help="Minimal number of shared kmers." />
 	<param name="minlengthread" type="integer" label="Read mini length" value="0" help="Minimal length a read should have to be kept." />
@@ -42,9 +47,7 @@ commet.py
 		</when>
 	</conditional>
   </inputs>
-
   <outputs>
-      <data format="txt" name="output" label="${tool.name} on ${on_string}: commet.log" />
       <data format="zip" name="output_vectors" label="${tool.name} on ${on_string}: vector.zip" />
       <data format="zip" name="output_logs" label="${tool.name} on ${on_string}: logs.zip" />
       <data format="png" name="output_dendro" label="${tool.name} on ${on_string}: dendrogram.png" />
@@ -53,6 +56,9 @@ commet.py
       <data format="png" name="output_heatmap2" label="${tool.name} on ${on_string}: heatmap_percentage.png" />
       <data format="png" name="output_heatmap3" label="${tool.name} on ${on_string}: heatmap_plain.png" />
   </outputs>
+  <stdio>
+    <exit_code range="1" level="fatal" description="Error in Commet execution" />
+  </stdio>  
   <help>
 
 **Description**

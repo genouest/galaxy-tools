@@ -35,7 +35,7 @@ def galaxy_config_to_tabfiles(input_config):
 	for line in open(input_config, "r").readlines():
 		if line.strip() != '':
 			extract=line.strip().split("::")
-			tab_files[extract[0].replace(" (", ".").replace(" ", ".").replace(")", "").replace(":", ".").replace("/", ".")]=extract[1]
+			tab_files[extract[0].replace("(", ".").replace(" ", ".").replace(")", "").replace(":", ".").replace("/", ".")]=extract[1]
 
 	# tabfiles[name]-> path
 	return tab_files
@@ -47,12 +47,12 @@ def galaxy_config_to_tabfiles_for_STACKS(input_config):
 	for line in open(input_config, "r").readlines():
 		if line.strip() != '':
 			extract=line.strip().split("::")
-			parse_name=re.search("^STACKS.*\((.*\.[ATCG]*\.fq)\)$", extract[0])
+			parse_name=re.search("STACKS.*\((.*\.[ATCG]*).*\)$", extract[0])
 			# rename galaxy name in a short name
 			if parse_name:				
 				extract[0]=parse_name.groups(1)[0]
 
-			tab_files[extract[0].replace(" (", ".").replace(" ", ".").replace(")", "").replace(":", ".").replace("/", ".")]=extract[1]
+			tab_files[extract[0].replace("(", ".").replace(" ", ".").replace(")", "").replace(":", ".").replace("/", ".")]=extract[1]
 			
 	# tabfiles[name]-> path
 	return tab_files

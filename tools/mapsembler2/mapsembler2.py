@@ -12,7 +12,7 @@ Mapsember2 is available after compiling sources :
 
 http://www.irisa.fr/symbiose/people/ppeterlongo/mapsembler2_2.2.3.zip
 
-or with the galaxy_mapsembler2 package in the GenOuest toolshed
+or with the package_mapsembler2_2_2_3 package in the GUGGO toolshed and main toolshed
 
 
 """
@@ -23,6 +23,7 @@ def __main__():
         parser = optparse.OptionParser()
         parser.add_option("-s", dest="input_starters")
         parser.add_option("-r", dest="input_files")
+        parser.add_option("-e", dest="extension_format")
         parser.add_option("-t", dest="output_extension")
         parser.add_option("-k", dest="kmer")
         parser.add_option("-c", dest="coverage")
@@ -49,8 +50,13 @@ def __main__():
 	#inputs
 	cmd_line.append("-r")
 
-	#cmd_line.append(inputs)
-	cmd_line.append(' '.join(options.input_files.split(",")))
+        inputs_tab = []
+
+        for input in options.input_files.split(","):
+             os.symlink(input, os.path.basename(input)+'.'+options.extension_format)
+             inputs_tab.append(os.path.basename(input)+'.'+options.extension_format)
+
+        cmd_line.append(' '.join(inputs_tab))
 
 	# add parameters into the command line
 	cmd_line.extend(["-t", options.output_extension, "-k", options.kmer, "-c", options.coverage, "-d", options.substitutions, "-g", options.genome_size, "-f", options.process_search, "-x", options.max_length, "-y", options.max_depth])
@@ -59,15 +65,8 @@ def __main__():
         log = open(options.output, "w")
 	log.write("[COMMAND LINE] "+' '.join(cmd_line))
 
-	process=subprocess.Popen(cmd_line,
-                   stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-
-        stdoutput, stderror = process.communicate()
+	process=subprocess.call(cmd_line)
 	
-	# results recuperation
-	log.write(stdoutput)
-	log.write(stderror)
-
 	# close log file
 	log.close()
 	
