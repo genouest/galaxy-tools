@@ -48,6 +48,7 @@ def __main__():
     parser.add_argument('-m')
     parser.add_argument('-a')
     parser.add_argument('-f')
+    parser.add_argument('-t')
     parser.add_argument('--p_value_cutoff')
     parser.add_argument('--window_size')
     parser.add_argument('--bootstrap')
@@ -134,6 +135,9 @@ def __main__():
         cmd_line.extend(['-f', options.f, '--p_value_cutoff', options.p_value_cutoff])
     if options.bootstrap:
         cmd_line.extend(['--bootstrap', options.bootstrap, '--bootstrap_reps', options.bootstrap_reps])
+
+    if options.t:
+        cmd_line.extend(['-t', options.t])
 
     print "[CMD]:"+' '.join(cmd_line)
     subprocess.call(cmd_line)

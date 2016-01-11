@@ -30,6 +30,7 @@ ${input.display_name}::${input}
 
 <command interpreter="python">
 STACKS_refmap.py
+-T \${GALAXY_SLOTS:-1}
 #if str( $options_usage.options_usage_selector ) == "genetic"
 	-p $parent_sequences
 	#if str( $options_usage.options_progeny.options_progeny_selector ) == "yes"

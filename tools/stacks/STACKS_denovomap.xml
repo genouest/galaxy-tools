@@ -31,6 +31,7 @@ ${input.display_name}::${input}
 
 <command interpreter="python">
 STACKS_denovomap.py
+-T \${GALAXY_SLOTS:-1}
 #if str( $options_usage.options_usage_selector ) == "genetic"
 -p $parent_sequences
 -b $options_usage.paired
