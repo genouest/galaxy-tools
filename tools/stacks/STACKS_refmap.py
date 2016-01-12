@@ -28,6 +28,7 @@ def __main__():
     parser.add_option('-O')
     parser.add_option('-n')
     parser.add_option('-m')
+    parser.add_option('-T')
     parser.add_option('--bound_low')
     parser.add_option('--bound_high')
     parser.add_option('--alpha')
@@ -145,6 +146,7 @@ def __main__():
         '-o', 'job_outputs',
         '-n', options.n,
         '-m', options.m,
+        '-T', options.T,
         ])
 
     if options.O:

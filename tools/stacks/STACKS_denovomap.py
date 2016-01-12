@@ -32,6 +32,7 @@ def __main__():
     parser.add_argument('-M')
     parser.add_argument('-N')
     parser.add_argument('-n')
+    parser.add_argument('-T')
     parser.add_argument('-t')
     parser.add_argument('-H')
     parser.add_argument('--bound_low')
@@ -171,6 +172,9 @@ def __main__():
 
     if options.n and options.n != '-1':
         cmd_line.extend(['-n', options.n])
+
+    if options.T and options.T != '-1':
+        cmd_line.extend(['-T', options.T])
 
     if options.t and options.t == 'true':
         cmd_line.append('-t')
