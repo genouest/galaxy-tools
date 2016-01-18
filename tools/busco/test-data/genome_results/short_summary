@@ -1,0 +1,11 @@
+#BUSCO was run in mode: genome
+
+Summarized benchmarks in BUSCO notation:
+	C:0.0%[D:0.0%],F:0.0%,M:10%,n:2675
+
+Representing:
+	0	Complete Single-Copy BUSCOs
+	0	Complete Duplicated BUSCOs
+	0	Fragmented BUSCOs
+	2675	Missing BUSCOs
+	2675	Total BUSCO groups searched
