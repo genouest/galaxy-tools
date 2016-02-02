@@ -99,7 +99,7 @@ def __main__():
         cmd_line.extend(['-e', options.enzyme1])
 
     if options.input_enzyme == '2':
-        cmd_line.extend(['---renz_1', options.enzyme1, '--renz_2', options.enzyme2])
+        cmd_line.extend(['--renz_1', options.enzyme1, '--renz_2', options.enzyme2])
 
     # quality
     cmd_line.extend(['-E', options.qualitenc])
