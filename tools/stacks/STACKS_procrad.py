@@ -54,13 +54,13 @@ def __main__():
     options = parser.parse_args()
 
     # create the working dir
-    os.mkdir('inputs')
+    #os.mkdir('inputs')
     os.mkdir('job_outputs')
     os.mkdir('galaxy_outputs')
 
     cmd_line = []
     cmd_line.append('process_radtags')
-    cmd_line.extend(['-p', 'inputs'])
+    #cmd_line.extend(['-p', 'inputs'])
     cmd_line.extend(['-i', options.inputype])
     cmd_line.extend(['-b', options.barcode])
 
@@ -75,7 +75,8 @@ def __main__():
         tab_files = galaxy_config_to_tabfiles(input_single)
 
         # create symlink into the temp dir
-        create_symlinks_from_tabfiles(tab_files, 'inputs')
+        #create_symlinks_from_tabfiles(tab_files, 'inputs')
+        cmd_line.extend(['-f', tab_files_paired.values()[0]])
     else:
 
         # load config files
@@ -89,8 +90,9 @@ def __main__():
 
         # create symlinks into the temp dir
 
-        create_symlinks_from_tabfiles(tab_files_paired1, 'inputs')
-        create_symlinks_from_tabfiles(tab_files_paired2, 'inputs')
+        #create_symlinks_from_tabfiles(tab_files_paired1, 'inputs')
+        #create_symlinks_from_tabfiles(tab_files_paired2, 'inputs')
+        cmd_line.extend(['-1', tab_files_paired1.values()[0], '-2', tab_files_paired2.values()[0]])
 
         cmd_line.append('-P')
 
@@ -139,6 +141,7 @@ def __main__():
         if options.index_inline:
             cmd_line.append('--index_inline')
 
+    print '[CMD_LINE] : ' + str(cmd_line)
     print '[CMD_LINE] : ' + ' '.join(cmd_line)
 
     p = subprocess.call(cmd_line)
