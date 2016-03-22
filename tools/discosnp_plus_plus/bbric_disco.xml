@@ -1,38 +1,45 @@
-<tool id="discosnp_pp" name="discoSnp++" version="2.1.7">
+<tool id="discosnp_pp" name="discoSnp++" version="2.2.4">
 <description>is an efficient tool for detecting SNPs without a reference genome.</description>
   <requirements>
-    <requirement type="package" version="2.1.7">discoSnp_plus_plus</requirement>
+    <requirement type="package" version="2.2.4">discoSnp_plus_plus</requirement>
     <requirement type="package" version="0.6.2">bwa</requirement>
   </requirements>
-  <command interpreter="python">
-bbric_disco.py
--r ${datfile}
--b $branching_bubbles
--D $deletions
--P $limit_snp
-#if $low_complexity
--l
-#end if
--k $kmer
-#if (str($extension) == 't'):
--t
-#end if
-#if (str($extension) == 'T'):
--T
-#end if
--c $coverage
--C ${maxcoverage}
--d $error_threshold
-#if (str($VCF_option.mapping) == 'reference'):
--G ${VCF_option.reference}
--M ${VCF_option.mapping_error}
-#end if
-  </command>
+  <command><![CDATA[
+    #for $input in $input
+        echo "${input}" > input.lst
+    #end for
+
+    &&
+
+    python bbric_disco.py
+    -r input.lst
+    -i input_clean.lst
+    -b $branching_bubbles
+    -D $deletions
+    -a $indel_ambiguity
+    -P $limit_snp
+    #if $low_complexity
+        -l
+    #end if
+    -k $kmer
+    #if (str($extension) == 't'):
+        -t
+    #end if
+    #if (str($extension) == 'T'):
+        -T
+    #end if
+    -c $coverage
+    -C ${maxcoverage}
+    -d $error_threshold
+    #if (str($VCF_option.mapping) == 'reference'):
+        -G ${VCF_option.reference}
+        -M ${VCF_option.mapping_error}
+        ${VCF_option.ref_for_var_call}
+    #end if
+  ]]></command>
 
   <inputs>             
-	<repeat name="input_list" title="input files" min="1">
-        	<param name="input" type="data" format="fasta,fastq,fastq.gz" label="input"/>
-	</repeat>
+    <param name="input" type="data" format="fasta,fastq,fastq.gz" multiple="True" label="input"/>
 
 	<param name="kmer" type="integer" label="Size of kmers" value="31" />
 	<param name="coverage" type="integer" label="Minimal coverage per read set" value="4" />
@@ -45,7 +52,8 @@ bbric_disco.py
 		<option value="2">No limitation on branching</option>
         </param>
 
-	<param name="deletions" type="integer" label="deletion size" value="0" help="If different of 0, discoSnp++ will search for deletions of size from 1 to the value included"/>
+	<param name="indel_ambiguity" type="integer" label="Maximal size of ambiguity of INDELS" value="20" help="INDELS whose ambiguity is higher than thi value are not output"/>
+	<param name="deletions" type="integer" label="deletion size" value="100" help="If different of 0, discoSnp++ will search for deletions of size from 1 to the value included"/>
 	<param name="limit_snp" type="integer" label="maximum SNPs per bubble" value="1" help="discoSnp++ will search up to the value SNPs in a unique bubble"/>
 	<param name="low_complexity" type="boolean" default="False" checked="False" label="accept low complexity bubbles" />
 
@@ -63,6 +71,7 @@ bbric_disco.py
 		<when value="reference">
 			<param name="reference" type="data" format="fasta,fastq" label="Reference genome file" />
 			<param name="mapping_error" type="integer" value="4" label="Maximal number of mapping errors" help="during BWA mapping phase" />
+	        <param name="ref_for_var_call" type="boolean" truevalue="-R" falsevalue="" checked="false" label="Use the reference genome also in the variant calling, not only for mapping results" />
 		</when>
 	</conditional>
 
@@ -74,13 +83,6 @@ bbric_disco.py
     	<data name="fasta" from_work_dir="coherent.fasta" format="fasta" label="Multifasta of the polymorphisms -  ${tool.name} on $on_string"/>
 </outputs>
 
- <configfiles>
-        <configfile name="datfile">
-        #for $i, $lib in enumerate ($input_list)
-		${i}::${lib.input}
-        #end for
- 	</configfile>
-   </configfiles>
   <help>
 
 **Description**

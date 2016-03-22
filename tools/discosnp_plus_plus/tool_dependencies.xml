@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <tool_dependency>
-  <package name="discoSnp_plus_plus" version="2.1.7">
-      <repository name="package_discosnp_plus_plus_2_1_7" owner="cmonjeau"/>
+  <package name="discoSnp_plus_plus" version="2.2.4">
+      <repository name="package_discosnp_plus_plus_2_2_4" owner="abretaud"/>
     </package>
     <package name="bwa" version="0.6.2">
       <repository name="package_bwa_0_6_2" owner="cmonjeau"/>
