@@ -6,10 +6,8 @@
   </requirements>
   <command><![CDATA[
     #for $input in $input
-        echo "${input}" > input.lst
+        echo "${input}" > input.lst &&
     #end for
-
-    &&
 
     python bbric_disco.py
     -r input.lst
