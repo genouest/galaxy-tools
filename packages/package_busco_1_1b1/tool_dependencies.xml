@@ -62,7 +62,7 @@
                     <destination_directory>$INSTALL_DIR/data/metazoa</destination_directory>
                 </action>
 
-                <action type="download_by_url" sha256sum="564f019b07ebeb8adfae43d2c9ef2b0235cc464c73c21aef1d5c22061ede4f5d">http://busco.ezlab.org/files/eukaryota_buscos.tar.gz</action>
+                <action type="download_by_url" sha256sum="0e7ff41629035fb09d24997229a23cc36f5ae134b9879f5628c901d495ba2f85">http://busco.ezlab.org/files/eukaryota_buscos.tar.gz</action>
 
                 <action type="move_directory_files">
                     <source_directory>eukaryota</source_directory>
