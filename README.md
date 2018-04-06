@@ -20,7 +20,3 @@ Tools:
 Packages:
 
   - Velvet
-
-Datatypes:
-
-  - Compressed datatypes
