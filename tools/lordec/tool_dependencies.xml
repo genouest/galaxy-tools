@@ -1,6 +1,0 @@
-<?xml version="1.0"?>
-<tool_dependency>
-  <package name="lordec" version="0.5.3">
-      <repository name="package_lordec_0_5_3" owner="cmonjeau" prior_installation_required="True"/>
-    </package>
-</tool_dependency>

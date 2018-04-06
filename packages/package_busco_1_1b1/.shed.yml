@@ -1,8 +1,0 @@
-categories: [Tool Dependency Packages]
-description: Contains a tool dependency definition that downloads and version 1.1b1
-  of BUSCO
-homepage_url: http://busco.ezlab.org/
-long_description: Assessing genome assembly and annotation completeness with Benchmarking
-  Universal Single-Copy Orthologs
-name: package_busco_1_1b1
-owner: abretaudeau

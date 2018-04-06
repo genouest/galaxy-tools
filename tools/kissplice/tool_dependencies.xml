@@ -1,6 +1,0 @@
-<?xml version="1.0"?>
-<tool_dependency>
-  <package name="kissplice" version="2.2.1">
-      <repository name="package_kissplice_2_2_1" owner="cmonjeau" />
-    </package>
-</tool_dependency>

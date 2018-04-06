@@ -1,6 +1,0 @@
-<?xml version="1.0"?>
-<tool_dependency>
-	<package name="megahit" version="0.3.2">
-        	<repository name="package_megahit_0_3_2" owner="cmonjeau" prior_installation_required="True"/>
-	</package>
-</tool_dependency>
