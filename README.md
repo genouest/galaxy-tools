@@ -10,9 +10,3 @@ The [GenOuest ToolShed](http://toolshed.genouest.org/) is no more maintained, no
 Tools from the Colibread suite have been [migrated to IUC](https://github.com/galaxyproject/tools-iuc/tree/master/tools/colibread)
 
 The Stacks suite is also [maintained in IUC now](https://github.com/galaxyproject/tools-iuc/tree/master/tools/stacks)
-
-Tools:
-
-  - Archive toolbox
-  - Decompress an archive and merge
-  - Ziptool
