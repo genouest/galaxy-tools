@@ -1,7 +1,7 @@
-<tool id="extract_archive_merge" name="Decompress an archive" version="1.0.0" force_history_refresh="True" >
+<tool id="extract_archive_merge" name="Decompress an archive" version="1.1" force_history_refresh="True" >
   <description>in zip, gz, tar.gz, fastq.gz, fastq.bz2 or tar.bz2 format</description>
   <command interpreter="python">
-	
+
 extract_archive_and_merge.py $input_archive "$input_archive.display_name" $log $log.id $__new_file_path__ $options_merge.merge
 #if str( $options_merge.merge ) == 'true'
 ${options_merge.rm_header}
@@ -27,7 +27,7 @@ $concat
     <data format="txt" name="log" label="decompress_an_archive.log" />
     <data format="txt" name="additional" label="additional file with ${tool.name}" hidden="true">
           <discover_datasets pattern="__designation_and_ext__" directory="decompress_files" visible="true" />
-    </data>  
+    </data>
 
     <data format="txt" name="concat" label="merge_file">
        <filter>(options_merge['merge'] == 'true')</filter>
@@ -36,7 +36,7 @@ $concat
  <help>
 **Tool documentation**
 
-This tool simply decompresses an archive file (zip, gz, tar.gz, fastq.gz, fastq.bz2 or tar.bz2) and merges all files into only one. 
+This tool simply decompresses an archive file (zip, gz, tar.gz, fastq.gz, fastq.bz2 or tar.bz2) and merges all files into only one.
 If the merge option is enabled, you can delete as many header lines as you need.
 
 WARNING : the filename should not have special characters (space, brackets, ...), please rename it!!!
@@ -45,7 +45,7 @@ WARNING : the filename should not have special characters (space, brackets, ...)
 
 **Created and integrated by:**
 
-Cyril Monjeaud 
+Cyril Monjeaud
 
 GenOuest Bio-informatics Core Facility
 
