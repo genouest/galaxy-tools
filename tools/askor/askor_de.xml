@@ -45,8 +45,8 @@
         </section>
         </section>
         <section name="selection" title="Samples selection options" expanded="false">>
-          <param name="sel" type="text" label="list of selected samples (separated by colon)" value="" optional=true />
-          <param name="remove" type="text" label="list of removed samples (separated by colon)" value="" optional=true />
+          <param name="sel" type="text" label="list of selected samples (separated by comma)" value="" optional=true />
+          <param name="remove" type="text" label="list of removed samples (separated by comma)" value="" optional=true />
         </section>
         <section name="thresholds" title="Threshold options" expanded="false">
             <param name="th_cpm" type="float" label="minimum CPM value for selecting a gene" value="0.5" optional=true />
