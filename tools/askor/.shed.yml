@@ -1,0 +1,6 @@
+categories: [Transcriptomics]
+description: AskoR links edger and askomics
+long_description: AskoR perform DE analyses from raw counts and generates Askomics
+  compliant files
+name: askor
+owner: flegeai
