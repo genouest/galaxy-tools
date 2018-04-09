@@ -152,7 +152,7 @@ asko3c <- function(data_list){
         common_factor1<-toString(common_factor1)                                # conversion list to string
         contx1<-str_replace(common_factor1,", ","")}else{contx1<-common_factor1}# all common factor are concatenated to become the name of context
       contx1<-str_replace_all(contx1, "NULL", "")
-        print(paste("contx1 : ", contx1, sep=""))
+      print(paste("contx1 : ", contx1, sep=""))
       if(length(common_factor2)>1){                                             # if there are several common factor for conditions in the 2nd context 
         common_factor2<-toString(common_factor2)                                # conversion list to string
         contx2<-str_replace(common_factor2,", ","")}else{contx2<-common_factor2}# all common factor are concatenated to become the name of context
@@ -212,9 +212,9 @@ asko3c <- function(data_list){
   
   ######## Files creation ########
   
-  write.table(condition_asko, paste0(parameters$outdir,"/condition.asko.txt"), sep = parameters$sep, row.names = F, quote=F)            # creation of condition file for asko 
-  write.table(context_asko,  paste0(parameters$outdir,"/context.asko.txt"), sep=parameters$sep, col.names = T, row.names = F,quote=F)            # creation of context file for asko
-  write.table(contrast_asko,  paste0(parameters$outdir,"/contrast.asko.txt"), sep=parameters$sep, col.names = T, row.names = F, quote=F)          # creation of contrast file for asko
+  write.table(condition_asko, paste0(parameters$out_dir,"/condition.asko.txt"), sep = parameters$sep, row.names = F, quote=F)            # creation of condition file for asko 
+  write.table(context_asko,  paste0(parameters$out_dir,"/context.asko.txt"), sep=parameters$sep, col.names = T, row.names = F,quote=F)            # creation of context file for asko
+  write.table(contrast_asko,  paste0(parameters$out_dir,"/contrast.asko.txt"), sep=parameters$sep, col.names = T, row.names = F, quote=F)          # creation of contrast file for asko
   return(asko)
 }
 
@@ -251,8 +251,8 @@ AskoStats <- function (glm_test, fit, contrast, ASKOlist, dge,parameters){
   ASKO_stat$FDR<-p.adjust(ASKO_stat$PValue, method=parameters$p_adj_method)                                # computation of False Discovery Rate
   
   ASKO_stat$Significance=0                                                              # Between context1 and context2 :
-  ASKO_stat$Significance[ASKO_stat$logFC< -1 & ASKO_stat$FDR<=parameters$threshold_FDR] = -1       # Significance values = -1 for down regulated genes
-  ASKO_stat$Significance[ASKO_stat$logFC> 1 & ASKO_stat$FDR<=parameters$threshold_FDR] = 1         # Significance values = 1 for up regulated genes
+  ASKO_stat$Significance[ASKO_stat$logFC< 0 & ASKO_stat$FDR<=parameters$threshold_FDR] = -1       # Significance values = -1 for down regulated genes
+  ASKO_stat$Significance[ASKO_stat$logFC> 0 & ASKO_stat$FDR<=parameters$threshold_FDR] = 1         # Significance values = 1 for up regulated genes
   
   if(parameters$Expression==TRUE){
     ASKO_stat$Expression=NA                                                             # addition of column "expression" 
@@ -278,7 +278,7 @@ AskoStats <- function (glm_test, fit, contrast, ASKOlist, dge,parameters){
   colnames(ASKOlist$stat.table)[colnames(ASKOlist$stat.table)=="contrast"] <- paste("measured_in", "Contrast", sep="@") # header formatting for askomics
   o <- order(ASKOlist$stat.table$FDR)                                                                                   # ordering genes by FDR value
   ASKOlist$stat.table<-ASKOlist$stat.table[o,]                                                                          #
-  write.table(ASKOlist$stat.table,paste0(parameters$out_dir,parameters$organism, contrasko, ".txt"),                                    #
+  write.table(ASKOlist$stat.table,paste0(parameters$out_dir,"/", parameters$organism, contrasko, ".txt"),                                    #
               sep=parameters$sep, col.names = T, row.names = F, quote=FALSE)
   
   if(parameters$heatmap==TRUE){
@@ -352,13 +352,16 @@ loadData <- function(parameters){
     # }
   }else {
     if(grepl(".csv", parameters$fileofcount)==TRUE){
+      print(parameters$col_genes)
       count<-read.csv(parameters$fileofcount, header=TRUE, sep = "\t", row.names = parameters$col_genes)
-      row.names(count)
+      print(count)
+      print(row.names(count))
     }
     if(grepl(".txt", parameters$fileofcount)==TRUE){
       count<-read.table(parameters$fileofcount, header=TRUE, sep = "\t", row.names = parameters$col_genes)
     }
     select_counts<-row.names(samples)
+    print(select_counts)
     #countT<-count[,c(parameters$col_counts:length(colnames(count)))]
     countT<-count[,select_counts]
     dge<-DGEList(counts=countT, samples=samples) 
@@ -542,7 +545,7 @@ DEanalysis <- function(norm_GE, data_list, asko_list, parameters){
   
   #sum<-norm_GE$genes
   for (contrast in colnames(data_list$contrast)){
-    print(data_list$contrast[,contrast])
+    print(asko_list$contrast$Contrast[contrast])
     if(parameters$glm=="lrt"){
       glm_test<-glmLRT(fit, contrast=data_list$contrast[,contrast])
     }
@@ -561,7 +564,7 @@ Asko_start <-function(){
   library(statmod)
   library(edgeR)
   library(ggplot2)
-  library("RColorBrewer")
+  library(RColorBrewer)
   library(ggrepel)
   library(gplots)
   library(stringr)
@@ -647,5 +650,3 @@ Asko_start <-function(){
   
   return(parameters)
 }
-
-
