@@ -2,7 +2,7 @@
     <description>Edger for askomics </description>
     <requirements>
         <requirement type="package" version="3.34.6">bioconductor-limma</requirement>
-        <requirement type="package" version="1.4.29">r-statmod</requirement>
+        <requirement type="package" version="1.4.30">r-statmod</requirement>
         <requirement type="package" version="3.20.7">bioconductor-edger</requirement>
         <requirement type="package" version="2.2.1">r-ggplot2</requirement>
         <requirement type="package" version="1.1_2">r-rcolorbrewer</requirement>
