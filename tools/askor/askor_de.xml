@@ -18,19 +18,45 @@
       --fileofcount ${fileofcounts}
       --samples ${samples}
       --contrasts ${contrasts}
-      --org ${organism}
-      --col_genes ${colgenes}
-      --sep ${sep}
-      --palette ${palette}
-      --select ${sel}
-      --remove ${remove}
-      --th_cpm ${th_cpm}
-      --rep ${rep}
-      --th_FDR ${fdr}
-      --normalization ${norm}
-      --adj ${adj}
-      --glm ${glm}
-      --nh ${nh}
+      #if ${adv.organism}
+        --org ${adv.organism}
+      #end if
+      #if ${adv.colgenes}
+        --col_genes ${adv.colgenes}
+      #end if
+      #if ${adv.sep}
+        --sep ${adv.sep}
+      #end if
+      #if ${adv.palette}
+        --palette ${adv.palette}
+      #end if
+      #if ${selection.sel}
+        --select ${selection.sel}
+      #end ${sel}
+      #if ${selection.remove}
+        --remove ${selection.remove}
+      #end if
+      #if ${thresholds.th_cpm}
+        --th_cpm ${thresholds.th_cpm}
+      #end if
+      #if ${thresholds.rep}
+        --rep ${thresholds.rep}
+      #end if
+      #if ${thresholds.fdr}
+        --th_FDR ${thresholds.fdr}
+      #end if
+      #if ${stats.norm}
+        --normalization ${stats.norm}
+      #end if
+      #if ${stats.adj}
+        --adj ${stats.adj}
+      #end if
+      #if ${stats.glm}
+        --glm ${stats.glm}
+      #end if
+      #if ${adv.nh}
+        --nh ${adv.nh}
+      #end if
     ]]></command>
     <inputs>
         <param format="tsv" name="fileofcounts" type="data" label="File of counts" />
@@ -52,26 +78,26 @@
             <param name="rep" type="integer" label="number of samples with CPM > th_comp for selecting a gene" value="3" optional="true" />
             <param name="th_FDR" type="float" label="FDR threshold for reporting a differential gene" value="0.05" optional="true" />
         </section>
-        <section name="statistics tests" title="Statistics options" expanded="false">
+        <section name="stats" title="Statistics options" expanded="false">
           <param name="norm" type="select" label="normalization method" value="TMM">
-            <option value="TMM"> TMM </option>
-            <option value="RLE"> RLE </option>
-            <option value="upperquartile"> upperquartile </option>
-            <option value="upperquartile"> none </option>
+            <option value="TMM">TMM</option>
+            <option value="RLE">RLE</option>
+            <option value="upperquartile">upperquartile</option>
+            <option value="upperquartile">none</option>
           </param>
           <param name="GLM" type="select" label="GLM method" value="qlf">
-            <option value="qlf"> qlf </option>
-            <option value="lrt"> lrt </option>
+            <option value="qlf">qlf</option>
+            <option value="lrt">lrt</option>
           </param>
           <param name="adj" type="select" label="Multitest correction method" value="fdr">
-            <option value="holm"> holm </option>
-            <option value="hochberg"> hochberg </option>
-            <option value="hommel"> hommel </option>
-            <option value="bonferroni"> bonferroni </option>
-            <option value="BH"> BH </option>
-            <option value="BY"> BY </option>
-            <option value="fdr"> fdr </option>
-            <option value="none"> none </option>
+            <option value="holm">holm</option>
+            <option value="hochberg">hochberg</option>
+            <option value="hommel">hommel</option>
+            <option value="bonferroni">bonferroni</option>
+            <option value="BH">BH</option>
+            <option value="BY">BY</option>
+            <option value="fdr">fdr</option>
+            <option value="none">none</option>
           </param>
         </section>
     </inputs>
@@ -88,8 +114,10 @@
             <param name="contrasts" value="Contrasts.txt" />
             <param name="colgenes" value="3" />
             <param name="th_cpm" value="10" />
-            <output name="AskoAvsK.txt" file="AskoAvsK.txt" ftype="txt" />
-            <output name="contrast.asko.txt" file="contrast.asko.txt" ftype="txt"/>
+             <output_collection name="askor_output" type="list">
+               <element name="AskoAvsK.txt" file="AskoAvsK.txt" ftype="txt" />
+               <element name="contrast.asko.txt" file="contrast.asko.txt" ftype="txt"/>
+             </output_collection>
         </test>
     </tests>
     <help>
