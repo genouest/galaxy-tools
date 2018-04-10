@@ -43,8 +43,7 @@
           <param name="organism" type="text" label="organism" value="Asko" optional="true" />
           <param name="nh" type="integer" label="number of genes in the heatmap" value="50" optional="true" />
         </section>
-        </section>
-        <section name="selection" title="Samples selection options" expanded="false">>
+        <section name="selection" title="Samples selection options" expanded="false">
           <param name="sel" type="text" label="list of selected samples (separated by comma)" value="" optional="true" />
           <param name="remove" type="text" label="list of removed samples (separated by comma)" value="" optional="true" />
         </section>
@@ -52,29 +51,29 @@
             <param name="th_cpm" type="float" label="minimum CPM value for selecting a gene" value="0.5" optional="true" />
             <param name="rep" type="integer" label="number of samples with CPM > th_comp for selecting a gene" value="3" optional="true" />
             <param name="th_FDR" type="float" label="FDR threshold for reporting a differential gene" value="0.05" optional="true" />
-      </section>
-      <section name="statistics tests" title="Statistics options" expanded="false">
-        <param name="norm" type="select" label="normalization method" value="TMM">
+        </section>
+        <section name="statistics tests" title="Statistics options" expanded="false">
+          <param name="norm" type="select" label="normalization method" value="TMM">
             <option value="TMM"> TMM </option>
             <option value="RLE"> RLE </option>
             <option value="upperquartile"> upperquartile </option>
             <option value="upperquartile"> none </option>
           </param>
           <param name="GLM" type="select" label="GLM method" value="qlf">
-              <option value="qlf"> qlf </option>
-              <option value="lrt"> lrt </option>
+            <option value="qlf"> qlf </option>
+            <option value="lrt"> lrt </option>
           </param>
           <param name="adj" type="select" label="Multitest correction method" value="fdr">
-              <option value="holm"> holm </option>
-              <option value="hochberg"> hochberg </option>
-              <option value="hommel"> hommel </option>
-              <option value="bonferroni"> bonferroni </option>
-              <option value="BH"> BH </option>
-              <option value="BY"> BY </option>
-              <option value="fdr"> fdr </option>
-              <option value="none"> none </option>
-            </param>
-    </section>
+            <option value="holm"> holm </option>
+            <option value="hochberg"> hochberg </option>
+            <option value="hommel"> hommel </option>
+            <option value="bonferroni"> bonferroni </option>
+            <option value="BH"> BH </option>
+            <option value="BY"> BY </option>
+            <option value="fdr"> fdr </option>
+            <option value="none"> none </option>
+          </param>
+        </section>
     </inputs>
     <outputs>
         <data format="pdf" name="out_pdf" label="${tool.name} on ${on_string}: Graphics" />
