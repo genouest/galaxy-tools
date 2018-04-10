@@ -79,24 +79,24 @@
             <param name="th_FDR" type="float" label="FDR threshold for reporting a differential gene" value="0.05" optional="true" />
         </section>
         <section name="stats" title="Statistics options" expanded="false">
-          <param name="norm" type="select" label="normalization method" value="TMM">
+          <param name="norm" type="select" label="normalization method">
             <option value="TMM">TMM</option>
             <option value="RLE">RLE</option>
             <option value="upperquartile">upperquartile</option>
             <option value="upperquartile">none</option>
           </param>
-          <param name="GLM" type="select" label="GLM method" value="qlf">
+          <param name="GLM" type="select" label="GLM method">
             <option value="qlf">qlf</option>
             <option value="lrt">lrt</option>
           </param>
-          <param name="adj" type="select" label="Multitest correction method" value="fdr">
+          <param name="adj" type="select" label="Multitest correction method">
+            <option value="fdr">fdr</option>
             <option value="holm">holm</option>
             <option value="hochberg">hochberg</option>
             <option value="hommel">hommel</option>
             <option value="bonferroni">bonferroni</option>
             <option value="BH">BH</option>
             <option value="BY">BY</option>
-            <option value="fdr">fdr</option>
             <option value="none">none</option>
           </param>
         </section>
