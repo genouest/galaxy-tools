@@ -114,10 +114,14 @@
             <param name="contrasts" value="Contrasts.txt" />
             <param name="colgenes" value="3" />
             <param name="th_cpm" value="10" />
-             <output_collection name="askor_output" type="list">
-               <element name="AskoAvsK.txt" file="AskoAvsK.txt" ftype="txt" />
-               <element name="contrast.asko.txt" file="contrast.asko.txt" ftype="txt"/>
-             </output_collection>
+            <output name="output">
+              <discovered_dataset designation="AskoAvsK.txt" ftype="tabular">
+                <assert_contents><has_n_columns n="16" /></assert_contents>
+              </discovered_dataset>
+              <discovered_dataset designation="contrast.asko.txt" ftype="tabular">
+                <assert_contents><has_line line="T1AvsT1K T1A T1K" /></assert_contents>
+              </discovered_dataset>
+            </output>
         </test>
     </tests>
     <help>
