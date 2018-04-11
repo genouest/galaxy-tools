@@ -8,7 +8,7 @@
         <requirement type="package" version="1.1_2">r-rcolorbrewer</requirement>
         <requirement type="package" version="0.7.0">r-ggrepel</requirement>
         <requirement type="package" version="3.0.1">r-gplots</requirement>
-        <requirement type="package" version="1.3.2">r-optparse</requirement>
+        <requirement type="package" version="1.4.4">r-optparse</requirement>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
       export ASKOR_PATH='$__tool_directory__' &&
