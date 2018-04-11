@@ -16,7 +16,7 @@
       --out '${out_pdf}'
       --outdir askor_output
       --fileofcount '${fileofcounts}'
-      --samples '${samples}'
+      --sample '${samples}'
       --contrasts '{contrasts}'
       #if '{adv.organism}'
         --org '{adv.organism}'
