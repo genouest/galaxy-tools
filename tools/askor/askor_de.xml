@@ -1,5 +1,5 @@
-<tool id="askor_de" name="AskoR_DE" version="0.01">
-    <description>Edger for askomics </description>
+<tool id="askor_de" name="AskoR DE" version="0.01">
+    <description>Edger for AskOmics</description>
     <requirements>
         <requirement type="package" version="3.34.6">bioconductor-limma</requirement>
         <requirement type="package" version="1.4.30">r-statmod</requirement>
@@ -17,75 +17,75 @@
       --outdir askor_output
       --fileofcount '${fileofcounts}'
       --sample '${samples}'
-      --contrasts '{contrasts}'
-      #if '{adv.organism}'
-        --org '{adv.organism}'
+      --contrasts '${contrasts}'
+      #if '${adv.organism}'
+        --org '${adv.organism}'
       #end if
-      #if '{adv.colgenes}'
-        --col_genes '{adv.colgenes}'
+      #if '${adv.colgenes}'
+        --col_genes '${adv.colgenes}'
       #end if
-      #if '{adv.sep}'
-        --sep '{adv.sep}'
+      #if '${adv.sep}'
+        --sep '${adv.sep}'
       #end if
-      #if '{adv.palette}'
-        --palette '{adv.palette}'
+      #if '${adv.palette}'
+        --palette '${adv.palette}'
       #end if
-      #if '{selection.sel}'
-        --select '{selection.sel}'
+      #if '${selection.sel}'
+        --select '${selection.sel}'
       #end if
-      #if '{selection.remove}'
-        --remove '{selection.remove}'
+      #if '${selection.remove}'
+        --remove '${selection.remove}'
       #end if
-      #if '{thresholds.th_cpm}'
-        --th_cpm '{thresholds.th_cpm}'
+      #if '${thresholds.th_cpm}'
+        --th_cpm '${thresholds.th_cpm}'
       #end if
-      #if '{thresholds.rep}'
-        --rep '{thresholds.rep}'
+      #if '${thresholds.rep}'
+        --rep '${thresholds.rep}'
       #end if
-      #if '{thresholds.fdr}'
-        --th_FDR '{thresholds.fdr}'
+      #if '${thresholds.th_FDR}'
+        --th_FDR '${thresholds.th_FDR}'
       #end if
-      #if '{stats.norm}'
-        --normalization '{stats.norm}'
+      #if '${stats.norm}'
+        --normalization '${stats.norm}'
       #end if
-      #if '{stats.adj}'
-        --adj '{stats.adj}'
+      #if '${stats.adj}'
+        --adj '${stats.adj}'
       #end if
-      #if '{stats.glm}'
-        --glm '{stats.glm}'
+      #if '${stats.glm}'
+        --glm '${stats.glm}'
       #end if
-      #if '{adv.nh}'
-        --nh '{adv.nh}'
+      #if '${adv.nh}'
+        --nh '${adv.nh}'
       #end if
     ]]></command>
     <inputs>
         <param format="csv" name="fileofcounts" type="data" label="File of counts" />
-        <param format="tsv" name="samples" type="data" label="descriptions of the samples" />
-        <param format="tsv" name="contrasts" type="data" label="descriptions of the contrasts" />
+        <param format="tsv" name="samples" type="data" label="Descriptions of the samples" />
+        <param format="tsv" name="contrasts" type="data" label="Descriptions of the contrasts" />
         <section name="adv" title="Format options" expanded="false">
           <param name="colgenes" type="integer" label="Column of the genes" value="1" optional="true" />
-          <param name="sep" type="text" label="field separator" value="\t" optional="true" />
-          <param name="palette" type="text" label="color palette (Rcolorbrewer)" value="Set2" optional="true" />
-          <param name="organism" type="text" label="organism" value="Asko" optional="true" />
-          <param name="nh" type="integer" label="number of genes in the heatmap" value="50" optional="true" />
+          <param name="sep" type="text" label="Field separator" value="\t" optional="true" />
+          <param name="palette" type="text" label="Color palette (Rcolorbrewer)" value="Set2" optional="true" />
+          <param name="organism" type="text" label="Organism" value="Asko" optional="true" />
+          <param name="nh" type="integer" label="Number of genes in the heatmap" value="50" optional="true" />
         </section>
         <section name="selection" title="Samples selection options" expanded="false">
-          <param name="sel" type="text" label="list of selected samples (separated by comma)" optional="true" />
-          <param name="remove" type="text" label="list of removed samples (separated by comma)" optional="true" />
+          <param name="sel" type="text" label="List of selected samples (separated by comma)" optional="true" />
+          <param name="remove" type="text" label="List of removed samples (separated by comma)" optional="true" />
         </section>
         <section name="thresholds" title="Threshold options" expanded="false">
-            <param name="th_cpm" type="float" label="minimum CPM value for selecting a gene" value="0.5" optional="true" />
-            <param name="rep" type="integer" label="number of samples with CPM > th_comp for selecting a gene" value="3" optional="true" />
+            <param name="th_cpm" type="float" label="Minimum CPM value for selecting a gene" value="0.5" optional="true" />
+            <param name="rep" type="integer" label="Number of samples with CPM > th_comp for selecting a gene" value="3" optional="true" />
             <param name="th_FDR" type="float" label="FDR threshold for reporting a differential gene" value="0.05" optional="true" />
         </section>
         <section name="stats" title="Statistics options" expanded="false">
-          <param name="norm" type="select" label="normalization method">
+          <param name="norm" type="select" label="Normalization method">
             <option value="TMM">TMM</option>
             <option value="RLE">RLE</option>
-            <option value="upperquartile">upperquartile</option>
-            <option value="none">none</option>
+            <option value="upperquartile">Upperquartile</option>
+            <option value="none">None</option>
           </param>
-          <param name="GLM" type="select" label="GLM method">
+          <param name="glm" type="select" label="GLM method">
             <option value="qlf">qlf</option>
             <option value="lrt">lrt</option>
           </param>
@@ -125,7 +125,7 @@
         </test>
     </tests>
     <help>
-      This tools generates list of differential genes from various contrasts in an Askomics format
+      This tools generates a list of differential genes from various contrasts in an Askomics format
     </help>
     <citations>
     </citations>
