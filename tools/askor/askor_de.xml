@@ -12,7 +12,7 @@
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
       export ASKOR_PATH='$__tool_directory__' &&
-      Rscript '$__tool_directory__/Asko_DE.R'
+      Rscript '$__tool_directory__/AskoR_DE.R'
       --out '${out_pdf}'
       --outdir askor_output
       --fileofcount '${fileofcounts}'
