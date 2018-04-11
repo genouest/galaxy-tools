@@ -22,7 +22,7 @@
         --org '${adv.organism}'
       #end if
       #if $adv.colgenes
-        --col_genes '${adv.colgenes}'
+        --col_genes ${adv.colgenes}
       #end if
       --sep '\t'
       #if $adv.palette
