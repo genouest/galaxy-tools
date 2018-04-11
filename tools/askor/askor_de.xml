@@ -18,44 +18,42 @@
       --fileofcount '${fileofcounts}'
       --sample '${samples}'
       --contrasts '${contrasts}'
-      #if '${adv.organism}'
+      #if $adv.organism
         --org '${adv.organism}'
       #end if
-      #if '${adv.colgenes}'
+      #if $adv.colgenes
         --col_genes '${adv.colgenes}'
       #end if
-      #if '${adv.sep}'
-        --sep '${adv.sep}'
-      #end if
-      #if '${adv.palette}'
+      --sep '\t'
+      #if $adv.palette
         --palette '${adv.palette}'
       #end if
-      #if '${selection.sel}'
+      #if $selection.sel
         --select '${selection.sel}'
       #end if
-      #if '${selection.remove}'
+      #if $selection.remove
         --remove '${selection.remove}'
       #end if
-      #if '${thresholds.th_cpm}'
-        --th_cpm '${thresholds.th_cpm}'
+      #if $thresholds.th_cpm
+        --th_cpm ${thresholds.th_cpm}
       #end if
-      #if '${thresholds.rep}'
-        --rep '${thresholds.rep}'
+      #if $thresholds.rep
+        --rep ${thresholds.rep}
       #end if
-      #if '${thresholds.th_FDR}'
-        --th_FDR '${thresholds.th_FDR}'
+      #if $thresholds.th_FDR
+        --th_FDR ${thresholds.th_FDR}
       #end if
-      #if '${stats.norm}'
+      #if $stats.norm
         --normalization '${stats.norm}'
       #end if
-      #if '${stats.adj}'
+      #if $stats.adj
         --adj '${stats.adj}'
       #end if
-      #if '${stats.glm}'
+      #if $stats.glm
         --glm '${stats.glm}'
       #end if
-      #if '${adv.nh}'
-        --nh '${adv.nh}'
+      #if $adv.nh
+        --nh ${adv.nh}
       #end if
     ]]></command>
     <inputs>
@@ -64,7 +62,7 @@
         <param format="tsv" name="contrasts" type="data" label="Descriptions of the contrasts" />
         <section name="adv" title="Format options" expanded="false">
           <param name="colgenes" type="integer" label="Column of the genes" value="1" optional="true" />
-          <param name="sep" type="text" label="Field separator" value="\t" optional="true" />
+          <!--param name="sep" type="text" label="Field separator" value="\t" optional="true" /-->
           <param name="palette" type="text" label="Color palette (Rcolorbrewer)" value="Set2" optional="true" />
           <param name="organism" type="text" label="Organism" value="Asko" optional="true" />
           <param name="nh" type="integer" label="Number of genes in the heatmap" value="50" optional="true" />
