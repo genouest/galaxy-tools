@@ -1,0 +1,5 @@
+categories: [Convert Formats]
+description: Format feelnc GTF to GFF3
+long_description: Format feelnc GTF to GFF3
+name: feelnc2asko
+owner: salves
