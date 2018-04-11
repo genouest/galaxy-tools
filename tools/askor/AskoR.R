@@ -277,7 +277,9 @@ AskoStats <- function (glm_test, fit, contrast, ASKOlist, dge,parameters){
   colnames(ASKOlist$stat.table)[colnames(ASKOlist$stat.table)=="gene"] <- paste("is", "gene", sep="@")                  # header formatting for askomics
   colnames(ASKOlist$stat.table)[colnames(ASKOlist$stat.table)=="contrast"] <- paste("measured_in", "Contrast", sep="@") # header formatting for askomics
   o <- order(ASKOlist$stat.table$FDR)                                                                                   # ordering genes by FDR value
-  ASKOlist$stat.table<-ASKOlist$stat.table[o,]                                                                          #
+  ASKOlist$stat.table<-ASKOlist$stat.table[o,]       
+  #
+  mkdir(parameters$out_dir)
   write.table(ASKOlist$stat.table,paste0(parameters$out_dir,"/", parameters$organism, contrasko, ".txt"),                                    #
               sep=parameters$sep, col.names = T, row.names = F, quote=FALSE)
   
@@ -644,5 +646,6 @@ Asko_start <-function(){
     parameters$select_sample<-strsplit2(parameters$select_sample, ",")
   }
   
+  mkdir(parameters$out_dir)
   return(parameters)
 }

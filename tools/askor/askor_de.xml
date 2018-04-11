@@ -119,6 +119,7 @@
             <section name="thresholds">
                 <param name="th_cpm" value="10" />
             </section>
+            <output name="out_pdf" file="out.pdf"/>
             <output name="output">
                 <discovered_dataset designation="res diff" ftype="tsv" file="AskoAvsK.txt" />
                 <discovered_dataset designation="asko diff" ftype="tsv" file="contrast.asko.txt" />
