@@ -4,3 +4,5 @@ long_description: AskoR perform DE analyses from raw counts and generates Askomi
   compliant files
 name: askor
 owner: flegeai
+remote_repository_url: https://github.com/genouest/galaxy-tools/tree/master/tools/askor
+homepage_url: https://github.com/askomics/askoR
