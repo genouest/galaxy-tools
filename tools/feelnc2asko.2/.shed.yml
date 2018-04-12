@@ -1,7 +1,0 @@
-categories: [Convert Formats]
-description: Convert FeelNC GTF to GFF3
-long_description: Convert FeelNC GTF to GFF3
-name: feelnc2asko
-owner: genouest
-remote_repository_url: https://github.com/genouest/galaxy-tools/tree/master/tools/feelnc2asko
-homepage_url: https://github.com/tderrien/FEELnc
