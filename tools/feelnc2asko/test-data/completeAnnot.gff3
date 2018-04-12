@@ -265,31 +265,31 @@ GL349622	Gnomon	gene	2270755	2281456	.	+	.	ID=LOC100168508;Dbxref=GeneID:1001685
 GL349622	Gnomon	mRNA	2270755	2281456	.	+	.	ID=rna336;Parent=LOC100168508;Dbxref=GeneID:100168508,Genbank:XM_008189547.2;Name=XM_008189547.2;feelnc_type=standard;gbkey=mRNA;gene=LOC100168508;model_evidence=Supporting evidence includes similarity to: 11 ESTs%2C 6 Proteins%2C and 100%25 coverage of the annotated genomic feature by RNAseq alignments%2C including 7 samples with support for all annotated introns;product=ATPase family AAA domain-containing protein 3;transcript_id=XM_008189547.2
 GL349622	Gnomon	gene	2282156	2284359	.	-	.	ID=LOC100165058;Dbxref=APHIDBASE:ACYPI006028,GeneID:100165058;Name=LOC100165058;feelnc_type=standard;gbkey=Gene;gene=LOC100165058;gene_biotype=protein_coding
 GL349622	Gnomon	mRNA	2282156	2284359	.	-	.	ID=rna337;Parent=LOC100165058;Dbxref=GeneID:100165058,Genbank:XM_001950091.4,APHIDBASE:ACYPI006028;Name=XM_001950091.4;feelnc_type=standard;gbkey=mRNA;gene=LOC100165058;model_evidence=Supporting evidence includes similarity to: 1 mRNA%2C 25 ESTs%2C 5 Proteins%2C and 99%25 coverage of the annotated genomic feature by RNAseq alignments%2C including 44 samples with support for all annotated introns;product=solute carrier family 35 member B1;transcript_id=XM_001950091.4
-GL349622	Cufflinks	gene	218384	219722	.	-	1	
-GL349622	Cufflinks	mRNA	218384	219722	.	-	1	ID=CUFF.77.1;Parent=CUFF.77;feelnc_type=lncRNA
-GL349622	Cufflinks	gene	604709	609482	.	-	1	
-GL349622	Cufflinks	mRNA	604709	609482	.	-	1	ID=CUFF.110.1;Parent=CUFF.110;feelnc_type=lncRNA
-GL349622	Cufflinks	gene	490324	536159	.	-	1	
-GL349622	Cufflinks	mRNA	490324	536159	.	-	1	ID=CUFF.85.1;Parent=CUFF.85;feelnc_type=lncRNA
-GL349622	Cufflinks	gene	2021789	2026165	.	-	1	
-GL349622	Cufflinks	mRNA	2021789	2026165	.	-	1	ID=CUFF.135.2;Parent=CUFF.135;feelnc_type=lncRNA
-GL349622	Cufflinks	gene	407420	409348	.	+	1	ID=CUFF.82
-GL349622	Cufflinks	mRNA	407420	409348	.	+	1	ID=CUFF.82.1;Parent=CUFF.82;feelnc_type=new
-GL349622	Cufflinks	gene	490324	536159	.	-	1	
-GL349622	Cufflinks	mRNA	533485	536159	.	-	1	ID=CUFF.85.2;Parent=CUFF.85;feelnc_type=lncRNA
+GL349622	Cufflinks	gene	2021789	2026165	.	-	1	ID=CUFF.135
+GL349622	Cufflinks	mRNA	2021789	2024477	.	-	1	ID=CUFF.135.1;Parent=CUFF.135;feelnc_type=new
 GL349622	Cufflinks	gene	1722435	1724318	.	+	1	ID=CUFF.130
 GL349622	Cufflinks	mRNA	1722435	1724318	.	+	1	ID=CUFF.130.1;Parent=CUFF.130;feelnc_type=new
-GL349622	Cufflinks	gene	1200950	1218393	.	+	1	ID=CUFF.289
-GL349622	Cufflinks	mRNA	1200950	1218393	.	+	1	ID=CUFF.289.1;Parent=CUFF.289;feelnc_type=new
+GL349622	Cufflinks	gene	1359442	1360152	.	-	1	ID=CUFF.491
+GL349622	Cufflinks	mRNA	1359442	1360152	.	-	1	ID=CUFF.491.1;Parent=CUFF.491;feelnc_type=lncRNA
 GL349622	Cufflinks	gene	1758962	1760807	.	+	1	ID=CUFF.164
 GL349622	Cufflinks	mRNA	1758962	1760807	.	+	1	ID=CUFF.164.1;Parent=CUFF.164;feelnc_type=new
-GL349622	Cufflinks	gene	1359442	1360152	.	-	1	
-GL349622	Cufflinks	mRNA	1359442	1360152	.	-	1	ID=CUFF.491.1;Parent=CUFF.491;feelnc_type=lncRNA
+GL349622	Cufflinks	gene	604709	609482	.	-	1	ID=CUFF.110
+GL349622	Cufflinks	mRNA	604709	609482	.	-	1	ID=CUFF.110.1;Parent=CUFF.110;feelnc_type=lncRNA
+GL349622	Cufflinks	gene	490324	536159	.	-	1	ID=CUFF.85
+GL349622	Cufflinks	mRNA	490324	536159	.	-	1	ID=CUFF.85.1;Parent=CUFF.85;feelnc_type=lncRNA
+GL349622	Cufflinks	gene	1160606	1161032	.	-	1	ID=CUFF.350
+GL349622	Cufflinks	mRNA	1160606	1161032	.	-	1	ID=CUFF.350.1;Parent=CUFF.350;feelnc_type=lncRNA
+GL349622	Cufflinks	gene	1200950	1218393	.	+	1	ID=CUFF.289
+GL349622	Cufflinks	mRNA	1200950	1218393	.	+	1	ID=CUFF.289.1;Parent=CUFF.289;feelnc_type=new
+GL349622	Cufflinks	gene	490324	536159	.	-	1	ID=CUFF.85
+GL349622	Cufflinks	mRNA	533485	536159	.	-	1	ID=CUFF.85.2;Parent=CUFF.85;feelnc_type=lncRNA
+GL349622	Cufflinks	gene	407420	409348	.	+	1	ID=CUFF.82
+GL349622	Cufflinks	mRNA	407420	409348	.	+	1	ID=CUFF.82.1;Parent=CUFF.82;feelnc_type=new
+GL349622	Cufflinks	gene	218384	219722	.	-	1	ID=CUFF.77
+GL349622	Cufflinks	mRNA	218384	219722	.	-	1	ID=CUFF.77.1;Parent=CUFF.77;feelnc_type=lncRNA
+GL349622	Cufflinks	gene	400758	405243	.	-	1	ID=CUFF.80
+GL349622	Cufflinks	mRNA	400758	405243	.	-	1	ID=CUFF.80.1;Parent=CUFF.80;feelnc_type=lncRNA
+GL349622	Cufflinks	gene	2021789	2026165	.	-	1	ID=CUFF.135
+GL349622	Cufflinks	mRNA	2021789	2026165	.	-	1	ID=CUFF.135.2;Parent=CUFF.135;feelnc_type=lncRNA
 GL349622	Cufflinks	gene	675392	678724	.	+	1	ID=CUFF.91
 GL349622	Cufflinks	mRNA	675392	678724	.	+	1	ID=CUFF.91.1;Parent=CUFF.91;feelnc_type=new
-GL349622	Cufflinks	gene	2021789	2026165	.	-	1	
-GL349622	Cufflinks	mRNA	2021789	2024477	.	-	1	ID=CUFF.135.1;Parent=CUFF.135;feelnc_type=new
-GL349622	Cufflinks	gene	400758	405243	.	-	1	
-GL349622	Cufflinks	mRNA	400758	405243	.	-	1	ID=CUFF.80.1;Parent=CUFF.80;feelnc_type=lncRNA
-GL349622	Cufflinks	gene	1160606	1161032	.	-	1	
-GL349622	Cufflinks	mRNA	1160606	1161032	.	-	1	ID=CUFF.350.1;Parent=CUFF.350;feelnc_type=lncRNA
