@@ -1,5 +1,5 @@
-<tool id="askor_de" name="AskoR DE" version="0.01">
-    <description>Edger for AskOmics</description>
+<tool id="askor_de" name="AskoR DE" version="0.1">
+    <description>EdgeR for AskOmics</description>
     <requirements>
         <requirement type="package" version="3.34.6">bioconductor-limma</requirement>
         <requirement type="package" version="1.4.30">r-statmod</requirement>
@@ -130,9 +130,36 @@
             </output>
         </test>
     </tests>
-    <help>
-      This tools generates a list of differential genes from various contrasts in an Askomics format
-    </help>
+    <help><![CDATA[
+This tools generates a list of differential genes from various contrasts in an AskOmics format (https://askomics.github.io/).
+
+Example tabular input file of counts:
+
+============ ========== =============== =========== =========== ======
+miRNA	     read_count	precursor	    total	    A32	        A34
+------------ ---------- --------------- ----------- ----------- ------
+GL349623_679 346.00     GL349623_679    146.00      16.00       130.0
+GL349624_956 13.00      GL349624_956    13.00       0           13.0
+============ ========== =============== =========== =========== ======
+
+Example tabular sample description file:
+
+============ ========== =============== ===========
+ID           condition  stage           treatment
+------------ ---------- --------------- -----------
+A32          T3A        T3              Acetone
+A34          T3A        T3              Acetone
+============ ========== =============== ===========
+
+Example tabular contrast description file:
+
+============ ========================= =======================
+Contrast     context1_of@Context       context2_of@Context
+------------ ------------------------- -----------------------
+T1vsT0       T1                        T0
+T1vsT2       T1                        T2
+============ ========================= =======================
+    ]]></help>
     <citations>
     </citations>
 </tool>
