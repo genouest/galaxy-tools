@@ -1,8 +1,8 @@
 categories: [Transcriptomics]
-description: AskoR links edger and askomics
-long_description: AskoR perform DE analyses from raw counts and generates Askomics
+description: AskoR links EdgeR and AskOmics
+long_description: AskoR perform DE analyses from raw counts and generates AskOmics
   compliant files
-name: askor
-owner: flegeai
+name: askor_de
+owner: genouest
 remote_repository_url: https://github.com/genouest/galaxy-tools/tree/master/tools/askor
 homepage_url: https://github.com/askomics/askoR
