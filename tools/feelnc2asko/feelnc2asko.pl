@@ -62,6 +62,7 @@ while (my $feat = $fncgtf->next_feature()) {
 			-seq_id => $feat->seq_id());
 #    $geneft->add_tag_value("feelnc_type", "lncRNA");
 		$genes{$gene}=$geneft;
+    $geneft->add_tag_value("ID", $gene);
 }
 
 if (exists($transcripts{$mrna})) {
