@@ -1,4 +1,5 @@
 categories: [Convert Formats]
-description: transform miranda output into Askomics format
+description: Converts miRanda output into AskOmics format
 name: miranda2asko
 owner: genouest
+remote_repository_url: https://github.com/genouest/galaxy-tools/tree/master/tools/miranda2asko

@@ -1,6 +1,7 @@
-<tool id="miranda2asko" name="transform miranda output to Askomics input" version="0.1">
-    <description>to tabular AskOmics</description>
+<tool id="miranda2asko" name="Convert miRanda output to tabular" version="0.1">
+    <description>for AskOmics</description>
     <requirements>
+        <requirement type="package" version="5.22.2.1">perl</requirement>
     </requirements>
 
     <command detect_errors="exit_code"><![CDATA[
@@ -8,11 +9,11 @@
     ]]></command>
 
     <inputs>
-        <param format="tsv" name="miranda" type="data" label="miranda output" />
+        <param format="tsv" name="miranda" type="data" label="miRanda output" />
     </inputs>
 
     <outputs>
-        <data format="tsv" name="mirasko" label="${tool.name} on ${on_string} : Asko miranda output" />
+        <data format="tsv" name="mirasko" label="${tool.name} on ${on_string} : AskOmics miRanda output" />
     </outputs>
 
     <tests>
@@ -23,7 +24,7 @@
     </tests>
 
     <help>
-        Generates a TSV compliant to AskOmics from the Miranda output.
+        Generates a TSV compliant to AskOmics from the miRanda output.
     </help>
 
     <citations>
