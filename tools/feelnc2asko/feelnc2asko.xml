@@ -1,122 +1,36 @@
 <tool id="feelnc2asko" name="feelnc2asko" version="0.01">
-    <description>Generates a GFF compliant to askomics from feeeln</description>
+    <description>Generates a GFF compliant to askomics from feelnc</description>
     <requirements>
         <requirement type="package" version="perl-bioperl">1.6.924</requirement>
     </requirements>
-    <command detect_errors="exit_code"><![CDATA[
-      perl '$__tool_directory__/AskoR_DE.R'
-          --out '${out_pdf}'
-          --outdir askor_output
-          --fileofcount '${fileofcounts}'
-          --sample '${samples}'
-          --contrasts '${contrasts}'
-          #if $adv.organism
-            --org '${adv.organism}'
-          #end if
-          #if $adv.colgenes
-            --col_genes ${adv.colgenes}
-          #end if
-          --sep '\t'
-          #if $adv.palette
-            --palette '${adv.palette}'
-          #end if
-          #if $selection.sel
-            --select '${selection.sel}'
-          #end if
-          #if $selection.remove
-            --remove '${selection.remove}'
-          #end if
-          #if $thresholds.th_cpm
-            --th_cpm ${thresholds.th_cpm}
-          #end if
-          #if $thresholds.rep
-            --rep ${thresholds.rep}
-          #end if
-          #if $thresholds.th_FDR
-            --th_FDR ${thresholds.th_FDR}
-          #end if
-          #if $stats.norm
-            --normalization '${stats.norm}'
-          #end if
-          #if $stats.adj
-            --adj '${stats.adj}'
-          #end if
-          #if $stats.glm
-            --glm '${stats.glm}'
-          #end if
-          #if $adv.nh
-            --nh ${adv.nh}
-          #end if
-    ]]></command>
+    
+    <command detect_errors="exit_code">
+        <![CDATA[ perl '$__tool_directory__/feelnc2asko.pl' --ann '${anngff}' --lnc '${lncgtf}' --new '${newgtf}' > '${outgff}' ]]>
+    </command>
+    
     <inputs>
-        <param format="csv" name="fileofcounts" type="data" label="File of counts" />
-        <param format="tsv" name="samples" type="data" label="Descriptions of the samples" />
-        <param format="tsv" name="contrasts" type="data" label="Descriptions of the contrasts" />
-        <section name="adv" title="Format options" expanded="false">
-            <param name="colgenes" type="integer" label="Column of the genes" value="1" optional="true" />
-            <!--param name="sep" type="text" label="Field separator" value="\t" optional="true" /-->
-            <param name="palette" type="text" label="Color palette (Rcolorbrewer)" value="Set2" optional="true" />
-            <param name="organism" type="text" label="Organism" value="Asko" optional="true" />
-            <param name="nh" type="integer" label="Number of genes in the heatmap" value="50" optional="true" />
-        </section>
-        <section name="selection" title="Samples selection options" expanded="false">
-            <param name="sel" type="text" label="List of selected samples (separated by comma)" optional="true" />
-            <param name="remove" type="text" label="List of removed samples (separated by comma)" optional="true" />
-        </section>
-        <section name="thresholds" title="Threshold options" expanded="false">
-            <param name="th_cpm" type="float" label="Minimum CPM value for selecting a gene" value="0.5" optional="true" />
-            <param name="rep" type="integer" label="Number of samples with CPM > th_comp for selecting a gene" value="3" optional="true" />
-            <param name="th_FDR" type="float" label="FDR threshold for reporting a differential gene" value="0.05" optional="true" />
-        </section>
-        <section name="stats" title="Statistics options" expanded="false">
-            <param name="norm" type="select" label="Normalization method">
-                <option value="TMM">TMM</option>
-                <option value="RLE">RLE</option>
-                <option value="upperquartile">Upperquartile</option>
-                <option value="none">None</option>
-            </param>
-            <param name="glm" type="select" label="GLM method">
-                <option value="qlf">qlf</option>
-                <option value="lrt">lrt</option>
-            </param>
-            <param name="adj" type="select" label="Multitest correction method">
-                <option value="fdr">fdr</option>
-                <option value="holm">holm</option>
-                <option value="hochberg">hochberg</option>
-                <option value="hommel">hommel</option>
-                <option value="bonferroni">bonferroni</option>
-                <option value="BH">BH</option>
-                <option value="BY">BY</option>
-                <option value="none">none</option>
-            </param>
-        </section>
+        <param format="gff" name="anngff" type="data" label="Initial annotation file (gff3)" />
+        <param format="gtf" name="lncgtf" type="data" label="feelnc lncRNA annotation (gtf)" />
+        <param format="gtf" name="newgtf" type="data" label="feelnc new mRNA annotation (gtf)" />
     </inputs>
+    
     <outputs>
-        <data format="pdf" name="out_pdf" label="${tool.name} on ${on_string}: Graphics" />
-        <data name="output" format="tsv" label="${tool.name} on ${on_string}">
-            <discover_datasets pattern="(?P&lt;designation&gt;.+)\.txt" ext="tsv" visible="true" directory="askor_output" />
-        </data>
+        <data format="gff" name="outgff" label="${tool.name} on ${on_string} : Create GFF" />
     </outputs>
+    
     <tests>
         <test>
-            <param name="fileofcounts" ftype="csv" value="counts.csv" />
-            <param name="samples" ftype="tsv" value="Samples.txt" />
-            <param name="contrasts" ftype="tsv" value="Contrasts.txt" />
-            <section name="adv">
-                <param name="colgenes" value="3" />
-            </section>
-            <section name="thresholds">
-                <param name="th_cpm" value="10" />
-            </section>
-            <output name="output">
-                <discovered_dataset designation="res diff" ftype="tsv" file="AskoAvsK.txt" />
-                <discovered_dataset designation="asko diff" ftype="tsv" file="contrast.asko.txt" />
-            </output>
+            <param name="anngff" ftype="gff" value="initial.gff3" />
+            <param name="lncgtf" ftype="gtf" value="feelnc_lncRNA.gtf" />
+            <param name="newgtf" ftype="gtf" value="feelnc_mRNA.gtf" />
+            <output name="outgff" ftype="gff" file="completeAnnot.gff3" />
         </test>
     </tests>
+    
     <help>
-      This tools generates a list of differential genes from various contrasts in an Askomics format
+        Generates a GFF compliant to askomics from the feelnc output files merged with the initial annotation file.
     </help>
+
     <citations>
     </citations>
 </tool>
