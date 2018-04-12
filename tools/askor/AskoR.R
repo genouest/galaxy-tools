@@ -357,7 +357,7 @@ loadData <- function(parameters){
       count<-read.csv(parameters$fileofcount, header=TRUE, sep = "\t", row.names = parameters$col_genes)
       }
     else{
-      count<-read.table(parameters$fileofcount, header=TRUE, sep = "\t", row.names = parameters$col_genes)
+      count<-read.table(parameters$fileofcount, header=TRUE, sep = "\t", row.names = parameters$col_genes, comment.char = "")
     }
     select_counts<-row.names(samples)
     #countT<-count[,c(parameters$col_counts:length(colnames(count)))]

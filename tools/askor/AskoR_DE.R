@@ -2,7 +2,7 @@ askor_path<-Sys.getenv("ASKOR_PATH")
 source(paste0(askor_path,"/AskoR.R"))
 
 ##############################################
-##                Parameters                ##  
+##                Parameters                ##
 ##############################################
 
 parameters<-Asko_start()
@@ -42,5 +42,3 @@ GEcorr(asko_norm,parameters)
 cat("Statistical analysis\n")
 DEanalysis(asko_norm,data, asko_data,parameters)
 dev.off()
-
-

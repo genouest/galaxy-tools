@@ -27,7 +27,6 @@
           #if $adv.colgenes
             --col_genes ${adv.colgenes}
           #end if
-          --sep '\t'
           #if $adv.palette
             --palette '${adv.palette}'
           #end if
@@ -119,10 +118,15 @@
             <section name="thresholds">
                 <param name="th_cpm" value="10" />
             </section>
-            <output name="out_pdf" file="out.pdf"/>
+            <output name="out_pdf" file="out.pdf" compare="sim_size"/>
             <output name="output">
-                <discovered_dataset designation="res diff" ftype="tsv" file="AskoAvsK.txt" />
-                <discovered_dataset designation="asko diff" ftype="tsv" file="contrast.asko.txt" />
+                <discovered_dataset designation="AskoAvsK" ftype="tsv" file="AskoAvsK.txt" compare="sim_size" />
+                <discovered_dataset designation="AskoT1AvsT1K" ftype="tsv" file="AskoT1AvsT1K.txt" compare="sim_size" />
+                <discovered_dataset designation="AskoT1vsT0" ftype="tsv" file="AskoT1vsT0.txt" compare="sim_size" />
+                <discovered_dataset designation="AskoT1vsT2" ftype="tsv" file="AskoT1vsT2.txt" compare="sim_size" />
+                <discovered_dataset designation="condition.asko" ftype="tsv" file="condition.asko.txt" compare="sim_size" />
+                <discovered_dataset designation="context.asko" ftype="tsv" file="context.asko.txt" compare="sim_size" />
+                <discovered_dataset designation="contrast.asko" ftype="tsv" file="contrast.asko.txt" compare="sim_size" />
             </output>
         </test>
     </tests>
