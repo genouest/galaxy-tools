@@ -1,8 +1,0 @@
-Condition	T1vsT0	T1vsT2	T1AvsT1K	AvsK
-T0A	-	0	0	+
-T1A	+	+	+	+
-T1K	+	+	-	-
-T2A	0	-	0	+
-T2K	0	-	0	-
-T3A	0	0	0	+
-T3K	0	0	0	-
