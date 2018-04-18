@@ -5,7 +5,7 @@
     </requirements>
 
     <command detect_errors="exit_code"><![CDATA[
-	    perl '$__tool_directory__/miranda2asko.pl' -miranda '${miranda}' -mature '${mature}'
+        perl '$__tool_directory__/miranda2asko.pl' -miranda '${miranda}' -mature '${mature}'
     ]]></command>
 
     <inputs>
