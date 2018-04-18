@@ -1,11 +1,11 @@
-<tool id="miranda2asko" name="Convert miRanda output to tabular" version="0.1">
+<tool id="miranda2asko" name="Convert miRanda output to tabular" version="0.2">
     <description>for AskOmics</description>
     <requirements>
         <requirement type="package" version="5.22.2.1">perl</requirement>
     </requirements>
 
     <command detect_errors="exit_code"><![CDATA[
-	    perl '$__tool_directory__/miranda2asko.pl' -miranda '${miranda}' -mature '${mature}'
+        perl '$__tool_directory__/miranda2asko.pl' -miranda '${miranda}' -mature '${mature}'
     ]]></command>
 
     <inputs>
@@ -14,18 +14,18 @@
     </inputs>
 
     <outputs>
-     <data name="output" format="tsv" label="${tool.name} on ${on_string}" name="miranda in Askomics format">
-            <discover_datasets pattern="mirna.asko.tsv" ext="tsv,tabular" visible="true" directory='$__tool_directory__' />
-            <discover_datasets pattern="target.asko.tsv" ext="tsv,tabular" visible="true" directory='$__tool_directory__' />
+        <data name="output" format="tabular" label="${tool.name} on ${on_string}: miranda in Askomics format">
+            <discover_datasets pattern="mirna.asko.tsv" ext="tabular" visible="true" directory='$__tool_directory__' />
+            <discover_datasets pattern="target.asko.tsv" ext="tabular" visible="true" directory='$__tool_directory__' />
         </data>
     </outputs>
 
     <tests>
         <test>
-            <param name="miranda" ftype="tsv,tabular" value="miranda.out" />
+            <param name="miranda" ftype="tabular" value="miranda.out" />
             <param name="mature" ftype="fasta" value="mature.fa" />
-            <output name="mirasko" ftype="tsv" file="target.asko.tsv" compare="sim_size" />
-            <output name="mirasko" ftype="tsv" file="mirna.asko.tsv" compare="sim_size" />
+            <output name="mirasko" ftype="tabular" file="target.asko.tsv" compare="sim_size" />
+            <output name="mirasko" ftype="tabular" file="mirna.asko.tsv" compare="sim_size" />
         </test>
     </tests>
 
