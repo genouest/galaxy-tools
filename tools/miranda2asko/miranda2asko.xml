@@ -14,7 +14,7 @@
     </inputs>
 
     <outputs>
-        <data name="output" format="tsv" label="${tool.name} on ${on_string}" name="miranda in Askomics format">
+        <data name="output" format="tsv" label="${tool.name} on ${on_string}: miranda in Askomics format">
             <discover_datasets pattern="mirna.asko.tsv" ext="tsv,tabular" visible="true" directory='$__tool_directory__' />
             <discover_datasets pattern="target.asko.tsv" ext="tsv,tabular" visible="true" directory='$__tool_directory__' />
         </data>
