@@ -278,13 +278,17 @@ AskoStats <- function (glm_test, fit, contrast, ASKOlist, dge,parameters){
   colnames(ASKOlist$stat.table)[colnames(ASKOlist$stat.table)=="contrast"] <- paste("measured_in", "Contrast", sep="@") # header formatting for askomics
   o <- order(ASKOlist$stat.table$FDR)                                                                                   # ordering genes by FDR value
   ASKOlist$stat.table<-ASKOlist$stat.table[o,]
+  
   #
   dir.create(parameters$out_dir)
   write.table(ASKOlist$stat.table,paste0(parameters$out_dir,"/", parameters$organism, contrasko, ".txt"),                                    #
               sep=parameters$sep, col.names = T, row.names = F, quote=FALSE)
-
+  
+  
   if(parameters$heatmap==TRUE){
-    cpm_gstats<-cpm(dge, log=TRUE)[o,][1:parameters$numhigh,]
+    numhigh=parameters$numhigh
+    if (numhigh>length(o)) {numhigh=length(o)}
+    cpm_gstats<-cpm(dge, log=TRUE)[o,][1:numhigh,]
     heatmap.2(cpm_gstats, cexRow=0.5, cexCol=0.8, scale="row", labCol=dge$samples$Name, xlab=contrast, Rowv = FALSE, dendrogram="col")
   }
 
@@ -362,6 +366,7 @@ loadData <- function(parameters){
     select_counts<-row.names(samples)
     #countT<-count[,c(parameters$col_counts:length(colnames(count)))]
     countT<-count[,select_counts]
+    #print(countT)
     dge<-DGEList(counts=countT, samples=samples)
     # if(is.null(parameters$select_sample)==FALSE){
     #   slct<-grep(parameters$select_sample, colnames(countT))
@@ -480,7 +485,8 @@ GEfilt <- function(dge_list, parameters){
 }
 
 GEnorm <- function(filtered_GE, parameters){
-  filtered_cpm <- cpm(filtered_GE, log=TRUE)   #nouveau calcul Cpm sur donn?es filtr?es, si log=true alors valeurs cpm en log2
+  filtered_cpm=log2(1000000*filtered_GE$counts/colSums(filtered_GE$counts))
+  #filtered_cpm <- cpm(filtered_GE, log=TRUE, normalized.lib.sizes=TRUE)   #nouveau calcul Cpm sur donn?es filtr?es, si log=true alors valeurs cpm en log2
   colnames(filtered_cpm)<-rownames(filtered_GE$samples)
   boxplot(filtered_cpm,
           col=filtered_GE$samples$color,         #boxplot des scores cpm non normalis?s
@@ -509,7 +515,7 @@ GEcorr <- function(dge, parameters){
   cormat<-cor(lcpm)
  # color<- colorRampPalette(c("yellow", "white", "green"))(20)
   color<-colorRampPalette(c("black","red","yellow","white"),space="rgb")(28)
-  heatmap(cormat, col=color, symm=TRUE,RowSideColors =as.character(dge$samples$color), ColSideColors = as.character(dge$samples$color))
+  heatmap.2(cormat, col=color, symm=TRUE,RowSideColors =as.character(dge$samples$color), ColSideColors = as.character(dge$samples$color))
   #MDS
   mds <- cmdscale(dist(t(lcpm)),k=3, eig=TRUE)
   eigs<-round((mds$eig)*100/sum(mds$eig[mds$eig>0]),2)

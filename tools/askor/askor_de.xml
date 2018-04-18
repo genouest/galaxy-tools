@@ -59,7 +59,7 @@
           #end if
     ]]></command>
     <inputs>
-        <param format="tabular,csv" name="fileofcounts" type="data" label="File of counts" />
+        <param format="tabular,tsv,csv" name="fileofcounts" type="data" label="File of counts" />
         <param format="tabular,tsv" name="samples" type="data" label="Descriptions of the samples" />
         <param format="tabular,tsv" name="contrasts" type="data" label="Descriptions of the contrasts" />
         <section name="adv" title="Format options" expanded="false">
