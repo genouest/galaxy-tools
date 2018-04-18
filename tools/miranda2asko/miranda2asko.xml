@@ -1,30 +1,34 @@
-<tool id="miranda2asko" name="Convert miRanda output to tabular" version="0.1">
+<tool id="miranda2asko" name="Convert miRanda output to tabular" version="0.2">
     <description>for AskOmics</description>
     <requirements>
         <requirement type="package" version="5.22.2.1">perl</requirement>
     </requirements>
 
     <command detect_errors="exit_code"><![CDATA[
-        perl '$__tool_directory__/miranda2asko.pl' '${miranda}' > '${mirasko}'
+        perl '$__tool_directory__/miranda2asko.pl' -miranda '${miranda}' -mature '${mature}'
     ]]></command>
 
     <inputs>
-        <param format="tsv" name="miranda" type="data" label="miRanda output" />
+        <param format="tsv,tabular" name="miranda" type="data" label="miRanda output" />
+        <param format="fasta" name="mature" type="data" label="mature fasta file" />
     </inputs>
 
     <outputs>
-        <data format="tsv" name="mirasko" label="${tool.name} on ${on_string} : AskOmics miRanda output" />
+        <data name="targets" format="tabular" from_work_dir="target.asko.tsv" label="${tool.name} on ${on_string}: targets in Askomics format"/>
+        <data name="mirna" format="tabular" from_work_dir="mirna.asko.tsv" label="${tool.name} on ${on_string}: mirna in Askomics format"/>
     </outputs>
 
     <tests>
         <test>
-            <param name="miranda" ftype="tsv" value="miranda.out" />
-            <output name="mirasko" ftype="tsv" file="miranda.asko.out" compare="sim_size" />
+            <param name="miranda" ftype="tabular" value="miranda.out" />
+            <param name="mature" ftype="fasta" value="mature.fa" />
+            <output name="targets" ftype="tabular" file="target.asko.tsv" compare="sim_size" />
+            <output name="mirna" ftype="tabular" file="mirna.asko.tsv" compare="sim_size" />
         </test>
     </tests>
 
     <help>
-        Generates a TSV compliant to AskOmics from the miRanda output.
+        Generates TSV files compliant to AskOmics from the miRanda output.
     </help>
 
     <citations>

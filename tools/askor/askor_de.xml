@@ -1,4 +1,4 @@
-<tool id="askor_de" name="AskoR DE" version="0.1">
+<tool id="askor_de" name="AskoR DE" version="0.2">
     <description>EdgeR for AskOmics</description>
     <requirements>
         <requirement type="package" version="3.34.6">bioconductor-limma</requirement>
@@ -59,9 +59,9 @@
           #end if
     ]]></command>
     <inputs>
-        <param format="csv" name="fileofcounts" type="data" label="File of counts" />
-        <param format="tsv" name="samples" type="data" label="Descriptions of the samples" />
-        <param format="tsv" name="contrasts" type="data" label="Descriptions of the contrasts" />
+        <param format="tabular,csv" name="fileofcounts" type="data" label="File of counts" />
+        <param format="tabular,tsv" name="samples" type="data" label="Descriptions of the samples" />
+        <param format="tabular,tsv" name="contrasts" type="data" label="Descriptions of the contrasts" />
         <section name="adv" title="Format options" expanded="false">
             <param name="colgenes" type="integer" label="Column of the genes" value="1" optional="true" />
             <!--param name="sep" type="text" label="Field separator" value="\t" optional="true" /-->
@@ -103,15 +103,15 @@
     </inputs>
     <outputs>
         <data format="pdf" name="out_pdf" label="${tool.name} on ${on_string}: Graphics" />
-        <data name="output" format="tsv" label="${tool.name} on ${on_string}">
-            <discover_datasets pattern="(?P&lt;designation&gt;.+)\.txt" ext="tsv" visible="true" directory="askor_output" />
+        <data name="output" format="tabular" label="${tool.name} on ${on_string}">
+            <discover_datasets pattern="(?P&lt;designation&gt;.+)\.txt" ext="tabular" visible="true" directory="askor_output" />
         </data>
     </outputs>
     <tests>
         <test>
             <param name="fileofcounts" ftype="csv" value="counts.csv" />
-            <param name="samples" ftype="tsv" value="Samples.txt" />
-            <param name="contrasts" ftype="tsv" value="Contrasts.txt" />
+            <param name="samples" ftype="tabular" value="Samples.txt" />
+            <param name="contrasts" ftype="tabular" value="Contrasts.txt" />
             <section name="adv">
                 <param name="colgenes" value="3" />
             </section>
@@ -120,13 +120,13 @@
             </section>
             <output name="out_pdf" file="out.pdf" compare="sim_size"/>
             <output name="output">
-                <discovered_dataset designation="AskoAvsK" ftype="tsv" file="AskoAvsK.txt" compare="sim_size" />
-                <discovered_dataset designation="AskoT1AvsT1K" ftype="tsv" file="AskoT1AvsT1K.txt" compare="sim_size" />
-                <discovered_dataset designation="AskoT1vsT0" ftype="tsv" file="AskoT1vsT0.txt" compare="sim_size" />
-                <discovered_dataset designation="AskoT1vsT2" ftype="tsv" file="AskoT1vsT2.txt" compare="sim_size" />
-                <discovered_dataset designation="condition.asko" ftype="tsv" file="condition.asko.txt" compare="sim_size" />
-                <discovered_dataset designation="context.asko" ftype="tsv" file="context.asko.txt" compare="sim_size" />
-                <discovered_dataset designation="contrast.asko" ftype="tsv" file="contrast.asko.txt" compare="sim_size" />
+                <discovered_dataset designation="AskoAvsK" ftype="tabular" file="AskoAvsK.txt" compare="sim_size" />
+                <discovered_dataset designation="AskoT1AvsT1K" ftype="tabular" file="AskoT1AvsT1K.txt" compare="sim_size" />
+                <discovered_dataset designation="AskoT1vsT0" ftype="tabular" file="AskoT1vsT0.txt" compare="sim_size" />
+                <discovered_dataset designation="AskoT1vsT2" ftype="tabular" file="AskoT1vsT2.txt" compare="sim_size" />
+                <discovered_dataset designation="condition.asko" ftype="tabular" file="condition.asko.txt" compare="sim_size" />
+                <discovered_dataset designation="context.asko" ftype="tabular" file="context.asko.txt" compare="sim_size" />
+                <discovered_dataset designation="contrast.asko" ftype="tabular" file="contrast.asko.txt" compare="sim_size" />
             </output>
         </test>
     </tests>
