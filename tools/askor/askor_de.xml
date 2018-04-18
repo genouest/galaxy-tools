@@ -1,4 +1,4 @@
-<tool id="askor_de" name="AskoR DE" version="0.1">
+<tool id="askor_de" name="AskoR DE" version="0.2">
     <description>EdgeR for AskOmics</description>
     <requirements>
         <requirement type="package" version="3.34.6">bioconductor-limma</requirement>
