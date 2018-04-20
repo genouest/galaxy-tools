@@ -43,6 +43,7 @@ while (my $feat = $fncgtf->next_feature()) {
 
 	my $mrna= ($feat->get_tag_values('transcript_id'))[0];
   my $gene= ($feat->get_tag_values('gene_id'))[0];
+	if ($gene eq $mrna) {$mrna.=".mrna"}
 #	print STDERR "str: ", $feat->strand(), "\n";
 	if (exists($genes{$gene})) {
 		if ($genes{$gene}->start() > $feat->start()) {
@@ -96,6 +97,7 @@ while (my $feat = $nmgtf->next_feature()) {
 
 	my $mrna= ($feat->get_tag_values('transcript_id'))[0];
   my $gene= ($feat->get_tag_values('gene_id'))[0];
+if ($gene eq $mrna) {$mrna.=".mrna"}
 #	print STDERR "str: ", $feat->strand() , "\n";
 	if (exists($genes{$gene})) {
 		if ($genes{$gene}->start() > $feat->start()) {
