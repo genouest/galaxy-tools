@@ -1,11 +1,11 @@
 <tool id="gassst" name="Gassst" version="1.262">
-<description>Global Alignment Short Sequence Search Tool</description> 
+<description>Global Alignment Short Sequence Search Tool</description>
 
 <requirements>
     <requirement type="package" version="1.28">galaxy_gassst</requirement>
 </requirements>
 
-<command>Gassst -n 2 -t 400 -o $output -i $input_seq  
+<command>Gassst -n 2 -t 400 -o $output -i $input_seq
 #if str( $options_type.options_type_selector ) == "basic":
 -d $input_bank
 #else
@@ -70,7 +70,7 @@
 </inputs>
 
 <outputs>
-    <data format="gassst" name="output" file="gassst.res" label="gassst_res : ${tool.name} on ${on_string}"/>
+    <data format="tabular" name="output" file="gassst.res" label="gassst_res : ${tool.name} on ${on_string}"/>
     <data format="txt" type="text" name="output3" file="gassst.out" label="gassst_out : ${tool.name} on ${on_string}">
        	<!--change_format>
  	 	<when input="e_osformat_outseq" value="EMBL" format="embl" type="text" />
@@ -108,7 +108,7 @@ http://www.irisa.fr/symbiose/projects/gassst/
 
 **Integrated by:**
 
-Cyril Monjeaud 
+Cyril Monjeaud
 
 GenOuest Bio-informatics Core Facility
 
