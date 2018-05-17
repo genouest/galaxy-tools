@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<tool_dependency>
+	<package name="galaxy_gassst" version="1.28">
+        	<repository toolshed="http://toolshed.genouest.org" name="gassst_dependencies" owner="cmonjeau" prior_installation_required="False" changeset_revision="d94a4ea0cfd4"/>
+	</package>
+</tool_dependency>

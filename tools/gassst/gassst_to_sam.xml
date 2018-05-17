@@ -1,0 +1,53 @@
+<tool id="gassst_to_sam" name="Gassst to sam" version="1.0">
+<description>Convert a Gassst file into a Sam file</description> 
+
+<requirements>
+    <requirement type="package" version="1.28">galaxy_gassst</requirement>
+</requirements>
+
+<command>gassst_to_sam $input $output</command>
+
+<inputs>
+    <param name="input" format="gassst" type="data" label="Input gassst result" />
+</inputs>
+
+<outputs>
+    <data format="sam" type="text" name="output" file="gassst.sam" label="gassst_sam : ${tool.name} on ${on_string}"/>
+</outputs>
+<help>
+
+**References:**
+
+GASSST : global alignment short sequence search tool.
+
+--------
+
+**Author(s):**
+
+D. Lavanier,
+G. Rizk
+
+--------
+
+**Project Link:**
+
+http://www.irisa.fr/symbiose/projects/gassst/
+
+--------
+
+**Integrated by:**
+
+Cyril Monjeaud 
+
+GenOuest Bio-informatics Core Facility
+
+UMR 6074 IRISA INRIA-CNRS-UR1 Rennes (France)
+
+support@genouest.org
+
+If you use this tool in Galaxy, please cite :
+
+`Y. Le Bras, A. Roult, C. Monjeaud, M. Bahin, O. Quenez, C. Heriveau, A. Bretaudeau, O. Sallou, O. Collin, Towards a Life Sciences Virtual Research Environment : an e-Science initiative in Western France. JOBIM 2013. &lt;https://www.e-biogenouest.org/resources/128&gt;`_
+
+</help>
+</tool>

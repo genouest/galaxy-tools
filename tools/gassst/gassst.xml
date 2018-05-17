@@ -1,0 +1,124 @@
+<tool id="gassst" name="Gassst" version="1.262">
+<description>Global Alignment Short Sequence Search Tool</description> 
+
+<requirements>
+    <requirement type="package" version="1.28">galaxy_gassst</requirement>
+</requirements>
+
+<command>Gassst -n 2 -t 400 -o $output -i $input_seq  
+#if str( $options_type.options_type_selector ) == "basic":
+-d $input_bank
+#else
+-d $options_type.database
+#end if
+-p $identity
+-m $output_format
+-w $size_seeds
+-g $gaps_allowed
+-h $max_align
+-s $sensitivity
+-b $bestalign
+-l $complexity
+-r $revcomp 1&gt;$output3</command>
+
+<inputs>
+    <param name="input_seq" format="fasta" type="data" label="Input sequence" />
+    <conditional name="options_type">
+      	<param name="options_type_selector" type="select" label="Basic or Advanced options">
+        	<option value="basic" selected="True">Input sequence</option>
+       	 	<option value="advanced">Public databank</option>
+     	</param>
+      	<when value="basic">
+      	        <param name="input_bank" format="fasta" type="data" label="Input sequence" help="FASTA format" />
+      	</when>
+      	<when value="advanced">
+		<param name="database" type="select" label="Database">
+                <options from_file ="databank_proteo.loc">
+                	<column name="name" index="2"/>
+			<column name="value" index="3"/>
+          	</options>
+      		</param>
+     	</when>
+      </conditional>
+    <param name="identity" type="integer" value="100" label="Minimum percentage of identity [0..100]" />
+    <param name="output_format" type="select" format="text">
+	<label>Output format</label>
+	<option value="1">Standard Gassst format</option>
+        <option value="0">Human readable format</option>
+	<option value="8">Blast-like m8 format</option>
+    </param>
+    <param name="size_seeds" type="integer" value="6" label="Seeds size to use [6..20]" />
+    <param name="gaps_allowed" type="integer" value="20" label="Number of gaps allowed" />
+    <param name="max_align" type="integer" value="100" label="Maximum number of alignment per query (0 is no limit)" />
+    <param name="sensitivity" type="integer" value="2" label="Sensitivity level, in [0..5]" />
+    <param name="bestalign" type="select" format="text">
+        <label>Output best alignments</label>
+	<option value="1">yes</option>
+        <option value="0">no</option>
+    </param>
+    <param name="complexity" type="select" format="text">
+	<label>Enable low complexity filter</label>
+	<option value="1">yes</option>
+        <option value="0">no</option>
+    </param>
+    <param name="revcomp" type="select" format="text">
+        <label>Enable reverse complement search</label>
+	<option value="1">yes</option>
+        <option value="0">no</option>
+    </param>
+
+</inputs>
+
+<outputs>
+    <data format="gassst" name="output" file="gassst.res" label="gassst_res : ${tool.name} on ${on_string}"/>
+    <data format="txt" type="text" name="output3" file="gassst.out" label="gassst_out : ${tool.name} on ${on_string}">
+       	<!--change_format>
+ 	 	<when input="e_osformat_outseq" value="EMBL" format="embl" type="text" />
+	 	<when input="e_osformat_outseq" value="GCG" format="gcg" type="text" />
+		<when input="e_osformat_outseq" value="GENBANK" format="genbank" type="text" />
+		<when input="e_osformat_outseq" value="NBRF" format="nbrf" type="text" />
+		<when input="e_osformat_outseq" value="PIR" format="pir" type="text" />
+		<when input="e_osformat_outseq" value="RAW" format="raw" type="text" />
+		<when input="e_osformat_outseq" value="SWISSPROT" format="swissprot" type="text" />
+    	</change_format-->
+    </data>
+</outputs>
+
+
+<help>
+
+**References:**
+
+GASSST : global alignment short sequence search tool.
+
+--------
+
+**Author(s):**
+
+D. Lavanier,
+G. Rizk
+
+--------
+
+**Project Link:**
+
+http://www.irisa.fr/symbiose/projects/gassst/
+
+--------
+
+**Integrated by:**
+
+Cyril Monjeaud 
+
+GenOuest Bio-informatics Core Facility
+
+UMR 6074 IRISA INRIA-CNRS-UR1 Rennes (France)
+
+support@genouest.org
+
+If you use this tool in Galaxy, please cite :
+
+`Y. Le Bras, A. Roult, C. Monjeaud, M. Bahin, O. Quenez, C. Heriveau, A. Bretaudeau, O. Sallou, O. Collin, Towards a Life Sciences Virtual Research Environment : an e-Science initiative in Western France. JOBIM 2013. &lt;https://www.e-biogenouest.org/resources/128&gt;`_
+
+</help>
+</tool>

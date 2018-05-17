@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<datatypes>
+  <datatype_files>
+    <datatype_file name="gassst_datatype.py"/>
+  </datatype_files>
+  <registration display_path="display_applications">
+    <datatype extension="gassst" type="galaxy.datatypes.gassst_datatype:Gassst" display_in_upload="true" />
+  </registration>
+</datatypes>
