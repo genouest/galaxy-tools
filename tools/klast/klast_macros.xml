@@ -1,0 +1,327 @@
+<macros>
+    <xml name="stdio">
+        <stdio>
+            <!-- Anything other than zero is an error -->
+            <exit_code range="1:" />
+            <!-- Might see negative return codes for Unix signals via Python subprocess -->
+            <exit_code range=":-1" />
+            <!-- In case the return code has not been set properly check stderr too -->
+            <regex match="Error:" />
+            <regex match="Exception:" />
+        </stdio>
+    </xml>
+    <xml name="requirements">
+        <requirements>
+            <requirement type="binary">@BINARY@</requirement>
+            <requirement type="package" version="4.4">klast-runner</requirement>
+        </requirements>
+        <version_command>@BINARY@ -version</version_command>
+    </xml>
+    <xml name="input_conditional_nucleotide_db">
+        <conditional name="db_opts">
+            <param name="db_opts_selector" type="select" label="Subject database/sequences">
+              <option value="db" selected="True">Locally installed BLAST database</option>
+              <option value="histdb">BLAST database from your history</option>
+              <option value="file">FASTA file from your history (see warning note below)</option>
+            </param>
+            <when value="db">
+                <param name="database" type="select" label="Nucleotide BLAST database">
+                    <options from_file="blastdb.loc">
+                      <column name="value" index="0"/>
+                      <column name="name" index="1"/>
+                      <column name="path" index="2"/>
+                    </options>
+                </param>
+                <param name="histdb" type="hidden" value="" />
+                <param name="subject" type="hidden" value="" /> 
+            </when>
+            <when value="histdb">
+                <param name="database" type="hidden" value="" />
+                <param name="histdb" type="data" format="blastdbn" label="Nucleotide BLAST database" />
+                <param name="subject" type="hidden" value="" />
+            </when>
+            <when value="file">
+                <param name="database" type="hidden" value="" />
+                <param name="histdb" type="hidden" value="" />
+                <param name="subject" type="data" format="fasta" label="Nucleotide FASTA file to use as database"/> 
+            </when>
+        </conditional>
+    </xml>
+    <xml name="input_conditional_protein_db">
+        <conditional name="db_opts">
+            <param name="db_opts_selector" type="select" label="Subject database/sequences">
+              <option value="db" selected="True">Locally installed BLAST database</option>
+              <option value="histdb">BLAST database from your history</option>
+              <option value="file">FASTA file from your history (see warning note below)</option>
+            </param>
+            <when value="db">
+                <param name="database" type="select" label="Protein BLAST database">
+                    <options from_file="blastdb_p.loc">
+                      <column name="value" index="0"/>
+                      <column name="name" index="1"/>
+                      <column name="path" index="2"/>
+                    </options>
+                </param>
+                <param name="histdb" type="hidden" value="" />
+                <param name="subject" type="hidden" value="" />
+            </when>
+            <when value="histdb">
+                <param name="database" type="hidden" value="" />
+                <param name="histdb" type="data" format="blastdbp" label="Protein BLAST database" />
+                <param name="subject" type="hidden" value="" />
+            </when>
+            <when value="file">
+                <param name="database" type="hidden" value="" />
+                <param name="histdb" type="hidden" value="" />
+                <param name="subject" type="data" format="fasta" label="Protein FASTA file to use as database"/> 
+            </when>
+        </conditional>
+    </xml>
+    <xml name="input_evalue">
+        <param name="evalue_cutoff" type="float" size="15" value="0.001" label="E-value threshold" help="Every sequence alignment created by Klast having an E-value less than this threshold will be returned" />
+    </xml>
+    <xml name="input_max_hits_query">
+        <param name="max_hits_query" type="integer" value="0" label="Maximum Hits / Query" help="Maximum number of hits created by Klast for each query. Use zero for default limits (500)">
+            <validator type="in_range" min="0" />
+        </param>        
+    </xml>
+    <xml name="input_max_hsp_hits">
+        <param name="max_hsp_hits" type="integer" value="0" label="Maximum Hsp / Hits" help="Maximum number of HSPs created by Klast for each hit. Use zero for default limits (HSPs not filtered)">
+            <validator type="in_range" min="0" />
+        </param>        
+    </xml>
+
+    <!-- Extended parameters -->
+    <xml name="input_filter_query_default_false">
+        <param name="filter_query" type="boolean" label="Filter out low complexity regions (with SEG)" truevalue="-F T" falsevalue="-F F" checked="false" />
+    </xml>
+    <xml name="input_filter_query_default_true">
+        <param name="filter_query" type="boolean" label="Filter out low complexity regions (with SEG)" truevalue="-F T" falsevalue="-F F" checked="true" />
+    </xml>
+    <xml name="input_scoring_matrix">
+        <param name="matrix" type="select" label="Scoring matrix" help="Similarity matrix used by Klast to compare the two databanks">
+            <option value="BLOSUM62" selected="true">BLOSUM62 (default)</option>
+            <option value="BLOSUM50">BLOSUM50</option> 
+        </param>
+    </xml>
+    <xml name="input_gap_costs">
+        <param name="gap_costs" type="select" label="Gap costs" help="Penalty costs used by Klast to create and extend gapped sequence alignments">
+            <option value="-G 11 -E 2" selected="true">Open:11 Ext:2 (default)</option>
+            <option value="-G 9 -E 2" >Open:9 Ext:2</option>
+            <option value="-G 8 -E 2" >Open:8 Ext:2</option>
+            <option value="-G 7 -E 2" >Open:7 Ext:2</option>
+            <option value="-G 6 -E 2" >Open:6 Ext:2</option>
+            <option value="-G 12 -E 1" >Open:12 Ext:1</option>
+            <option value="-G 11 -E 1" >Open:11 Ext:1</option>
+            <option value="-G 10 -E 1" >Open:10 Ext:1</option>
+            <option value="-G 9 -E 1" >Open:9 Ext:1</option>
+        </param>
+    </xml>
+    <xml name="input_strand">
+        <param name="strand" type="select" label="Query strand(s)" help="Query strand(s) to search against database/subject">
+            <option value="-strand both" selected="true">Both (default)</option>
+            <option value="-strand plus">Plus (forward)</option>
+            <option value="-strand minus">Minus (reverse complement)</option>
+        </param>
+    </xml>
+    <xml name="input_match_mismatch">
+        <param name="match_mismatch" type="select" label="Match/Mismatch" help="Reward and penalty for matching and mismatching bases">
+            <option value="-r 1 -q -1" >Match:1 Mismatch:-1 </option>
+            <option value="-r 1 -q -2" >Match:1 Mismatch:-2 </option>
+            <option value="-r 1 -q -3" >Match:1 Mismatch:-3 </option>
+            <option value="-r 1 -q -4" >Match:1 Mismatch:-4 </option>
+            <option value="-r 2 -q -3" selected="true" >Match:2 Mismatch:-3 (default)</option>
+            <option value="-r 4 -q -5" >Match:4 Mismatch:-5 </option>
+        </param>
+    </xml>
+    <xml name="extended_parameters">
+        <conditional name="ext_param">
+            <param name="ext_param_selector" type="select" label="Extended parameters">
+              <option value="basic" selected="True">Hide Extended parameters</option>
+              <option value="extended">Show Extended parameters</option>
+            </param>
+            <when value="basic" />
+            <when value="extended">
+                <yield />
+            </when>
+        </conditional>
+    </xml>
+
+    <!-- Configuration parameters -->
+    <xml name="configuration_parameters">
+        <conditional name="config_param">
+            <param name="config_param_selector" type="select" label="Algorithm configuration parameters">
+              <option value="basic" selected="True">Hide configuration parameters</option>
+              <option value="advanced">Show configuration parameters</option>
+            </param>
+            <when value="basic" />
+            <when value="advanced">
+                <yield />
+            </when>
+        </conditional>
+    </xml>
+    <xml name="input_nb_threads">
+        <param name="nb_threads" type="integer" value="8" label="Number of Threads" help="Number of core/threads to execute the Klast command">
+            <validator type="in_range" min="0" />
+        </param>        
+    </xml>
+    <xml name="input_max_db_size">
+        <param name="max_db_size" type="select" label="Maximum database size" help="Maximum allowed size (in bytes) for a database. If greater, the database is segmented.">
+            <option value="20000000" selected="true">20MB (default)</option>
+            <option value="50000000">50MB</option>
+            <option value="100000000">100MB</option>  
+        </param>
+    </xml>
+    <xml name="input_percent_seed">
+        <param name="percent_seed" type="integer" value="1" label="Percent of seeds to use" help="Specify the amount of seeds used by Klast to scan a database. Default is 100%, meaning that Klast will use all seeds to scan the database. Using smaller value may produce similar results while reducing significantly search time">
+            <validator type="in_range" min="0" />
+        </param>        
+    </xml>
+    <xml name="input_ungap_threshold_prot">
+        <param name="ungap_threshold_prot" type="integer" value="38" label="Ungap threshold" help="Threshold used to computing score to filter the ungap alignments. Default value is 38 for proteins">
+            <validator type="in_range" min="0" />
+        </param>        
+    </xml>
+    <xml name="input_ungap_threshold_nucl">
+        <param name="ungap_threshold_nucl" type="integer" value="0" label="Ungap threshold" help="Threshold used to computing score to filter the ungap alignments. Default value for nucleotides depends of the E-value (1000>evalue>1e-10 => 35, 1e-10>evalue>1e-30 => 40 ,1e-30>evalue => 45). Zero invoked this default behavior">
+            <validator type="in_range" min="0" />
+        </param>        
+    </xml>
+    <xml name="input_ungap_neighboors">
+        <param name="ungap_neighboors" type="integer" value="22" label="Ungap neighborhood" help="Set the seed neighborhoods size used to computed left and right score. Default value is 22">
+            <validator type="in_range" min="0" />
+        </param>        
+    </xml>
+    <xml name="input_smallgap_threshold">
+        <param name="smallgap_threshold" type="integer" value="54" label="Small gap threshold" help="Threshold used to computing score to filter alignments during the small gap algorithm. Default value is 54">
+            <validator type="in_range" min="0" />
+        </param>        
+    </xml>
+    <xml name="input_smallgap_bandwidth">
+        <param name="smallgap_bandwidth" type="integer" value="16" label="Small gap bandwidth" help="Set the bandwidth size used during the small gap algorithm. Default value is 16">
+            <validator type="in_range" min="0" />
+        </param>        
+    </xml>
+    <xml name="input_ungap_Xdrop">
+        <param name="ungap_Xdrop" type="integer" value="20" label="Ungap Xdrop" help="Xdrop value used to filter alignments during the ungap algorithm. Default value is 20">
+            <validator type="in_range" min="0" />
+        </param>        
+    </xml>
+    <xml name="input_gap_Xdrop">
+        <param name="gap_Xdrop" type="integer" value="30" label="Gap Xdrop" help="Xdrop value used to filter alignments during the gap algorithm. Equivalent to blast -X parameter. Default value is 30">
+            <validator type="in_range" min="0" />
+        </param>        
+    </xml>
+    <xml name="input_final_gap_Xdrop">
+        <param name="final_gap_Xdrop" type="integer" value="100" label="Final gap Xdrop" help="Xdrop value used to filter alignments during the final gap algorithm. Equivalent to blast -Z parameter. . Default value is 100">
+            <validator type="in_range" min="0" />
+        </param>        
+    </xml>
+
+    <token name="@KLAST_DB_SUBJECT_PROT@">
+#if $db_opts.db_opts_selector == "db":
+  #set $filesystem_path = $db_opts.database.fields.path
+  #set $filesystem_path_pin = $filesystem_path + '.pin'
+  #set $filesystem_path_pal = $filesystem_path + '.pal'
+  #set $exists = os.path.exists( $filesystem_path_pal )
+  #if $exists:
+    -d "$filesystem_path_pal"
+  #else:
+    -d "$filesystem_path_pin"
+  #end if
+#elif $db_opts.db_opts_selector == "histdb":
+  #set $filesystem_path = os.path.join($db_opts.histdb.extra_files_path,'blastdb')
+  #set $filesystem_path_pin = $filesystem_path + '.pin'
+  #set $filesystem_path_pal = $filesystem_path + '.pal'
+  #set $exists = os.path.exists( $filesystem_path_pal )
+  #if $exists:
+    -d "$filesystem_path_pal"
+  #else:
+    -d "$filesystem_path_pin"
+  #end if
+#else:
+  -d "$db_opts.subject"
+#end if
+    </token>
+
+    <token name="@KLAST_DB_SUBJECT_NUCL@">
+#if $db_opts.db_opts_selector == "db":
+  #set $filesystem_path = $db_opts.database.fields.path
+  #set $filesystem_path_nin = $filesystem_path + '.nin'
+  #set $filesystem_path_nal = $filesystem_path + '.nal'
+  #set $exists = os.path.exists( $filesystem_path_nal )
+  #if $exists:
+    -d "$filesystem_path_nal"
+  #else:
+    -d "$filesystem_path_nin"
+  #end if
+#elif $db_opts.db_opts_selector == "histdb":
+  #set $filesystem_path = os.path.join($db_opts.histdb.extra_files_path,'blastdb')
+  #set $filesystem_path_nin = $filesystem_path + '.nin'
+  #set $filesystem_path_nal = $filesystem_path + '.nal'
+  #set $exists = os.path.exists( $filesystem_path_nal )
+  #if $exists:
+    -d "$filesystem_path_nal"
+  #else:
+    -d "$filesystem_path_nin"
+  #end if
+#else:
+  -d "$db_opts.subject"
+#end if
+    </token>
+
+    <token name="@BASIC_PARAMS@">
+## Need int(str(...)) because $max_hits_query is an InputValueWrapper object not a string
+#if (str($max_hits_query) and int(str($max_hits_query)) > 0):
+-max-hit-per-query $max_hits_query
+#end if
+#if (str($max_hsp_hits) and int(str($max_hsp_hits)) > 0):
+-max-hsp-per-hit $max_hsp_hits
+#end if
+    </token>
+    <!-- @ON_DB_SUBJECT@ is for use with @BLAST_DB_SUBJECT@ -->
+    <token name="@ON_DB_SUBJECT@">
+#if str($db_opts.db_opts_selector)=='db'
+${db_opts.database}
+#elif str($db_opts.db_opts_selector)=='histdb'
+${db_opts.histdb.name}
+#else
+${db_opts.subject.name}
+#end if</token>
+    <token name="@SEARCH_TIME_WARNING@">.. class:: warningmark
+
+**Note**. Database searches may take a substantial amount of time.
+For large input datasets it is advisable to allow overnight processing.  
+
+-----
+    </token>
+    <token name="@FASTA_WARNING@">.. class:: warningmark
+
+In most cases you should instead turn the other FASTA file into a
+database first using *makeblastdb* and search against that.
+    </token>
+    <token name="@OUTPUT_FORMAT@">
+**Output format**
+
+Because Galaxy focuses on processing tabular data, the default output of this
+tool is tabular. The standard KLAST tabular output is similar as BLAST+ tabular format, 
+it contains 12 columns:
+
+====== ========= ============================================
+Column NCBI name Description
+------ --------- --------------------------------------------
+     1 qseqid    Query Seq-id (ID of your sequence)
+     2 sseqid    Subject Seq-id (ID of the database hit)
+     3 pident    Percentage of identical matches
+     4 length    Alignment length
+     5 mismatch  Number of mismatches
+     6 gapopen   Number of gap openings
+     7 qstart    Start of alignment in query
+     8 qend      End of alignment in query
+     9 sstart    Start of alignment in subject (database hit)
+    10 send      End of alignment in subject (database hit)
+    11 evalue    Expectation value (E-value)
+    12 bitscore  Bit score
+====== ========= ============================================
+    </token>
+</macros>
