@@ -1,0 +1,54 @@
+<tool id="reactions2sbml" name="Reactions2sbml" version="1.0">
+<description>Transforms a list of reaction metacyc identifiers into a SBML file containing the given reaction and their species</description>
+
+<command>
+reactions2sbml
+$reactions_file
+$output
+</command>
+
+<inputs>
+        <param name="reactions_file" type="data" format="txt,dat,csv,tabular" help="a list of MetaCyc identifiers of reaction" label="Metabolites input" />
+</inputs>
+<outputs>
+    <data format="sbml" name="output" label="reactions.sbml with ${tool.name} on ${on_string}" />
+</outputs>
+<help>
+
+.. class:: infomark
+
+**What it does**
+
+Transforms a list of reaction metacyc identifiers into a SBML file containing the given reaction and their species.
+
+--------
+
+**Project links:**
+
+https://www.e-biogenouest.org/projects/MeTools/view
+
+--------
+
+**References:**
+
+
+--------
+
+**Integrated by:**
+
+Cyril Monjeaud 
+
+GenOuest Bio-informatics Core Facility
+
+UMR 6074 IRISA INRIA-CNRS-UR1 Rennes (France)
+
+support@genouest.org
+
+If you use this tool in Galaxy, please cite :
+
+`Y. Le Bras, A. Roult, C. Monjeaud, M. Bahin, O. Quenez, C. Heriveau, A. Bretaudeau, O. Sallou, O. Collin, Towards a Life Sciences Virtual Research Environment : an e-Science initiative in Western France. JOBIM 2013. &lt;https://www.e-biogenouest.org/resources/128&gt;`_
+
+
+</help>
+</tool>
+

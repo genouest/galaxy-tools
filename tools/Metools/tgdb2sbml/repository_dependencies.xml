@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<repositories description="This requires network datatypes definitions (e.g. the sbml format).">
+    <repository changeset_revision="bcdc7151c88c" name="network_datatypes" owner="cmonjeau" toolshed="http://toolshed.genouest.org" />
+</repositories>

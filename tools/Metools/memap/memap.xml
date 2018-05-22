@@ -1,0 +1,60 @@
+<tool id="memap" name="MeMap" version="1.0">
+<description>Maps the identifiers of an SBML file onto a given namespace</description>
+
+<command>
+memap
+$tgdb_file
+$model
+$output
+$prefix 2>$log
+</command>
+
+<inputs>
+        <param name="tgdb_file" type="data" format="tgdb" label="TinyGraphDb file" help="a database file in the TinyGraphDb format." />
+	<param name="model" type="data" format="sbml" label="Model input" help="a model in the SBML format" />
+	<param name="prefix" type="text" value="MyPrefix" label="Prefix ID" help="Type in the prefix to be added to the TGDB index in order to create the SBML identifiers used in the output file." />
+</inputs>
+<outputs>
+    <data format="sbml" name="output" label="MeMap.sbml with ${tool.name} on ${on_string}" />
+    <data format="txt" name="log" label="logfile.txt with ${tool.name} on ${on_string}" />
+
+</outputs>
+<help>
+
+.. class:: infomark
+
+**What it does**
+
+Maps the identifiers of an SBML file onto a given namespace
+
+--------
+
+**Project links:**
+
+https://www.e-biogenouest.org/projects/MeTools/view
+
+--------
+
+**References:**
+
+
+--------
+
+**Integrated by:**
+
+Cyril Monjeaud 
+
+GenOuest Bio-informatics Core Facility
+
+UMR 6074 IRISA INRIA-CNRS-UR1 Rennes (France)
+
+support@genouest.org
+
+If you use this tool in Galaxy, please cite :
+
+`Y. Le Bras, A. Roult, C. Monjeaud, M. Bahin, O. Quenez, C. Heriveau, A. Bretaudeau, O. Sallou, O. Collin, Towards a Life Sciences Virtual Research Environment : an e-Science initiative in Western France. JOBIM 2013. &lt;https://www.e-biogenouest.org/resources/128&gt;`_
+
+
+</help>
+</tool>
+
