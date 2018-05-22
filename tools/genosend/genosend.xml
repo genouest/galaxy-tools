@@ -1,0 +1,30 @@
+<tool id="genosend" name="GenoSend" version="1.0.1">
+    <description>export history files to your GenOuest workspace</description>
+    <command interpreter="perl"><![CDATA[
+        #import re
+
+        genosend.pl '$__user_email__' '${dest}' '${logfile}'
+            #for $i in $files
+                #set filemame = re.sub('[^\w\-]', '_', str($i.file.element_identifier))
+
+                '${i.file}' '${i.file.hid}_${filemame}.${i.file.datatype.file_ext}'
+            #end for
+    ]]></command>
+    <inputs>
+        <repeat name="files" title="Files to export" min="1">
+                <param name="file" type="data" format="data" label="History file"/>
+        </repeat>
+        <param name="dest" type="text" size="120" value="/home/genouest/" label="Destination folder" help="Must be writable by galaxy user (repository with chmod 777)" />
+    </inputs>
+    <outputs>
+        <data name="logfile" format="txt" />
+    </outputs>
+    <help><![CDATA[
+**What it does**
+
+This tool allows staff to export files from the current history into a GenOuest workspace (Home, omaha-beach or groups).
+
+The destination folder must be writable by the galaxy user. It is suggested that you create a folder ~/galaxy_access and chmod 777 it.
+
+]]></help>
+</tool>

@@ -1,0 +1,36 @@
+<tool id="genocopy" name="GenoCopy" version="1.0.1" force_history_refresh="True">
+    <description>import a file or directory from your Genocluster worspace to the current history</description>
+    <command interpreter="perl"><![CDATA[
+        genocopy.pl '${source}' '${log}' '${log.id}' '$__new_file_path__' '${options_merge.merge}'
+        #if str( $options_merge.merge ) == 'true'
+                ${options_merge.rm_header}
+        #end if
+    ]]></command>
+    <inputs>
+        <param name="source" type="text" size='100' value='/home/genouest/' label="Absolute path" help="e.g. /home/genouest/username/mydir/myfic.ext or /home/genouest/username/mydir/" />
+        <conditional name="options_merge">
+            <param name="merge" type="select" format="text" label="Merge all files into one file" help="Only works if the input path is a directory">
+                <option value="false">No</option>
+                <option value="true">Yes</option>
+            </param>
+            <when value="false">
+            </when>
+            <when value="true">
+                <param name="rm_header" type="integer" value="0" label="Header lines to delete" help="Number of lines to delete at the begin for each file"/>
+            </when>
+         </conditional>
+</inputs>
+<outputs>
+    <data format="txt" name="log" />
+</outputs>
+<help><![CDATA[
+**What it does**
+
+GenoCopy imports a file or a directory content from your Genocluster Home / omaha-beach  / groups to the current history. Unlike GenoLink, there is a copy, so the upload time is longer. Your uploaded file is neither deleted nor altered in your Home.
+
+This tool is working with input file or directory. All sub directories are ignored, only files in the directory are treated.
+
+Files must be readable by others.
+
+]]></help>
+</tool>
