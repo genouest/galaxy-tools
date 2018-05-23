@@ -1,0 +1,217 @@
+<tool id="sam_qtl_qtlmap_single_eqtl_model" name="qtlmap - LA,LD,LDLA - eQTL analysis with a model description">
+      <description>QTL detection (LA) for a single real trait with a model description</description>
+      <command interpreter="bash">scripts/qtlmap-eqtl-cpu.sh ${out_user} $p_analyse -d -calcul=$calcul --data-transcriptomic --qtl=$qtl --haplotype=$haplo > $output_console</command>
+      <inputs>
+        <param format="gqmp" type="data" name="geno" label="genotype"/>
+        <param type="text" name="unknownchar" label="missing genotype" value="0" />
+        <param format="pqmp" type="data" name="genea" label="pedigree"/>
+        <param format="dqmp" type="data" name="pheno" label="pheno"/>
+        <param format="mqmp" type="data" name="map" label="map"/>
+        <param format="text"  type="data" name="model" label="model" help="the model file"/>
+        <param name="calcul" type="select" format="text">
+          <label>Calcul</label>
+          <option value="2">Linkage analysis - heteroscedastic - Likelihood optimized</option>
+          <option value="4">Linkage analysis - heteroscedastic - Likelihood linearized</option>
+          <option value="3">Linkage analysis - homoscedastic - Likelihood linearized</option>
+          <option value="8">Linkage disequilibrium - heteroscedastic - Likelihood optimized</option>
+          <option value="26">Linkage disequilibrium - heteroscedastic - Likelihood linearized</option>
+          <option value="25">Linkage disequilibrium - homoscedastic - Likelihood linearized</option>
+          <option value="9">Linkage disequilibrium Linkage analysis - heteroscedastic - Likelihood optimized</option>
+          <option value="28">Linkage disequilibrium Linkage analysis - heteroscedastic - Likelihood linearized</option>
+          <option value="27">Linkage disequilibrium Linkage analysis - homoscedastic - Likelihood linearized</option>
+        </param>
+       <param type="float" name="step" label="step analysis(M)" value="0.01" help="step length of the scan (Morgan)"/> 
+       <param type="text" name="chromo" label="chromosomes" help="opt_chromosome=string,string,... chromosomes to be analysed, as denoted in the marker map file"/> 
+       <param type="integer" name="ndmin" label="ndmin" value="15" help="offspring size above which the polygenic and QTL effects of the dam are estimated"/> 
+
+       <param type="float" name="minm" label="Minimal maternal phase probability" value="0.15" help="threshold above which the probable maternal phases will be considered in the analysis"/>
+       <param type="float" name="minp" label="Minimal paternal phase probability" value="0.15" help="the analysis is interrupted if for a sire, none of its phases reach this threshold"/>
+
+        <param name="qtl" type="select" format="text">
+          <label> Number of Qtl </label>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="2">3</option>
+        </param>
+        <param type="select" name="haplo">
+         <label> type of marker </label>
+          <option value="2">microsat</option>
+          <option value="5" selected="true">snp</option>
+          <option value="4">snp2</option>
+        </param>
+      </inputs>
+      
+     <configfiles>
+        <configfile name="p_analyse">
+in_genealogy=$genea
+in_genotype=$geno
+in_traits=$pheno
+in_model=$model
+in_map=$map
+opt_step =$step
+opt_ndmin=$ndmin
+opt_minsirephaseproba=$minp
+opt_mindamphaseproba=$minm
+opt_chromosome=$chromo
+opt_unknown_char=$unknownchar
+out_output=$res
+out_summary=$sum
+out_phases=$phases
+out_lrtsires=$lrts
+out_lrtdams=$lrtd
+out_pded=$pded
+out_pdedjoin=$pdedjoin
+#files with Sire QTL effect estimations
+out_pateff=$pateff
+#files with Dam QTL effect estimations
+out_mateff=$mateff
+# max LRT and postion for each simulation
+#####out_maxlrt=$simul 
+        </configfile>
+     </configfiles>
+      <outputs>
+        <data format="html" name="out_user" label="resume_qtl_analysis_calc${calcul}_chrom$chromo" />
+        <data format="txt" name="res" label="eQTL_model_result" />
+        <data format="txt" name="sum" label="eQTL_model_summary" />
+        <data format="tabular" name="phases" label="phases" />
+        <data format="lqmp" name="lrts" label="eQTL_model_lrtsires" />
+        <data format="lqmp" name="lrtd" label="eQTL_model_lrtdams" />
+        <data format="eqmp" name="pateff" label="eQTL_model_eff_qtl_sires" />
+        <data format="eqmp" name="mateff" label="eQTL_model_eff_qtl_dams" />
+        <data format="pded" name="pded" label="grand parental segment transmission marginal" />
+        <data format="pdedj" name="pdedjoin" label="grand parental segment transmission joint probabilities" />
+        <data format="txt" name="output_console" label="eQTL_model_out" />
+      </outputs>
+<!--   
+      <tests>
+       <test>
+         <param name="input" value="sam_qtl_gsgt_input.txt"/>
+         <output name="out_file1" file="sam_qtl_qtlmap_genotype_output.txt"/>
+       </test>
+     </tests>
+-->   
+     <help>
+
+
+--------
+
+**Authors:**
+
+Pascale Le Roy
+
+Jean-Michel Elsen
+
+Helene Gilbert
+
+Carole Moreno
+
+Andres Legarra
+
+Olivier Filangi
+
+--------
+
+**References**
+
+-Legarra A, Fernando RL, 2009. Linear models for joint association and linkage QTL mapping. Genet Sel Evol., 41:43.
+
+-Elsen JM, Filangi O, Gilbert H, Le Roy P, Moreno C, 2009. A fast algorithm for estimating transmission probabilities in QTL detection designs with dense maps. Genet Sel Evol., 41:50.
+
+-Gilbert H., Le Roy P., Moreno C., Robelin D., Elsen J. M., 2008. QTLMAP, a software for QTL detection in outbred population. Annals of Human Genetics, 72(5): 694.
+
+-Gilbert H, Le Roy P., 2007. Methods for the detection of multiple linked QTL applied to a mixture of full and half sib families. Genet Sel Evol., 39(2):139-58.
+
+-Moreno C.R., Elsen J.M., Le Roy P., Ducrocq V., 2005. Interval mapping methods for detecting QTL affecting survival and time to event phenotypes. Genet. Res. Camb., 85 : 139-149. 
+
+-Goffinet B, Le Roy P, Boichard D, Elsen JM, Mangin B, 1999. Alternative models for QTL detection in livestock. III. Heteroskedastic model and models corresponding to several distributions of the QTL effect. Genet. Sel. Evol., 31, 341-350. 
+
+-Mangin B, Goffinet B, Le Roy P, Boichard D, Elsen JM, 1999. Alternative models for QTL detection in livestock. II. Likelihood approximations and sire marker genotype estimations. Genet. Sel. Evol., 31, 225-237. 
+
+-Elsen JM, Mangin B, Goffinet B, Boichard D, Le Roy P, 1999. Alternative models for QTL detection in livestock. I. General introduction. Genet. Sel. Evol., 31, 213-224
+
+--------
+
+**Integrated by:**
+
+Yvan Le Bras
+
+</help>
+<citations>
+		<citation type="bibtex">@ARTICLE{GeneticsSelectionEvolution,
+    author = {Legarra, A. and Fernando, RL.},
+    title = {Linear models for joint association and linkage QTL mapping},
+    journal = {Genetics Selection Evolution},
+    volume = {41},
+    year = {2009},
+    url = {http://prodinra.inra.fr/?locale=fr#!ConsultNotice:30308},
+    pages = {43}
+    }</citation>
+	<citation type="bibtex">@ARTICLE{GeneticsSelectionEvolution,
+    author = {Elsen, JM. and Filangi, O. and Gilbert, H. and Le Roy, P. and Moreno, CR.},
+    title = {A fast algorithm for estimating transmission probabilities in QTL detection designs with dense maps},
+    journal = {Genetics Selection Evolution},
+    volume = {41},
+    year = {2009},
+    url = {http://prodinra.inra.fr/?locale=fr#!ConsultNotice:26656},
+    pages = {50}
+    }</citation>
+	<citation type="bibtex">@ARTICLE{AnnalsofHumanGenetics,
+    author = {Gilbert, H. and Le Roy, P. and Moreno, CR. and Robelin, D. and Elsen, JM.},
+    title = {QTLMAP, a software for QTL detection in outbred population},
+    journal = {Annals of Human Genetics},
+    volume = {72},
+    year = {2008},
+    url = {http://onlinelibrary.wiley.com/doi/10.1111/j.1469-1809.2008.00461.x/abstract},
+    pages = {694}
+    }</citation>
+	<citation type="bibtex">@ARTICLE{GeneticsSelectionEvolution,
+    author = {Gilbert, H. and Le Roy, P.},
+    title = {Methods for the detection of multiple linked QTL applied to a mixture of full and half sib families},
+    journal = {Genetics Selection Evolution},
+    year = {2007},
+    url = {http://prodinra.inra.fr/?locale=fr#!ConsultNotice:10677},
+    pages = {139-158}
+    }</citation>
+	<citation type="bibtex">@ARTICLE{GeneticsResearch,
+    author = {Moreno, CR. and Elsen, JM. and Le Roy, P. and Ducrocq, V.},
+    title = {Interval mapping methods for detecting QTL affecting survival and time-to-event phenotypes},
+    journal = {Genetics Research},
+    year = {2005},
+    url = {http://www.ncbi.nlm.nih.gov/pubmed/16174332#},
+    pages = {139-149}
+    }</citation>
+		<citation type="bibtex">@ARTICLE{GeneticsSelectionEvolution,
+    author = {Goffinet, B. and Le Roy, P. and Boichard, D. and Elsen, JM. and Mangin, B.},
+    title = {Alternative models for QTL detection in livestock. III. Heteroskedastic model and models corresponding to several distributions of the QTL effect},
+    journal = {Genetics Selection Evolution},
+    year = {1999},
+    url = {http://hal.archives-ouvertes.fr/hal-00490655/},
+    pages = {341-350}
+	}</citation>
+	   <citation type="bibtex">@ARTICLE{GeneticsSelectionEvolution,
+    author = {Mangin, B. and Goffinet, B. and Boichard, D. and Le Roy, P. and Elsen, JM.},
+    title = {Alternative models for QTL detection in livestock. II. Likelihood approximations and sire marker genotype estimations},
+    journal = {Genetics Selection Evolution},
+    year = {1999},
+    url = {http://prodinra.inra.fr/?locale=fr#!ConsultNotice:11848},
+    pages = {225-237}
+    }</citation>
+	   <citation type="bibtex">@ARTICLE{GeneticsSelectionEvolution,
+    author = {Elsen, JM. and Mangin, B. and Goffinet, B. and Boichard, D. and Le Roy, P.},
+    title = {Alternative models for QTL detection in livestock. I. General introduction},
+    journal = {Genetics Selection Evolution},
+    year = {1999},
+    url = {http://prodinra.inra.fr/?locale=fr#!ConsultNotice:16516},
+    pages = {213-224}
+    }</citation>
+
+    <citation type="bibtex">@INPROCEEDINGS{JOBIM2013,
+    author = {Le Bras, Y. and ROULT, A. and Monjeaud, C. and Bahin, M. and Quenez, O. and Heriveau, C. and Bretaudeau, A. and Sallou, O. and Collin, O.},
+    title = {Towards a Life Sciences Virtual Research Environment: An e-Science initiative in Western France},
+    booktitle = {JOBIM 2013 Proceedings},
+    year = {2013},
+    url = {https://www.e-biogenouest.org/resources/128},
+    pages = {97-106}
+    }</citation>
+</citations>
+</tool>

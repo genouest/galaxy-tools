@@ -1,0 +1,145 @@
+<tool id="sam_qtl_img_qtlmap_lrt" name="LikelihoodRatioTest - Gnuplot">
+      <description> Build a pdf file from the LRT values file (QTLMap)  </description>
+      <command interpreter="bash">scripts/sam_qtl_img_qtlmap_lrt.sh $lrt $trait $filtre $img_lrt > $out_script
+2&gt; $stderr
+</command>
+      <inputs>
+        <param format="lqmp" name="lrt" type="data" label="Likelihood Ratio Test QTLMap file"/>
+        <param type="integer" name="trait" label="index trait" value="1" help=""/>
+        <param type="text" name="filtre" label="Family" value="0" help="the familty name (all family name are given in the header LRT file) otherwise 0 (GlobalLRT)"/> 
+      </inputs>
+      
+      <outputs>
+        <data format="png" name="img_lrt"/>
+        <data format="txt" name="out_script" label="out.txt"/>
+        <data format="txt" name="stderr" label="stderr" />
+      </outputs>
+      <tests>
+       <test>
+       </test>
+     </tests>
+   
+     <help>
+
+--------
+
+**Authors:**
+
+Pascale Le Roy
+
+Jean-Michel Elsen
+
+Helene Gilbert
+
+Carole Moreno
+
+Andres Legarra
+
+Olivier Filangi
+
+--------
+
+**References**
+
+-Legarra A, Fernando RL, 2009. Linear models for joint association and linkage QTL mapping. Genet Sel Evol., 41:43.
+
+-Elsen JM, Filangi O, Gilbert H, Le Roy P, Moreno C, 2009. A fast algorithm for estimating transmission probabilities in QTL detection designs with dense maps. Genet Sel Evol., 41:50.
+
+-Gilbert H., Le Roy P., Moreno C., Robelin D., Elsen J. M., 2008. QTLMAP, a software for QTL detection in outbred population. Annals of Human Genetics, 72(5): 694.
+
+-Gilbert H, Le Roy P., 2007. Methods for the detection of multiple linked QTL applied to a mixture of full and half sib families. Genet Sel Evol., 39(2):139-58.
+
+-Moreno C.R., Elsen J.M., Le Roy P., Ducrocq V., 2005. Interval mapping methods for detecting QTL affecting survival and time to event phenotypes. Genet. Res. Camb., 85 : 139-149. 
+
+-Goffinet B, Le Roy P, Boichard D, Elsen JM, Mangin B, 1999. Alternative models for QTL detection in livestock. III. Heteroskedastic model and models corresponding to several distributions of the QTL effect. Genet. Sel. Evol., 31, 341-350. 
+
+-Mangin B, Goffinet B, Le Roy P, Boichard D, Elsen JM, 1999. Alternative models for QTL detection in livestock. II. Likelihood approximations and sire marker genotype estimations. Genet. Sel. Evol., 31, 225-237. 
+
+-Elsen JM, Mangin B, Goffinet B, Boichard D, Le Roy P, 1999. Alternative models for QTL detection in livestock. I. General introduction. Genet. Sel. Evol., 31, 213-224
+
+--------
+
+**Integrated by:**
+
+Yvan Le Bras
+
+</help>
+<citations>
+		<citation type="bibtex">@ARTICLE{GeneticsSelectionEvolution,
+    author = {Legarra, A. and Fernando, RL.},
+    title = {Linear models for joint association and linkage QTL mapping},
+    journal = {Genetics Selection Evolution},
+    volume = {41},
+    year = {2009},
+    url = {http://prodinra.inra.fr/?locale=fr#!ConsultNotice:30308},
+    pages = {43}
+    }</citation>
+	<citation type="bibtex">@ARTICLE{GeneticsSelectionEvolution,
+    author = {Elsen, JM. and Filangi, O. and Gilbert, H. and Le Roy, P. and Moreno, CR.},
+    title = {A fast algorithm for estimating transmission probabilities in QTL detection designs with dense maps},
+    journal = {Genetics Selection Evolution},
+    volume = {41},
+    year = {2009},
+    url = {http://prodinra.inra.fr/?locale=fr#!ConsultNotice:26656},
+    pages = {50}
+    }</citation>
+	<citation type="bibtex">@ARTICLE{AnnalsofHumanGenetics,
+    author = {Gilbert, H. and Le Roy, P. and Moreno, CR. and Robelin, D. and Elsen, JM.},
+    title = {QTLMAP, a software for QTL detection in outbred population},
+    journal = {Annals of Human Genetics},
+    volume = {72},
+    year = {2008},
+    url = {http://onlinelibrary.wiley.com/doi/10.1111/j.1469-1809.2008.00461.x/abstract},
+    pages = {694}
+    }</citation>
+	<citation type="bibtex">@ARTICLE{GeneticsSelectionEvolution,
+    author = {Gilbert, H. and Le Roy, P.},
+    title = {Methods for the detection of multiple linked QTL applied to a mixture of full and half sib families},
+    journal = {Genetics Selection Evolution},
+    year = {2007},
+    url = {http://prodinra.inra.fr/?locale=fr#!ConsultNotice:10677},
+    pages = {139-158}
+    }</citation>
+	<citation type="bibtex">@ARTICLE{GeneticsResearch,
+    author = {Moreno, CR. and Elsen, JM. and Le Roy, P. and Ducrocq, V.},
+    title = {Interval mapping methods for detecting QTL affecting survival and time-to-event phenotypes},
+    journal = {Genetics Research},
+    year = {2005},
+    url = {http://www.ncbi.nlm.nih.gov/pubmed/16174332#},
+    pages = {139-149}
+    }</citation>
+		<citation type="bibtex">@ARTICLE{GeneticsSelectionEvolution,
+    author = {Goffinet, B. and Le Roy, P. and Boichard, D. and Elsen, JM. and Mangin, B.},
+    title = {Alternative models for QTL detection in livestock. III. Heteroskedastic model and models corresponding to several distributions of the QTL effect},
+    journal = {Genetics Selection Evolution},
+    year = {1999},
+    url = {http://hal.archives-ouvertes.fr/hal-00490655/},
+    pages = {341-350}
+	}</citation>
+	   <citation type="bibtex">@ARTICLE{GeneticsSelectionEvolution,
+    author = {Mangin, B. and Goffinet, B. and Boichard, D. and Le Roy, P. and Elsen, JM.},
+    title = {Alternative models for QTL detection in livestock. II. Likelihood approximations and sire marker genotype estimations},
+    journal = {Genetics Selection Evolution},
+    year = {1999},
+    url = {http://prodinra.inra.fr/?locale=fr#!ConsultNotice:11848},
+    pages = {225-237}
+    }</citation>
+	   <citation type="bibtex">@ARTICLE{GeneticsSelectionEvolution,
+    author = {Elsen, JM. and Mangin, B. and Goffinet, B. and Boichard, D. and Le Roy, P.},
+    title = {Alternative models for QTL detection in livestock. I. General introduction},
+    journal = {Genetics Selection Evolution},
+    year = {1999},
+    url = {http://prodinra.inra.fr/?locale=fr#!ConsultNotice:16516},
+    pages = {213-224}
+    }</citation>
+
+    <citation type="bibtex">@INPROCEEDINGS{JOBIM2013,
+    author = {Le Bras, Y. and ROULT, A. and Monjeaud, C. and Bahin, M. and Quenez, O. and Heriveau, C. and Bretaudeau, A. and Sallou, O. and Collin, O.},
+    title = {Towards a Life Sciences Virtual Research Environment: An e-Science initiative in Western France},
+    booktitle = {JOBIM 2013 Proceedings},
+    year = {2013},
+    url = {https://www.e-biogenouest.org/resources/128},
+    pages = {97-106}
+    }</citation>
+</citations>
+</tool>

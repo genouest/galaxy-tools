@@ -1,0 +1,275 @@
+<tool id="sam_qtl_qtlmap_single_trait" name="qtlmap - eQTL - Single trait">
+      <description>Detection of QTL for transcript</description>
+      <command interpreter="bash">scripts/qtlmap-cpu.sh $p_analyse -v --calcul=$calcul --data-transcriptomic --qtl=$qtl --haplotype=$haplo > $output_console</command>
+      <inputs>
+        <param format="gqmp" type="data" name="geno" label="genotype"/>
+        <param type="text" name="unknownchar" label="missing genotype" value="0" />
+        <param format="pqmp" type="data" name="genea" label="pedigree"/>
+        <param format="dqmp" type="data" name="pheno" label="pheno"/>
+        <param format="mqmp" type="data" name="map" label="map"/>
+
+        <param type="integer" name="trait" label="Column of the trait" value="1" help="The phenotype of interest"/> 
+        <param type="text" name="ntrait" label="Name of the trait" value="1" help="Name of the phenotype of interest"/> 
+        <repeat name="effects" title="Effects">
+          <param type="integer" name="colEffect" label="Column effect" value="0"/>
+          <param label="Type" name="type" type="select">
+            <option selected="yes" value="cross">generic cross-classified</option>
+            <option value="cov">generic covariable</option>
+            <option value="add_animal"> additive infinitesimal effect</option>
+            <option value="perm_diagonal">generic environmental random effect</option>
+            <option value="add_SNP">additive SNP effect</option>
+            <option value="dom_SNP">dominant SNP effect</option>
+          </param>
+          <param type="integer" name="nlevel" label="Number of level" value="0"/>
+        </repeat>          
+        <param name="calcul" type="select" format="text">
+          <label> Calcul </label>
+          <option value="1">unitrait la</option> 
+          <option value="2">unitrait la with model</option>
+          <option value="25">(snp) unitrait ld with model - homoscedastic </option>
+          <option value="3">(snp) unitrait la with model - homoscedastic </option>
+          <option value="27">(snp) unitrait ldla with model - homoscedastic </option>
+          <option value="26">(snp) unitrait ld with model</option>
+          <option value="4">(snp) unitrait la with model</option>
+          <option value="28">(snp) unitrait ldla with model</option>
+        </param>
+       <param type="float" name="step" label="step analysis (cM)" value="0.01" help="step length of the scan (Morgan)"/> 
+       <param type="text" name="chromo" label="chromosomes" help="opt_chromosome=string,string,... chromosomes to be analysed, as denoted in the marker map file"/> 
+       <param type="integer" name="ndmin" label="ndmin" value="15" help="offspring size above which the polygenic and QTL effects of the dam are estimated"/> 
+
+       <param type="float" name="minm" label="Minimal maternal phase probability" value="0.15" help="threshold above which the probable maternal phases will be considered in the analysis"/>
+       <param type="float" name="minp" label="Minimal paternal phase probability" value="0.15" help="the analysis is interrupted if for a sire, none of its phases reach this threshold"/>
+
+        <param name="qtl" type="select" format="text">
+          <label> Number of Qtl </label>
+          <option value="1">1</option>
+          <option value="2">2</option>
+        </param>
+        <param type="select" name="haplo">
+         <label> type of marker </label>
+          <option value="5">snp</option>
+          <option value="2">microsat</option>
+        </param>
+      </inputs>
+      
+     <configfiles>
+<configfile name="model">
+1
+
+</configfile>
+        <configfile name="p_analyse">
+in_genealogy=$genea
+in_genotype=$geno
+in_traits=$pheno
+in_model=$model
+in_map=$map
+opt_step =$step
+opt_ndmin=$ndmin
+opt_minsirephaseproba=$minp
+opt_mindamphaseproba=$minm
+opt_chromosome=$chromo
+opt_unknown_char=$unknownchar
+out_output=$res
+out_summary=$sum
+out_phases=$phases
+out_lrtsires=$lrts
+out_lrtdams=$lrtd
+out_pded=$pded
+out_pdedjoin=$pdedjoin
+#files with Sire QTL effect estimations
+out_pateff=$pateff
+#files with Dam QTL effect estimations
+out_mateff=$mateff
+# max LRT and postion for each simulation
+#####out_maxlrt=$simul 
+        </configfile>
+     </configfiles>
+      <outputs>
+        <data format="txt" name="res" label="result" />
+        <data format="txt" name="sum" label="summary" />
+        <data format="txt" name="phases" label="phases" />
+        <data format="lqmp" name="lrts" label="lrtsires" />
+        <data format="lqmp" name="lrtd" label="lrtdams" />
+        <data format="eqmp" name="pateff" label="eff_qtl_sires" />
+        <data format="eqmp" name="mateff" label="eff_qtl_dams" />
+        <data format="pded" name="pded" label="grand parental segment transmission marginal" />
+        <data format="pdedj" name="pdedjoin" label="grand parental segment transmission joint probabilities" />
+        <data format="txt" name="output_console" label="out" />
+      </outputs>
+<!--   
+      <tests>
+       <test>
+         <param name="input" value="sam_qtl_gsgt_input.txt"/>
+         <output name="out_file1" file="sam_qtl_qtlmap_genotype_output.txt"/>
+       </test>
+     </tests>
+-->   
+     <help>
+
+
+	 .. class:: infomark 
+ 
+**What it does**
+ 
+QTLmap is a linkage analysis software dedicated to the analysis of outbred population in an experimental design QTLMAP software is developed at INRA (french National Institute for Agronomical Research) to map following linkage analyses approaches in various experimental populations. Specific models were implemented to take maximum advantage of large data sets now available for QTL detection and get fine locus descriptions (indications of pleiotropy, of linked loci…) to facilitate further explorations. In QTLMAP, the basis of the QTL detection technique is an interval mapping applied to half-sib families or a mixture of full- and half- sib families where the exact computation of phase probability is undertaken from a 2 or 3 generation pedigree. The test statistics are computed either using exact calculation of likelihood ratios or using partial linear approximations of the likelihood or complete regression on marker genotypes. 
+
+Various genetic models will be proposed depending on :
+
+ * the QTL allele segregation (biallelic in crosses between monomorphic breeds, biallelic without hypothesis on the origin, multiallelic, haplotype identity)
+ * the number of QTL segregating (one, two linked, several unlinked)
+ * the number of traits under the QTL influence. The trait determinism is envisaged depending on:
+
+  * the trait distribution (gaussian trait, survival trait or threshold distribution)
+  * the interactions between the QTL and fixed effects or other loci
+  * the residual variance structure (homo- or heteroskedasticity for half-sib families)
+
+Due to differences with the asymptotical conditions from the chi2 theory, the test statistic significance are evaluated either through numerical approximations, or through empirical calculations obtained from permutations or simulations under the null hypothesis.
+
+[[http://www.inra.fr/qtlmap/]]
+
+--------
+ 
+ .. class:: infomark 
+ 
+**Pedigree** 
+
+The file contains pedigree information  for the 2 last generations of a design which comprises 3 generations, i.e. parents and progeny. It must not contain the grand parental pedigree information.
+Each line is made of an alphanumeric  ID triplet (individual, sire, dam). A fourth information gives the generation number : 1 for the parental generation  ; 2 for the progeny generaiton. An animal missing one or both parents ID has not to be included in the file. The missing value code cannot be used in the pedigree file. The file must be sorted by generation, sire ID and dam ID
+
+--------
+ 
+ .. class:: infomark 
+ 
+**Marker map**
+
+This file gives the locations of the markers on the chromosome(s). Each line corresponds to a single marker, and gives (order to be followed) :
+
+ * marker name (alphanumerique) ;
+ * name of the chromosome carrying the marker  (alphanumerique) ;
+ * marker position of the marker on the average map (in Morgan) ;
+ * marker position of the marker on the male map (in Morgan) ;
+ * marker position of the marker on the female map (in Morgan) ;
+ * inclusion key (=1 if the marker has to be included in the analysis, 0 if not) 
+
+--------
+
+**Authors:**
+
+Pascale Le Roy
+
+Jean-Michel Elsen
+
+Helene Gilbert
+
+Carole Moreno
+
+Andres Legarra
+
+Olivier Filangi
+
+--------
+
+**References**
+
+-Legarra A, Fernando RL, 2009. Linear models for joint association and linkage QTL mapping. Genet Sel Evol., 41:43.
+
+-Elsen JM, Filangi O, Gilbert H, Le Roy P, Moreno C, 2009. A fast algorithm for estimating transmission probabilities in QTL detection designs with dense maps. Genet Sel Evol., 41:50.
+
+-Gilbert H., Le Roy P., Moreno C., Robelin D., Elsen J. M., 2008. QTLMAP, a software for QTL detection in outbred population. Annals of Human Genetics, 72(5): 694.
+
+-Gilbert H, Le Roy P., 2007. Methods for the detection of multiple linked QTL applied to a mixture of full and half sib families. Genet Sel Evol., 39(2):139-58.
+
+-Moreno C.R., Elsen J.M., Le Roy P., Ducrocq V., 2005. Interval mapping methods for detecting QTL affecting survival and time to event phenotypes. Genet. Res. Camb., 85 : 139-149. 
+
+-Goffinet B, Le Roy P, Boichard D, Elsen JM, Mangin B, 1999. Alternative models for QTL detection in livestock. III. Heteroskedastic model and models corresponding to several distributions of the QTL effect. Genet. Sel. Evol., 31, 341-350. 
+
+-Mangin B, Goffinet B, Le Roy P, Boichard D, Elsen JM, 1999. Alternative models for QTL detection in livestock. II. Likelihood approximations and sire marker genotype estimations. Genet. Sel. Evol., 31, 225-237. 
+
+-Elsen JM, Mangin B, Goffinet B, Boichard D, Le Roy P, 1999. Alternative models for QTL detection in livestock. I. General introduction. Genet. Sel. Evol., 31, 213-224
+
+--------
+
+**Integrated by:**
+
+Yvan Le Bras
+
+</help>
+<citations>
+		<citation type="bibtex">@ARTICLE{GeneticsSelectionEvolution,
+    author = {Legarra, A. and Fernando, RL.},
+    title = {Linear models for joint association and linkage QTL mapping},
+    journal = {Genetics Selection Evolution},
+    volume = {41},
+    year = {2009},
+    url = {http://prodinra.inra.fr/?locale=fr#!ConsultNotice:30308},
+    pages = {43}
+    }</citation>
+	<citation type="bibtex">@ARTICLE{GeneticsSelectionEvolution,
+    author = {Elsen, JM. and Filangi, O. and Gilbert, H. and Le Roy, P. and Moreno, CR.},
+    title = {A fast algorithm for estimating transmission probabilities in QTL detection designs with dense maps},
+    journal = {Genetics Selection Evolution},
+    volume = {41},
+    year = {2009},
+    url = {http://prodinra.inra.fr/?locale=fr#!ConsultNotice:26656},
+    pages = {50}
+    }</citation>
+	<citation type="bibtex">@ARTICLE{AnnalsofHumanGenetics,
+    author = {Gilbert, H. and Le Roy, P. and Moreno, CR. and Robelin, D. and Elsen, JM.},
+    title = {QTLMAP, a software for QTL detection in outbred population},
+    journal = {Annals of Human Genetics},
+    volume = {72},
+    year = {2008},
+    url = {http://onlinelibrary.wiley.com/doi/10.1111/j.1469-1809.2008.00461.x/abstract},
+    pages = {694}
+    }</citation>
+	<citation type="bibtex">@ARTICLE{GeneticsSelectionEvolution,
+    author = {Gilbert, H. and Le Roy, P.},
+    title = {Methods for the detection of multiple linked QTL applied to a mixture of full and half sib families},
+    journal = {Genetics Selection Evolution},
+    year = {2007},
+    url = {http://prodinra.inra.fr/?locale=fr#!ConsultNotice:10677},
+    pages = {139-158}
+    }</citation>
+	<citation type="bibtex">@ARTICLE{GeneticsResearch,
+    author = {Moreno, CR. and Elsen, JM. and Le Roy, P. and Ducrocq, V.},
+    title = {Interval mapping methods for detecting QTL affecting survival and time-to-event phenotypes},
+    journal = {Genetics Research},
+    year = {2005},
+    url = {http://www.ncbi.nlm.nih.gov/pubmed/16174332#},
+    pages = {139-149}
+    }</citation>
+		<citation type="bibtex">@ARTICLE{GeneticsSelectionEvolution,
+    author = {Goffinet, B. and Le Roy, P. and Boichard, D. and Elsen, JM. and Mangin, B.},
+    title = {Alternative models for QTL detection in livestock. III. Heteroskedastic model and models corresponding to several distributions of the QTL effect},
+    journal = {Genetics Selection Evolution},
+    year = {1999},
+    url = {http://hal.archives-ouvertes.fr/hal-00490655/},
+    pages = {341-350}
+	}</citation>
+	   <citation type="bibtex">@ARTICLE{GeneticsSelectionEvolution,
+    author = {Mangin, B. and Goffinet, B. and Boichard, D. and Le Roy, P. and Elsen, JM.},
+    title = {Alternative models for QTL detection in livestock. II. Likelihood approximations and sire marker genotype estimations},
+    journal = {Genetics Selection Evolution},
+    year = {1999},
+    url = {http://prodinra.inra.fr/?locale=fr#!ConsultNotice:11848},
+    pages = {225-237}
+    }</citation>
+	   <citation type="bibtex">@ARTICLE{GeneticsSelectionEvolution,
+    author = {Elsen, JM. and Mangin, B. and Goffinet, B. and Boichard, D. and Le Roy, P.},
+    title = {Alternative models for QTL detection in livestock. I. General introduction},
+    journal = {Genetics Selection Evolution},
+    year = {1999},
+    url = {http://prodinra.inra.fr/?locale=fr#!ConsultNotice:16516},
+    pages = {213-224}
+    }</citation>
+
+    <citation type="bibtex">@INPROCEEDINGS{JOBIM2013,
+    author = {Le Bras, Y. and ROULT, A. and Monjeaud, C. and Bahin, M. and Quenez, O. and Heriveau, C. and Bretaudeau, A. and Sallou, O. and Collin, O.},
+    title = {Towards a Life Sciences Virtual Research Environment: An e-Science initiative in Western France},
+    booktitle = {JOBIM 2013 Proceedings},
+    year = {2013},
+    url = {https://www.e-biogenouest.org/resources/128},
+    pages = {97-106}
+    }</citation>
+</citations>
+</tool>

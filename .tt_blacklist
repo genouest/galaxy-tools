@@ -14,3 +14,10 @@ network_datatypes
 reactions2sbml
 tgdb2sbml
 carthagene
+sam_qtl_img_qtlmap_lrt
+sam_qtl_qtlmap_single_trait
+sam_qtl_qtlmap_single_trait_model
+sam_qtl_qtlmap_single_trait_model
+sam_qtl_qtlmap_pc
+sam_qtl_qtlmap_single_cox_trait_model
+sam_qtl_qtlmap_single_eqtl_model

@@ -1,0 +1,312 @@
+<tool id="sam_qtl_qtlmap_single_cox_trait_model" name="qtlmap - LA - Survival analysis (Cox Model) - Single trait with a model description">
+      <description>QTL detection (LA) for a single real trait (cox model) with a model description</description>
+      <command interpreter="bash">scripts/qtlmap-cpu.sh $p_analyse -d --calcul=7 --haplotype=$haplo > $output_console; cp $model ${model_file}</command>
+      <inputs>
+        <param format="gqmp" type="data" name="geno" label="genotype"/>
+        <param type="text" name="unknownchar" label="missing genotype" value="0"/>
+        <param format="pqmp" type="data" name="genea" label="pedigree"/>
+        <param format="dqmp" type="data" name="pheno" label="pheno"/>
+        <param format="mqmp" type="data" name="map" label="map"/>
+        <param type="integer" name="ncar" label="Number of traits" value="1" help="Number of trait in the phenotype file"/>       
+        <param type="integer" name="nfe" label="Number of fixed effect" value="0" help="Number of fixed effect in the phenotype file"/> 
+        <param type="integer" name="nco" label="Number of covariable" value="0" help="Number of covariate in the phenotype file"/> 
+
+        <param type="integer" name="ctrait" label="Column of the trait" value="2" help="The phenotype of interest"/> 
+        <param type="text" name="ntrait" label="Name of the trait" value="mytrait" help="Name of the phenotype of interest (without blank)"/>
+        
+        <repeat name="effects" title="effect in the model" help="add effect in the model">
+         <conditional name="cond_effet">
+          <param label="Type" name="type" type="select">
+            <option selected="yes" value="cross">cross-classified ”fixed” effect</option>
+            <option value="cov">covariable</option>
+          </param>
+          <when value="cross">
+            <param type="text" name="name" label="Name of the fixed effect" value="fe"/>
+            <param type="integer" name="colEffect" label="Column effect" value="2"/>
+            <param label="interaction wtih the qtl" name="qtlfe" type="select" help="">
+              <option value="1">yes</option>
+              <option selected="yes"  value="0">no</option>
+          </param>
+          </when>
+          <when value="cov">
+            <param type="text" name="name" label="Name of the covariable" value="co"/>
+            <param type="integer" name="colEffect" label="Column effect" value="2"/>
+          </when>
+          </conditional>
+        </repeat>          
+       
+       <param type="float" name="step" label="step analysis(M)" value="0.01" help="step length of the scan (Morgan)"/> 
+       <param type="text" name="chromo" label="chromosomes" help="opt_chromosome=string,string,... chromosomes to be analysed, as denoted in the marker map file"/> 
+       <param type="integer" name="ndmin" label="ndmin" value="15" help="offspring size above which the polygenic and QTL effects of the dam are estimated"/> 
+
+       <param type="float" name="minm" label="Minimal maternal phase probability" value="0.15" help="threshold above which the probable maternal phases will be considered in the analysis"/>
+       <param type="float" name="minp" label="Minimal paternal phase probability" value="0.15" help="the analysis is interrupted if for a sire, none of its phases reach this threshold"/>
+
+        <param type="select" name="haplo">
+         <label> type of marker </label>
+          <option value="2">microsat</option>
+          <option value="5" selected="true">snp</option>
+          <option value="4">snp2</option>
+        </param>
+      </inputs>
+      
+     <configfiles>
+<configfile name="model">
+$ncar
+$nfe $nco
+##---------------------------------------------
+## Nom des effets fixe et cov
+##---------------------------------------------
+#set name_effect=""
+#for $ef in $range(1,int($nfe)+int($nco)+1)
+#set v=""
+#for $t in $effects
+#if ( (int($t.cond_effet.colEffect) - 1 ) == $ef)
+#set v=$t.cond_effet.name
+#end if
+#end for
+#if ( $v == "")
+#set name_effect=$name_effect+" eff"+str($ef)
+#else
+#set name_effect=$name_effect+" "+str($v)
+#end if
+#end for
+$name_effect
+#set current_col=int($nfe)+int($nco)+2
+#for $icar in $range(1,(int($ncar)+1))
+#if ($current_col == int($ctrait))
+##-----------------------------------------
+## Cas du caractere a analyser
+##-----------------------------------------
+##build the model with fixed effect defined by the user
+#set value=""
+#for $ef in $range(1,int($nfe)+int($nco)+1)
+#set v="ko"
+#for $t in $effects
+#if ( (int($t.cond_effet.colEffect) - 1 ) == $ef)
+#set v="ok"
+#end if
+#end for
+#if ( v == "ok")
+#set $value=$value+" 1"
+#else
+#set $value=$value+" 0"
+#end if
+#end for
+#for $fe in $range(1,int($nfe)+1)
+#set v="ko"
+#for $t in $effects
+#if ( $t.cond_effet.type == "cross" and ( (int($t.cond_effet.colEffect) - 1)  == $fe ) and ( $t.cond_effet.qtlfe.value == "1") )
+#set v="ok"
+#end if
+#end for
+#if ( v == "ok")
+#set value=$value+" 1"
+#else
+#set value=$value+" 0"
+#end if
+#end for
+$ntrait r $value
+#else
+##-----------------------------------------
+## Cas des caracteres a ne pas considerer
+##-----------------------------------------
+#set value=""
+#for $ef in $range(1,2*int($nfe)+int($nco)+1)
+#set value=$value+" 0"
+#end for
+#set tname="other__"+str($icar)
+$tname r $value
+#end if
+#set current_col = $current_col + 3
+#end for
+
+correlation_matrix
+
+#for $i in $range((int($ncar)))
+#set v=""
+#for $j in $range((int($ncar)))
+#if ($i == $j)
+#set v=$v+" 0.5"
+#else
+#set v=$v+" 0.0"
+#end if
+#end for
+$v
+#end for
+
+$ntrait
+</configfile>
+        <configfile name="p_analyse">
+in_genealogy=$genea
+in_genotype=$geno
+in_traits=$pheno
+in_model=$model
+in_map=$map
+opt_step =$step
+opt_ndmin=$ndmin
+opt_minsirephaseproba=$minp
+opt_mindamphaseproba=$minm
+opt_chromosome=$chromo
+opt_unknown_char=$unknownchar
+out_output=$res
+out_summary=$sum
+out_phases=$phases
+out_lrtsires=$lrts
+out_lrtdams=$lrtd
+out_pded=$pded
+out_pdedjoin=$pdedjoin
+#files with Sire QTL effect estimations
+out_pateff=$pateff
+#files with Dam QTL effect estimations
+out_mateff=$mateff
+# max LRT and postion for each simulation
+#####out_maxlrt=$simul 
+        </configfile>
+     </configfiles>
+      <outputs>
+        <data format="txt" name="model_file" label="${ntrait}_model" />
+        <data format="txt" name="res" label="${ntrait}_result" />
+        <data format="txt" name="sum" label="${ntrait}_summary" />
+        <data format="tabular" name="phases" label="phases" />
+        <data format="lqmp" name="lrts" label="${ntrait}__lrtsires" />
+        <data format="lqmp" name="lrtd" label="${ntrait}__lrtdams" />
+        <data format="eqmp" name="pateff" label="${ntrait}__eff_qtl_sires" />
+        <data format="eqmp" name="mateff" label="${ntrait}__eff_qtl_dams" />
+        <data format="pded" name="pded" label="grand parental segment transmission marginal" />
+        <data format="pdedj" name="pdedjoin" label="grand parental segment transmission joint probabilities" />
+        <data format="txt" name="output_console" label="${ntrait}__out" />
+      </outputs>
+<!--   
+      <tests>
+       <test>
+         <param name="input" value="sam_qtl_gsgt_input.txt"/>
+         <output name="out_file1" file="sam_qtl_qtlmap_genotype_output.txt"/>
+       </test>
+     </tests>
+-->   
+     <help>
+
+
+--------
+
+**Authors:**
+
+Pascale Le Roy
+
+Jean-Michel Elsen
+
+Helene Gilbert
+
+Carole Moreno
+
+Andres Legarra
+
+Olivier Filangi
+
+--------
+
+**References**
+
+-Legarra A, Fernando RL, 2009. Linear models for joint association and linkage QTL mapping. Genet Sel Evol., 41:43.
+
+-Elsen JM, Filangi O, Gilbert H, Le Roy P, Moreno C, 2009. A fast algorithm for estimating transmission probabilities in QTL detection designs with dense maps. Genet Sel Evol., 41:50.
+
+-Gilbert H., Le Roy P., Moreno C., Robelin D., Elsen J. M., 2008. QTLMAP, a software for QTL detection in outbred population. Annals of Human Genetics, 72(5): 694.
+
+-Gilbert H, Le Roy P., 2007. Methods for the detection of multiple linked QTL applied to a mixture of full and half sib families. Genet Sel Evol., 39(2):139-58.
+
+-Moreno C.R., Elsen J.M., Le Roy P., Ducrocq V., 2005. Interval mapping methods for detecting QTL affecting survival and time to event phenotypes. Genet. Res. Camb., 85 : 139-149. 
+
+-Goffinet B, Le Roy P, Boichard D, Elsen JM, Mangin B, 1999. Alternative models for QTL detection in livestock. III. Heteroskedastic model and models corresponding to several distributions of the QTL effect. Genet. Sel. Evol., 31, 341-350. 
+
+-Mangin B, Goffinet B, Le Roy P, Boichard D, Elsen JM, 1999. Alternative models for QTL detection in livestock. II. Likelihood approximations and sire marker genotype estimations. Genet. Sel. Evol., 31, 225-237. 
+
+-Elsen JM, Mangin B, Goffinet B, Boichard D, Le Roy P, 1999. Alternative models for QTL detection in livestock. I. General introduction. Genet. Sel. Evol., 31, 213-224
+
+--------
+
+**Integrated by:**
+
+Yvan Le Bras
+
+</help>
+<citations>
+		<citation type="bibtex">@ARTICLE{GeneticsSelectionEvolution,
+    author = {Legarra, A. and Fernando, RL.},
+    title = {Linear models for joint association and linkage QTL mapping},
+    journal = {Genetics Selection Evolution},
+    volume = {41},
+    year = {2009},
+    url = {http://prodinra.inra.fr/?locale=fr#!ConsultNotice:30308},
+    pages = {43}
+    }</citation>
+	<citation type="bibtex">@ARTICLE{GeneticsSelectionEvolution,
+    author = {Elsen, JM. and Filangi, O. and Gilbert, H. and Le Roy, P. and Moreno, CR.},
+    title = {A fast algorithm for estimating transmission probabilities in QTL detection designs with dense maps},
+    journal = {Genetics Selection Evolution},
+    volume = {41},
+    year = {2009},
+    url = {http://prodinra.inra.fr/?locale=fr#!ConsultNotice:26656},
+    pages = {50}
+    }</citation>
+	<citation type="bibtex">@ARTICLE{AnnalsofHumanGenetics,
+    author = {Gilbert, H. and Le Roy, P. and Moreno, CR. and Robelin, D. and Elsen, JM.},
+    title = {QTLMAP, a software for QTL detection in outbred population},
+    journal = {Annals of Human Genetics},
+    volume = {72},
+    year = {2008},
+    url = {http://onlinelibrary.wiley.com/doi/10.1111/j.1469-1809.2008.00461.x/abstract},
+    pages = {694}
+    }</citation>
+	<citation type="bibtex">@ARTICLE{GeneticsSelectionEvolution,
+    author = {Gilbert, H. and Le Roy, P.},
+    title = {Methods for the detection of multiple linked QTL applied to a mixture of full and half sib families},
+    journal = {Genetics Selection Evolution},
+    year = {2007},
+    url = {http://prodinra.inra.fr/?locale=fr#!ConsultNotice:10677},
+    pages = {139-158}
+    }</citation>
+	<citation type="bibtex">@ARTICLE{GeneticsResearch,
+    author = {Moreno, CR. and Elsen, JM. and Le Roy, P. and Ducrocq, V.},
+    title = {Interval mapping methods for detecting QTL affecting survival and time-to-event phenotypes},
+    journal = {Genetics Research},
+    year = {2005},
+    url = {http://www.ncbi.nlm.nih.gov/pubmed/16174332#},
+    pages = {139-149}
+    }</citation>
+		<citation type="bibtex">@ARTICLE{GeneticsSelectionEvolution,
+    author = {Goffinet, B. and Le Roy, P. and Boichard, D. and Elsen, JM. and Mangin, B.},
+    title = {Alternative models for QTL detection in livestock. III. Heteroskedastic model and models corresponding to several distributions of the QTL effect},
+    journal = {Genetics Selection Evolution},
+    year = {1999},
+    url = {http://hal.archives-ouvertes.fr/hal-00490655/},
+    pages = {341-350}
+	}</citation>
+	   <citation type="bibtex">@ARTICLE{GeneticsSelectionEvolution,
+    author = {Mangin, B. and Goffinet, B. and Boichard, D. and Le Roy, P. and Elsen, JM.},
+    title = {Alternative models for QTL detection in livestock. II. Likelihood approximations and sire marker genotype estimations},
+    journal = {Genetics Selection Evolution},
+    year = {1999},
+    url = {http://prodinra.inra.fr/?locale=fr#!ConsultNotice:11848},
+    pages = {225-237}
+    }</citation>
+	   <citation type="bibtex">@ARTICLE{GeneticsSelectionEvolution,
+    author = {Elsen, JM. and Mangin, B. and Goffinet, B. and Boichard, D. and Le Roy, P.},
+    title = {Alternative models for QTL detection in livestock. I. General introduction},
+    journal = {Genetics Selection Evolution},
+    year = {1999},
+    url = {http://prodinra.inra.fr/?locale=fr#!ConsultNotice:16516},
+    pages = {213-224}
+    }</citation>
+
+    <citation type="bibtex">@INPROCEEDINGS{JOBIM2013,
+    author = {Le Bras, Y. and ROULT, A. and Monjeaud, C. and Bahin, M. and Quenez, O. and Heriveau, C. and Bretaudeau, A. and Sallou, O. and Collin, O.},
+    title = {Towards a Life Sciences Virtual Research Environment: An e-Science initiative in Western France},
+    booktitle = {JOBIM 2013 Proceedings},
+    year = {2013},
+    url = {https://www.e-biogenouest.org/resources/128},
+    pages = {97-106}
+    }</citation>
+</citations>
+</tool>
