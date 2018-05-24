@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<tool id="cpat" name="cpat" version="1.2.1">
+<description>Run a CPAT (caluclation of the coding power) from hewamer usage </description>
+<command interpreter="bash">
+cpat.sh $fasta $hexatab $logit $output
+</command>
+<stdio>
+<exit_code range="1:" level="fatal"/>
+</stdio>
+<inputs>
+    <param name="fasta" type="data" format="fasta" label="fasta file of the putatively coding sequences" />
+    <param name="hexatab" type="data" format="data" label="cpat hexamer file" />
+    <param name="logit" type="data" format="data" label="cpat logit file" />
+</inputs>
+<outputs>
+    <data name="output" format="tabular" label="${tool.name} on $on_string"/>
+</outputs>
+<help>
+CPAT calculates the coding potential of a sequence using a hexamer usage criteria
+--
+Integrated by:
+Fabrice Legeai
+BIPAA (http://www.inra.fr/bipaa/)
+</help>
+</tool>

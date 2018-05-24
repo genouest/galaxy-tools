@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<tool id="lncRNA_filter" name="lncRNA_filter" version="1.1">
+<description>filter non coding RNA</description>
+<command interpreter="perl">
+lncRNA_filter.pl $cuff_gtf $fasta $intersect_gtf > $output
+</command>
+<inputs>
+    <param name="cuff_gtf" type="data" format="gtf,gff" label="GTF file of the cufflinks predictions" />
+    <param name="fasta" type="data" format="fasta" label="fasta file of the  cufflinks predictions" />
+    <param name="intersect_gtf" type="data" format="gtf,gff" label="GTF file of the stranded intersection of the cufflinks predictions and the annotation" />
+</inputs>
+<outputs>
+    <data name="output" format="fasta" label="${tool.name} on $on_string"/>
+</outputs>
+<help>
+Extracts putative lncRNA (not overlapping mRNA annotation, multiple exons, size over 200, less than 10% of N) 
+---
+Integrated by:
+Fabrice Legeai
+BIPAA (http://www.inra.fr/bipaa/)
+</help>
+</tool>

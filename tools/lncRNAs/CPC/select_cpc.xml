@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<tool id="select_cpc" name="select_cpc" version="1.0">
+<description>Select non coding sequences from a CPC result</description>
+<command>
+grep noncoding $cpc_res | cut -f1 | sort -u > $out
+</command>
+<inputs>
+    <param name="cpc_res" type="data" format="data" label="cpc results" />
+</inputs>
+<outputs>
+    <data name="out" format="tabular" label="list of non coding RNA ${tool.name} on $on_string"/>
+</outputs>
+<help>
+Extracts a list of non coding RNA from a CPC result
+---
+Integrated by:
+Fabrice Legeai
+BIPAA (http://www.inra.fr/bipaa/)
+</help>
+</tool>
