@@ -1,0 +1,38 @@
+<tool id="makeudb" name="USEARCH makeudb" >
+  <description>creates a UDB database from a FASTA file for usearch or ublast commands.</description>
+  <command>
+usearch 
+-$type_make
+$fasta_input -output $database 2&gt;&amp;1
+
+</command>
+ <inputs>
+     <param name="type_make" type="select" label="makeudb mode">
+			<option value="makeudb_usearch" selected="True">usearch</option>
+       	 		<option value="makeudb_ublast ">ublast</option>
+      </param>
+     <param name="fasta_input" type="data" format="fasta" label="input Fasta file" help="sequences in a FASTA file" />
+ </inputs>
+ <outputs>
+            <data name="database" format="udb" label="${type_make.value_label}_database : ${tool.name} on ${on_string}" />
+ </outputs>
+ <help>
+**What it does**
+
+The makeudb command creates a UDB database file from sequences in a FASTA file. Index parameters are set to defaults for usearch_global and usearch_local.
+
+--------
+
+**References:**
+
+USEARCH and UCLUST algorithms
+Edgar,RC (2010) Search and clustering orders of magnitude faster than BLAST, Bioinformatics 26(19), 2460-2461.
+doi: 10.1093/bioinformatics/btq461
+
+--------
+
+**Integrated by:**
+
+Cyril Monjeaud
+ </help>
+</tool>

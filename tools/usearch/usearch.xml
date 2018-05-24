@@ -1,0 +1,143 @@
+<tool id="usearch" name="USEARCH" >
+  <description>search for one (default) or a few high-identity hits to a database.</description>
+  <command>
+usearch
+
+-$options_type_alignment.type_alignment $query_input
+-id $id
+#if str( $options_type_alignment.type_alignment ) == "usearch_local" or str( $options_type_alignment.type_alignment ) == "search_local"
+-evalue $options_type_alignment.evalue
+#end if
+#if str( $options_type_alignment.type_alignment ) == "ublast":
+-evalue $options_type_alignment.evalue
+-accel $options_type_alignment.accel
+#end if
+#if str( $options_type_alignment.type_alignment ) == "usearch_global" or str( $options_type_alignment.type_alignment ) == "usearch_local" or str( $options_type_alignment.type_alignment ) == "ublast" or str( $options_type_alignment.type_alignment ) == "search_local" or str( $options_type_alignment.type_alignment ) == "search_global":
+-db $database_input
+#if str( $options_type_alignment.options_database_type.type_input ) == "dna":
+-strand $options_type_alignment.options_database_type.dna_database
+#end if
+#end if
+-$output_format $output_file
+
+&gt;/dev/null
+2&gt;$log_file
+</command>
+  <inputs>
+    <param name="query_input" type="data" format="fasta" label="Query fasta file" />
+    <param name="id" type="float" value="0.9" label="Identity threshold" help="Identity threshold must be between 0.0 and 1.0.">
+      <validator type="in_range" message="Identity threshold must be between 0.0 and 1.0." min="0.0" max="1.0"/>
+    </param>
+    <conditional name="options_type_alignment">
+      <param name="type_alignment" type="select" label="alignment mode">
+        <option value="usearch_global" selected="True">usearch_global</option>
+        <option value="usearch_local">usearch_local</option>
+        <option value="ublast">ublast</option>
+        <option value="search_local">search_local</option>
+        <option value="search_global">search_global</option>
+        <option value="cluster_fast">cluster_fast</option>
+      </param>
+      <when value="usearch_global">
+        <param name="database_input" type="data" format="fasta,udb" label="Database file" help="Accepts FASTA or UDB file format (except with search_local and search_global mode)" />
+
+    <conditional name="options_database_type">
+      <param name="type_input" type="select" label="Database content">
+        <option value="dna" selected="True">dna</option>
+        <option value="prot">prot</option>
+      </param>
+      <when value="dna">
+        <param name="dna_database" type="select" label="Strand option" >
+          <option value="plus" selected="True">plus</option>
+          <option value="both">both</option>
+        </param>
+      </when>
+      <when value="prot"></when>
+    </conditional>
+
+      </when>
+      <when value="usearch_local">
+        <param name="database_input" type="data" format="fasta,udb" label="Database file" help="Accepts FASTA or UDB file format (except with search_local and search_global mode)" />
+        <param name="evalue" type="text" value="1e-6" label="E-value threshold"/>
+      </when>
+      <when value="ublast">
+        <param name="database_input" type="data" format="fasta,udb" label="Database file" help="Accepts FASTA or UDB file format (except with search_local and search_global mode)" />
+        <param name="evalue" type="text" value="1e-6" label="E-value threshold" help="An expectation value (E-value) is the expected number of local alignments with a given score that would be found in random sequences of the same length as the query and database."/>
+        <param name="accel" type="float" value="0.5" label="search acceleration value" help="Larger values are slower and more sensitive, smaller values are faster and less sensitive"/>
+      </when>
+      <when value="search_local">
+        <param name="database_input" type="data" format="fasta,udb" label="Database file" help="Accepts FASTA or UDB file format (except with search_local and search_global mode)" />
+        <param name="evalue" type="text" value="1e-6" label="E-value threshold"/>
+      </when>
+      <when value="search_global">
+        <param name="database_input" type="data" format="fasta,udb" label="Database file" help="Accepts FASTA or UDB file format (except with search_local and search_global mode)" />
+      </when>
+      <when value="cluster_fasta"></when>
+    </conditional>
+
+
+    <param name="output_format" type="select" label="Output file format" help="More details on the help part." >
+      <option value="alnout" selected="True">aln</option>
+      <option value="uc">tabular</option>
+      <option value="fastapairs">fastapairs</option>
+      <option value="blast6out">blast6out</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data name="output_file" format="txt" label="${options_type_alignment.type_alignment}_output: ${tool.name} on ${on_string}">
+      <change_format>
+        <when input="output_format" value="uc" format="tabular" type="text" />
+        <when input="output_format" value="fastapairs" format="fasta" type="text" />
+        <when input="output_format" value="blast6out" format="tabular" type="text"/>
+      </change_format>
+    </data>
+    <data name="log_file" hidden="true" format="txt" label="${options_type_alignment.type_alignment}_log: ${tool.name} on ${on_string}" />
+  </outputs>
+  <help>
+**What it does**
+
+Searches for one (default) or a few high-identity hits to a database using global alignment. The id option is required; this specifies the minimum identity for a hit. To get more than one hit, increase -maxaccepts (see termination_options topic).
+
+--------
+
+**Outputs format:**
+
+aln : Human-readable alignments.
+
+tabular : Tab-separated text file
+
+fastapairs : fastapairs output file contains alignments in FASTA format, one alignment for each hit
+
+blast6out : compatible with the NCBI BLAST m8 and NCBI BLAST+ outfmt 6 formats
+
+
+--------
+
+**Notes:**
+
+A log file is created by this tool. You can have access by clicking on "Include Hidden Datasets", available in the history options.
+
+--------
+
+**References:**
+
+USEARCH and UCLUST algorithms
+Edgar,RC (2010) Search and clustering orders of magnitude faster than BLAST, Bioinformatics 26(19), 2460-2461.
+doi: 10.1093/bioinformatics/btq461
+
+--------
+
+**Integrated by:**
+
+Cyril Monjeaud
+
+GenOuest Bio-informatics Core Facility
+
+UMR 6074 IRISA INRIA-CNRS-UR1 Rennes (France)
+
+support@genouest.org
+
+If you use this tool in Galaxy, please cite :
+
+`Y. Le Bras, A. Roult, C. Monjeaud, M. Bahin, O. Quenez, C. Heriveau, A. Bretaudeau, O. Sallou, O. Collin, Towards a Life Sciences Virtual Research Environment : an e-Science initiative in Western France. JOBIM 2013. &lt;https://www.e-biogenouest.org/resources/128&gt;`_
+  </help>
+</tool>
