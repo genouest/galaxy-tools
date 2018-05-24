@@ -36,7 +36,7 @@ def __main__():
 		#print "cmd = "+cmd
 	        proc = subprocess.Popen( args=cmd, shell=True )
         	returncode = proc.wait()
-		i = i+2	
+		i = i+2
 
 	# execute carthagene in the tmp_dir
 
@@ -53,15 +53,15 @@ def __main__():
 	        cmd = 'rm '+file
         	proc = subprocess.Popen( args=cmd, shell=True )
 	        returncode = proc.wait()
-	
+
 	list_files = glob.glob('*')
-	for i in list_files:	
+	for i in list_files:
 		file_ext=(os.path.splitext(i)[1]).split('.')[-1]
-		file_name=os.path.basename(os.path.splitext(i)[0]) 
+		file_name=os.path.basename(os.path.splitext(i)[0])
 		file_name=file_name.replace("_", "-")
         	command='cp '+i+' '+dir+'/primary_'+output_id+'_'+file_name+'_visible_'+file_ext
 		proc = subprocess.Popen( args=command, shell=True )
-		returncode = proc.wait()	
+		returncode = proc.wait()
 
         # remove the temp dir
         #os.chdir(os.environ['GALAXY_HOME']+'/database/tmp')
@@ -71,9 +71,3 @@ def __main__():
 	shutil.rmtree( tmp_dir )
 
 if __name__ == "__main__": __main__()
-
-
-
-
-
-
