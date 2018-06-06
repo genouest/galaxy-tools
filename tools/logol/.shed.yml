@@ -1,0 +1,7 @@
+categories:
+- Sequence Analysis
+description: Logol is a pattern matching grammar language and a set of tools to search a pattern in a sequence
+homepage_url: http://logol.genouest.org/web/app.php/logol
+owner: genouest
+remote_repository_url: https://github.com/genouest/galaxy-tools/tree/master/tools/logol
+type: unrestricted

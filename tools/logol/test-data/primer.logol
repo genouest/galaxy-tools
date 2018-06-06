@@ -1,0 +1,4 @@
+def:{
+}
+mod1()==>"aaa","acgt":{_R1},?R1
+mod1()==*>SEQ1

@@ -1,0 +1,143 @@
+<?xml version="1.0"?>
+<tool id="logol_wrapper" name="Logol" version="1.7.8">
+    <description>Biological patterns matching</description>
+    <requirements>
+        <requirement type="package" version="1.7.8=1">logol</requirement>
+        <requirement type="package" version="6.0">unzip</requirement>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+
+        ## generate properties file
+        echo -e "minSplitSize=2000000\nmaxResultSize=0\nmaxMatchSize=0\nworkingDir=.\ndir.result=.\nmaxSpacerLength=0\nmaxLength=0\nminLength=2\nparentStrategy=1\nnbProcessor=1\nnbJobs=1\nmaxSolutions=100\nminTreeIndex=2\nsuffix.tool = 2" > logol.properties
+
+        &&
+
+        LogolMultiExec.sh
+        #if str( $options_input.options_input_selector ) == "model":
+            -m ${options_input.m}
+        #else
+            -g ${options_input.g}
+        #end if
+
+        -${type}
+        -s ${s}
+        -max ${max}
+
+        ${fasta}
+        ${gff}
+        ${all}
+
+        -maxmatchsize ${maxmatchsize}
+        -maxspacer ${maxspacer}
+        -lmax ${lmax}
+        -lmin ${lmin}
+
+        ${forcesplit}
+
+        -conf logol.properties
+
+        -out 'logol_results.zip'
+
+        > ${log_file}
+
+        &&
+
+        unzip logol_results.zip
+
+    ]]></command>
+
+    <inputs>
+        <conditional name="options_input">
+            <param name="options_input_selector" type="select" label="Logol pattern type">
+                <option value="model" selected="True">Logol pattern model</option>
+                <option value="grammar">Logol pattern grammar</option>
+            </param>
+            <when value="model">
+                <param argument="-m" type="data" format="txt" label="Logol pattern model" help="Pattern model designed by LogolDesigner" />
+            </when>
+            <when value="grammar">
+                <param argument="-g" type="data" format="txt" label="Logol pattern grammar" help="Logol Grammar file" />
+            </when>
+        </conditional>
+
+        <param name="type" type="select" format="text">
+            <label>Type of personal data file</label>
+            <option value="dna">DNA</option>
+            <option value="rna">RNA</option>
+            <option value="protein">PROTEIN</option>
+        </param>
+
+        <param argument="-s" type="data" format="fasta" label="Read from file" help="Fasta sequence to analyse" />
+
+        <param argument="-max" type="integer" value="100" label="Maximum number of result matches"/>
+        <param argument="-fasta" type="boolean" truevalue="-fasta" falsevalue="" label="Add fasta conversion to result archive" checked="False" value="False"/>
+        <param argument="-gff" type="boolean" truevalue="-gff" falsevalue="" label="Add gff conversion to result archive" checked="False" value="False"/>
+        <param argument="-all" type="boolean" truevalue="-all" falsevalue="" label="Search sequence in both directions" checked="False" value="False"/>
+        <param argument="-maxmatchsize" type="integer" value="0" label="Maximum size of a match (0 is no limit)"/>
+        <param argument="-maxspacer" type="integer" value="0" label="Maximum size of a spacer (0 is no limit)"/>
+        <param argument="-lmax" type="integer" value="0" label="Maximum size of a word (0 is no limit)"/>
+        <param argument="-lmin" type="integer" value="2" label="Minimum size of a word"/>
+        <param argument="-forcesplit" truevalue="-forcesplit" falsevalue="" type="boolean" label="Allow sequence cut (if several models are defined in rule, all models will look for pattern in same sequence range" checked="False" value="False"/>
+        <param name="zip" type="boolean" label="Generate zip archive with all files" checked="False" value="False" help="Zip file contains all xml and fasta/gff files if conversion is activated"/>
+
+    </inputs>
+    <outputs>
+        <data format="txt" name="log_file" label="Log : ${tool.name} on ${on_string}" />
+        <data format="zip" name="logol_results_archive" from_work_dir="logol_results.zip" label="Compressed files : ${tool.name} on ${on_string}">
+            <filter>zip</filter>
+        </data>
+        <collection name="logol_results" type="list" label="XML files: ${tool.name} on ${on_string}">
+            <discover_datasets pattern="(?P&lt;designation&gt;.+)\.xml$" ext="xml" visible="false" />
+        </collection>
+        <collection name="logol_results_gff" type="list" label="GFF files: ${tool.name} on ${on_string}">
+            <discover_datasets pattern="(?P&lt;designation&gt;.+)\.xml\.gff" ext="gff" visible="false" />
+            <filter>gff</filter>
+        </collection>
+        <collection name="logol_results_fasta" type="list" label="Fasta files: ${tool.name} on ${on_string}">
+            <discover_datasets pattern="(?P&lt;designation&gt;.+)\.xml\.fasta" ext="fasta" visible="false" />
+            <filter>fasta</filter>
+        </collection>
+    </outputs>
+    <tests>
+        <test>
+            <param name="s" value="primer.fasta" />
+            <conditional name="options_input">
+                <param name="options_input_selector" value="grammar"/>
+                <param name="g" value="primer.logol" />
+            </conditional>
+            <param name="zip" value="True" />
+            <output name="logol_results_archive" compare="sim_size" file="logol_results.zip" />
+        </test>
+        <test>
+            <param name="s" value="primer.fasta" />
+            <conditional name="options_input">
+                <param name="options_input_selector" value="grammar"/>
+                <param name="g" value="primer.logol" />
+            </conditional>
+            <param name="gff" value="True" />
+            <param name="fasta" value="True" />
+            <param name="forcesplit" value="True" />
+            <param name="all" value="True" />
+            <param name="zip" value="True" />
+            <output name="logol_results_archive" compare="sim_size" file="logol_results_multi_format.zip" />
+        </test>
+    </tests>
+
+    <help><![CDATA[
+
+Logol is a pattern matching grammar language and a set of tools to search a pattern in a sequence (nucleic or proteic).
+
+It includes a Linux command line tool and a graphical designer.
+
+http://logol.genouest.org/web/app.php/logol
+
+-------------------------------------------------------------------------
+
+Software is free and open source, under CeCILL license
+
+
+    ]]></help>
+    <citations>
+          <citation type="doi">10.1007/978-3-319-09192-1_4</citation>
+    </citations>
+</tool>
