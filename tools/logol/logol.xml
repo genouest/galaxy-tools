@@ -2,7 +2,7 @@
 <tool id="logol_wrapper" name="Logol" version="1.7.8">
     <description>Biological patterns matching</description>
     <requirements>
-        <requirement type="package" version="1.7.8=1">logol</requirement>
+        <requirement type="package" version="1.7.8">logol</requirement>
         <requirement type="package" version="6.0">unzip</requirement>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
@@ -68,7 +68,6 @@
         </param>
 
         <param argument="-s" type="data" format="fasta" label="Read from file" help="Fasta sequence to analyse" />
-
         <param argument="-max" type="integer" value="100" label="Maximum number of result matches"/>
         <param argument="-fasta" type="boolean" truevalue="-fasta" falsevalue="" label="Add fasta conversion to result archive" checked="False" value="False"/>
         <param argument="-gff" type="boolean" truevalue="-gff" falsevalue="" label="Add gff conversion to result archive" checked="False" value="False"/>
@@ -79,7 +78,6 @@
         <param argument="-lmin" type="integer" value="2" label="Minimum size of a word"/>
         <param argument="-forcesplit" truevalue="-forcesplit" falsevalue="" type="boolean" label="Allow sequence cut (if several models are defined in rule, all models will look for pattern in same sequence range" checked="False" value="False"/>
         <param name="zip" type="boolean" label="Generate zip archive with all files" checked="False" value="False" help="Zip file contains all xml and fasta/gff files if conversion is activated"/>
-
     </inputs>
     <outputs>
         <data format="txt" name="log_file" label="Log : ${tool.name} on ${on_string}" />
