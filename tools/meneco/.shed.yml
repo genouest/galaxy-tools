@@ -1,5 +1,5 @@
 name: meneco
-owner: iuc
+owner: genouest
 description: Meneco computes minimal completions to your draft network with reactions from a repair network
 homepage_url: http://bioasp.github.io/meneco/
 long_description: |
