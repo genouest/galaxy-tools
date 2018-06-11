@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<tool id="meneco" name="meneco" version="@VERSION@">
+    <description>compute minimal completions to your draft network with reactions from a repair network</description>
+    <macros>
+        <token name="@VERSION@">1.5.2</token>
+    </macros>
+    <requirements>
+        <requirement type="package" version="@VERSION@">meneco</requirement>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+meneco.py
+    --draftnet '${draftnet}'
+    #if $repairnet
+        --repairnet '${repairnet}'
+    #end if
+    --seeds '${seeds}'
+    --targets '${targets}'
+    ${enumerate} > '${output}'
+    ]]></command>
+    <inputs>
+        <param argument="--draftnet" type="data" format="xml" label="draft network" help="metabolic network in SBML format" />
+        <param argument="--repairnet" type="data" optional='true' format="xml" label="repair network" help="metabolic network in SBML format" />
+        <param argument="--seeds" type="data" format="xml" label="seeds" help="seeds in SBML format"/>
+        <param argument="--targets" type="data" format="xml" label="targets" help="targets in SBML format" />
+        <param argument="--enumerate" type="boolean" truevalue="--enumerate" falsevalue="" help="enumerate all minimal completions" />
+    </inputs>
+    <outputs>
+        <data format="txt" name="output" label="result.txt with ${tool.name} on ${on_string}" />
+    </outputs>
+    <tests>
+        <test>
+            <param name="draftnet" ftype="xml" value="ectocyc.sbml" />
+            <param name="seeds" ftype="xml" value="seeds.sbml" />
+            <param name="targets" ftype="xml" value="targets.sbml" />
+            <output name="output" file="result.txt" compare="sim_size"/>
+        </test>
+    </tests>
+    <help><![CDATA[
+
+**What it does**
+
+A qualitative approach to elaborating the bio-synthetic capacities of metabolic networks. Large-scale metabolic networks as well as measured data sets suffer from substantial incompleteness. This approach builds upon a formal method for analyzing large-scale metabolic networks mapping its principles into Answer Set Programming. The approach can then be used to check whether a drafted network provides the synthesis routes to comply with the required functionality. If this fails, the draft network can be completed by importing reactions from metabolic reference network stemming from other organisms until the obtained network provides the measured functionality.
+
+--------
+
+**Project links:**
+
+http://bioasp.github.io/meneco/
+
+    ]]></help>
+    <citations>
+        <citation type="doi">10.1371/journal.pcbi.1005276</citation>
+    </citations>
+</tool>

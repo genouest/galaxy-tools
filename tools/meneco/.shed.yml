@@ -1,0 +1,10 @@
+name: meneco
+owner: iuc
+description: Meneco computes minimal completions to your draft network with reactions from a repair network
+homepage_url: http://bioasp.github.io/meneco/
+long_description: |
+  Large-scale metabolic networks as well as measured data sets suffer from substantial incompleteness. meneco is a tool for metabolic network completion. It can be used to check whether a network provides the synthesis routes to comply with the required functionality described by the producibility of metabolites. In particular, it tests whether it is possible to synthesize so called target metabolites from a set of seed metabolites. For networks that fail this test meneco can attempt to complete the network by importing reactions from a metabolic reference database such that the resulting network provides the required functionality. meneco can identify unproducible target metabolites and computes minimal extensions to the network that satisfy the producibility constraints. Additionally, it can compute the union and intersection of all minimal networks extensions without enumerating all minimal network extensions. meneco builds upon a formal method for analyzing large-scale metabolic networks. This qualitative approach describes the bio-synthetic capacities of metabolic networks. Implementing this approach, meneco maps its principles into Answer Set Programming to express the producibility constraints for a set of metabolites.
+remote_repository_url: https://github.com/genouest/galaxy-tools/tree/master/tools/meneco
+type: unrestricted
+categories:
+- Systems Biology
