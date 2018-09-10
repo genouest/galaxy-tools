@@ -1,0 +1,78 @@
+<tool id="get_pairs" name="Separate paired and unpaired reads" version="0.2" >
+	<!-- author : lecorguille@sb-roscoff.fr -->
+	<!-- date : 20-11-12 -->
+	<!-- adapted by abretaud -->
+
+	<description>from two fastq files</description>
+
+    <requirements>
+        <requirement type="package" version="3.6">python</requirement>
+    </requirements>
+
+	<command><![CDATA[
+        #if $library.type == 'paired':
+            python '$__tool_directory__/get_pairs.py' '$library.input_left' '$library.input_right'
+        #else if $library.type == 'paired_collection'
+            python '$__tool_directory__/get_pairs.py' '$library.input.forward' '$library.input.reverse'
+        #end if
+	]]></command>
+
+	<inputs>
+        <conditional name="library">
+            <param name="type" type="select" label="Input type">
+                <option value="paired" selected="true">Independent datasets</option>
+                <option value="paired_collection">Paired-end collection</option>
+            </param>
+
+            <when value="paired">
+				<param name="input_left" type="data" format="fastqsanger" label="Forward reads" />
+				<param name="input_right" type="data" format="fastqsanger" label="Reverse reads" />
+            </when>
+
+            <when value="paired_collection">
+                <param name="input" format="fastqsanger" type="data_collection" collection_type="paired" label="Paired collection" />
+            </when>
+
+        </conditional>
+	</inputs>
+
+	<outputs>
+		<data format="fastqsanger" name="left_paired" from_work_dir="left.paired.fastq" label="${tool.name} on ${on_string}: paired forward" />
+		<data format="fastqsanger" name="right_paired" from_work_dir="right.paired.fastq" label="${tool.name} on ${on_string}: paired reverse" />
+		<data format="fastqsanger" name="left_unpaired" from_work_dir="left.unpaired.fastq" label="${tool.name} on ${on_string}: unpaired forward" />
+		<data format="fastqsanger" name="right_unpaired" from_work_dir="right.unpaired.fastq" label="${tool.name} on ${on_string}: unpaired reverse" />
+	</outputs>
+    <tests>
+        <test>
+            <conditional name="library">
+                <param name="input_left" value="r1.fastq" />
+                <param name="input_right" value="r2.fastq" />
+            </conditional>
+            <output name="left_paired" file="r1_paired.fastq" />
+            <output name="right_paired" file="r2_paired.fastq" />
+            <output name="left_unpaired" file="r1_unpaired.fastq" />
+            <output name="right_unpaired" file="r2_unpaired.fastq" />
+        </test>
+        <test>
+            <conditional name="library">
+                <param name="type" value="paired_collection" />
+                <param name="input">
+                    <collection type="paired">
+                        <element name="forward" ftype="fastq" value="r1.fastq" />
+                        <element name="reverse" ftype="fastq" value="r2.fastq" />
+                    </collection>
+                </param>
+            </conditional>
+            <output name="left_paired" file="r1_paired.fastq" />
+            <output name="right_paired" file="r2_paired.fastq" />
+            <output name="left_unpaired" file="r1_unpaired.fastq" />
+            <output name="right_unpaired" file="r2_unpaired.fastq" />
+        </test>
+    </tests>
+
+    <help><![CDATA[
+        A tool to separate paired and unpaired reads from fastq datasets.
+    ]]></help>
+    <citations>
+    </citations>
+</tool>
