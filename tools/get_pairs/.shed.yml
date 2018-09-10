@@ -1,0 +1,7 @@
+name: get_pairs
+categories:
+- Fastq Manipulation
+description: Separate paired and unpaired reads from two fastq files
+owner: genouest
+remote_repository_url: https://github.com/genouest/galaxy-tools/tree/master/tools/get_pairs
+type: unrestricted
