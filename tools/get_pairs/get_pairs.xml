@@ -1,4 +1,4 @@
-<tool id="get_pairs" name="Separate paired and unpaired reads" version="0.2" >
+<tool id="get_pairs" name="Separate paired and unpaired reads" version="0.3" >
 	<!-- author : lecorguille@sb-roscoff.fr -->
 	<!-- date : 20-11-12 -->
 	<!-- adapted by abretaud -->
