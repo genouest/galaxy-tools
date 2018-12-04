@@ -1,9 +1,12 @@
 <tool id="genosend" name="GenoSend" version="1.0.1">
     <description>export history files to your GenOuest workspace</description>
-    <command interpreter="perl"><![CDATA[
+    <requirements>
+        <requirement type="package" version="1.27">perl-yaml</requirement>
+    </requirements>
+    <command><![CDATA[
         #import re
 
-        genosend.pl '$__user_email__' '${dest}' '${logfile}'
+        perl '$__tool_directory__/genosend.pl' '$__user_email__' '${dest}' '${logfile}'
             #for $i in $files
                 #set filemame = re.sub('[^\w\-]', '_', str($i.file.element_identifier))
 
