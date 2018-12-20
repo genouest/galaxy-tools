@@ -1,44 +1,27 @@
-<tool id="carthagene" name="CarthaGene" version="1.2.3" force_history_refresh="True">
-  <description>is a genetic/radiated hybrid mapping software.</description>
-  <command interpreter="python">
-carthagene.py 
-$input_script 
-$output
-$output.id
-$__new_file_path__
-#if $data_file_option_cond.data_file_option == '1'
-#for $repeat in $data_file_option_cond.data_file_repeat
-'${repeat.data_file}' 
-'${repeat.data_file.display_name}'
-#end for
-#end if	
-  </command>
+<tool id="carthagene" name="CarthaGene" version="1.2.3+galaxy1">
+    <description>is a genetic/radiated hybrid mapping software.</description>
+    <command><![CDATA[
 
-  <inputs>
-  <!-- Input script -->	
-  <param name="input_script" type="data" format="txt" label="Select your script" help="The script or the set of commands to be processed by CarthaGene" />
+        #for $data_file in $data_files
+            #set escaped_element_identifier = re.sub('[^\w\-\s]', '_', str($data_file.element_identifier))
+            ln -s '${data_file.data_file}' '${escaped_element_identifier}' &&
+        #end for
 
-  <!-- Input data associated with the script-->
-  <conditional name="data_file_option_cond">	
-    <param name="data_file_option" type="select" label="Have you some data file associated with your script?" help="The name of the file in your script has to be the same as the file in your history">
-      <option value="0">No</option>
-      <option value="1">Yes</option>
-    </param>
-    <when value="0"></when>
-    <when value="1">
-      <repeat name="data_file_repeat" title="Data associated (loaded in the script)" min="1" >
-        <param name="data_file" type="data" format="tabular,txt" label="Data file" help="Data loaded in the script" />
-      </repeat>
-    </when>
-  </conditional>
+        cat '$input_script' | carthagene > '$output'
+    ]]></command>
 
-  </inputs>
+    <inputs>
+        <!-- Input script -->
+        <param name="input_script" type="data" format="txt" label="Select your script" help="The script or the set of commands to be processed by CarthaGene" />
 
-  <outputs>
-      <data format="txt"  name="output" label="${tool.name} on ${on_string}: results.txt" />
-  </outputs>
-  <help>
+        <!-- Input data associated with the script-->
+        <param name="data_files" type="data" format="tabular,txt" multiple="true" label="Data associated (loaded in the script)" help="Data loaded in the script" />
+    </inputs>
 
+    <outputs>
+        <data format="txt"  name="output" label="${tool.name} on ${on_string}: results.txt" />
+    </outputs>
+    <help><![CDATA[
 .. class:: infomark
 
 **What it does**
@@ -49,23 +32,6 @@ CarthaGène is a genetic/radiated hybrid mapping software. CarthaGene looks for 
 
 **Project link:**
 
-`http://www7.inra.fr/mia/T/CarthaGene/ &lt;http://www7.inra.fr/mia/T/CarthaGene/&gt;`_ .
-
---------
-
-**Integrated by:**
-
-Claudia Heriveau
-
-GenOuest Bio-informatics Core Facility
-
-UMR 6074 IRISA INRIA-CNRS-UR1 Rennes (France)
-
-support@genouest.org
-
-If you use this tool in Galaxy, please cite :
-
-`Y. Le Bras, A. Roult, C. Monjeaud, M. Bahin, O. Quenez, C. Heriveau, A. Bretaudeau, O. Sallou, O. Collin, Towards a Life Sciences Virtual Research Environment : an e-Science initiative in Western France. JOBIM 2013. &lt;https://www.e-biogenouest.org/resources/128&gt;`_
-  </help>
+`http://www7.inra.fr/mia/T/CarthaGene/ <http://www7.inra.fr/mia/T/CarthaGene/>`_.
+    ]]></help>
 </tool>
-
