@@ -1,10 +1,14 @@
 <tool id="carthagene" name="CarthaGene" version="1.2.3+galaxy1">
     <description>is a genetic/radiated hybrid mapping software.</description>
-    <command><![CDATA[
+    <command detect_errors="exit_code"><![CDATA[
+        . /local/env/envcarthagene-1.2.3.sh &&
+        . /local/env/envactivetcvl-8.5.sh &&
+
+        #import re
 
         #for $data_file in $data_files
-            #set escaped_element_identifier = re.sub('[^\w\-\s]', '_', str($data_file.element_identifier))
-            ln -s '${data_file.data_file}' '${escaped_element_identifier}' &&
+            #set escaped_element_identifier = re.sub('[^\w\-\s.]', '_', str($data_file.element_identifier))
+            ln -s '${data_file}' '${escaped_element_identifier}' &&
         #end for
 
         cat '$input_script' | carthagene > '$output'
