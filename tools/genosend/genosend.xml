@@ -7,17 +7,16 @@
         #import re
 
         perl '$__tool_directory__/genosend.pl' '$__user_email__' '${dest}' '${logfile}'
-            #for $i in $files
-                #set filemame = re.sub('[^\w\-]', '_', str($i.file.element_identifier))
 
-                '${i.file}' '${i.file.hid}_${filemame}.${i.file.datatype.file_ext}'
-            #end for
+        #for $i in $files
+            #set filemame = re.sub('[^\w\-]', '_', str($i.element_identifier))
+
+            '${i}' '${i.hid}_${filemame}.${i.datatype.file_ext}'
+        #end for
     ]]></command>
     <inputs>
-        <repeat name="files" title="Files to export" min="1">
-                <param name="file" type="data" format="data" label="History file"/>
-        </repeat>
-        <param name="dest" type="text" size="120" value="/home/genouest/" label="Destination folder" help="Must be writable by galaxy user (repository with chmod 777)" />
+	    <param name="files" type="data" multiple="true" label="Files to copy"/>
+    	<param name="dest" type="text" size="120" value="/home/genouest/" label="Destination folder" help="Must be writable by galaxy user (repository with chmod 777)" />
     </inputs>
     <outputs>
         <data name="logfile" format="txt" />

@@ -11,16 +11,20 @@ Created by Cyril MONJEAUD
 =cut
 
 use strict;
-use File::Copy;
 use File::Basename;
+use File::Copy;
+use File::Spec;
 
 # allowed path
-my @allowed_paths = ('/home/', '/omaha-beach/', '/groups/', '/db/');
+my @allowed_paths = ('/home/', '/omaha-beach/', '/groups/', '/db/', '/bipaa-data/', '/scratch');
 
 # arguments recuperation
 my ($src, $dest, $symlink)=@ARGV;
 die("Absolute path required\n") unless $src =~ /^\//;
 die("Paths containing '..' are disallowed\n") if $src =~ /\/\.\.\//;
+
+# Make sure the path is absolute
+$src = File::Spec->rel2abs($src);
 
 # allowed path transformation
 my $ok=0;
@@ -35,7 +39,7 @@ foreach my $dir (@allowed_paths) {
 
 # extract and print file name
 my $basename = basename($src);
-print "ORIGINAL NAME : ".$basename;
+print "Original name: ".$basename;
 
 
 die("Not an allowed source path\n") unless $ok;

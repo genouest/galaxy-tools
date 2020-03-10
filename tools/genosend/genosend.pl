@@ -20,9 +20,14 @@ my $dirname = dirname(__FILE__);
 my ($email, $dest, $logfile, @files)=@ARGV;
 die("Absolute path required\n") unless $dest =~ /^\//;
 die("Paths containing '..' are disallowed\n") if $dest =~ /\/\.\.\//;
-die("Only /home/*, /groups/* and /omaha-beach/* paths are allowed\n") unless $dest =~ /^\/home/ or $dest =~ /^\/groups/ or $dest =~ /^\/omaha-beach/ or $dest =~ /^\/web\/geno454/;
+
+# Make sure the path is absolute
+$dest = File::Spec->rel2abs($dest);
+
+die("Only /home/*, /groups/* and /omaha-beach/* paths are allowed\n") unless $dest =~ /^\/home\// or $dest =~ /^\/groups\// or $dest =~ /^\/omaha-beach\// or $dest =~ /^\/scratch\//;
 die("Destination folder does not exist: $dest\n") unless -e $dest;
 die("Destination path is not a folder: $dest\n") unless -d $dest;
+
 
 # CP
 open(OUT, ">$logfile") or die($!);

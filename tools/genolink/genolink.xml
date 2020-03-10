@@ -1,59 +1,26 @@
 <tool id="genolink" name="GenoLink" version="1.0.0">
     <description>imports file from your GenOuest workspace to the current history WITHOUT copying</description>
-    <command interpreter="perl"><![CDATA[
-        genolink.pl '${source}' '${dest}'
+    <requirements>
+        <requirement type="package" version="5.26.2">perl</requirement>
+    </requirements>
+    <command><![CDATA[
+        perl '$__tool_directory__/genolink.pl' '${source}' '${dest}'
     ]]></command>
     <inputs>
         <param name="source" type="text" size="100" value='/home/genouest/' label="Complete pathname" help="example : /home/genouest/username/mydir/myfic.ext" />
-        <param name="extension" type="select" label="Format file" help="if your format file is not in this list, please select 'other' and change manually the datatype after the upload ">
-            <option value="txt">text</option>
-            <option value="tabular">tabular</option>
-            <option value="fasta">fasta</option>
-            <option value="csfasta">csfasta</option>
-            <option value="fastq">fastq</option>
-            <option value="fastq.gz">fastq.gz</option>
-            <option value="sff">sff</option>
-            <option value="bam">bam</option>
-            <option value="bed">bed</option>
-            <option value="sam">sam</option>
-            <option value="json">json</option>
-            <option value="qual">qual</option>
-            <option value="gff">gff</option>
-            <option value="vcf">vcf</option>
-            <option value="xsq">xsq</option>
-            <option value="data">other</option>
-        </param>
     </inputs>
     <outputs>
-        <data format="txt" name="dest">
-            <change_format>
-                <when input="extension" value="tabular" format="tabular" />
-                <when input="extension" value="fasta" format="fasta" />
-                <when input="extension" value="csfasta" format="csfasta" />
-                <when input="extension" value="fastq" format="fastq" />
-                <when input="extension" value="fastq.gz" format="fastq.gz" />
-                <when input="extension" value="sff" format="sff" />
-                <when input="extension" value="bam" format="bam" />
-                <when input="extension" value="sam" format="sam" />
-                <when input="extension" value="bed" format="bed" />
-                <when input="extension" value="json" format="json" />
-                <when input="extension" value="qual" format="qual" />
-                <when input="extension" value="gff" format="gff" />
-                <when input="extension" value="vcf" format="vcf" />
-                <when input="extension" value="xsq" format="xsq" />
-                <when input="extension" value="other" format="data" />
-            </change_format>
-         </data>
+        <data auto_format="true" name="dest" label="${tool.name}: ${source}" />
     </outputs>
     <help><![CDATA[
 **What it does**
 
-GenoLink imports a file from your GenOuest Home / omaha-beach / groups to the current history. There is no copy, so the upload time is very short. Your uploaded file is neither deleted nor altered in your Home.
+GenoLink imports a file from the Genouest cluster (/home, /omaha-beach, /groups, /scratch) into the current history. There is no copy, so the upload time is very short. Your uploaded file is neither deleted nor altered in your Home.
 
 This tool is only working with one input file. The tool crashes if a directory is found.
 
 Your file must be readable for others.
 
+If you move or remove the original file from the cluster, it will not be usable in Galaxy anymore.
     ]]></help>
 </tool>
-

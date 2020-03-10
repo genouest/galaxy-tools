@@ -1,9 +1,14 @@
-<tool id="genocopy" name="GenoCopy" version="1.0.1" force_history_refresh="True">
+<tool id="genocopy" name="GenoCopy" version="1.0.1">
     <description>import a file or directory from your Genocluster worspace to the current history</description>
-    <command interpreter="perl"><![CDATA[
-        genocopy.pl '${source}' '${log}' '${log.id}' '$__new_file_path__' '${options_merge.merge}'
+    <requirements>
+        <requirement type="package" version="1.29">perl-yaml</requirement>
+        <requirement type="package" version="0.45">perl-file-copy-recursive</requirement>
+    </requirements>
+    <command><![CDATA[
+        mkdir copied &&
+        perl '$__tool_directory__/genocopy.pl' '${source}' '${report}' './copied/' '${options_merge.merge}'
         #if str( $options_merge.merge ) == 'true'
-                ${options_merge.rm_header}
+            ${options_merge.rm_header}
         #end if
     ]]></command>
     <inputs>
@@ -18,19 +23,20 @@
             <when value="true">
                 <param name="rm_header" type="integer" value="0" label="Header lines to delete" help="Number of lines to delete at the begin for each file"/>
             </when>
-         </conditional>
-</inputs>
-<outputs>
-    <data format="txt" name="log" />
-</outputs>
-<help><![CDATA[
+        </conditional>
+    </inputs>
+    <outputs>
+        <data format="txt" name="report" label="GenoCopy">
+            <discover_datasets recurse="true" pattern="__designation_and_ext__" directory="copied" visible="true" />
+        </data>
+    </outputs>
+    <help><![CDATA[
 **What it does**
 
-GenoCopy imports a file or a directory content from your Genocluster Home / omaha-beach  / groups to the current history. Unlike GenoLink, there is a copy, so the upload time is longer. Your uploaded file is neither deleted nor altered in your Home.
+GenoCopy imports a file or a directory content from the Genouest cluster (/home, /omaha-beach, /groups, /scratch) to the current history. Unlike GenoLink, there is a copy, so the upload time is longer. Your uploaded file is neither deleted nor altered in your Home.
 
-This tool is working with input file or directory. All sub directories are ignored, only files in the directory are treated.
+This tool is working with input file or directory.
 
 Files must be readable by others.
-
-]]></help>
+    ]]></help>
 </tool>
