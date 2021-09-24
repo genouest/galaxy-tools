@@ -6,7 +6,7 @@
        #set $ins = ""
        #for $input in $input_gcms_files
          #if $input
-           #set $ins = $ins + " " + $input
+           #set $ins = $ins + " " + str($input)
          #end if
         #end for
 
