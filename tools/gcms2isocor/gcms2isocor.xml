@@ -1,0 +1,30 @@
+<tool id="gcms2isocor" name="Conversion GCMS PostRun Analysis to IsoCor" version="0.1.0" profile="21.05">
+    <requirements>
+        <requirement type="package" version="8.0.121">openjdk</requirement> 
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+      java -jar '$__tool_directory__/P2M2WorkflowsTools-assembly-0.1.jar' 
+       #for $input in $input_gcms_files
+         #if $input
+           $input
+         #end if
+        #end for
+        --out '$output_isocor'
+    ]]></command>
+    <inputs>
+        <param type="data" name="input_gcms_files" multiple="true" format="txt" />
+    </inputs>
+    <outputs>
+        <data name="output_isocor" format="tsv" />
+    </outputs>
+    <tests>
+        <test>
+            <param name="input_gcms_files" value="13CPROT1.txt,13CPROT2.txt"/>
+            <output name="output_isocor" file="input_isocor.tsv"/>
+        </test>
+    </tests>
+    <help><![CDATA[
+        Conversion from GCMS PostRun Analysis to Isocore.
+	Processes GCMS files with the following categories: Header, MS Quantitative Results.
+    ]]></help>
+</tool>
