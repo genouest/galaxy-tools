@@ -10,7 +10,7 @@
          #end if
         #end for
 
-        java -jar '$__tool_directory__/P2M2WorkflowsTools-assembly-0.1.jar' '$ins' --out '$output_isocor'
+        java -jar '$__tool_directory__/P2M2WorkflowsTools-assembly-0.1.jar' $ins --out '$output_isocor'
     ]]></command>
     <inputs>
         <param type="data" name="input_gcms_files" multiple="true" format="txt" />
