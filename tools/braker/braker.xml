@@ -1,0 +1,144 @@
+<tool id="braker" name="Braker genome annotation" profile="20.01" version="@TOOL_VERSION@+galaxy@VERSION_SUFFIX@">
+    <description></description>
+    <macros>
+        <import>macros.xml</import>
+    </macros>
+    <requirements>
+        <expand macro="requirements" />
+    </requirements>
+    <version_command><![CDATA[braker.pl --version; $GENEMARK_PATH/gmes_petap.pl | grep version]]></version_command>
+    <command><![CDATA[
+if [ -z "\$GENEMARK_PATH" ] ; then echo "GeneMark is not installed on this Galaxy server." >&2 ; exit 1 ; fi &&
+if [ ! -f "\$GENEMARK_PATH/gmes_petap.pl" ] ; then echo "GeneMark is not installed properly on this Galaxy server." >&2 ; exit 1 ; fi &&
+## GeneMark only search for license in ~/.gm_key
+cp '${genemark_license}' ~/.gm_key &&
+
+braker.pl
+--genome '${genome}'
+
+$softmasking
+
+#if $evidences.bam:
+    --bam ${evidences.bam}
+#end if
+
+#if $evidences.prot_seq:
+    --prot_seq ${evidences.prot_seq}
+#end if
+
+## No hints, use esmode
+#if not $evidences.bam and not $evidences.prot_seq
+    --esmode
+#end if
+
+#if $output_format == 'gff3'
+    --gff3
+#end if
+
+$genemark.fungus
+
+$augustus.crf
+--rounds $augustus.rounds
+
+$advanced.UTR
+
+$advanced.filterOutShort
+
+#if $advanced.eval:
+    --eval ${advanced.eval}
+#end if
+
+#if $advanced.eval_pseudo:
+    --eval_pseudo ${advanced.eval_pseudo}
+#end if
+
+--cores  \${GALAXY_SLOTS:-2}
+    ]]></command>
+    <inputs>
+        <param name="genemark_license" type="data" format="txt" label="GeneMark license file" help="Braker uses GeneMark, which is not a free software, to use it download and unzip a license from http://topaz.gatech.edu/GeneMark/license_download.cgi (ES/ET/EP version). GeneMark needs to be installed manually by Galaxy administrators." />
+
+        <param argument="--genome" type="data" format="fasta" label="Assembly to annotate" help="The assembly should be soft-masked (with RepeatMasker for example)" />
+
+        <param argument="--softmasking" type="boolean" checked="false" truevalue="--softmasking" falsevalue="" label="Genome sequence is soft-masked" />
+
+        <section name="evidences" expanded="true" title="Evidences">
+            <param argument="--bam" type="data" format="bam" optional="true" label="RNA-seq mapped to genome to train Augustus/GeneMark" />
+            <param argument="--prot_seq" type="data" format="fasta" optional="true" label="Proteins to map to genome" />
+        </section>
+
+        <section name="genemark" expanded="true" title="GeneMark">
+            <param argument="--fungus" type="boolean" checked="false" truevalue="--fungus" falsevalue="" label="Fungal genome" help="GeneMark-EX option, run algorithm with branch point model (most useful for fungal genomes)" />
+        </section>
+
+        <section name="augustus" expanded="true" title="Augustus">
+            <param argument="--crf" type="boolean" checked="false" truevalue="--crf" falsevalue="" label="Use CRF training for Augustus" help="Alternate training method (Conditional Random Field)" />
+            <param argument="--rounds" type="integer" value="5" label="Number of optimization rounds used in optimize_augustus.pl" />
+        </section>
+
+        <section name="advanced" expanded="false" title="Advanced">
+            <param argument="--UTR" type="boolean" checked="false" truevalue="--UTR=on" falsevalue="" label="" help="Experimental, requires RNASeq data (bam) and a softmasked genome" />
+            <param argument="--filterOutShort" type="boolean" checked="false" truevalue="--filterOutShort" falsevalue="" label="Filter out too short traingin gene predicted by GeneMark-EX" />
+            <param argument="--eval" type="data" format="gtf" optional="true" label="Reference set to evaluate predictions" help="using evaluation scripts from GaTech" />
+            <param argument="--eval_pseudo" type="data" format="gff3" optional="true" label="File with pseudogenes that will be excluded from accuracy evaluation" />
+        </section>
+
+        <param name="output_format" type="select" label="Output format">
+            <option value="gtf" selected="true">GTF</option>
+            <option value="gff3">GFF3</option>
+        </param>
+    </inputs>
+    <outputs>
+        <data name='output_gtf' format='gtf' label="${tool.name} on ${on_string}: annotation" from_work_dir="braker/braker.gtf">
+            <filter>output_format == 'gtf'</filter>
+        </data>
+        <data name='output_gff' format='gff3' label="${tool.name} on ${on_string}: annotation" from_work_dir="braker/braker.gff3">
+            <filter>output_format == 'gff3'</filter>
+        </data>
+    </outputs>
+    <tests>
+        <!-- Disable next 2 for CI (it should pass locally)-->
+        <!--test>
+            <param name="genome" value="genome_masked.fa" />
+            <param name="softmasking" value="true" />
+            <param name="genemark_license" value="genemark_license.gm_key" />
+            <output name="output_gtf" file="out_genome/braker.gtf" sort="true" />
+        </test>
+        <test>
+            <param name="genome" value="genome_masked.fa" />
+            <param name="softmasking" value="true" />
+            <param name="genemark_license" value="genemark_license.gm_key" />
+            <param name="output_format" value="gff3" />
+            <output name="output_gff" file="out_genome/braker.gff3" sort="true" />
+        </test-->
+        <!-- following 2 tests throw an error because test dataset is too small  -->
+        <!--test>
+            <param name="genome" value="genome_masked.fa" />
+            <param name="softmasking" value="true" />
+            <param name="genemark_license" value="genemark_license.gm_key" />
+            <section name="evidences">
+                <param name="bam" value="SRR7458692.bam" />
+            </section>
+            <output name="output_gtf" file="out_bam/braker.gtf" sort="true" />
+        </test>
+        <test>
+            <param name="genome" value="genome_masked.fa" />
+            <param name="softmasking" value="true" />
+            <param name="genemark_license" value="genemark_license.gm_key" />
+            <section name="evidences">
+                <param name="prot_seq" value="proteins.fa" />
+            </section>
+            <output name="output_gtf" file="out_prot/braker.gtf" sort="true" />
+        </test-->
+    </tests>
+    <help><![CDATA[
+Braker_
+-------
+
+Braker_ allows for fully automated training of the gene prediction tools GeneMark-EX and AUGUSTUS from RNA-Seq and/or protein homology information, and that integrates the extrinsic evidence from RNA-Seq and protein homology information into the prediction.
+
+In contrast to other available methods that rely on protein homology information, BRAKER reaches high gene prediction accuracy even in the absence of the annotation of very closely related species and in the absence of RNA-Seq data.
+
+.. _Braker: https://github.com/Gaius-Augustus/BRAKER
+    ]]></help>
+    <expand macro="citations" />
+</tool>
