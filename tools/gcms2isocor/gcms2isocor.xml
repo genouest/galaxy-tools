@@ -15,7 +15,7 @@
         <param type="data" name="input_gcms_files" multiple="true" format="txt" />
     </inputs>
     <outputs>
-        <data name="output_isocor" format="tsv" />
+        <data name="output_isocor" format="tabular" />
     </outputs>
     <tests>
         <test>
