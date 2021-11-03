@@ -17,3 +17,4 @@ tools/reactions2sbml
 tools/tools/qtlmap
 tools/tgdb2sbml
 tools/ziptool
+tools/peptimapper
