@@ -1,9 +1,9 @@
-<tool id="openlabcds2csv" name="Converting multiple OpenLabCDS Text Files to a CSV summary file" version="0.1.0" profile="20.09">
-    <requirements>
-        <requirement type="package" version="8.0.121">openjdk</requirement>
+<tool id="openlabcds2csv" name="Converting multiple OpenLabCDS Text Files to a CSV summary file" version="1.0.0" profile="20.09">
+     <requirements>	
+        <container type="docker">inraep2m2/p2m2tools:0.1.5</container>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
-      java -cp '$__tool_directory__/P2M2WorkflowsTools-assembly-0.1.4.jar' fr.inrae.metabolomics.p2m2.OpenLabCDS2CsvCommand
+      p2m2tools fr.inrae.metabolomics.p2m2.command.OpenLabCDS2CsvCommand
        #for $input in $input_openlabscds_files
          #if $input
            $input
