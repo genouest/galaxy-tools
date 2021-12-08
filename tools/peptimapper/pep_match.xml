@@ -59,7 +59,6 @@ mv '${tagsfile}'.\$(basename '${fastafile}').trans.${D}.hit.${t}.${T}.${d}.clust
             <param name="t" value="2"/>
             <param name="T" value="2"/>
             <param name="d" value="5000"/>
-            <output name="transfile" file="pepmatch/Nuc_genome_small.fasta.trans"/>
             <output name="hitsfile" file="pepmatch/sample_02.mgf.3.5.tag.Nuc_genome_small.fasta.0.5.hit"/>
             <output name="clustersfile" file="pepmatch/sample_02.mgf.3.5.tag.Nuc_genome_small.fasta.0.5.hit.2.2.5000.clust"/>
         </test>
