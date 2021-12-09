@@ -1,0 +1,11 @@
+categories: [Proteomics]
+description: "Proteogenomics workflow for the expert annotation of eukaryotic genomes"
+homepage_url: https://bmcgenomics.biomedcentral.com/articles/10.1186/s12864-019-5431-9
+long_description: Peptimapper is a proteogenomics workflow for the expert annotation of eukaryotic genomes.
+owner: genouest
+auto_tool_repositories:
+  name_template: "{{ tool_id }}"
+  description_template: "{{ tool_name }} (from the Peptimapper tool suite)"
+suite:
+  name: "suite_peptimapper"
+  description: Peptimapper is a proteogenomics workflow for the expert annotation of eukaryotic genomes.
