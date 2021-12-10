@@ -1,4 +1,4 @@
-<tool id="PepNovoTag" name="PepNovoTag" version="3.1">
+<tool id="peptimapper_pep_novo_tag" name="PepNovoTag" version="3.1">
     <description>generate short Peptide Sequence Tags (PSTs) from MS/MS spectra file</description>
     <requirements>
         <container type="docker">dockerprotim/peptimapper</container>

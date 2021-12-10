@@ -1,4 +1,4 @@
-<tool id="ClustToGFF" name="ClustToGFF" version="2.0">
+<tool id="peptimapper_clust_to_gff" name="ClustToGFF" version="2.0">
     <description>add clusters locations into GFF files to be integrated into a genome viewer</description>
     <requirements>
         <container type="docker">dockerprotim/peptimapper</container>

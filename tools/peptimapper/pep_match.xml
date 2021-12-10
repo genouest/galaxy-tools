@@ -1,4 +1,4 @@
-<tool id="PepMatch" name="PepMatch" version="2.0">
+<tool id="peptimapper_pep_match" name="PepMatch" version="2.0">
     <description>align PSTs on sequence and cluster hits</description>
     <requirements>
         <container type="docker">dockerprotim/peptimapper</container>
