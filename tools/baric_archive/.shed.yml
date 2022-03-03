@@ -1,0 +1,14 @@
+categories: [Data Source]
+description: A data source tool to fetch data from a BARIC Archive server.
+homepage_url: https://www.cesgo.org/catibaric/
+long_description: A data source tool to fetch data from a BARIC Archive server.
+owner: genouest
+remote_repository_url: https://github.com/genouest/galaxy-tools/tree/master/tools/baric_archive
+type: unrestricted
+
+auto_tool_repositories:
+  name_template: "{{ tool_id }}"
+  description_template: "{{ tool_name }} (from the BARIC archive tool suite)"
+suite:
+  name: "suite_baric_archive"
+  description: A data source tool to fetch data from a BARIC Archive server.
