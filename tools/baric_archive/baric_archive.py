@@ -4,10 +4,10 @@
 import os
 import socket
 import sys
+import urllib
 from json import dumps, loads
-
-from six.moves.urllib.parse import urlencode, urlparse
-from six.moves.urllib.request import urlopen
+from urllib.parse import urlparse
+from urllib.request import urlopen
 
 from galaxy.datatypes import sniff
 from galaxy.datatypes.registry import Registry
@@ -101,7 +101,7 @@ def __main__():
             if not URL_method or URL_method == 'get':
                 page = urlopen(cur_URL)
             elif URL_method == 'post':
-                page = urlopen(cur_URL, urlencode(params).encode("utf-8"))
+                page = urlopen(cur_URL, urllib.parse.urlencode(params).encode("utf-8"))
         except Exception as e:
             stop_err('The remote data source application may be off line, please try again later. Error: %s' % str(e), json_file)
         if max_file_size:
