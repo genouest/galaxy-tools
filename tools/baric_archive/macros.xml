@@ -22,7 +22,7 @@
             <request_param galaxy_name="label" remote_name="label" missing="Unknown title" />
         </request_param_translation>
         <uihints minwidth="800"/>
-        <outputs>
+        <outputs provided_metadata_style="legacy">
             <data name="output" format="auto" label="$label"/>
         </outputs>
         <options sanitize="False" refresh="True"/>
