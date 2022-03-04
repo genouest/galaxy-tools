@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<macros>
+    <token name="@TOOL_VERSION@">1.1.0</token>
+
+    <xml name="tool_form" token_server="Rennes" token_url="https://bipaa.genouest.org/archive/">
+        <description>@SERVER@</description>
+        <requirements>
+            <requirement type="package" version="3.8">python</requirement>
+        </requirements>
+        <edam_operations>
+            <edam_operation>operation_0224</edam_operation>
+        </edam_operations>
+        <command><![CDATA[
+            python '$__tool_directory__/baric_archive.py' '$output' '$__user_email__' $__user_id__ $__app__.config.output_size_limit
+        ]]></command>
+        <inputs action="@URL@" check_values="false" method="get">
+            <display>Browse BARIC Archive (@SERVER@) $GALAXY_URL</display>
+            <param name="user_email" type="hidden" value="$__user_email__" />
+            <param name="user_id" type="hidden" value="$__user_id__" />
+        </inputs>
+        <request_param_translation>
+            <request_param galaxy_name="label" remote_name="label" missing="Unknown title" />
+        </request_param_translation>
+        <uihints minwidth="800"/>
+        <outputs provided_metadata_style="legacy">
+            <data name="output" format="auto" label="$label"/>
+        </outputs>
+        <options sanitize="False" refresh="True"/>
+    </xml>
+</macros>

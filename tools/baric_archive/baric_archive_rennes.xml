@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<tool name="BARIC Archive" id="baric_archive_rennes" tool_type="data_source" profile="20.01" version="@TOOL_VERSION@">
+    <macros>
+        <import>macros.xml</import>
+    </macros>
+    <expand macro="tool_form" server="Rennes" url="https://bipaa.genouest.org/archive/" />
+</tool>
