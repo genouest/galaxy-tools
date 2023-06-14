@@ -1,0 +1,159 @@
+<?xml version="1.0"?>
+<tool id="helixer" name="Helixer"  version="0.3.1" profile="21.05">
+    <description>Setup and train models for de novo prediction of gene structure</description>
+    <macros>
+        <import>macros.xml</import>
+    </macros>
+
+    <requirements>	
+        <container type="docker">gglyptodon/helixer-docker:helixer_v0.3.1_cuda_11.2.0-cudnn8</container>
+    </requirements>
+
+    <command detect_errors="exit_code"><![CDATA[
+        ## mkdir -p data/out '$output.files_path' &&
+        ## chmod o+w data/out '$output.files_path' &&
+        Helixer/scripts/fetch_helixer_models.py &&
+        ## cd shared/out/ &&
+
+        Helixer.py 
+        -t \${GALAXY_SLOTS:-1}
+        --fasta-path '$input'
+        --species '$species'
+        --gff-output-path '$output'
+        --batch-size $predictions_parameters.batch_size
+        --window-size $Post_processing.window_size
+        --min-coding-length $Post_processing.min_coding_length
+        --edge-threshold $Post_processing.edge_threshold
+        --peak-threshold $Post_processing.peak_threshold
+        #if str( $lineage.lineages ) == "none":
+        #elif str( $lineage.lineages ) == "land_plant"
+            --subsequence-length $lineage.subsequence_length
+            --overlap-offset $lineage.overlap_offset
+            --overlap-core-length $lineage.overlap_core_length
+        #elif str( $lineage.lineages ) == "vertebrate":
+            --subsequence-length $lineage.subsequence_length
+            --overlap-offset $lineage.overlap_offset
+            --overlap-core-length $lineage.overlap_core_length
+        #elif str( $lineage.lineages ) == "invertebrate":
+            --subsequence-length $lineage.subsequence_length
+            --overlap-offset $lineage.overlap_offset
+            --overlap-core-length $lineage.overlap_core_length
+        #elif str( $lineage.lineages ) == "fungi":
+            --subsequence-length $lineage.subsequence_length
+            --overlap-offset $lineage.overlap_offset
+            --overlap-core-length $lineage.overlap_core_length
+        #end if
+    ]]></command>
+    <inputs>
+        <param argument="--fasta-path" name="genomic_fasta" type="data" format="fasta,fasta.gz" label="Genomic sequence (FASTA)"></param>
+        <conditional name="lineage">
+            <param argument="--lineage" name="lineages" type="select" label="Available ineages" help="Choose model to use fot he annotation between  land plant, vertebrates, invertebrates and fungi">
+                <option value="land_plant">land plant</option>
+                <option value="vertebrate">vertebrate </option>
+                <option value="invertebrate">invertebrate </option>
+                <option value="fungi">fungi </option>
+            </param>
+            <when value="land_plant">
+                <param argument="--subsequence-length" type="integer" min="0" max="213840" value="106920" label="" help="For genomes with large genes (>20kpb) it is recommended to increase this paramter. PArticularly common in vertebrates and invertebrates"></param>
+                <param argument="--overlap-offset" type="integer" min="0" value="53460" label="overlap_offset"></param>
+                <param argument="--overlap-core-length" type="integer" min="0" value="80190" label="overlap_core_length" help="Smaller values may lead to better ' 'predictions but will take longer. "></param>
+            </when>
+            <when value="vertebrate">
+                <param argument="--subsequence-length" type="integer" min="0" max="213840" value="213840" label="" help="For genomes with large genes (>20kpb) it is recommended to increase this paramter. PArticularly common in vertebrates and invertebrates"></param>
+                <param argument="--overlap-offset" type="integer" min="0" value="106920" label="overlap_offset"></param>
+                <param argument="--overlap-core-length" type="integer" min="0" value="160380" label="overlap_core_length" help="Smaller values may lead to better ' 'predictions but will take longer. "></param>
+            </when>
+            <when value="invertebrate">
+                <param argument="--subsequence-length" type="integer" min="0" max="213840" value="213840" label="" help="For genomes with large genes (>20kpb) it is recommended to increase this paramter. PArticularly common in vertebrates and invertebrates"></param>
+                <param argument="--overlap-offset" type="integer" min="0" value="106920" label="overlap_offset"></param>
+                <param argument="--overlap-core-length" type="integer" min="0" value="160380" label="overlap_core_length" help="Smaller values may lead to better ' 'predictions but will take longer. "></param>
+            </when>
+            <when value="fungi">
+                <param argument="--subsequence-length" type="integer" min="0" max="213840" value="21384" label="" help="For genomes with large genes (>20kpb) it is recommended to increase this paramter. PArticularly common in vertebrates and invertebrates"></param>
+                <param argument="--overlap-offset" type="integer" min="0" value="106920" label="overlap_offset" help=""></param>
+                <param argument="--overlap-core-length" type="integer" min="0" value="160380" label="overlap_core_length" help="Smaller values may lead to better ' 'predictions but will take longer. "></param>
+            </when>
+        </conditional>
+        <param argument="--species" type="text" value="" label="Species" help="Enter the species">
+            <sanitizer invalid_char="">
+                <valid initial="string.letters,string.digits">
+                    <add value="_" />
+                </valid>
+            </sanitizer>
+            <validator type="regex">[0-9a-zA-Z_]+</validator>
+        </param>
+        <section name="predictions_parameters" title="Predictions parameters">
+            <param argument="--batch-size" type="integer" min="0" max="100" value="8" label="batch_size" help="The batch size for the raw predictions in TensorFlow"></param>
+            <conditional name="option_overlap">
+                <param name="Option_overlaps" type="select" label="Advanced options for overlaps parameters" >
+                    <option value="yes">Show</option>
+                    <option value="no">Hide</option>
+                </param>
+                <when value="no">
+                    <param argument="--no-overlap" type="boolean" truevalue="--no-overlap" falsevalue="" checked="false" label="No overlaps" />
+                </when>
+                <when value="yes">
+                    <section name="Overlap" title="Overlap parameters">
+                        <param argument="--overlap-offset" type="integer" label="Offset of the overlap processing" help="Smaller values may lead to better predictions but will take longer.The subsequence_length should be evenly divisible by this value. (Default is subsequence_length / 2)" />
+                        <param argument="--overlap-core-length" type="integer" label="Overlap core length" help="Smaller values may lead to better predictions but will take longer. Has to be smaller than subsequence_length (Default is subsequence_length * 3 / 4)" />
+                    </section>
+                </when>
+        </conditional>
+        </section>
+        <section name="Post_processing" title="Post-processing">
+            <param argument="--window-size" type="integer" min="0" value="100" label="window size" />
+            <param argument="--min-coding-length" type="integer"  min="0" value="100" label="Minimum coding length" />
+            <param argument="--edge-threshold" type="float" min="0" max="1" value="0.1" label="Edge threshold" />
+            <param argument="--peak-threshold" type="float" min="0" max="1" value="0.8" label="Peak threshold" />
+        </section>
+        <param argument="--gff-output-path" name="output" type="data" format="gff3" label="GFF3 output"></param>
+    </inputs>
+    <outputs>
+        <data name="output" format="gff3">
+            <change_format>
+                <when input="output_format" value="fasta" format="fasta"></when>
+            </change_format>
+        </data>
+    </outputs>
+    <tests>
+        <!-- Test pour land_plant -->
+        <test expect_num_outputs="1">
+            <param name="genomic_fasta" value="Arabidopsis_lyrata.v.1.0.dna.chromosome.8.fa.gz"/>
+            <conditional name="lineage">
+                <param name="lineages" value="land_plant"/>
+            </conditional>
+            <output name="output" value="Arabidopsis_lyrata_chromosome8_helixer.gff3" ftype="gff3">
+                <assert_contents>
+                    <has_text text="##sequence-region 8 1 22951293"/>
+                    <has_text text="ID=_8_000001.1.three_prime_UTR.1;Parent=_8_000001.1"/>
+                    <has_text text="ID=_8_002420.1.exon.3;Parent=_8_002420.1"/>
+                </assert_contents>
+            </output>
+        </test>
+
+        <test expect_num_outputs="1">
+            <!-- Test pour species -->
+            <param name="genomic_fasta" value="Arabidopsis_lyrata.v.1.0.dna.chromosome.8.fa.gz"/>
+            <param name="species" value="Arabidopsis"/>
+            <conditional name="lineage">
+                <param name="lineages" value="land_plant"/>
+            </conditional>
+            <output name="output" ftype="gff3">
+                <assert_contents>
+                    <has_text text="##species Arabidopsis"/>
+                    <has_text text="##sequence-region 8 1 22951293"/>
+                    <has_text text="ID=Arabidopsis_8_000001.1;Parent=Arabidopsis_8_000001"/>
+                </assert_contents>
+            </output>
+        </test>
+
+    </tests>
+ 
+
+    <help><![CDATA[
+        helixer_ Setup and train models for de novo prediction of gene structure
+        
+        .. _helixer: https://github.com/weberlab-hhu/Helixer
+    ]]></help>
+    <expand macro="citation"></expand>
+</tool>

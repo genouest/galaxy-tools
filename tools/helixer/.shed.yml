@@ -1,0 +1,7 @@
+categories: [Genomics Analysis]
+description: Setup and train models for de novo prediction of gene structure 
+homepage_url: https://github.com/weberlab-hhu/Helixer
+long_description: Setup and train models for de novo prediction of gene structure
+owner: genouest
+name: helixer
+remote_repository_url: https://github.com/genouest/galaxy-tools/tree/master/tools/helixer
