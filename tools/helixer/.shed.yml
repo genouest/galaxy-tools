@@ -1,5 +1,5 @@
-categories: [Genomics Analysis]
-description: Setup and train models for de novo prediction of gene structure 
+categories: [Genome annotation]
+description: Gene calling with Deep Neural Networks 
 homepage_url: https://github.com/weberlab-hhu/Helixer
 long_description: Setup and train models for de novo prediction of gene structure
 owner: genouest
