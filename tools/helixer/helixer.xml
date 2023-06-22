@@ -6,14 +6,15 @@
     </macros>
 
     <requirements>	
-        <container type="docker">docker://gglyptodon/helixer-docker:helixer_v0.3.1_cuda_11.2.0-cudnn8</container>
+        <container type="docker">gglyptodon/helixer-docker:helixer_v0.3.1_cuda_11.2.0-cudnn8</container>
     </requirements>
 
     <command detect_errors="exit_code"><![CDATA[
-        ## mkdir -p data/out '$output.files_path' &&
-        ## chmod o+w data/out '$output.files_path' &&
-        Helixer/scripts/fetch_helixer_models.py &&
-        ## cd shared/out/ &&
+        ##/home/helixer_user/Helixer/scripts/fetch_helixer_models.py &&
+        /Helixer/scripts/fetch_helixer_models.py &&
+        ##mkdir -p $output.files_path &&
+        ##cp '$__tool_directory__/fetch_helixer_models.py' '${output.files_path}' &&
+        ##fetch_helixer_models.py &&
 
         Helixer.py 
         -t \${GALAXY_SLOTS:-1}
@@ -21,10 +22,10 @@
         --species '$species'
         --gff-output-path '$output'
         --batch-size $predictions_parameters.batch_size
-        --window-size $Post_processing.window_size
-        --min-coding-length $Post_processing.min_coding_length
-        --edge-threshold $Post_processing.edge_threshold
-        --peak-threshold $Post_processing.peak_threshold
+        --window-size $post_processing.window_size
+        --min-coding-length $post_processing.min_coding_length
+        --edge-threshold $post_processing.edge_threshold
+        --peak-threshold $post_processing.peak_threshold
 
         #if $output_format == 'gff3' 
             --gff-output-path
@@ -67,7 +68,7 @@
     
     ]]></command>
     <inputs>
-        <param argument="--fasta-path" name="genomic_fasta" type="data" format="fasta,fasta.gz" label="Genomic sequence"></param>
+        <param argument="--fasta-path" name="input" type="data" format="fasta,fasta.gz" label="Genomic sequence"></param>
         <conditional name="lineage">
             <param argument="--lineage" name="lineages" type="select" label="Available lineages" help="Choose model to use fot he annotation between  land plant, vertebrates, invertebrates and fungi">
                 <option value="land_plant">land plant</option>
@@ -159,10 +160,12 @@
             </sanitizer>
             <validator type="regex">[0-9a-zA-Z_]+</validator>
         </param>
+
         <section name="predictions_parameters" title="Predictions parameters">
             <param argument="--batch-size" type="integer" min="0" max="100" value="8" label="batch_size" help="The batch size for the raw predictions in TensorFlow"></param>
         </section>
-        <section name="Post_processing" title="Post-processing">
+
+        <section name="post_processing" title="Post-processing">
             <param argument="--window-size" type="integer" min="0" value="100" label="window size" />
             <param argument="--min-coding-length" type="integer"  min="0" value="100" label="Minimum coding length" />
             <param argument="--edge-threshold" type="float" min="0" max="1" value="0.1" label="Edge threshold" />
@@ -180,7 +183,7 @@
     <tests>
         <!-- Test for land_plant -->
         <test expect_num_outputs="1">
-            <param name="genomic_fasta" value="Arabidopsis_lyrata.v.1.0.dna.chromosome.8.fa.gz"/>
+            <param name="input" value="Arabidopsis_lyrata.v.1.0.dna.chromosome.8.fa"/>
             <conditional name="lineage">
                 <param name="lineages" value="land_plant"/>
             </conditional>
@@ -195,7 +198,7 @@
 
         <test expect_num_outputs="1">
             <!-- Test for species -->
-            <param name="genomic_fasta" value="Arabidopsis_lyrata.v.1.0.dna.chromosome.8.fa.gz"/>
+            <param name="input" value="Arabidopsis_lyrata.v.1.0.dna.chromosome.8.fa"/>
             <param name="species" value="Arabidopsis"/>
             <conditional name="lineage">
                 <param name="lineages" value="land_plant"/>
