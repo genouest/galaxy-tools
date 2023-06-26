@@ -10,9 +10,9 @@
     </requirements>
 
     <command detect_errors="exit_code"><![CDATA[
-        /usr/local/bin/fetch_helixer_models.py &&
         mkdir -p $output.files_path &&
-
+        /usr/local/bin/fetch_helixer_models.py &&
+        
         Helixer.py 
         --fasta-path '$input'
         --species '$species'
@@ -175,31 +175,31 @@
     <tests>
         <!-- Test for land_plant -->
         <test expect_num_outputs="1">
-            <param name="input" value="Arabidopsis_lyrata.v.1.0.dna.chromosome.8.fa"/>
+            <param name="input" value="sequence.fasta"/>
             <conditional name="lineage">
                 <param name="lineages" value="land_plant"/>
             </conditional>
-            <output name="output" value="Arabidopsis_lyrata_chromosome8_helixer.gff3" ftype="gff3">
+            <output name="output" value="output.gff3" ftype="gff3">
                 <assert_contents>
-                    <has_text text="##sequence-region 8 1 22951293"/>
-                    <has_text text="ID=_8_000001.1.three_prime_UTR.1;Parent=_8_000001.1"/>
-                    <has_text text="ID=_8_002420.1.exon.3;Parent=_8_002420.1"/>
+                    <has_text text="NC_034365.1:c72045-70009"/>
+                    <has_text text="ID=_NC_034365.1:c72045-70009_000001"/>
+                    <has_text text="ID=_NC_034365.1:c72045-70009_000002.1.CDS.2;Parent=_NC_034365.1:c72045-70009_000002.1"/>
                 </assert_contents>
             </output>
         </test>
 
         <test expect_num_outputs="1">
             <!-- Test for species -->
-            <param name="input" value="Arabidopsis_lyrata.v.1.0.dna.chromosome.8.fa"/>
+            <param name="input" value="sequence.fasta"/>
             <param name="species" value="Arabidopsis"/>
             <conditional name="lineage">
                 <param name="lineages" value="land_plant"/>
             </conditional>
-            <output name="output" value="Arabidopsis_lyrata_chromosome8_helixer.gff3" ftype="gff3">
+            <output name="output" value="ouput_species.gff3" ftype="gff3">
                 <assert_contents>
                     <has_text text="##species Arabidopsis"/>
-                    <has_text text="##sequence-region 8 1 22951293"/>
-                    <has_text text="ID=Arabidopsis_8_000001.1;Parent=Arabidopsis_8_000001"/>
+                    <has_text text="NC_034365.1:c72045-70009"/>
+                    <has_text text="ID=Arabidopsis_NC_034365.1:c72045-70009_000002.1.CDS.2;Parent=Arabidopsis_NC_034365.1:c72045-70009_000002.1"/>
                 </assert_contents>
             </output>
         </test>
