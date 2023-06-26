@@ -10,26 +10,21 @@
     </requirements>
 
     <command detect_errors="exit_code"><![CDATA[
-        ##/home/helixer_user/Helixer/scripts/fetch_helixer_models.py &&
-        /Helixer/scripts/fetch_helixer_models.py &&
-        ##mkdir -p $output.files_path &&
-        ##cp '$__tool_directory__/fetch_helixer_models.py' '${output.files_path}' &&
-        ##fetch_helixer_models.py &&
+        /usr/local/bin/fetch_helixer_models.py &&
+        mkdir -p $output.files_path &&
 
         Helixer.py 
-        -t \${GALAXY_SLOTS:-1}
         --fasta-path '$input'
         --species '$species'
-        --gff-output-path '$output'
+        --lineage $lineage.lineages
+        --gff-output-path $output
         --batch-size $predictions_parameters.batch_size
         --window-size $post_processing.window_size
         --min-coding-length $post_processing.min_coding_length
         --edge-threshold $post_processing.edge_threshold
         --peak-threshold $post_processing.peak_threshold
-
-        #if $output_format == 'gff3' 
-            --gff-output-path
-        #end if
+        --t \${GALAXY_SLOTS:-1}
+        --temporary-dir '$output.files_path'
 
         #if str( $lineage.lineages ) == "land_plant":
             --subsequence-length $lineage.subsequence_length
@@ -71,7 +66,7 @@
         <param argument="--fasta-path" name="input" type="data" format="fasta,fasta.gz" label="Genomic sequence"></param>
         <conditional name="lineage">
             <param argument="--lineage" name="lineages" type="select" label="Available lineages" help="Choose model to use fot he annotation between  land plant, vertebrates, invertebrates and fungi">
-                <option value="land_plant">land plant</option>
+                <option value="land_plant">land_plant</option>
                 <option value="vertebrate">vertebrate </option>
                 <option value="invertebrate">invertebrate </option>
                 <option value="fungi">fungi </option>
@@ -167,13 +162,10 @@
 
         <section name="post_processing" title="Post-processing">
             <param argument="--window-size" type="integer" min="0" value="100" label="window size" />
-            <param argument="--min-coding-length" type="integer"  min="0" value="100" label="Minimum coding length" />
-            <param argument="--edge-threshold" type="float" min="0" max="1" value="0.1" label="Edge threshold" />
-            <param argument="--peak-threshold" type="float" min="0" max="1" value="0.8" label="Peak threshold" />
+            <param argument="--min-coding-length" type="integer"  min="0" value="100" label="Minimum coding length"/>
+            <param argument="--edge-threshold" type="float" min="0" max="1" value="0.1" label="Edge threshold"/>
+            <param argument="--peak-threshold" type="float" min="0" max="1" value="0.8" label="Peak threshold"/>
         </section>
-        <param name="output_format" type="select" label="Output format">
-            <option value="gff3">GFF3</option>
-        </param>
 
     </inputs>
     <outputs>
