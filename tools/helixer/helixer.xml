@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <tool id="helixer" name="Helixer"  version="0.3.1" profile="21.05">
-    <description>Gene calling</description>
+    <description>gene calling</description>
     <macros>
         <import>macros.xml</import>
     </macros>
@@ -28,123 +28,132 @@
 
         #if str( $lineage.lineages ) == "land_plant":
             --subsequence-length $lineage.subsequence_length
-            #if str( $lineage.option_overlap.Option_overlaps ) == "yes":
-                --overlap-offset $lineage.option_overlap.Overlap.overlap_offset
-                --overlap-core-length $lineage.option_overlap.Overlap.overlap_core_length
-            #elif str( $lineage.option_overlap.Option_overlaps ) == "no":
+            #if str( $lineage.option_overlap.Option_overlaps ) == "true":
+                --overlap-offset $lineage.option_overlap.overlap_offset
+                --overlap-core-length $lineage.option_overlap.overlap_core_length
+            #elif str( $lineage.option_overlap.Option_overlaps ) == "false":
                 $lineage.option_overlap.no_overlap
-            #end if
-        #elif str( $lineage.lineages ) == "vertebrate":
-            --subsequence-length $lineage.subsequence_length
-            #if str( $lineage.option_overlap.Option_overlaps ) == "yes":
-                --overlap-offset $lineage.option_overlap.Overlap.overlap_offset
-                --overlap-core-length $lineage.option_overlap.Overlap.overlap_core_length
-            #elif str( $lineage.option_overlap.Option_overlaps ) == "no":
-                $lineage.option_overlap.no_overlap
-            #end if
-        #elif str( $lineage.lineages ) == "invertebrate":
-            --subsequence-length $lineage.subsequence_length
-            #if str( $lineage.option_overlap.Option_overlaps ) == "yes":
-                --overlap-offset $lineage.option_overlap.Overlap.overlap_offset
-                --overlap-core-length $lineage.option_overlap.Overlap.overlap_core_length
-            #elif str( $lineage.option_overlap.Option_overlaps ) == "no":
-                $lineage.option_overlap.no_overlap
-            #end if
-        #elif str( $lineage.lineages ) == "fungi":
-            --subsequence-length $lineage.subsequence_length
-        #end if
-            #if str( $lineage.option_overlap.Option_overlaps ) == "yes":
-                --overlap-offset $lineage.option_overlap.Overlap.overlap_offset
-                --overlap-core-length $lineage.option_overlap.Overlap.overlap_core_length
-            #elif str( $lineage.option_overlap.Option_overlaps ) == "no":
-                $lineage.option_overlap.no_overlap
+                --overlap-offset $lineage.option_overlap.overlap_offset 
+                --overlap-core-length $lineage.option_overlap.overlap_core_length
             #end if
 
-    
+        #elif str( $lineage.lineages ) == "vertebrate":
+            --subsequence-length $lineage.subsequence_length
+            #if str( $lineage.option_overlap.Option_overlaps ) == "true":
+                --overlap-offset $lineage.option_overlap.overlap_offset
+                --overlap-core-length $lineage.option_overlap.overlap_core_length
+            #elif str( $lineage.option_overlap.Option_overlaps ) == "false":
+                $lineage.option_overlap.no_overlap
+                --overlap-offset $lineage.option_overlap.overlap_offset 
+                --overlap-core-length $lineage.option_overlap.overlap_core_length
+            #end if
+
+        #elif str( $lineage.lineages ) == "invertebrate":
+            --subsequence-length $lineage.subsequence_length
+            #if str( $lineage.option_overlap.Option_overlaps ) == "true":
+                --overlap-offset $lineage.option_overlap.overlap_offset
+                --overlap-core-length $lineage.option_overlap.overlap_core_length
+            #elif str( $lineage.option_overlap.Option_overlaps ) == "false":
+                $lineage.option_overlap.no_overlap
+                --overlap-offset $lineage.option_overlap.overlap_offset
+                --overlap-core-length $lineage.option_overlap.overlap_core_length
+            #end if
+
+        #elif str( $lineage.lineages ) == "fungi":
+            --subsequence-length $lineage.subsequence_length
+            #if str( $lineage.option_overlap.Option_overlaps ) == "true":
+                --overlap-offset $lineage.option_overlap.overlap_offset
+                --overlap-core-length $lineage.option_overlap.overlap_core_length
+            #elif str( $lineage.option_overlap.Option_overlaps ) == "false":
+                $lineage.option_overlap.no_overlap
+                --overlap-offset $lineage.option_overlap.overlap_offset 
+                --overlap-core-length $lineage.option_overlap.overlap_core_length
+            #end if
+        #end if
+
+
     ]]></command>
+
     <inputs>
         <param argument="--fasta-path" name="input" type="data" format="fasta,fasta.gz" label="Genomic sequence"></param>
         <conditional name="lineage">
-            <param argument="--lineage" name="lineages" type="select" label="Available lineages" help="Choose model to use fot he annotation between  land plant, vertebrates, invertebrates and fungi">
-                <option value="land_plant">land_plant</option>
+            <param argument="--lineage" name="lineages" type="select" label="Available lineages" help="Choose the model to use for the annotation">
+                <option value="land_plant">land plant</option>
                 <option value="vertebrate">vertebrate </option>
                 <option value="invertebrate">invertebrate </option>
                 <option value="fungi">fungi </option>
             </param>
             <when value="land_plant">
-                <param argument="--subsequence-length" type="integer" min="0" max="213840" value="106920" label="" help="For genomes with large genes (>20kpb) it is recommended to increase this paramter. PArticularly common in vertebrates and invertebrates"></param>
+                <param argument="--subsequence-length" type="integer" min="0" max="213840" value="106920" label="Subsequence length: how much of the genome the Neural Network can see at once" help="Should ideally be comfortably longer than the typical gene. For genomes with large genes (>20kpb) it is recommended to increase this parameter."></param>
                 <conditional name="option_overlap">
                     <param name="Option_overlaps" type="select" label="Advanced options for overlaps parameters" >
-                        <option value="yes">Show</option>
-                        <option value="no">Hide</option>
+                        <option value="true" selected="true">Yes</option>
+                        <option value="false">No</option>
                     </param>
-                    <when value="no">
-                        <param argument="--no-overlap" type="boolean" truevalue="--no-overlap" falsevalue="" checked="false" label="No overlaps" />
+                    <when value="true">
+                        <param argument="--overlap-offset" type="integer" min="0" value="53460" label="overlap_offset"></param>
+                        <param argument="--overlap-core-length" type="integer" min="0" value="80190" label="overlap_core_length" help="Smaller values may lead to better predictions but will take longer"></param>
                     </when>
-                    <when value="yes">
-                        <section name="Overlap" title="Overlap parameters">
-                            <param argument="--overlap-offset" type="integer" min="0" value="53460" label="overlap_offset"></param>
-                            <param argument="--overlap-core-length" type="integer" min="0" value="80190" label="overlap_core_length" help="Smaller values may lead to better ' 'predictions but will take longer. "></param>
-                        </section>
+                    <when value="false">
+                        <param argument="--no-overlap" type="boolean" truevalue="--no-overlap" checked="true" label="No overlaps"/>
+                        <param argument="--overlap-offset" type="hidden" value="0" label="overlap_offset"></param>
+                        <param argument="--overlap-core-length" type="hidden" value="0" label="overlap_core_length" help="Smaller values may lead to better predictions but will take longer"></param>
                     </when>
-            </conditional>
+                </conditional>
             </when>
             <when value="vertebrate">
-                <param argument="--subsequence-length" type="integer" min="0" max="213840" value="213840" label="" help="For genomes with large genes (>20kpb) it is recommended to increase this paramter. PArticularly common in vertebrates and invertebrates"></param>
+                <param argument="--subsequence-length" type="integer" min="0" max="213840" value="213840" label="Subsequence length: how much of the genome the Neural Network can see at once" help="Should ideally be comfortably longer than the typical gene For genomes with large genes (>20kpb) it is recommended to increase this parameter"></param>
                 <conditional name="option_overlap">
                     <param name="Option_overlaps" type="select" label="Advanced options for overlaps parameters" >
-                        <option value="yes">Show</option>
-                        <option value="no">Hide</option>
+                        <option value="true" selected="true">Yes</option>
+                        <option value="false">No</option>
                     </param>
-                    <when value="no">
-                        <param argument="--no-overlap" type="boolean" truevalue="--no-overlap" falsevalue="" checked="false" label="No overlaps" />
+                    <when value="true">
+                        <param argument="--overlap-offset" type="integer" min="0" value="106920" label="overlap_offset"></param>
+                        <param argument="--overlap-core-length" type="integer" min="0" value="160380" label="overlap_core_length" help="Smaller values may lead to better predictions but will take longer "></param>
                     </when>
-                    <when value="yes">
-                        <section name="Overlap" title="Overlap parameters">
-                            <param argument="--overlap-offset" type="integer" min="0" value="106920" label="overlap_offset"></param>
-                            <param argument="--overlap-core-length" type="integer" min="0" value="160380" label="overlap_core_length" help="Smaller values may lead to better ' 'predictions but will take longer. "></param>
-                        </section>
+                    <when value="false">
+                        <param argument="--no-overlap" type="boolean" truevalue="--no-overlap" checked="true" label="No overlaps"/>
+                        <param argument="--overlap-offset" type="hidden" value="0" label="overlap_offset"></param>
+                        <param argument="--overlap-core-length" type="hidden" value="0" label="overlap_core_length" help="Smaller values may lead to better predictions but will take longer"></param>
                     </when>
-            </conditional>
+                </conditional>
             </when>
             <when value="invertebrate">
-                <param argument="--subsequence-length" type="integer" min="0" max="213840" value="213840" label="" help="For genomes with large genes (>20kpb) it is recommended to increase this paramter. PArticularly common in vertebrates and invertebrates"></param>
-                
+                <param argument="--subsequence-length" type="integer" min="0" max="213840" value="213840" label="Subsequence length: how much of the genome the Neural Network can see at once" help="Should ideally be comfortably longer than the typical gene. For genomes with large genes (>20kpb) it is recommended to increase this parameter."></param>
                 <conditional name="option_overlap">
                     <param name="Option_overlaps" type="select" label="Advanced options for overlaps parameters" >
-                        <option value="yes">Show</option>
-                        <option value="no">Hide</option>
+                        <option value="true" selected="true">Yes</option>
+                        <option value="false">No</option>
                     </param>
-                    <when value="no">
-                        <param argument="--no-overlap" type="boolean" truevalue="--no-overlap" falsevalue="" checked="false" label="No overlaps" />
+                    <when value="true">
+                        <param argument="--overlap-offset" type="integer" min="0" value="106920" label="overlap_offset"></param>
+                        <param argument="--overlap-core-length" type="integer" min="0" value="160380" label="overlap_core_length" help="Smaller values may lead to better predictions but will take longer"></param>
                     </when>
-                    <when value="yes">
-                        <section name="Overlap" title="Overlap parameters">
-                            <param argument="--overlap-offset" type="integer" min="0" value="106920" label="overlap_offset"></param>
-                            <param argument="--overlap-core-length" type="integer" min="0" value="160380" label="overlap_core_length" help="Smaller values may lead to better ' 'predictions but will take longer. "></param>
-                        </section>
+                    <when value="false">
+                        <param argument="--no-overlap" type="boolean" truevalue="--no-overlap" checked="true" label="No overlaps"/>
+                        <param argument="--overlap-offset" type="hidden" value="0" label="overlap_offset"></param>
+                        <param argument="--overlap-core-length" type="hidden" value="0" label="overlap_core_length" help="Smaller values may lead to better predictions but will take longer"></param>
                     </when>
-            </conditional>
-                
+                </conditional>
             </when>
             <when value="fungi">
-                <param argument="--subsequence-length" type="integer" min="0" max="213840" value="21384" label="" help="For genomes with large genes (>20kpb) it is recommended to increase this paramter. PArticularly common in vertebrates and invertebrates"></param>
-                
+                <param argument="--subsequence-length" type="integer" min="0" max="213840" value="21384" label="Subsequence length: how much of the genome the Neural Network can see at once" help="Should ideally be comfortably longer than the typical gene. For genomes with large genes (>20kpb) it is recommended to increase this parameter."></param>
                 <conditional name="option_overlap">
                     <param name="Option_overlaps" type="select" label="Advanced options for overlaps parameters" >
-                        <option value="yes">Show</option>
-                        <option value="no">Hide</option>
+                        <option value="true" selected="true">Yes</option>
+                        <option value="false">No</option>
                     </param>
-                    <when value="no">
-                        <param argument="--no-overlap" type="boolean" truevalue="--no-overlap" falsevalue="" checked="false" label="No overlaps" />
+                    <when value="true">
+                        <param argument="--overlap-offset" type="integer" min="0" value="106920" label="overlap_offset"></param>
+                        <param argument="--overlap-core-length" type="integer" min="0" value="160380" label="overlap_core_length" help="Smaller values may lead to better predictions but will take longer "></param>
                     </when>
-                    <when value="yes">
-                        <section name="Overlap" title="Overlap parameters">
-                            <param argument="--overlap-offset" type="integer" min="0" value="106920" label="overlap_offset" help=""></param>
-                            <param argument="--overlap-core-length" type="integer" min="0" value="160380" label="overlap_core_length" help="Smaller values may lead to better ' 'predictions but will take longer. "></param>
-                        </section>
+                    <when value="false">
+                        <param argument="--no-overlap" type="boolean" truevalue="--no-overlap" checked="true" label="No overlaps"/>
+                        <param argument="--overlap-offset" type="hidden" value="0" label="overlap_offset"></param>
+                        <param argument="--overlap-core-length" type="hidden" value="0" label="overlap_core_length" help="Smaller values may lead to better predictions but will take longer"></param>
                     </when>
-            </conditional>
+                </conditional>
             </when>
         </conditional>
         <param argument="--species" type="text" optional="true" label="Species" help="Enter the species">
@@ -155,7 +164,6 @@
             </sanitizer>
             <validator type="regex">[0-9a-zA-Z_]+</validator>
         </param>
-
         <section name="predictions_parameters" title="Predictions parameters">
             <param argument="--batch-size" type="integer" min="0" max="100" value="8" label="batch_size" help="The batch size for the raw predictions in TensorFlow"></param>
         </section>
@@ -166,8 +174,8 @@
             <param argument="--edge-threshold" type="float" min="0" max="1" value="0.1" label="Edge threshold"/>
             <param argument="--peak-threshold" type="float" min="0" max="1" value="0.8" label="Peak threshold"/>
         </section>
-
     </inputs>
+
     <outputs>
         <data name="output" format="gff3">
         </data>
@@ -187,7 +195,6 @@
                 </assert_contents>
             </output>
         </test>
-
         <test expect_num_outputs="1">
             <!-- Test for species -->
             <param name="input" value="sequence.fasta"/>
@@ -203,7 +210,6 @@
                 </assert_contents>
             </output>
         </test>
-
     </tests>
  
 
