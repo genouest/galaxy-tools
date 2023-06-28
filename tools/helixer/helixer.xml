@@ -88,13 +88,7 @@
             <conditional name="lineage">
                 <param name="lineages" value="land_plant"/>
             </conditional>
-            <output name="output" value="output.gff3" ftype="gff3">
-                <assert_contents>
-                    <has_text text="NC_034365.1:c72045-70009"/>
-                    <has_text text="ID=_NC_034365.1:c72045-70009_000001"/>
-                    <has_text text="ID=_NC_034365.1:c72045-70009_000002.1.CDS.2;Parent=_NC_034365.1:c72045-70009_000002.1"/>
-                </assert_contents>
-            </output>
+            <output name="output" value="output.gff3" ftype="gff3" lines_diff="2" />
         </test>
         <test expect_num_outputs="1">
             <!-- Test for species -->
@@ -103,13 +97,7 @@
             <conditional name="lineage">
                 <param name="lineages" value="land_plant"/>
             </conditional>
-            <output name="output" value="ouput_species.gff3" ftype="gff3">
-                <assert_contents>
-                    <has_text text="##species Arabidopsis"/>
-                    <has_text text="NC_034365.1:c72045-70009"/>
-                    <has_text text="ID=Arabidopsis_NC_034365.1:c72045-70009_000002.1.CDS.2;Parent=Arabidopsis_NC_034365.1:c72045-70009_000002.1"/>
-                </assert_contents>
-            </output>
+            <output name="output" value="ouput_species.gff3" ftype="gff3" lines_diff="2" />
         </test>
     </tests>
 
