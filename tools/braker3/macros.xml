@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <macros>
-    <token name="@TOOL_VERSION@">2.1.6</token>
+    <token name="@TOOL_VERSION@">3.0.3</token>
     <token name="@VERSION_SUFFIX@">0</token>
 
     <xml name="requirements">
-        <requirement type="package" version="@TOOL_VERSION@">braker2</requirement>
+        <requirement type="package" version="@TOOL_VERSION@">braker3</requirement>
     </xml>
 
     <xml name="citations">

@@ -1,5 +1,5 @@
-<tool id="braker" name="Braker genome annotation" version="@TOOL_VERSION@+galaxy@VERSION_SUFFIX@" profile="20.01">
-    <description>version 3</description>
+<tool id="braker" name="BRAKER3" version="@TOOL_VERSION@+galaxy@VERSION_SUFFIX@" profile="22.05">
+    <description>genome annotation</description>
     <macros>
         <import>macros.xml</import>
     </macros>
@@ -98,7 +98,7 @@ $option.alternatives_from_evidence
             <param argument="--rounds" type="integer" value="5" label="Number of optimization rounds used in optimize_augustus.pl" />
             <param argument="--AUGUSTUS_ab_initio" type="boolean" checked="false" label="Output ab initio predictions by AUGUSTUS"/>
             <param argument="--keepCrf" type="boolean" checked="false" label="CRF parameters" help="keep CRF parameters even if they are no better than HMM parameters"/>
-        </section> 
+        </section>
 
         <section name="advanced" expanded="false" title="Advanced">
             <param argument="--UTR" type="boolean" checked="false" truevalue="--UTR=on" falsevalue="" label="" help="Experimental, requires RNASeq data (bam) and a softmasked genome" />
@@ -118,7 +118,7 @@ $option.alternatives_from_evidence
             <param argument="--splice_sites" type="text" label="List of splice site patterns for UTR prediction"/>
             <param argument="--min_contig" type="integer" value="50000000" label="Minimal contig length"/>
             <param argument="--gc_probability" type="float" min="0" max="1" value="0.001" label="Probablity for donor splice site pattern GC or gene prediction with GeneMark-EX"/>
-            <param argument="--gm_max_intergenic" type="integer" optional="true" label="Size of intergenic regions"/>            
+            <param argument="--gm_max_intergenic" type="integer" optional="true" label="Size of intergenic regions"/>
         </section>
 
         <section name="expert" expanded="false" title="Expert options">
