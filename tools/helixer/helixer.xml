@@ -1,77 +1,41 @@
 <?xml version="1.0"?>
-<tool id="helixer" name="Helixer"  version="0.3.1" profile="21.05">
+<tool id="helixer" name="Helixer" version="@TOOL_VERSION@" profile="21.05">
     <description>gene calling</description>
     <macros>
         <import>macros.xml</import>
     </macros>
 
-    <requirements>	
-        <container type="docker">gglyptodon/helixer-docker:helixer_v0.3.1_cuda_11.2.0-cudnn8</container>
+    <requirements>
+        <expand macro="requirements" />
     </requirements>
 
     <command detect_errors="exit_code"><![CDATA[
-        mkdir -p $output.files_path &&
-        /usr/local/bin/fetch_helixer_models.py &&
-        
-        Helixer.py 
+        ## Not in $PATH in the docker image
+        ## Manage models with a data manager?
+        /usr/local/bin/fetch_helixer_models.py
+
+        &&
+
+        Helixer.py
         --fasta-path '$input'
         --species '$species'
         --lineage $lineage.lineages
-        --gff-output-path $output
-        --batch-size $predictions_parameters.batch_size
+        --gff-output-path '$output'
+
+        --temporary-dir ./
+
+        --subsequence-length $lineage.subsequence_length
+        #if str($lineage.option_overlap.use_overlap) == "true":
+            --overlap-offset $lineage.option_overlap.overlap_offset
+            --overlap-core-length $lineage.option_overlap.overlap_core_length
+        #else:
+            --no-overlap
+        #end if
+
         --window-size $post_processing.window_size
         --min-coding-length $post_processing.min_coding_length
         --edge-threshold $post_processing.edge_threshold
         --peak-threshold $post_processing.peak_threshold
-        --t \${GALAXY_SLOTS:-1}
-        --temporary-dir '$output.files_path'
-
-        #if str( $lineage.lineages ) == "land_plant":
-            --subsequence-length $lineage.subsequence_length
-            #if str( $lineage.option_overlap.Option_overlaps ) == "true":
-                --overlap-offset $lineage.option_overlap.overlap_offset
-                --overlap-core-length $lineage.option_overlap.overlap_core_length
-            #elif str( $lineage.option_overlap.Option_overlaps ) == "false":
-                $lineage.option_overlap.no_overlap
-                --overlap-offset $lineage.option_overlap.overlap_offset 
-                --overlap-core-length $lineage.option_overlap.overlap_core_length
-            #end if
-
-        #elif str( $lineage.lineages ) == "vertebrate":
-            --subsequence-length $lineage.subsequence_length
-            #if str( $lineage.option_overlap.Option_overlaps ) == "true":
-                --overlap-offset $lineage.option_overlap.overlap_offset
-                --overlap-core-length $lineage.option_overlap.overlap_core_length
-            #elif str( $lineage.option_overlap.Option_overlaps ) == "false":
-                $lineage.option_overlap.no_overlap
-                --overlap-offset $lineage.option_overlap.overlap_offset 
-                --overlap-core-length $lineage.option_overlap.overlap_core_length
-            #end if
-
-        #elif str( $lineage.lineages ) == "invertebrate":
-            --subsequence-length $lineage.subsequence_length
-            #if str( $lineage.option_overlap.Option_overlaps ) == "true":
-                --overlap-offset $lineage.option_overlap.overlap_offset
-                --overlap-core-length $lineage.option_overlap.overlap_core_length
-            #elif str( $lineage.option_overlap.Option_overlaps ) == "false":
-                $lineage.option_overlap.no_overlap
-                --overlap-offset $lineage.option_overlap.overlap_offset
-                --overlap-core-length $lineage.option_overlap.overlap_core_length
-            #end if
-
-        #elif str( $lineage.lineages ) == "fungi":
-            --subsequence-length $lineage.subsequence_length
-            #if str( $lineage.option_overlap.Option_overlaps ) == "true":
-                --overlap-offset $lineage.option_overlap.overlap_offset
-                --overlap-core-length $lineage.option_overlap.overlap_core_length
-            #elif str( $lineage.option_overlap.Option_overlaps ) == "false":
-                $lineage.option_overlap.no_overlap
-                --overlap-offset $lineage.option_overlap.overlap_offset 
-                --overlap-core-length $lineage.option_overlap.overlap_core_length
-            #end if
-        #end if
-
-
     ]]></command>
 
     <inputs>
@@ -79,84 +43,24 @@
         <conditional name="lineage">
             <param argument="--lineage" name="lineages" type="select" label="Available lineages" help="Choose the model to use for the annotation">
                 <option value="land_plant">land plant</option>
-                <option value="vertebrate">vertebrate </option>
-                <option value="invertebrate">invertebrate </option>
-                <option value="fungi">fungi </option>
+                <option value="vertebrate">vertebrate</option>
+                <option value="invertebrate">invertebrate</option>
+                <option value="fungi">fungi</option>
             </param>
             <when value="land_plant">
-                <param argument="--subsequence-length" type="integer" min="0" max="213840" value="106920" label="Subsequence length: how much of the genome the Neural Network can see at once" help="Should ideally be comfortably longer than the typical gene. For genomes with large genes (>20kpb) it is recommended to increase this parameter."></param>
-                <conditional name="option_overlap">
-                    <param name="Option_overlaps" type="select" label="Advanced options for overlaps parameters" >
-                        <option value="true" selected="true">Yes</option>
-                        <option value="false">No</option>
-                    </param>
-                    <when value="true">
-                        <param argument="--overlap-offset" type="integer" min="0" value="53460" label="overlap_offset"></param>
-                        <param argument="--overlap-core-length" type="integer" min="0" value="80190" label="overlap_core_length" help="Smaller values may lead to better predictions but will take longer"></param>
-                    </when>
-                    <when value="false">
-                        <param argument="--no-overlap" type="boolean" truevalue="--no-overlap" checked="true" label="No overlaps"/>
-                        <param argument="--overlap-offset" type="hidden" value="0" label="overlap_offset"></param>
-                        <param argument="--overlap-core-length" type="hidden" value="0" label="overlap_core_length" help="Smaller values may lead to better predictions but will take longer"></param>
-                    </when>
-                </conditional>
+                <expand macro="subseq" length="106920" offset="53460" offsetlen="80190" />
             </when>
             <when value="vertebrate">
-                <param argument="--subsequence-length" type="integer" min="0" max="213840" value="213840" label="Subsequence length: how much of the genome the Neural Network can see at once" help="Should ideally be comfortably longer than the typical gene For genomes with large genes (>20kpb) it is recommended to increase this parameter"></param>
-                <conditional name="option_overlap">
-                    <param name="Option_overlaps" type="select" label="Advanced options for overlaps parameters" >
-                        <option value="true" selected="true">Yes</option>
-                        <option value="false">No</option>
-                    </param>
-                    <when value="true">
-                        <param argument="--overlap-offset" type="integer" min="0" value="106920" label="overlap_offset"></param>
-                        <param argument="--overlap-core-length" type="integer" min="0" value="160380" label="overlap_core_length" help="Smaller values may lead to better predictions but will take longer "></param>
-                    </when>
-                    <when value="false">
-                        <param argument="--no-overlap" type="boolean" truevalue="--no-overlap" checked="true" label="No overlaps"/>
-                        <param argument="--overlap-offset" type="hidden" value="0" label="overlap_offset"></param>
-                        <param argument="--overlap-core-length" type="hidden" value="0" label="overlap_core_length" help="Smaller values may lead to better predictions but will take longer"></param>
-                    </when>
-                </conditional>
+                <expand macro="subseq" length="213840" offset="106920" offsetlen="160380" />
             </when>
             <when value="invertebrate">
-                <param argument="--subsequence-length" type="integer" min="0" max="213840" value="213840" label="Subsequence length: how much of the genome the Neural Network can see at once" help="Should ideally be comfortably longer than the typical gene. For genomes with large genes (>20kpb) it is recommended to increase this parameter."></param>
-                <conditional name="option_overlap">
-                    <param name="Option_overlaps" type="select" label="Advanced options for overlaps parameters" >
-                        <option value="true" selected="true">Yes</option>
-                        <option value="false">No</option>
-                    </param>
-                    <when value="true">
-                        <param argument="--overlap-offset" type="integer" min="0" value="106920" label="overlap_offset"></param>
-                        <param argument="--overlap-core-length" type="integer" min="0" value="160380" label="overlap_core_length" help="Smaller values may lead to better predictions but will take longer"></param>
-                    </when>
-                    <when value="false">
-                        <param argument="--no-overlap" type="boolean" truevalue="--no-overlap" checked="true" label="No overlaps"/>
-                        <param argument="--overlap-offset" type="hidden" value="0" label="overlap_offset"></param>
-                        <param argument="--overlap-core-length" type="hidden" value="0" label="overlap_core_length" help="Smaller values may lead to better predictions but will take longer"></param>
-                    </when>
-                </conditional>
+                <expand macro="subseq" length="213840" offset="106920" offsetlen="160380" />
             </when>
             <when value="fungi">
-                <param argument="--subsequence-length" type="integer" min="0" max="213840" value="21384" label="Subsequence length: how much of the genome the Neural Network can see at once" help="Should ideally be comfortably longer than the typical gene. For genomes with large genes (>20kpb) it is recommended to increase this parameter."></param>
-                <conditional name="option_overlap">
-                    <param name="Option_overlaps" type="select" label="Advanced options for overlaps parameters" >
-                        <option value="true" selected="true">Yes</option>
-                        <option value="false">No</option>
-                    </param>
-                    <when value="true">
-                        <param argument="--overlap-offset" type="integer" min="0" value="106920" label="overlap_offset"></param>
-                        <param argument="--overlap-core-length" type="integer" min="0" value="160380" label="overlap_core_length" help="Smaller values may lead to better predictions but will take longer "></param>
-                    </when>
-                    <when value="false">
-                        <param argument="--no-overlap" type="boolean" truevalue="--no-overlap" checked="true" label="No overlaps"/>
-                        <param argument="--overlap-offset" type="hidden" value="0" label="overlap_offset"></param>
-                        <param argument="--overlap-core-length" type="hidden" value="0" label="overlap_core_length" help="Smaller values may lead to better predictions but will take longer"></param>
-                    </when>
-                </conditional>
+                <expand macro="subseq" length="21384" offset="10692" offsetlen="16038" />
             </when>
         </conditional>
-        <param argument="--species" type="text" optional="true" label="Species" help="Enter the species">
+        <param argument="--species" type="text" optional="true" label="Species name">
             <sanitizer invalid_char="">
                 <valid initial="string.letters,string.digits">
                     <add value="_" />
@@ -164,15 +68,12 @@
             </sanitizer>
             <validator type="regex">[0-9a-zA-Z_]+</validator>
         </param>
-        <section name="predictions_parameters" title="Predictions parameters">
-            <param argument="--batch-size" type="integer" min="0" max="100" value="8" label="batch_size" help="The batch size for the raw predictions in TensorFlow"></param>
-        </section>
 
         <section name="post_processing" title="Post-processing">
-            <param argument="--window-size" type="integer" min="0" value="100" label="window size" />
+            <param argument="--window-size" type="integer" min="0" value="100" label="Window size" help="This determines the number of bases averaged during the sliding window approach"/>
+            <param argument="--edge-threshold" type="float" min="0" max="1" value="0.1" label="Edge threshold" help="This threshold specifies the genic score which defines the start / end boundaries of each candidate region"/>
+            <param argument="--peak-threshold" type="float" min="0" max="1" value="0.8" label="Peak threshold" help="This threshold specifies the minimum peak genic score required to accept the candidate region"/>
             <param argument="--min-coding-length" type="integer"  min="0" value="100" label="Minimum coding length"/>
-            <param argument="--edge-threshold" type="float" min="0" max="1" value="0.1" label="Edge threshold"/>
-            <param argument="--peak-threshold" type="float" min="0" max="1" value="0.8" label="Peak threshold"/>
         </section>
     </inputs>
 
@@ -211,12 +112,12 @@
             </output>
         </test>
     </tests>
- 
+
 
     <help><![CDATA[
-        helixer_ Gene calling
-        
-        .. _helixer: https://github.com/weberlab-hhu/Helixer
+        Helixer_: Gene calling with Deep Neural Networks.
+
+        .. _Helixer: https://github.com/weberlab-hhu/Helixer
     ]]></help>
     <expand macro="citation"></expand>
 </tool>
