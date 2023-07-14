@@ -1,0 +1,20 @@
+<!-- Adapt the paths to your install of GeneMark and ProtHint, then run planemo with the job_config_file option -->
+<job_conf>
+    <plugins>
+        <plugin id="planemo_runner" type="runner" load="galaxy.jobs.runners.local:LocalJobRunner" workers="4"/>
+    </plugins>
+    <handlers>
+    </handlers>
+    <destinations default="planemo_dest">
+        <destination id="planemo_dest" runner="planemo_runner">
+            <env id="GENEMARK_PATH">/home/abretaud/softs/genemark_ex_4.68/</env>
+            <env id="PROTHINT_PATH">/home/abretaud/softs/ProtHint-2.6.0/bin/</env>
+        </destination>
+        <destination id="upload_dest" runner="planemo_runner">
+            <param id="docker_enabled">false</param>
+        </destination>
+    </destinations>
+    <tools>
+        <tool id="upload1" destination="upload_dest" />
+    </tools>
+</job_conf>
