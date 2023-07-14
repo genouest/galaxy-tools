@@ -16,6 +16,8 @@ If you want to use it, the Galaxy administrator needs to install ProtHint, and s
 
 ## Running tests
 
-Tests require working GeneMark and ProtHint installations, which means both GENEMARK_PATH and PROTHINT_PATH are set.
+Tests require working GeneMark and ProtHint installations, which means both GENEMARK_PATH and PROTHINT_PATH are set in job_conf_braker3.xml.
 
-You should also copy a valid GeneMark license (from http://topaz.gatech.edu/GeneMark/license_download.cgi) in test-data/genemark_license.gm_key
+You should then use the `--job_config_file job_conf_braker3.xml` option for planemo commands.
+
+You should also copy a valid GeneMark license (from http://topaz.gatech.edu/GeneMark/license_download.cgi) in test-data/gm_key_64.

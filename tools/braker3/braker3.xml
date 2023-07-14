@@ -35,11 +35,6 @@ $softmasking
     --esmode
 #end if
 
-## Both proteins and rnaseq hints, use etpmode
-#if $evidences.bam and $evidences.prot_seq
-    --etpmode
-#end if
-
 #if $output_format == 'gff3'
     --gff3
 #end if
@@ -63,30 +58,39 @@ $advanced.filterOutShort
     --eval_pseudo ${advanced.eval_pseudo}
 #end if
 
+#if $species:
+    --species '$species'
+#end if
 
---rnaseq_sets_ids '$option.rnaseq_sets_ids'
---species '$option.species'
-$option.alternatives_from_evidence
---splice_sites '$dev.splice_sites'
---min_contig $dev.min_contig
+$advanced.alternatives_from_evidence
+
+#if $dev.splice_sites:
+    --splice_sites '$dev.splice_sites'
+#end if
+
+#if $dev.min_contig:
+    --min_contig $dev.min_contig
+#end if
+
 --gc_probability $dev.gc_probability
 --gm_max_intergenic $dev.gm_max_intergenic
---downsampling_lambda $expert.downsampling_lambda
+--downsampling_lambda $dev.downsampling_lambda
 
-
---cores  \${GALAXY_SLOTS:-2}
+--threads  \${GALAXY_SLOTS:-2}
 ]]></command>
     <inputs>
         <param name="genemark_license" type="data" format="txt" label="GeneMark license file" help="Braker uses GeneMark, which is not a free software, to use it download and unzip a license from http://topaz.gatech.edu/GeneMark/license_download.cgi (ES/ET/EP version). GeneMark needs to be installed manually by Galaxy administrators." />
 
-        <param argument="--genome" type="data" format="fasta" label="Assembly to annotate" help="The assembly should be soft-masked (with RepeatMasker for example)" />
+        <param argument="--genome" type="data" format="fasta" label="Assembly to annotate" help="The assembly should preferably be soft-masked (with RepeatMasker for example)" />
 
-        <param argument="--softmasking" type="boolean" checked="false" truevalue="--softmasking" falsevalue="" label="Genome sequence is soft-masked" />
+        <param argument="--softmasking" type="boolean" checked="true" truevalue="" falsevalue="--softmasking_off" label="Genome sequence is soft-masked" />
+
+        <param argument="--species" type="text" label="Species name" optional="true" help="Using Sp_1, if no species is assigned"/>
 
         <section name="evidences" expanded="true" title="Evidences">
             <param argument="--bam" type="data" format="bam" optional="true" label="RNA-seq mapped to genome to train Augustus/GeneMark" />
             <param argument="--prot_seq" type="data" format="fasta" optional="true" label="Proteins to map to genome" />
-            <param argument="--hints" type="data" format="gff" optional="true" label="Introns extracted from RNA-Seq and/or protein indices (ProHint)"/>
+            <param argument="--hints" type="data" format="gff" optional="true" label="Hints: introns extracted from RNA-Seq and/or protein indices" help="Alternative to RNA-Seq and proteins"/>
         </section>
 
         <section name="genemark" expanded="true" title="GeneMark">
@@ -105,24 +109,15 @@ $option.alternatives_from_evidence
             <param argument="--filterOutShort" type="boolean" checked="false" truevalue="--filterOutShort" falsevalue="" label="Filter out too short traingin gene predicted by GeneMark-EX" />
             <param argument="--eval" type="data" format="gtf" optional="true" label="Reference set to evaluate predictions" help="using evaluation scripts from GaTech" />
             <param argument="--eval_pseudo" type="data" format="gff3" optional="true" label="File with pseudogenes that will be excluded from accuracy evaluation" />
+            <param argument="--alternatives-from-evidence" type="boolean" checked="true" truevalue="--alternatives-from-evidence=true" falsevalue="--alternatives-from-evidence=false" label="Output alternative transcripts based on explicit evidence from hints"/>
         </section>
 
-        <section name="option" expanded="false" title="Options">
-            <param argument="--rnaseq_sets_ids" type="text" label="IDs of RNA-Seq sets"/>
-            <param argument="--species" type="text" label="Species names" help="Using Sp_1, if no species is assigned"/>
-            <param argument="--alternatives-from-evidence" type="boolean" checked="true" label="Output alternative transcripts based on explicit evidence from honts"/>
-
-        </section>
-
-        <section name="dev" expanded="false" title="Development options">
-            <param argument="--splice_sites" type="text" label="List of splice site patterns for UTR prediction"/>
-            <param argument="--min_contig" type="integer" value="50000000" label="Minimal contig length"/>
-            <param argument="--gc_probability" type="float" min="0" max="1" value="0.001" label="Probablity for donor splice site pattern GC or gene prediction with GeneMark-EX"/>
-            <param argument="--gm_max_intergenic" type="integer" optional="true" label="Size of intergenic regions"/>
-        </section>
-
-        <section name="expert" expanded="false" title="Expert options">
-            <param argument="--downsampling_lambda" type="integer" min="0" max="5" value="2" label="Change the parameter lambda of the Poisson distribution"/>
+        <section name="dev" expanded="false" title="Expert options">
+            <param argument="--splice_sites" type="text" label="List of splice site patterns for UTR prediction" help="Only affects UTR training example generation, not gene prediction by AUGUSTUS (default: GTAG"/>
+            <param argument="--min_contig" type="integer" optional="true" label="Minimal contig length for GeneMark-EX"/>
+            <param argument="--gc_probability" type="float" min="0" max="1" value="0.001" label="Probablity for donor splice site pattern GC for gene prediction with GeneMark-EX"/>
+            <param argument="--gm_max_intergenic" type="integer" optional="true" label="Maximum allowed size of intergenic regions in GeneMark-EX" help="If not set, the value is automatically determined by GeneMark-EX"/>
+            <param argument="--downsampling_lambda" type="integer" min="0" value="2" label="Lambda parameter of the Poisson distribution" help="for downsampling of training gene structures according to their number of introns distribution"/>
         </section>
 
         <param name="output_format" type="select" label="Output format">
@@ -141,17 +136,26 @@ $option.alternatives_from_evidence
     </outputs>
 
     <tests>
-        <!-- Testing with RNA-Sq data - output gft-->
+        <!-- Testing with RNA-Seq data - output gtf-->
         <test expect_num_outputs="1">
+            <param name="genemark_license" value="gm_key_64" />
             <param name="genome" value="genome_masked.fa" />
-            <param name="bam" value="SRR7458692.bam" />
+            <section name="evidences">
+                <param name="bam" value="SRR7458692.bam" />
+            </section>
+            <param name="output_format" value="gtf" />
             <output name="output_gtf" file="out_genome/braker.gtf" sort="true"/>
         </test>
 
-        <!-- Testing with RNA-Sq data - output gff -->
+        <!-- Testing with RNA-Seq and protein data - output gff -->
         <test expect_num_outputs="1">
+            <param name="genemark_license" value="gm_key_64" />
             <param name="genome" value="genome_masked.fa" />
-            <param name="bam" value="SRR7458692.bam" />
+            <section name="evidences">
+                <param name="bam" value="SRR7458692.bam" />
+                <param name="prot_seq" value="proteins.fa" />
+            </section>
+            <param name="output_format" value="gff3" />
             <output name="output_gff" file="out_genome/braker.gff3"/>
         </test>
 
