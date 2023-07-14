@@ -142,14 +142,14 @@ $option.alternatives_from_evidence
 
     <tests>
         <!-- Testing with RNA-Sq data - output gft-->
-        <test>
+        <test expect_num_outputs="1">
             <param name="genome" value="genome_masked.fa" />
             <param name="bam" value="SRR7458692.bam" />
             <output name="output_gtf" file="out_genome/braker.gtf" sort="true"/>
         </test>
 
         <!-- Testing with RNA-Sq data - output gff -->
-        <test>
+        <test expect_num_outputs="1">
             <param name="genome" value="genome_masked.fa" />
             <param name="bam" value="SRR7458692.bam" />
             <output name="output_gff" file="out_genome/braker.gff3"/>
