@@ -7,8 +7,8 @@
     </handlers>
     <destinations default="planemo_dest">
         <destination id="planemo_dest" runner="planemo_runner">
-            <env id="GENEMARK_PATH">/home/abretaud/softs/genemark_ex_4.68/</env>
-            <env id="PROTHINT_PATH">/home/abretaud/softs/ProtHint-2.6.0/bin/</env>
+            <env id="GENEMARK_PATH">/home/abretaud/softs/etp.for_braker/bin/</env>
+            <env id="PROTHINT_PATH">/home/abretaud/softs/etp.for_braker/bin/gmes/ProtHint/bin/</env>
         </destination>
         <destination id="upload_dest" runner="planemo_runner">
             <param id="docker_enabled">false</param>

@@ -6,10 +6,16 @@
     <requirements>
         <expand macro="requirements" />
     </requirements>
-    <version_command><![CDATA[braker.pl --version; $GENEMARK_PATH/gmes_petap.pl | grep version]]></version_command>
+    <version_command><![CDATA[braker.pl --version; $GENEMARK_PATH/gmes/gmes_petap.pl | grep version]]></version_command>
     <command><![CDATA[
 if [ -z "\$GENEMARK_PATH" ] ; then echo "GeneMark is not installed on this Galaxy server." >&2 ; exit 1 ; fi &&
-if [ ! -f "\$GENEMARK_PATH/gmes_petap.pl" ] ; then echo "GeneMark is not installed properly on this Galaxy server." >&2 ; exit 1 ; fi &&
+if [ ! -f "\$GENEMARK_PATH/gmes/gmes_petap.pl" ] ; then echo "GeneMark is not installed properly on this Galaxy server." >&2 ; exit 1 ; fi &&
+
+## This specific GeneMark version has some tools bundled with it, forced to use it.
+## I feel dirty. Pardon me.
+
+export PATH="\$GENEMARK_PATH/../tools/:\$PATH" &&
+
 ## GeneMark only search for license in ~/.gm_key
 cp '${genemark_license}' ~/.gm_key &&
 
