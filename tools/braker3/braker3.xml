@@ -79,8 +79,11 @@ $advanced.alternatives_from_evidence
 #end if
 
 --gc_probability $dev.gc_probability
---gm_max_intergenic $dev.gm_max_intergenic
 --downsampling_lambda $dev.downsampling_lambda
+
+#if $dev.gm_max_intergenic:
+--gm_max_intergenic $dev.gm_max_intergenic
+#end if
 
 --threads  \${GALAXY_SLOTS:-2}
 ]]></command>
@@ -106,8 +109,8 @@ $advanced.alternatives_from_evidence
         <section name="augustus" expanded="true" title="Augustus">
             <param argument="--crf" type="boolean" checked="false" truevalue="--crf" falsevalue="" label="Use CRF training for Augustus" help="Alternate training method (Conditional Random Field)" />
             <param argument="--rounds" type="integer" value="5" label="Number of optimization rounds used in optimize_augustus.pl" />
-            <param argument="--AUGUSTUS_ab_initio" type="boolean" checked="false" label="Output ab initio predictions by AUGUSTUS"/>
-            <param argument="--keepCrf" type="boolean" checked="false" label="CRF parameters" help="keep CRF parameters even if they are no better than HMM parameters"/>
+            <param argument="--AUGUSTUS_ab_initio" type="boolean" checked="false" truevalue="--AUGUSTUS_ab_initio" falsevalue="" label="Output ab initio predictions by AUGUSTUS"/>
+            <param argument="--keepCrf" type="boolean" checked="false" truevalue="--keepCrf" falsevalue="" label="CRF parameters" help="keep CRF parameters even if they are no better than HMM parameters"/>
         </section>
 
         <section name="advanced" expanded="false" title="Advanced">
