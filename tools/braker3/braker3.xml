@@ -32,10 +32,6 @@ $softmasking
     --prot_seq ${evidences.prot_seq}
 #end if
 
-#if $evidences.hints:
-    --hints ${evidences.hints}
-#end if
-
 ## No hints, use esmode
 #if not $evidences.bam and not $evidences.prot_seq
     --esmode
@@ -99,7 +95,6 @@ $advanced.alternatives_from_evidence
         <section name="evidences" expanded="true" title="Evidences">
             <param argument="--bam" type="data" format="bam" optional="true" label="RNA-seq mapped to genome to train Augustus/GeneMark" />
             <param argument="--prot_seq" type="data" format="fasta" optional="true" label="Proteins to map to genome" />
-            <param argument="--hints" type="data" format="gff" optional="true" label="Hints: introns extracted from RNA-Seq and/or protein indices" help="Alternative to RNA-Seq and proteins"/>
         </section>
 
         <section name="genemark" expanded="true" title="GeneMark">
@@ -139,7 +134,7 @@ $advanced.alternatives_from_evidence
         <data name='output_gtf' format='gtf' label="GTF Annotation" from_work_dir="braker/braker.gtf">
             <filter>output_format == 'gtf'</filter>
         </data>
-        <data name='output_gff' format='gff3' label="GFf Annotation" from_work_dir="braker/braker.gff3">
+        <data name='output_gff' format='gff3' label="GFF Annotation" from_work_dir="braker/braker.gff3">
             <filter>output_format == 'gff3'</filter>
         </data>
     </outputs>
