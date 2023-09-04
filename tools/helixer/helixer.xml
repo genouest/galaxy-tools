@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<tool id="helixer" name="Helixer" version="@TOOL_VERSION@" profile="21.05">
+    <description>gene calling</description>
+    <macros>
+        <import>macros.xml</import>
+    </macros>
+
+    <requirements>
+        <expand macro="requirements" />
+    </requirements>
+
+    <command detect_errors="exit_code"><![CDATA[
+        ## Not in $PATH in the docker image
+        ## Manage models with a data manager?
+        /usr/local/bin/fetch_helixer_models.py
+
+        &&
+
+        Helixer.py
+        --fasta-path '$input'
+        --species '$species'
+        --lineage $lineage.lineages
+        --gff-output-path '$output'
+
+        --temporary-dir ./
+
+        --subsequence-length $lineage.subsequence_length
+        #if str($lineage.option_overlap.use_overlap) == "true":
+            --overlap-offset $lineage.option_overlap.overlap_offset
+            --overlap-core-length $lineage.option_overlap.overlap_core_length
+        #else:
+            --no-overlap
+        #end if
+
+        --window-size $post_processing.window_size
+        --min-coding-length $post_processing.min_coding_length
+        --edge-threshold $post_processing.edge_threshold
+        --peak-threshold $post_processing.peak_threshold
+    ]]></command>
+
+    <inputs>
+        <param argument="--fasta-path" name="input" type="data" format="fasta,fasta.gz" label="Genomic sequence"></param>
+        <conditional name="lineage">
+            <param argument="--lineage" name="lineages" type="select" label="Available lineages" help="Choose the model to use for the annotation">
+                <option value="land_plant">land plant</option>
+                <option value="vertebrate">vertebrate</option>
+                <option value="invertebrate">invertebrate</option>
+                <option value="fungi">fungi</option>
+            </param>
+            <when value="land_plant">
+                <expand macro="subseq" length="106920" offset="53460" offsetlen="80190" />
+            </when>
+            <when value="vertebrate">
+                <expand macro="subseq" length="213840" offset="106920" offsetlen="160380" />
+            </when>
+            <when value="invertebrate">
+                <expand macro="subseq" length="213840" offset="106920" offsetlen="160380" />
+            </when>
+            <when value="fungi">
+                <expand macro="subseq" length="21384" offset="10692" offsetlen="16038" />
+            </when>
+        </conditional>
+        <param argument="--species" type="text" optional="true" label="Species name">
+            <sanitizer invalid_char="">
+                <valid initial="string.letters,string.digits">
+                    <add value="_" />
+                </valid>
+            </sanitizer>
+            <validator type="regex">[0-9a-zA-Z_]+</validator>
+        </param>
+
+        <section name="post_processing" title="Post-processing">
+            <param argument="--window-size" type="integer" min="0" value="100" label="Window size" help="This determines the number of bases averaged during the sliding window approach"/>
+            <param argument="--edge-threshold" type="float" min="0" max="1" value="0.1" label="Edge threshold" help="This threshold specifies the genic score which defines the start / end boundaries of each candidate region"/>
+            <param argument="--peak-threshold" type="float" min="0" max="1" value="0.8" label="Peak threshold" help="This threshold specifies the minimum peak genic score required to accept the candidate region"/>
+            <param argument="--min-coding-length" type="integer"  min="0" value="100" label="Minimum coding length"/>
+        </section>
+    </inputs>
+
+    <outputs>
+        <data name="output" format="gff3">
+        </data>
+    </outputs>
+    <tests>
+        <!-- Test for land_plant -->
+        <test expect_num_outputs="1">
+            <param name="input" value="sequence.fasta"/>
+            <conditional name="lineage">
+                <param name="lineages" value="land_plant"/>
+            </conditional>
+            <output name="output" value="output.gff3" ftype="gff3" lines_diff="2" />
+        </test>
+        <test expect_num_outputs="1">
+            <!-- Test for species -->
+            <param name="input" value="sequence.fasta"/>
+            <param name="species" value="Arabidopsis"/>
+            <conditional name="lineage">
+                <param name="lineages" value="land_plant"/>
+            </conditional>
+            <output name="output" value="ouput_species.gff3" ftype="gff3" lines_diff="2" />
+        </test>
+    </tests>
+
+
+    <help><![CDATA[
+        Helixer_: Gene calling with Deep Neural Networks.
+
+        .. _Helixer: https://github.com/weberlab-hhu/Helixer
+    ]]></help>
+    <expand macro="citation"></expand>
+</tool>

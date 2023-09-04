@@ -1,0 +1,9 @@
+# Eukaryotic GeneMark.hmm version 3.68_lic
+# Sequence name: /home/rlibouba/Github/galaxy-tools/tools/braker/test-data/braker/GeneMark-ES/output/data/dna.fa_2
+# FASTA defline: >dna.fa_2	2_dna	1	2030
+# Sequence length: 2030 bp
+# G+C content: 35.47%
+# Matrices file: /home/rlibouba/Github/galaxy-tools/tools/braker/test-data/braker/GeneMark-ES/output/gmhmm.mod
+# Wed Jun 14 18:12:23 2023
+# FASTA definition line: >dna.fa_2	2_dna	1	2030
+# sequence-region 2_dna 1 2030

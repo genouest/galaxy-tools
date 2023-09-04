@@ -1,0 +1,21 @@
+# Eukaryotic GeneMark.hmm version 3.68_lic
+# Sequence name: /home/rlibouba/Github/galaxy-tools/tools/braker/test-data/braker/GeneMark-ES/output/data/dna.fa_4
+# FASTA defline: >dna.fa_4	4_dna	1	7560
+# Sequence length: 7560 bp
+# G+C content: 45.12%
+# Matrices file: /home/rlibouba/Github/galaxy-tools/tools/braker/test-data/braker/GeneMark-ES/output/gmhmm.mod
+# Wed Jun 14 18:12:23 2023
+# FASTA definition line: >dna.fa_4	4_dna	1	7560
+# sequence-region 4_dna 1 7560
+4_dna	GeneMark.hmm3	gene	2258	5707	.	+	.	gene_id "1_g"; transcript_id "1_t";
+4_dna	GeneMark.hmm3	mRNA	2258	5707	.	+	.	gene_id "1_g"; transcript_id "1_t";
+4_dna	GeneMark.hmm3	CDS	2258	3224	.	+	1	gene_id "1_g"; transcript_id "1_t"; cds_type "Internal"; count "1_3";
+4_dna	GeneMark.hmm3	intron	3225	3283	.	+	0	gene_id "1_g"; transcript_id "1_t";
+4_dna	GeneMark.hmm3	CDS	3284	3755	.	+	0	gene_id "1_g"; transcript_id "1_t"; cds_type "Internal"; count "2_3";
+4_dna	GeneMark.hmm3	intron	3756	4934	.	+	1	gene_id "1_g"; transcript_id "1_t";
+4_dna	GeneMark.hmm3	CDS	4935	5707	.	+	2	gene_id "1_g"; transcript_id "1_t"; cds_type "Terminal"; count "3_3";
+4_dna	GeneMark.hmm3	stop_codon	5705	5707	.	+	0	gene_id "1_g"; transcript_id "1_t";
+4_dna	GeneMark.hmm3	gene	5997	6450	.	-	.	gene_id "2_g"; transcript_id "2_t";
+4_dna	GeneMark.hmm3	mRNA	5997	6450	.	-	.	gene_id "2_g"; transcript_id "2_t";
+4_dna	GeneMark.hmm3	stop_codon	5997	5999	.	-	0	gene_id "2_g"; transcript_id "2_t";
+4_dna	GeneMark.hmm3	CDS	5997	6450	.	-	1	gene_id "2_g"; transcript_id "2_t"; cds_type "Terminal"; count "1_1";

@@ -1,0 +1,6 @@
+# check before the run
+# hard_mask is in the 'auto' mode. hard_mask was set to: 1000
+# creat directories
+# commit input data
+error, output file is empty data/evidence.gff
+error on call: /home/rlibouba/gmes_linux_64_4/reformat_gff.pl --out data/evidence.gff  --trace info/dna.trace  --in /home/rlibouba/Github/galaxy-tools/tools/braker/test-data/braker/genemark_evidence.gff  --quiet

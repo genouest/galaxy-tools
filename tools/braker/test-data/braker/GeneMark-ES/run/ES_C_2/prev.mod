@@ -1,0 +1,1 @@
+/home/rlibouba/Github/galaxy-tools/tools/braker/test-data/braker/GeneMark-ES/run/ES_C_1/ES_C_1.mod

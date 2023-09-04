@@ -1,0 +1,167 @@
+---
+sample: 215740
+sample2: 2030
+sample3: 2100
+sample4: 7560
+---
+10_g:
+  L: 56484
+  R: 56885
+  seq_id: sample
+  start: -1
+  stop: -1
+  strand: '-'
+11_g:
+  L: 74172
+  R: 80527
+  seq_id: sample
+  start: -1
+  stop: -1
+  strand: '-'
+12_g:
+  L: 94831
+  R: 95762
+  seq_id: sample
+  start: -1
+  stop: -1
+  strand: +
+13_g:
+  L: 97476
+  R: 113919
+  seq_id: sample
+  start: -1
+  stop: -1
+  strand: '-'
+14_g:
+  L: 115274
+  R: 116488
+  seq_id: sample
+  start: -1
+  stop: -1
+  strand: +
+15_g:
+  L: 116548
+  R: 119382
+  seq_id: sample
+  start: -1
+  stop: -1
+  strand: +
+16_g:
+  L: 119778
+  R: 136346
+  seq_id: sample
+  start: -1
+  stop: -1
+  strand: +
+17_g:
+  L: 153389
+  R: 164495
+  seq_id: sample
+  start: -1
+  stop: -1
+  strand: +
+18_g:
+  L: 167121
+  R: 180579
+  seq_id: sample
+  start: -1
+  stop: -1
+  strand: +
+19_g:
+  L: 183489
+  R: 186166
+  seq_id: sample
+  start: -1
+  stop: -1
+  strand: '-'
+1_g:
+  L: 2258
+  R: 5707
+  seq_id: sample
+  start: -1
+  stop: -1
+  strand: +
+20_g:
+  L: 194065
+  R: 194669
+  seq_id: sample
+  start: -1
+  stop: -1
+  strand: +
+21_g:
+  L: 209044
+  R: 210492
+  seq_id: sample
+  start: -1
+  stop: -1
+  strand: '-'
+22_g:
+  L: 2258
+  R: 5707
+  seq_id: sample4
+  start: -1
+  stop: -1
+  strand: +
+23_g:
+  L: 5997
+  R: 6450
+  seq_id: sample4
+  start: -1
+  stop: -1
+  strand: '-'
+2_g:
+  L: 5997
+  R: 11104
+  seq_id: sample
+  start: -1
+  stop: -1
+  strand: '-'
+3_g:
+  L: 14247
+  R: 14672
+  seq_id: sample
+  start: -1
+  stop: -1
+  strand: '-'
+4_g:
+  L: 15344
+  R: 21542
+  seq_id: sample
+  start: -1
+  stop: -1
+  strand: '-'
+5_g:
+  L: 22811
+  R: 27111
+  seq_id: sample
+  start: -1
+  stop: -1
+  strand: '-'
+6_g:
+  L: 34843
+  R: 35679
+  seq_id: sample
+  start: -1
+  stop: -1
+  strand: '-'
+7_g:
+  L: 40638
+  R: 44130
+  seq_id: sample
+  start: -1
+  stop: -1
+  strand: +
+8_g:
+  L: 45489
+  R: 46114
+  seq_id: sample
+  start: -1
+  stop: -1
+  strand: '-'
+9_g:
+  L: 46749
+  R: 47339
+  seq_id: sample
+  start: -1
+  stop: -1
+  strand: '-'

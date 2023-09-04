@@ -1,0 +1,20 @@
+LABEL          data/dna.fna
+SEQUENCE_SIZE  227430
+SEQUENCE_ACGT  227430
+NT_A           65780
+NT_C           48776
+NT_G           48690
+NT_T           64184
+NT_N           0
+NT_X           0
+SEQUENCE_atcg  0
+NT_a           0
+NT_c           0
+NT_g           0
+NT_t           0
+NT_n           0
+NT_x           0
+SEQUENCE_other 0
+GC             42.9
+RECORDS        4
+

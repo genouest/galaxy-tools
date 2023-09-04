@@ -1,0 +1,20 @@
+LABEL          data/training.fna >dna.fa_1	1_dna	1	215740
+SEQUENCE_SIZE  215740
+SEQUENCE_ACGT  215740
+NT_A           62341
+NT_C           46378
+NT_G           46211
+NT_T           60810
+NT_N           0
+NT_X           0
+SEQUENCE_atcg  0
+NT_a           0
+NT_c           0
+NT_g           0
+NT_t           0
+NT_n           0
+NT_x           0
+SEQUENCE_other 0
+GC             43
+RECORDS        1
+

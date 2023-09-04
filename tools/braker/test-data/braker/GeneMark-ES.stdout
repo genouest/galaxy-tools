@@ -1,0 +1,112 @@
+# check before the run
+# hard_mask is in the 'auto' mode. hard_mask was set to: 1000
+# creat directories
+# commit input data
+# prepare input data report
+# commit training data
+# prepare training data report
+# prepare initial model
+# find GC of sequence
+GC 43
+# build initial ES model
+running step ES_A
+running gm.hmm on local system
+1 contigs in list
+concatenate predictions: /home/rlibouba/Github/galaxy-tools/tools/braker/test-data/braker/GeneMark-ES/run/ES_A_1
+training level ES_A: /home/rlibouba/Github/galaxy-tools/tools/braker/test-data/braker/GeneMark-ES/run/ES_A_1
+Initial	8
+Internal	12
+Terminal	9
+Single	5
+Intron:	21	54518
+Intergenic:	10	36157
+running gm.hmm on local system
+1 contigs in list
+concatenate predictions: /home/rlibouba/Github/galaxy-tools/tools/braker/test-data/braker/GeneMark-ES/run/ES_A_2
+training level ES_A: /home/rlibouba/Github/galaxy-tools/tools/braker/test-data/braker/GeneMark-ES/run/ES_A_2
+Initial	8
+Internal	15
+Terminal	10
+Single	5
+Intron:	25	59610
+Intergenic:	11	39994
+running step ES_B
+running gm.hmm on local system
+1 contigs in list
+concatenate predictions: /home/rlibouba/Github/galaxy-tools/tools/braker/test-data/braker/GeneMark-ES/run/ES_B_1
+training level ES_B: /home/rlibouba/Github/galaxy-tools/tools/braker/test-data/braker/GeneMark-ES/run/ES_B_1
+Initial	8
+Internal	15
+Terminal	10
+Single	5
+Intron:	25	59138
+Intergenic:	11	39994
+running step ES_C
+running gm.hmm on local system
+1 contigs in list
+concatenate predictions: /home/rlibouba/Github/galaxy-tools/tools/braker/test-data/braker/GeneMark-ES/run/ES_C_1
+training level ES_C: /home/rlibouba/Github/galaxy-tools/tools/braker/test-data/braker/GeneMark-ES/run/ES_C_1
+Initial	9
+Internal	15
+Terminal	11
+Single	3
+Intron:	26	59244
+Intergenic:	9	35721
+SvsM  0.166666666666667 vs 0.833333333333333
+genes in IvsT all and selected: 24 0
+# estimate 1: 0.583333333333333
+# estimate 2: 0
+# value: 0.583333333333333
+IvsT  0.583333333333333 vs 0.416666666666667
+running gm.hmm on local system
+1 contigs in list
+concatenate predictions: /home/rlibouba/Github/galaxy-tools/tools/braker/test-data/braker/GeneMark-ES/run/ES_C_2
+training level ES_C: /home/rlibouba/Github/galaxy-tools/tools/braker/test-data/braker/GeneMark-ES/run/ES_C_2
+Initial	10
+Internal	16
+Terminal	12
+Single	3
+Intron:	28	59258
+Intergenic:	11	51737
+SvsM  0.166666666666667 vs 0.833333333333333
+genes in IvsT all and selected: 26 0
+# estimate 1: 0.576923076923077
+# estimate 2: 0
+# value: 0.576923076923077
+IvsT  0.576923076923077 vs 0.423076923076923
+running gm.hmm on local system
+1 contigs in list
+concatenate predictions: /home/rlibouba/Github/galaxy-tools/tools/braker/test-data/braker/GeneMark-ES/run/ES_C_3
+training level ES_C: /home/rlibouba/Github/galaxy-tools/tools/braker/test-data/braker/GeneMark-ES/run/ES_C_3
+Initial	10
+Internal	16
+Terminal	12
+Single	3
+Intron:	28	59258
+Intergenic:	11	51737
+SvsM  0.166666666666667 vs 0.833333333333333
+genes in IvsT all and selected: 26 0
+# estimate 1: 0.576923076923077
+# estimate 2: 0
+# value: 0.576923076923077
+IvsT  0.576923076923077 vs 0.423076923076923
+running gm.hmm on local system
+1 contigs in list
+concatenate predictions: /home/rlibouba/Github/galaxy-tools/tools/braker/test-data/braker/GeneMark-ES/run/ES_C_4
+training level ES_C: /home/rlibouba/Github/galaxy-tools/tools/braker/test-data/braker/GeneMark-ES/run/ES_C_4
+Initial	10
+Internal	16
+Terminal	12
+Single	3
+Intron:	28	59258
+Intergenic:	11	51737
+SvsM  0.166666666666667 vs 0.833333333333333
+genes in IvsT all and selected: 26 0
+# estimate 1: 0.576923076923077
+# estimate 2: 0
+# value: 0.576923076923077
+IvsT  0.576923076923077 vs 0.423076923076923
+# predict final gene set
+running gm.hmm on local system
+4 contigs in list
+4 contigs in list
