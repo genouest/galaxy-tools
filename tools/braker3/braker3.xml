@@ -139,7 +139,7 @@ $advanced.alternatives_from_evidence
         </data>
     </outputs>
 
-        <!-- <tests>
+    <tests>
         <test expect_num_outputs="1">
             <param name="genemark_license" value="gm_key_64" />
             <param name="genome" value="genome_masked.fa" />
@@ -150,36 +150,12 @@ $advanced.alternatives_from_evidence
                 <param name="bam" value="SRR7458692.bam" />
             </section>
             <param name="output_format" value="gtf" />
-            <output name="output_gtf" file="out_genome/braker.gtf" sort="true"/>
+            <assert>
+                <exit_code>1</exit_code>
+            </assert>
         </test>
+    </tests>
 
-        <test expect_num_outputs="1">
-            <param name="genemark_license" value="gm_key_64" />
-            <param name="genome" value="genome_masked.fa" />
-            <section name="augustus">
-                <param name="rounds" value="2" />
-            </section>
-            <section name="evidences">
-                <param name="bam" value="SRR7458692.bam" />
-                <param name="prot_seq" value="proteins.fa" />
-            </section>
-            <param name="output_format" value="gff3" />
-            <output name="output_gff" file="out_genome/braker.gff3"/>
-        </test>
-
-        <test expect_num_outputs="1">
-            <param name="genemark_license" value="gm_key_64" />
-            <param name="genome" value="genome_masked.fa" />
-            <section name="augustus">
-                <param name="rounds" value="2" />
-            </section>
-            <section name="evidences">
-                <param name="prot_seq" value="proteins.fa" />
-            </section>
-            <param name="output_format" value="gff3" />
-            <output name="output_gff" file="out_genome/braker.gff3"/>
-        </test>
-    </tests> -->
     
     <help><![CDATA[
 
