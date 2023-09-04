@@ -1,0 +1,193 @@
+<tool id="braker" name="BRAKER3" version="@TOOL_VERSION@+galaxy@VERSION_SUFFIX@" profile="22.05">
+    <description>genome annotation</description>
+    <macros>
+        <import>macros.xml</import>
+    </macros>
+    <requirements>
+        <expand macro="requirements" />
+    </requirements>
+    <version_command><![CDATA[braker.pl --version; $GENEMARK_PATH/gmes/gmes_petap.pl | grep version]]></version_command>
+    <command><![CDATA[
+if [ -z "\$GENEMARK_PATH" ] ; then echo "GeneMark is not installed on this Galaxy server." >&2 ; exit 1 ; fi &&
+if [ ! -f "\$GENEMARK_PATH/gmes/gmes_petap.pl" ] ; then echo "GeneMark is not installed properly on this Galaxy server." >&2 ; exit 1 ; fi &&
+
+## This specific GeneMark version has some tools bundled with it, forced to use it.
+## I feel dirty. Pardon me.
+
+export PATH="\$GENEMARK_PATH/../tools/:\$PATH" &&
+
+## GeneMark only search for license in ~/.gm_key
+cp '${genemark_license}' ~/.gm_key &&
+
+braker.pl
+--genome '${genome}'
+
+$softmasking
+
+#if $evidences.bam:
+    --bam ${evidences.bam}
+#end if
+
+#if $evidences.prot_seq:
+    --prot_seq ${evidences.prot_seq}
+#end if
+
+## No hints, use esmode
+#if not $evidences.bam and not $evidences.prot_seq
+    --esmode
+#end if
+
+#if $output_format == 'gff3'
+    --gff3
+#end if
+
+$genemark.fungus
+
+$augustus.crf
+--rounds $augustus.rounds
+$augustus.AUGUSTUS_ab_initio
+$augustus.keepCrf
+
+$advanced.UTR
+
+$advanced.filterOutShort
+
+#if $advanced.eval:
+    --eval ${advanced.eval}
+#end if
+
+#if $advanced.eval_pseudo:
+    --eval_pseudo ${advanced.eval_pseudo}
+#end if
+
+#if $species:
+    --species '$species'
+#end if
+
+$advanced.alternatives_from_evidence
+
+#if $dev.splice_sites:
+    --splice_sites '$dev.splice_sites'
+#end if
+
+#if $dev.min_contig:
+    --min_contig $dev.min_contig
+#end if
+
+--gc_probability $dev.gc_probability
+--downsampling_lambda $dev.downsampling_lambda
+
+#if $dev.gm_max_intergenic:
+--gm_max_intergenic $dev.gm_max_intergenic
+#end if
+
+--threads  \${GALAXY_SLOTS:-2}
+]]></command>
+    <inputs>
+        <param name="genemark_license" type="data" format="txt" label="GeneMark license file" help="Braker uses GeneMark, which is not a free software, to use it download and unzip a license from http://topaz.gatech.edu/GeneMark/license_download.cgi (ES/ET/EP version). GeneMark needs to be installed manually by Galaxy administrators." />
+
+        <param argument="--genome" type="data" format="fasta" label="Assembly to annotate" help="The assembly should preferably be soft-masked (with RepeatMasker for example)" />
+
+        <param argument="--softmasking" type="boolean" checked="true" truevalue="" falsevalue="--softmasking_off" label="Genome sequence is soft-masked" />
+
+        <param argument="--species" type="text" label="Species name" optional="true" help="Using Sp_1, if no species is assigned"/>
+
+        <section name="evidences" expanded="true" title="Evidences">
+            <param argument="--bam" type="data" format="bam" optional="true" label="RNA-seq mapped to genome to train Augustus/GeneMark" />
+            <param argument="--prot_seq" type="data" format="fasta" optional="true" label="Proteins to map to genome" />
+        </section>
+
+        <section name="genemark" expanded="true" title="GeneMark">
+            <param argument="--fungus" type="boolean" checked="false" truevalue="--fungus" falsevalue="" label="Fungal genome" help="GeneMark-EX option, run algorithm with branch point model (most useful for fungal genomes)" />
+        </section>
+
+        <section name="augustus" expanded="true" title="Augustus">
+            <param argument="--crf" type="boolean" checked="false" truevalue="--crf" falsevalue="" label="Use CRF training for Augustus" help="Alternate training method (Conditional Random Field)" />
+            <param argument="--rounds" type="integer" value="5" label="Number of optimization rounds used in optimize_augustus.pl" />
+            <param argument="--AUGUSTUS_ab_initio" type="boolean" checked="false" truevalue="--AUGUSTUS_ab_initio" falsevalue="" label="Output ab initio predictions by AUGUSTUS"/>
+            <param argument="--keepCrf" type="boolean" checked="false" truevalue="--keepCrf" falsevalue="" label="CRF parameters" help="keep CRF parameters even if they are no better than HMM parameters"/>
+        </section>
+
+        <section name="advanced" expanded="false" title="Advanced">
+            <param argument="--UTR" type="boolean" checked="false" truevalue="--UTR=on" falsevalue="" label="" help="Experimental, requires RNASeq data (bam) and a softmasked genome" />
+            <param argument="--filterOutShort" type="boolean" checked="false" truevalue="--filterOutShort" falsevalue="" label="Filter out too short traingin gene predicted by GeneMark-EX" />
+            <param argument="--eval" type="data" format="gtf" optional="true" label="Reference set to evaluate predictions" help="using evaluation scripts from GaTech" />
+            <param argument="--eval_pseudo" type="data" format="gff3" optional="true" label="File with pseudogenes that will be excluded from accuracy evaluation" />
+            <param argument="--alternatives-from-evidence" type="boolean" checked="true" truevalue="--alternatives-from-evidence=true" falsevalue="--alternatives-from-evidence=false" label="Output alternative transcripts based on explicit evidence from hints"/>
+        </section>
+
+        <section name="dev" expanded="false" title="Expert options">
+            <param argument="--splice_sites" type="text" label="List of splice site patterns for UTR prediction" help="Only affects UTR training example generation, not gene prediction by AUGUSTUS (default: GTAG"/>
+            <param argument="--min_contig" type="integer" optional="true" label="Minimal contig length for GeneMark-EX"/>
+            <param argument="--gc_probability" type="float" min="0" max="1" value="0.001" label="Probablity for donor splice site pattern GC for gene prediction with GeneMark-EX"/>
+            <param argument="--gm_max_intergenic" type="integer" optional="true" label="Maximum allowed size of intergenic regions in GeneMark-EX" help="If not set, the value is automatically determined by GeneMark-EX"/>
+            <param argument="--downsampling_lambda" type="integer" min="0" value="2" label="Lambda parameter of the Poisson distribution" help="for downsampling of training gene structures according to their number of introns distribution"/>
+        </section>
+
+        <param name="output_format" type="select" label="Output format">
+            <option value="gtf" selected="true">GTF</option>
+            <option value="gff3">GFF3</option>
+        </param>
+    </inputs>
+
+    <outputs>
+        <data name='output_gtf' format='gtf' label="GTF Annotation" from_work_dir="braker/braker.gtf">
+            <filter>output_format == 'gtf'</filter>
+        </data>
+        <data name='output_gff' format='gff3' label="GFF Annotation" from_work_dir="braker/braker.gff3">
+            <filter>output_format == 'gff3'</filter>
+        </data>
+    </outputs>
+
+        <!-- <tests>
+        <test expect_num_outputs="1">
+            <param name="genemark_license" value="gm_key_64" />
+            <param name="genome" value="genome_masked.fa" />
+            <section name="augustus">
+                <param name="rounds" value="2" />
+            </section>
+            <section name="evidences">
+                <param name="bam" value="SRR7458692.bam" />
+            </section>
+            <param name="output_format" value="gtf" />
+            <output name="output_gtf" file="out_genome/braker.gtf" sort="true"/>
+        </test>
+
+        <test expect_num_outputs="1">
+            <param name="genemark_license" value="gm_key_64" />
+            <param name="genome" value="genome_masked.fa" />
+            <section name="augustus">
+                <param name="rounds" value="2" />
+            </section>
+            <section name="evidences">
+                <param name="bam" value="SRR7458692.bam" />
+                <param name="prot_seq" value="proteins.fa" />
+            </section>
+            <param name="output_format" value="gff3" />
+            <output name="output_gff" file="out_genome/braker.gff3"/>
+        </test>
+
+        <test expect_num_outputs="1">
+            <param name="genemark_license" value="gm_key_64" />
+            <param name="genome" value="genome_masked.fa" />
+            <section name="augustus">
+                <param name="rounds" value="2" />
+            </section>
+            <section name="evidences">
+                <param name="prot_seq" value="proteins.fa" />
+            </section>
+            <param name="output_format" value="gff3" />
+            <output name="output_gff" file="out_genome/braker.gff3"/>
+        </test>
+    </tests> -->
+    
+    <help><![CDATA[
+
+Braker_ allows for fully automated training of the gene prediction tools GeneMark-EX and AUGUSTUS from RNA-Seq and/or protein homology information, and that integrates the extrinsic evidence from RNA-Seq and protein homology information into the prediction.
+
+In contrast to other available methods that rely on protein homology information, BRAKER reaches high gene prediction accuracy even in the absence of the annotation of very closely related species and in the absence of RNA-Seq data.
+
+.. _Braker: https://github.com/Gaius-Augustus/BRAKER
+    ]]></help>
+    <expand macro="citations" />
+</tool>
