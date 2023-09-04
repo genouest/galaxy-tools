@@ -1,0 +1,1484 @@
+sample	AUGUSTUS	gene	2126	3863	.	+	.	g1
+sample	AUGUSTUS	transcript	2126	3863	0.33	+	.	g1.t1
+sample	AUGUSTUS	start_codon	2126	2128	.	+	0	transcript_id "g1.t1"; gene_id "g1";
+sample	AUGUSTUS	CDS	2126	2199	1	+	0	transcript_id "g1.t1"; gene_id "g1";
+sample	AUGUSTUS	exon	2126	2199	.	+	.	transcript_id "g1.t1"; gene_id "g1";
+sample	AUGUSTUS	intron	2200	2257	1	+	.	transcript_id "g1.t1"; gene_id "g1";
+sample	AUGUSTUS	CDS	2258	3224	1	+	1	transcript_id "g1.t1"; gene_id "g1";
+sample	AUGUSTUS	exon	2258	3224	.	+	.	transcript_id "g1.t1"; gene_id "g1";
+sample	AUGUSTUS	intron	3225	3283	1	+	.	transcript_id "g1.t1"; gene_id "g1";
+sample	AUGUSTUS	CDS	3284	3490	0.62	+	0	transcript_id "g1.t1"; gene_id "g1";
+sample	AUGUSTUS	exon	3284	3490	.	+	.	transcript_id "g1.t1"; gene_id "g1";
+sample	AUGUSTUS	intron	3491	3548	0.53	+	.	transcript_id "g1.t1"; gene_id "g1";
+sample	AUGUSTUS	CDS	3549	3603	0.44	+	0	transcript_id "g1.t1"; gene_id "g1";
+sample	AUGUSTUS	exon	3549	3603	.	+	.	transcript_id "g1.t1"; gene_id "g1";
+sample	AUGUSTUS	intron	3604	3768	0.43	+	.	transcript_id "g1.t1"; gene_id "g1";
+sample	AUGUSTUS	CDS	3769	3863	0.42	+	2	transcript_id "g1.t1"; gene_id "g1";
+sample	AUGUSTUS	exon	3769	3863	.	+	.	transcript_id "g1.t1"; gene_id "g1";
+sample	AUGUSTUS	stop_codon	3861	3863	.	+	0	transcript_id "g1.t1"; gene_id "g1";
+sample	AUGUSTUS	gene	4248	6494	.	-	.	g2
+sample	AUGUSTUS	transcript	4248	6494	1	-	.	g2.t1
+sample	AUGUSTUS	stop_codon	4248	4250	.	-	0	transcript_id "g2.t1"; gene_id "g2";
+sample	AUGUSTUS	CDS	4248	4759	1	-	2	transcript_id "g2.t1"; gene_id "g2";
+sample	AUGUSTUS	exon	4248	4759	.	-	.	transcript_id "g2.t1"; gene_id "g2";
+sample	AUGUSTUS	intron	4760	4929	1	-	.	transcript_id "g2.t1"; gene_id "g2";
+sample	AUGUSTUS	CDS	4930	5539	1	-	0	transcript_id "g2.t1"; gene_id "g2";
+sample	AUGUSTUS	exon	4930	5539	.	-	.	transcript_id "g2.t1"; gene_id "g2";
+sample	AUGUSTUS	intron	5540	6038	1	-	.	transcript_id "g2.t1"; gene_id "g2";
+sample	AUGUSTUS	CDS	6039	6494	1	-	0	transcript_id "g2.t1"; gene_id "g2";
+sample	AUGUSTUS	exon	6039	6494	.	-	.	transcript_id "g2.t1"; gene_id "g2";
+sample	AUGUSTUS	start_codon	6492	6494	.	-	0	transcript_id "g2.t1"; gene_id "g2";
+sample	AUGUSTUS	gene	7691	11104	.	-	.	g3
+sample	AUGUSTUS	transcript	7691	11104	0.91	-	.	g3.t1
+sample	AUGUSTUS	stop_codon	7691	7693	.	-	0	transcript_id "g3.t1"; gene_id "g3";
+sample	AUGUSTUS	CDS	7691	8385	0.99	-	2	transcript_id "g3.t1"; gene_id "g3";
+sample	AUGUSTUS	exon	7691	8385	.	-	.	transcript_id "g3.t1"; gene_id "g3";
+sample	AUGUSTUS	intron	8386	8706	0.98	-	.	transcript_id "g3.t1"; gene_id "g3";
+sample	AUGUSTUS	CDS	8707	10515	0.95	-	2	transcript_id "g3.t1"; gene_id "g3";
+sample	AUGUSTUS	exon	8707	10515	.	-	.	transcript_id "g3.t1"; gene_id "g3";
+sample	AUGUSTUS	intron	10516	10646	0.96	-	.	transcript_id "g3.t1"; gene_id "g3";
+sample	AUGUSTUS	CDS	10647	10794	1	-	0	transcript_id "g3.t1"; gene_id "g3";
+sample	AUGUSTUS	exon	10647	10794	.	-	.	transcript_id "g3.t1"; gene_id "g3";
+sample	AUGUSTUS	intron	10795	10852	1	-	.	transcript_id "g3.t1"; gene_id "g3";
+sample	AUGUSTUS	CDS	10853	11104	0.97	-	0	transcript_id "g3.t1"; gene_id "g3";
+sample	AUGUSTUS	exon	10853	11104	.	-	.	transcript_id "g3.t1"; gene_id "g3";
+sample	AUGUSTUS	start_codon	11102	11104	.	-	0	transcript_id "g3.t1"; gene_id "g3";
+sample	AUGUSTUS	gene	14247	28143	.	-	.	g4
+sample	AUGUSTUS	transcript	14247	28143	0.88	-	.	g4.t1
+sample	AUGUSTUS	stop_codon	14247	14249	.	-	0	transcript_id "g4.t1"; gene_id "g4";
+sample	AUGUSTUS	CDS	14247	14707	1	-	2	transcript_id "g4.t1"; gene_id "g4";
+sample	AUGUSTUS	exon	14247	14707	.	-	.	transcript_id "g4.t1"; gene_id "g4";
+sample	AUGUSTUS	intron	14708	14793	1	-	.	transcript_id "g4.t1"; gene_id "g4";
+sample	AUGUSTUS	CDS	14794	14995	1	-	0	transcript_id "g4.t1"; gene_id "g4";
+sample	AUGUSTUS	exon	14794	14995	.	-	.	transcript_id "g4.t1"; gene_id "g4";
+sample	AUGUSTUS	intron	14996	15100	1	-	.	transcript_id "g4.t1"; gene_id "g4";
+sample	AUGUSTUS	CDS	15101	15289	1	-	0	transcript_id "g4.t1"; gene_id "g4";
+sample	AUGUSTUS	exon	15101	15289	.	-	.	transcript_id "g4.t1"; gene_id "g4";
+sample	AUGUSTUS	intron	15290	15352	1	-	.	transcript_id "g4.t1"; gene_id "g4";
+sample	AUGUSTUS	CDS	15353	17188	1	-	0	transcript_id "g4.t1"; gene_id "g4";
+sample	AUGUSTUS	exon	15353	17188	.	-	.	transcript_id "g4.t1"; gene_id "g4";
+sample	AUGUSTUS	intron	17189	17295	1	-	.	transcript_id "g4.t1"; gene_id "g4";
+sample	AUGUSTUS	CDS	17296	18284	0.99	-	2	transcript_id "g4.t1"; gene_id "g4";
+sample	AUGUSTUS	exon	17296	18284	.	-	.	transcript_id "g4.t1"; gene_id "g4";
+sample	AUGUSTUS	intron	18285	18377	1	-	.	transcript_id "g4.t1"; gene_id "g4";
+sample	AUGUSTUS	CDS	18378	19482	1	-	0	transcript_id "g4.t1"; gene_id "g4";
+sample	AUGUSTUS	exon	18378	19482	.	-	.	transcript_id "g4.t1"; gene_id "g4";
+sample	AUGUSTUS	intron	19483	19637	1	-	.	transcript_id "g4.t1"; gene_id "g4";
+sample	AUGUSTUS	CDS	19638	21484	1	-	2	transcript_id "g4.t1"; gene_id "g4";
+sample	AUGUSTUS	exon	19638	21484	.	-	.	transcript_id "g4.t1"; gene_id "g4";
+sample	AUGUSTUS	intron	21485	22156	1	-	.	transcript_id "g4.t1"; gene_id "g4";
+sample	AUGUSTUS	CDS	22157	22240	0.94	-	2	transcript_id "g4.t1"; gene_id "g4";
+sample	AUGUSTUS	exon	22157	22240	.	-	.	transcript_id "g4.t1"; gene_id "g4";
+sample	AUGUSTUS	intron	22241	22908	0.94	-	.	transcript_id "g4.t1"; gene_id "g4";
+sample	AUGUSTUS	CDS	22909	24117	0.94	-	2	transcript_id "g4.t1"; gene_id "g4";
+sample	AUGUSTUS	exon	22909	24117	.	-	.	transcript_id "g4.t1"; gene_id "g4";
+sample	AUGUSTUS	intron	24118	26111	1	-	.	transcript_id "g4.t1"; gene_id "g4";
+sample	AUGUSTUS	CDS	26112	27098	1	-	2	transcript_id "g4.t1"; gene_id "g4";
+sample	AUGUSTUS	exon	26112	27098	.	-	.	transcript_id "g4.t1"; gene_id "g4";
+sample	AUGUSTUS	intron	27099	27632	1	-	.	transcript_id "g4.t1"; gene_id "g4";
+sample	AUGUSTUS	CDS	27633	28143	0.95	-	0	transcript_id "g4.t1"; gene_id "g4";
+sample	AUGUSTUS	exon	27633	28143	.	-	.	transcript_id "g4.t1"; gene_id "g4";
+sample	AUGUSTUS	start_codon	28141	28143	.	-	0	transcript_id "g4.t1"; gene_id "g4";
+sample	GeneMark.hmm3	transcript	14247	21542	.	-	.	g4.t2
+sample	GeneMark.hmm3	stop_codon	14247	14249	.	-	0	transcript_id "g4.t2"; gene_id "g4";
+sample	GeneMark.hmm3	CDS	14247	14707	.	-	2	transcript_id "g4.t2"; gene_id "g4";
+sample	GeneMark.hmm3	exon	14247	14707	0	-	.	transcript_id "g4.t2"; gene_id "g4";
+sample	GeneMark.hmm3	intron	14708	14793	.	-	0	transcript_id "g4.t2"; gene_id "g4";
+sample	GeneMark.hmm3	CDS	14794	14995	.	-	0	transcript_id "g4.t2"; gene_id "g4";
+sample	GeneMark.hmm3	exon	14794	14995	0	-	.	transcript_id "g4.t2"; gene_id "g4";
+sample	GeneMark.hmm3	intron	14996	15100	.	-	0	transcript_id "g4.t2"; gene_id "g4";
+sample	GeneMark.hmm3	CDS	15101	15289	.	-	0	transcript_id "g4.t2"; gene_id "g4";
+sample	GeneMark.hmm3	exon	15101	15289	0	-	.	transcript_id "g4.t2"; gene_id "g4";
+sample	GeneMark.hmm3	intron	15290	15352	.	-	0	transcript_id "g4.t2"; gene_id "g4";
+sample	GeneMark.hmm3	CDS	15353	17188	.	-	0	transcript_id "g4.t2"; gene_id "g4";
+sample	GeneMark.hmm3	exon	15353	17188	0	-	.	transcript_id "g4.t2"; gene_id "g4";
+sample	GeneMark.hmm3	intron	17189	17295	.	-	2	transcript_id "g4.t2"; gene_id "g4";
+sample	GeneMark.hmm3	CDS	17296	18284	.	-	2	transcript_id "g4.t2"; gene_id "g4";
+sample	GeneMark.hmm3	exon	17296	18284	0	-	.	transcript_id "g4.t2"; gene_id "g4";
+sample	GeneMark.hmm3	intron	18285	18377	.	-	0	transcript_id "g4.t2"; gene_id "g4";
+sample	GeneMark.hmm3	CDS	18378	19482	.	-	0	transcript_id "g4.t2"; gene_id "g4";
+sample	GeneMark.hmm3	exon	18378	19482	0	-	.	transcript_id "g4.t2"; gene_id "g4";
+sample	GeneMark.hmm3	intron	19483	19637	.	-	0	transcript_id "g4.t2"; gene_id "g4";
+sample	GeneMark.hmm3	CDS	19638	21542	.	-	0	transcript_id "g4.t2"; gene_id "g4";
+sample	GeneMark.hmm3	exon	19638	21542	0	-	.	transcript_id "g4.t2"; gene_id "g4";
+sample	GeneMark.hmm3	start_codon	21540	21542	.	-	0	transcript_id "g4.t2"; gene_id "g4";
+sample	AUGUSTUS	gene	34843	35679	.	-	.	g5
+sample	AUGUSTUS	transcript	34843	35679	0.85	-	.	g5.t1
+sample	AUGUSTUS	stop_codon	34843	34845	.	-	0	transcript_id "g5.t1"; gene_id "g5";
+sample	AUGUSTUS	CDS	34843	35679	0.85	-	0	transcript_id "g5.t1"; gene_id "g5";
+sample	AUGUSTUS	exon	34843	35679	.	-	.	transcript_id "g5.t1"; gene_id "g5";
+sample	AUGUSTUS	start_codon	35677	35679	.	-	0	transcript_id "g5.t1"; gene_id "g5";
+sample	AUGUSTUS	gene	39864	42107	.	+	.	g6
+sample	AUGUSTUS	transcript	39864	42107	0.19	+	.	g6.t1
+sample	AUGUSTUS	start_codon	39864	39866	.	+	0	transcript_id "g6.t1"; gene_id "g6";
+sample	AUGUSTUS	CDS	39864	39896	0.75	+	0	transcript_id "g6.t1"; gene_id "g6";
+sample	AUGUSTUS	exon	39864	39896	.	+	.	transcript_id "g6.t1"; gene_id "g6";
+sample	AUGUSTUS	intron	39897	40008	0.51	+	.	transcript_id "g6.t1"; gene_id "g6";
+sample	AUGUSTUS	CDS	40009	40028	0.53	+	0	transcript_id "g6.t1"; gene_id "g6";
+sample	AUGUSTUS	exon	40009	40028	.	+	.	transcript_id "g6.t1"; gene_id "g6";
+sample	AUGUSTUS	intron	40029	40090	0.95	+	.	transcript_id "g6.t1"; gene_id "g6";
+sample	AUGUSTUS	CDS	40091	40116	0.47	+	1	transcript_id "g6.t1"; gene_id "g6";
+sample	AUGUSTUS	exon	40091	40116	.	+	.	transcript_id "g6.t1"; gene_id "g6";
+sample	AUGUSTUS	intron	40117	40178	0.37	+	.	transcript_id "g6.t1"; gene_id "g6";
+sample	AUGUSTUS	CDS	40179	40396	0.37	+	2	transcript_id "g6.t1"; gene_id "g6";
+sample	AUGUSTUS	exon	40179	40396	.	+	.	transcript_id "g6.t1"; gene_id "g6";
+sample	AUGUSTUS	intron	40397	40658	1	+	.	transcript_id "g6.t1"; gene_id "g6";
+sample	AUGUSTUS	CDS	40659	41193	1	+	0	transcript_id "g6.t1"; gene_id "g6";
+sample	AUGUSTUS	exon	40659	41193	.	+	.	transcript_id "g6.t1"; gene_id "g6";
+sample	AUGUSTUS	intron	41194	41706	1	+	.	transcript_id "g6.t1"; gene_id "g6";
+sample	AUGUSTUS	CDS	41707	42107	1	+	2	transcript_id "g6.t1"; gene_id "g6";
+sample	AUGUSTUS	exon	41707	42107	.	+	.	transcript_id "g6.t1"; gene_id "g6";
+sample	AUGUSTUS	stop_codon	42105	42107	.	+	0	transcript_id "g6.t1"; gene_id "g6";
+sample	GeneMark.hmm3	transcript	40223	42107	.	+	.	g6.t2
+sample	GeneMark.hmm3	start_codon	40223	40225	.	+	0	transcript_id "g6.t2"; gene_id "g6";
+sample	GeneMark.hmm3	CDS	40223	40396	.	+	0	transcript_id "g6.t2"; gene_id "g6";
+sample	GeneMark.hmm3	exon	40223	40396	0	+	.	transcript_id "g6.t2"; gene_id "g6";
+sample	GeneMark.hmm3	intron	40397	40658	.	+	0	transcript_id "g6.t2"; gene_id "g6";
+sample	GeneMark.hmm3	CDS	40659	41193	.	+	0	transcript_id "g6.t2"; gene_id "g6";
+sample	GeneMark.hmm3	exon	40659	41193	0	+	.	transcript_id "g6.t2"; gene_id "g6";
+sample	GeneMark.hmm3	intron	41194	41706	.	+	2	transcript_id "g6.t2"; gene_id "g6";
+sample	GeneMark.hmm3	CDS	41707	42107	.	+	2	transcript_id "g6.t2"; gene_id "g6";
+sample	GeneMark.hmm3	exon	41707	42107	0	+	.	transcript_id "g6.t2"; gene_id "g6";
+sample	GeneMark.hmm3	stop_codon	42105	42107	.	+	0	transcript_id "g6.t2"; gene_id "g6";
+sample	AUGUSTUS	gene	42754	44130	.	+	.	g7
+sample	AUGUSTUS	transcript	42754	44130	1	+	.	g7.t1
+sample	AUGUSTUS	start_codon	42754	42756	.	+	0	transcript_id "g7.t1"; gene_id "g7";
+sample	AUGUSTUS	CDS	42754	42848	1	+	0	transcript_id "g7.t1"; gene_id "g7";
+sample	AUGUSTUS	exon	42754	42848	.	+	.	transcript_id "g7.t1"; gene_id "g7";
+sample	AUGUSTUS	intron	42849	42906	1	+	.	transcript_id "g7.t1"; gene_id "g7";
+sample	AUGUSTUS	CDS	42907	43055	1	+	1	transcript_id "g7.t1"; gene_id "g7";
+sample	AUGUSTUS	exon	42907	43055	.	+	.	transcript_id "g7.t1"; gene_id "g7";
+sample	AUGUSTUS	intron	43056	43115	1	+	.	transcript_id "g7.t1"; gene_id "g7";
+sample	AUGUSTUS	CDS	43116	43311	1	+	2	transcript_id "g7.t1"; gene_id "g7";
+sample	AUGUSTUS	exon	43116	43311	.	+	.	transcript_id "g7.t1"; gene_id "g7";
+sample	AUGUSTUS	intron	43312	43371	1	+	.	transcript_id "g7.t1"; gene_id "g7";
+sample	AUGUSTUS	CDS	43372	43609	1	+	1	transcript_id "g7.t1"; gene_id "g7";
+sample	AUGUSTUS	exon	43372	43609	.	+	.	transcript_id "g7.t1"; gene_id "g7";
+sample	AUGUSTUS	intron	43610	43662	1	+	.	transcript_id "g7.t1"; gene_id "g7";
+sample	AUGUSTUS	CDS	43663	44130	1	+	0	transcript_id "g7.t1"; gene_id "g7";
+sample	AUGUSTUS	exon	43663	44130	.	+	.	transcript_id "g7.t1"; gene_id "g7";
+sample	AUGUSTUS	stop_codon	44128	44130	.	+	0	transcript_id "g7.t1"; gene_id "g7";
+sample	AUGUSTUS	gene	45527	47339	.	-	.	g8
+sample	AUGUSTUS	transcript	45527	47339	1	-	.	g8.t1
+sample	AUGUSTUS	stop_codon	45527	45529	.	-	0	transcript_id "g8.t1"; gene_id "g8";
+sample	AUGUSTUS	CDS	45527	46157	1	-	1	transcript_id "g8.t1"; gene_id "g8";
+sample	AUGUSTUS	exon	45527	46157	.	-	.	transcript_id "g8.t1"; gene_id "g8";
+sample	AUGUSTUS	intron	46158	46213	1	-	.	transcript_id "g8.t1"; gene_id "g8";
+sample	AUGUSTUS	CDS	46214	46330	1	-	1	transcript_id "g8.t1"; gene_id "g8";
+sample	AUGUSTUS	exon	46214	46330	.	-	.	transcript_id "g8.t1"; gene_id "g8";
+sample	AUGUSTUS	intron	46331	46752	1	-	.	transcript_id "g8.t1"; gene_id "g8";
+sample	AUGUSTUS	CDS	46753	47339	1	-	0	transcript_id "g8.t1"; gene_id "g8";
+sample	AUGUSTUS	exon	46753	47339	.	-	.	transcript_id "g8.t1"; gene_id "g8";
+sample	AUGUSTUS	start_codon	47337	47339	.	-	0	transcript_id "g8.t1"; gene_id "g8";
+sample	AUGUSTUS	gene	56484	56885	.	-	.	g9
+sample	AUGUSTUS	transcript	56484	56885	1	-	.	g9.t1
+sample	AUGUSTUS	stop_codon	56484	56486	.	-	0	transcript_id "g9.t1"; gene_id "g9";
+sample	AUGUSTUS	CDS	56484	56885	1	-	0	transcript_id "g9.t1"; gene_id "g9";
+sample	AUGUSTUS	exon	56484	56885	.	-	.	transcript_id "g9.t1"; gene_id "g9";
+sample	AUGUSTUS	start_codon	56883	56885	.	-	0	transcript_id "g9.t1"; gene_id "g9";
+sample	AUGUSTUS	gene	57390	69736	.	-	.	g10
+sample	AUGUSTUS	transcript	57390	69736	0.52	-	.	g10.t1
+sample	AUGUSTUS	stop_codon	57390	57392	.	-	0	transcript_id "g10.t1"; gene_id "g10";
+sample	AUGUSTUS	CDS	57390	57581	0.97	-	0	transcript_id "g10.t1"; gene_id "g10";
+sample	AUGUSTUS	exon	57390	57581	.	-	.	transcript_id "g10.t1"; gene_id "g10";
+sample	AUGUSTUS	intron	57582	59048	0.93	-	.	transcript_id "g10.t1"; gene_id "g10";
+sample	AUGUSTUS	CDS	59049	59246	0.96	-	0	transcript_id "g10.t1"; gene_id "g10";
+sample	AUGUSTUS	exon	59049	59246	.	-	.	transcript_id "g10.t1"; gene_id "g10";
+sample	AUGUSTUS	intron	59247	60229	0.97	-	.	transcript_id "g10.t1"; gene_id "g10";
+sample	AUGUSTUS	CDS	60230	60381	0.86	-	2	transcript_id "g10.t1"; gene_id "g10";
+sample	AUGUSTUS	exon	60230	60381	.	-	.	transcript_id "g10.t1"; gene_id "g10";
+sample	AUGUSTUS	intron	60382	69426	0.86	-	.	transcript_id "g10.t1"; gene_id "g10";
+sample	AUGUSTUS	CDS	69427	69478	1	-	0	transcript_id "g10.t1"; gene_id "g10";
+sample	AUGUSTUS	exon	69427	69478	.	-	.	transcript_id "g10.t1"; gene_id "g10";
+sample	AUGUSTUS	intron	69479	69538	1	-	.	transcript_id "g10.t1"; gene_id "g10";
+sample	AUGUSTUS	CDS	69539	69736	0.65	-	0	transcript_id "g10.t1"; gene_id "g10";
+sample	AUGUSTUS	exon	69539	69736	.	-	.	transcript_id "g10.t1"; gene_id "g10";
+sample	AUGUSTUS	start_codon	69734	69736	.	-	0	transcript_id "g10.t1"; gene_id "g10";
+sample	AUGUSTUS	gene	79532	95583	.	+	.	g11
+sample	AUGUSTUS	transcript	79532	95583	0.3	+	.	g11.t1
+sample	AUGUSTUS	start_codon	79532	79534	.	+	0	transcript_id "g11.t1"; gene_id "g11";
+sample	AUGUSTUS	CDS	79532	80474	0.54	+	0	transcript_id "g11.t1"; gene_id "g11";
+sample	AUGUSTUS	exon	79532	80474	.	+	.	transcript_id "g11.t1"; gene_id "g11";
+sample	AUGUSTUS	intron	80475	94562	0.7	+	.	transcript_id "g11.t1"; gene_id "g11";
+sample	AUGUSTUS	CDS	94563	94732	1	+	2	transcript_id "g11.t1"; gene_id "g11";
+sample	AUGUSTUS	exon	94563	94732	.	+	.	transcript_id "g11.t1"; gene_id "g11";
+sample	AUGUSTUS	intron	94733	94872	1	+	.	transcript_id "g11.t1"; gene_id "g11";
+sample	AUGUSTUS	CDS	94873	95583	0.75	+	0	transcript_id "g11.t1"; gene_id "g11";
+sample	AUGUSTUS	exon	94873	95583	.	+	.	transcript_id "g11.t1"; gene_id "g11";
+sample	AUGUSTUS	stop_codon	95581	95583	.	+	0	transcript_id "g11.t1"; gene_id "g11";
+sample	AUGUSTUS	gene	95635	102130	.	+	.	g12
+sample	AUGUSTUS	transcript	95635	102130	0.28	+	.	g12.t1
+sample	AUGUSTUS	start_codon	95635	95637	.	+	0	transcript_id "g12.t1"; gene_id "g12";
+sample	AUGUSTUS	CDS	95635	95748	0.75	+	0	transcript_id "g12.t1"; gene_id "g12";
+sample	AUGUSTUS	exon	95635	95748	.	+	.	transcript_id "g12.t1"; gene_id "g12";
+sample	AUGUSTUS	intron	95749	100931	0.54	+	.	transcript_id "g12.t1"; gene_id "g12";
+sample	AUGUSTUS	CDS	100932	101093	0.55	+	0	transcript_id "g12.t1"; gene_id "g12";
+sample	AUGUSTUS	exon	100932	101093	.	+	.	transcript_id "g12.t1"; gene_id "g12";
+sample	AUGUSTUS	intron	101094	102052	0.7	+	.	transcript_id "g12.t1"; gene_id "g12";
+sample	AUGUSTUS	CDS	102053	102130	0.7	+	0	transcript_id "g12.t1"; gene_id "g12";
+sample	AUGUSTUS	exon	102053	102130	.	+	.	transcript_id "g12.t1"; gene_id "g12";
+sample	AUGUSTUS	stop_codon	102128	102130	.	+	0	transcript_id "g12.t1"; gene_id "g12";
+sample	AUGUSTUS	gene	102510	111303	.	-	.	g13
+sample	AUGUSTUS	transcript	102510	111303	0.51	-	.	g13.t1
+sample	AUGUSTUS	stop_codon	102510	102512	.	-	0	transcript_id "g13.t1"; gene_id "g13";
+sample	AUGUSTUS	CDS	102510	103151	1	-	0	transcript_id "g13.t1"; gene_id "g13";
+sample	AUGUSTUS	exon	102510	103151	.	-	.	transcript_id "g13.t1"; gene_id "g13";
+sample	AUGUSTUS	intron	103152	103228	0.99	-	.	transcript_id "g13.t1"; gene_id "g13";
+sample	AUGUSTUS	CDS	103229	103441	0.98	-	0	transcript_id "g13.t1"; gene_id "g13";
+sample	AUGUSTUS	exon	103229	103441	.	-	.	transcript_id "g13.t1"; gene_id "g13";
+sample	AUGUSTUS	intron	103442	103504	0.99	-	.	transcript_id "g13.t1"; gene_id "g13";
+sample	AUGUSTUS	CDS	103505	103835	0.56	-	1	transcript_id "g13.t1"; gene_id "g13";
+sample	AUGUSTUS	exon	103505	103835	.	-	.	transcript_id "g13.t1"; gene_id "g13";
+sample	AUGUSTUS	intron	103836	104037	0.56	-	.	transcript_id "g13.t1"; gene_id "g13";
+sample	AUGUSTUS	CDS	104038	104075	0.65	-	0	transcript_id "g13.t1"; gene_id "g13";
+sample	AUGUSTUS	exon	104038	104075	.	-	.	transcript_id "g13.t1"; gene_id "g13";
+sample	AUGUSTUS	intron	104076	104143	0.65	-	.	transcript_id "g13.t1"; gene_id "g13";
+sample	AUGUSTUS	CDS	104144	104813	0.8	-	1	transcript_id "g13.t1"; gene_id "g13";
+sample	AUGUSTUS	exon	104144	104813	.	-	.	transcript_id "g13.t1"; gene_id "g13";
+sample	AUGUSTUS	intron	104814	106068	0.99	-	.	transcript_id "g13.t1"; gene_id "g13";
+sample	AUGUSTUS	CDS	106069	106194	0.99	-	1	transcript_id "g13.t1"; gene_id "g13";
+sample	AUGUSTUS	exon	106069	106194	.	-	.	transcript_id "g13.t1"; gene_id "g13";
+sample	AUGUSTUS	intron	106195	106861	0.97	-	.	transcript_id "g13.t1"; gene_id "g13";
+sample	AUGUSTUS	CDS	106862	106972	0.98	-	1	transcript_id "g13.t1"; gene_id "g13";
+sample	AUGUSTUS	exon	106862	106972	.	-	.	transcript_id "g13.t1"; gene_id "g13";
+sample	AUGUSTUS	intron	106973	107029	0.98	-	.	transcript_id "g13.t1"; gene_id "g13";
+sample	AUGUSTUS	CDS	107030	107069	1	-	2	transcript_id "g13.t1"; gene_id "g13";
+sample	AUGUSTUS	exon	107030	107069	.	-	.	transcript_id "g13.t1"; gene_id "g13";
+sample	AUGUSTUS	intron	107070	107897	1	-	.	transcript_id "g13.t1"; gene_id "g13";
+sample	AUGUSTUS	CDS	107898	107963	0.99	-	2	transcript_id "g13.t1"; gene_id "g13";
+sample	AUGUSTUS	exon	107898	107963	.	-	.	transcript_id "g13.t1"; gene_id "g13";
+sample	AUGUSTUS	intron	107964	108532	0.98	-	.	transcript_id "g13.t1"; gene_id "g13";
+sample	AUGUSTUS	CDS	108533	108601	0.99	-	2	transcript_id "g13.t1"; gene_id "g13";
+sample	AUGUSTUS	exon	108533	108601	.	-	.	transcript_id "g13.t1"; gene_id "g13";
+sample	AUGUSTUS	intron	108602	111230	0.98	-	.	transcript_id "g13.t1"; gene_id "g13";
+sample	AUGUSTUS	CDS	111231	111303	0.99	-	0	transcript_id "g13.t1"; gene_id "g13";
+sample	AUGUSTUS	exon	111231	111303	.	-	.	transcript_id "g13.t1"; gene_id "g13";
+sample	AUGUSTUS	start_codon	111301	111303	.	-	0	transcript_id "g13.t1"; gene_id "g13";
+sample	AUGUSTUS	gene	115274	125239	.	+	.	g14
+sample	AUGUSTUS	transcript	115274	125239	0.37	+	.	g14.t1
+sample	AUGUSTUS	start_codon	115274	115276	.	+	0	transcript_id "g14.t1"; gene_id "g14";
+sample	AUGUSTUS	CDS	115274	115628	0.92	+	0	transcript_id "g14.t1"; gene_id "g14";
+sample	AUGUSTUS	exon	115274	115628	.	+	.	transcript_id "g14.t1"; gene_id "g14";
+sample	AUGUSTUS	intron	115629	122976	0.75	+	.	transcript_id "g14.t1"; gene_id "g14";
+sample	AUGUSTUS	CDS	122977	123031	0.94	+	2	transcript_id "g14.t1"; gene_id "g14";
+sample	AUGUSTUS	exon	122977	123031	.	+	.	transcript_id "g14.t1"; gene_id "g14";
+sample	AUGUSTUS	intron	123032	123106	1	+	.	transcript_id "g14.t1"; gene_id "g14";
+sample	AUGUSTUS	CDS	123107	123215	1	+	1	transcript_id "g14.t1"; gene_id "g14";
+sample	AUGUSTUS	exon	123107	123215	.	+	.	transcript_id "g14.t1"; gene_id "g14";
+sample	AUGUSTUS	intron	123216	123257	0.99	+	.	transcript_id "g14.t1"; gene_id "g14";
+sample	AUGUSTUS	CDS	123258	123374	0.99	+	0	transcript_id "g14.t1"; gene_id "g14";
+sample	AUGUSTUS	exon	123258	123374	.	+	.	transcript_id "g14.t1"; gene_id "g14";
+sample	AUGUSTUS	intron	123375	125227	0.45	+	.	transcript_id "g14.t1"; gene_id "g14";
+sample	AUGUSTUS	CDS	125228	125239	0.46	+	0	transcript_id "g14.t1"; gene_id "g14";
+sample	AUGUSTUS	exon	125228	125239	.	+	.	transcript_id "g14.t1"; gene_id "g14";
+sample	AUGUSTUS	stop_codon	125237	125239	.	+	0	transcript_id "g14.t1"; gene_id "g14";
+sample	AUGUSTUS	gene	133134	136346	.	+	.	g15
+sample	AUGUSTUS	transcript	133134	136346	0.94	+	.	g15.t1
+sample	AUGUSTUS	start_codon	133134	133136	.	+	0	transcript_id "g15.t1"; gene_id "g15";
+sample	AUGUSTUS	CDS	133134	133142	0.99	+	0	transcript_id "g15.t1"; gene_id "g15";
+sample	AUGUSTUS	exon	133134	133142	.	+	.	transcript_id "g15.t1"; gene_id "g15";
+sample	AUGUSTUS	intron	133143	133208	0.99	+	.	transcript_id "g15.t1"; gene_id "g15";
+sample	AUGUSTUS	CDS	133209	134539	1	+	0	transcript_id "g15.t1"; gene_id "g15";
+sample	AUGUSTUS	exon	133209	134539	.	+	.	transcript_id "g15.t1"; gene_id "g15";
+sample	AUGUSTUS	intron	134540	134601	0.95	+	.	transcript_id "g15.t1"; gene_id "g15";
+sample	AUGUSTUS	CDS	134602	135510	0.95	+	1	transcript_id "g15.t1"; gene_id "g15";
+sample	AUGUSTUS	exon	134602	135510	.	+	.	transcript_id "g15.t1"; gene_id "g15";
+sample	AUGUSTUS	intron	135511	135568	1	+	.	transcript_id "g15.t1"; gene_id "g15";
+sample	AUGUSTUS	CDS	135569	136346	1	+	1	transcript_id "g15.t1"; gene_id "g15";
+sample	AUGUSTUS	exon	135569	136346	.	+	.	transcript_id "g15.t1"; gene_id "g15";
+sample	AUGUSTUS	stop_codon	136344	136346	.	+	0	transcript_id "g15.t1"; gene_id "g15";
+sample	AUGUSTUS	gene	144294	164495	.	+	.	g16
+sample	AUGUSTUS	transcript	144294	164495	0.7	+	.	g16.t1
+sample	AUGUSTUS	start_codon	144294	144296	.	+	0	transcript_id "g16.t1"; gene_id "g16";
+sample	AUGUSTUS	CDS	144294	144551	0.72	+	0	transcript_id "g16.t1"; gene_id "g16";
+sample	AUGUSTUS	exon	144294	144551	.	+	.	transcript_id "g16.t1"; gene_id "g16";
+sample	AUGUSTUS	intron	144552	149011	0.99	+	.	transcript_id "g16.t1"; gene_id "g16";
+sample	AUGUSTUS	CDS	149012	149244	1	+	0	transcript_id "g16.t1"; gene_id "g16";
+sample	AUGUSTUS	exon	149012	149244	.	+	.	transcript_id "g16.t1"; gene_id "g16";
+sample	AUGUSTUS	intron	149245	149366	1	+	.	transcript_id "g16.t1"; gene_id "g16";
+sample	AUGUSTUS	CDS	149367	149588	1	+	1	transcript_id "g16.t1"; gene_id "g16";
+sample	AUGUSTUS	exon	149367	149588	.	+	.	transcript_id "g16.t1"; gene_id "g16";
+sample	AUGUSTUS	intron	149589	149653	1	+	.	transcript_id "g16.t1"; gene_id "g16";
+sample	AUGUSTUS	CDS	149654	149897	1	+	1	transcript_id "g16.t1"; gene_id "g16";
+sample	AUGUSTUS	exon	149654	149897	.	+	.	transcript_id "g16.t1"; gene_id "g16";
+sample	AUGUSTUS	intron	149898	149951	1	+	.	transcript_id "g16.t1"; gene_id "g16";
+sample	AUGUSTUS	CDS	149952	150099	1	+	0	transcript_id "g16.t1"; gene_id "g16";
+sample	AUGUSTUS	exon	149952	150099	.	+	.	transcript_id "g16.t1"; gene_id "g16";
+sample	AUGUSTUS	intron	150100	152313	1	+	.	transcript_id "g16.t1"; gene_id "g16";
+sample	AUGUSTUS	CDS	152314	152429	1	+	2	transcript_id "g16.t1"; gene_id "g16";
+sample	AUGUSTUS	exon	152314	152429	.	+	.	transcript_id "g16.t1"; gene_id "g16";
+sample	AUGUSTUS	intron	152430	152495	1	+	.	transcript_id "g16.t1"; gene_id "g16";
+sample	AUGUSTUS	CDS	152496	152751	1	+	0	transcript_id "g16.t1"; gene_id "g16";
+sample	AUGUSTUS	exon	152496	152751	.	+	.	transcript_id "g16.t1"; gene_id "g16";
+sample	AUGUSTUS	intron	152752	153260	0.96	+	.	transcript_id "g16.t1"; gene_id "g16";
+sample	AUGUSTUS	CDS	153261	159010	0.96	+	2	transcript_id "g16.t1"; gene_id "g16";
+sample	AUGUSTUS	exon	153261	159010	.	+	.	transcript_id "g16.t1"; gene_id "g16";
+sample	AUGUSTUS	intron	159011	159149	1	+	.	transcript_id "g16.t1"; gene_id "g16";
+sample	AUGUSTUS	CDS	159150	164495	1	+	0	transcript_id "g16.t1"; gene_id "g16";
+sample	AUGUSTUS	exon	159150	164495	.	+	.	transcript_id "g16.t1"; gene_id "g16";
+sample	AUGUSTUS	stop_codon	164493	164495	.	+	0	transcript_id "g16.t1"; gene_id "g16";
+sample	AUGUSTUS	gene	167121	171473	.	+	.	g17
+sample	AUGUSTUS	transcript	167121	171473	0.97	+	.	g17.t1
+sample	AUGUSTUS	start_codon	167121	167123	.	+	0	transcript_id "g17.t1"; gene_id "g17";
+sample	AUGUSTUS	CDS	167121	168360	1	+	0	transcript_id "g17.t1"; gene_id "g17";
+sample	AUGUSTUS	exon	167121	168360	.	+	.	transcript_id "g17.t1"; gene_id "g17";
+sample	AUGUSTUS	intron	168361	168721	1	+	.	transcript_id "g17.t1"; gene_id "g17";
+sample	AUGUSTUS	CDS	168722	169208	1	+	2	transcript_id "g17.t1"; gene_id "g17";
+sample	AUGUSTUS	exon	168722	169208	.	+	.	transcript_id "g17.t1"; gene_id "g17";
+sample	AUGUSTUS	intron	169209	171394	1	+	.	transcript_id "g17.t1"; gene_id "g17";
+sample	AUGUSTUS	CDS	171395	171473	0.97	+	1	transcript_id "g17.t1"; gene_id "g17";
+sample	AUGUSTUS	exon	171395	171473	.	+	.	transcript_id "g17.t1"; gene_id "g17";
+sample	AUGUSTUS	stop_codon	171471	171473	.	+	0	transcript_id "g17.t1"; gene_id "g17";
+sample	AUGUSTUS	gene	176699	178889	.	-	.	g18
+sample	AUGUSTUS	transcript	176699	178889	0.68	-	.	g18.t1
+sample	AUGUSTUS	stop_codon	176699	176701	.	-	0	transcript_id "g18.t1"; gene_id "g18";
+sample	AUGUSTUS	CDS	176699	176824	1	-	0	transcript_id "g18.t1"; gene_id "g18";
+sample	AUGUSTUS	exon	176699	176824	.	-	.	transcript_id "g18.t1"; gene_id "g18";
+sample	AUGUSTUS	intron	176825	176886	1	-	.	transcript_id "g18.t1"; gene_id "g18";
+sample	AUGUSTUS	CDS	176887	177172	0.99	-	1	transcript_id "g18.t1"; gene_id "g18";
+sample	AUGUSTUS	exon	176887	177172	.	-	.	transcript_id "g18.t1"; gene_id "g18";
+sample	AUGUSTUS	intron	177173	178872	1	-	.	transcript_id "g18.t1"; gene_id "g18";
+sample	AUGUSTUS	CDS	178873	178889	0.69	-	0	transcript_id "g18.t1"; gene_id "g18";
+sample	AUGUSTUS	exon	178873	178889	.	-	.	transcript_id "g18.t1"; gene_id "g18";
+sample	AUGUSTUS	start_codon	178887	178889	.	-	0	transcript_id "g18.t1"; gene_id "g18";
+sample	AUGUSTUS	gene	180028	180825	.	-	.	g19
+sample	AUGUSTUS	transcript	180028	180825	0.91	-	.	g19.t1
+sample	AUGUSTUS	stop_codon	180028	180030	.	-	0	transcript_id "g19.t1"; gene_id "g19";
+sample	AUGUSTUS	CDS	180028	180698	1	-	2	transcript_id "g19.t1"; gene_id "g19";
+sample	AUGUSTUS	exon	180028	180698	.	-	.	transcript_id "g19.t1"; gene_id "g19";
+sample	AUGUSTUS	intron	180699	180755	1	-	.	transcript_id "g19.t1"; gene_id "g19";
+sample	AUGUSTUS	CDS	180756	180825	0.91	-	0	transcript_id "g19.t1"; gene_id "g19";
+sample	AUGUSTUS	exon	180756	180825	.	-	.	transcript_id "g19.t1"; gene_id "g19";
+sample	AUGUSTUS	start_codon	180823	180825	.	-	0	transcript_id "g19.t1"; gene_id "g19";
+sample	AUGUSTUS	gene	183489	187380	.	-	.	g20
+sample	AUGUSTUS	transcript	183489	187380	0.99	-	.	g20.t1
+sample	AUGUSTUS	stop_codon	183489	183491	.	-	0	transcript_id "g20.t1"; gene_id "g20";
+sample	AUGUSTUS	CDS	183489	183643	1	-	2	transcript_id "g20.t1"; gene_id "g20";
+sample	AUGUSTUS	exon	183489	183643	.	-	.	transcript_id "g20.t1"; gene_id "g20";
+sample	AUGUSTUS	intron	183644	183709	1	-	.	transcript_id "g20.t1"; gene_id "g20";
+sample	AUGUSTUS	CDS	183710	183862	1	-	2	transcript_id "g20.t1"; gene_id "g20";
+sample	AUGUSTUS	exon	183710	183862	.	-	.	transcript_id "g20.t1"; gene_id "g20";
+sample	AUGUSTUS	intron	183863	183920	1	-	.	transcript_id "g20.t1"; gene_id "g20";
+sample	AUGUSTUS	CDS	183921	184054	1	-	1	transcript_id "g20.t1"; gene_id "g20";
+sample	AUGUSTUS	exon	183921	184054	.	-	.	transcript_id "g20.t1"; gene_id "g20";
+sample	AUGUSTUS	intron	184055	186056	1	-	.	transcript_id "g20.t1"; gene_id "g20";
+sample	AUGUSTUS	CDS	186057	186178	1	-	0	transcript_id "g20.t1"; gene_id "g20";
+sample	AUGUSTUS	exon	186057	186178	.	-	.	transcript_id "g20.t1"; gene_id "g20";
+sample	AUGUSTUS	intron	186179	186323	1	-	.	transcript_id "g20.t1"; gene_id "g20";
+sample	AUGUSTUS	CDS	186324	186442	1	-	2	transcript_id "g20.t1"; gene_id "g20";
+sample	AUGUSTUS	exon	186324	186442	.	-	.	transcript_id "g20.t1"; gene_id "g20";
+sample	AUGUSTUS	intron	186443	187313	1	-	.	transcript_id "g20.t1"; gene_id "g20";
+sample	AUGUSTUS	CDS	187314	187380	0.99	-	0	transcript_id "g20.t1"; gene_id "g20";
+sample	AUGUSTUS	exon	187314	187380	.	-	.	transcript_id "g20.t1"; gene_id "g20";
+sample	AUGUSTUS	start_codon	187378	187380	.	-	0	transcript_id "g20.t1"; gene_id "g20";
+sample	AUGUSTUS	gene	192004	194669	.	+	.	g21
+sample	AUGUSTUS	transcript	192004	194669	0.75	+	.	g21.t1
+sample	AUGUSTUS	start_codon	192004	192006	.	+	0	transcript_id "g21.t1"; gene_id "g21";
+sample	AUGUSTUS	CDS	192004	192067	0.75	+	0	transcript_id "g21.t1"; gene_id "g21";
+sample	AUGUSTUS	exon	192004	192067	.	+	.	transcript_id "g21.t1"; gene_id "g21";
+sample	AUGUSTUS	intron	192068	193548	1	+	.	transcript_id "g21.t1"; gene_id "g21";
+sample	AUGUSTUS	CDS	193549	193658	1	+	2	transcript_id "g21.t1"; gene_id "g21";
+sample	AUGUSTUS	exon	193549	193658	.	+	.	transcript_id "g21.t1"; gene_id "g21";
+sample	AUGUSTUS	intron	193659	194040	1	+	.	transcript_id "g21.t1"; gene_id "g21";
+sample	AUGUSTUS	CDS	194041	194455	1	+	0	transcript_id "g21.t1"; gene_id "g21";
+sample	AUGUSTUS	exon	194041	194455	.	+	.	transcript_id "g21.t1"; gene_id "g21";
+sample	AUGUSTUS	intron	194456	194517	1	+	.	transcript_id "g21.t1"; gene_id "g21";
+sample	AUGUSTUS	CDS	194518	194669	1	+	2	transcript_id "g21.t1"; gene_id "g21";
+sample	AUGUSTUS	exon	194518	194669	.	+	.	transcript_id "g21.t1"; gene_id "g21";
+sample	AUGUSTUS	stop_codon	194667	194669	.	+	0	transcript_id "g21.t1"; gene_id "g21";
+sample	GeneMark.hmm3	transcript	193500	194669	.	+	.	g21.t2
+sample	GeneMark.hmm3	start_codon	193500	193502	.	+	0	transcript_id "g21.t2"; gene_id "g21";
+sample	GeneMark.hmm3	CDS	193500	193658	.	+	0	transcript_id "g21.t2"; gene_id "g21";
+sample	GeneMark.hmm3	exon	193500	193658	0	+	.	transcript_id "g21.t2"; gene_id "g21";
+sample	GeneMark.hmm3	intron	193659	194040	.	+	0	transcript_id "g21.t2"; gene_id "g21";
+sample	GeneMark.hmm3	CDS	194041	194455	.	+	0	transcript_id "g21.t2"; gene_id "g21";
+sample	GeneMark.hmm3	exon	194041	194455	0	+	.	transcript_id "g21.t2"; gene_id "g21";
+sample	GeneMark.hmm3	intron	194456	194517	.	+	2	transcript_id "g21.t2"; gene_id "g21";
+sample	GeneMark.hmm3	CDS	194518	194669	.	+	2	transcript_id "g21.t2"; gene_id "g21";
+sample	GeneMark.hmm3	exon	194518	194669	0	+	.	transcript_id "g21.t2"; gene_id "g21";
+sample	GeneMark.hmm3	stop_codon	194667	194669	.	+	0	transcript_id "g21.t2"; gene_id "g21";
+sample	AUGUSTUS	gene	208597	210483	.	-	.	g22
+sample	AUGUSTUS	transcript	208597	210483	0.96	-	.	g22.t1
+sample	AUGUSTUS	stop_codon	208597	208599	.	-	0	transcript_id "g22.t1"; gene_id "g22";
+sample	AUGUSTUS	CDS	208597	208813	1	-	1	transcript_id "g22.t1"; gene_id "g22";
+sample	AUGUSTUS	exon	208597	208813	.	-	.	transcript_id "g22.t1"; gene_id "g22";
+sample	AUGUSTUS	intron	208814	209047	1	-	.	transcript_id "g22.t1"; gene_id "g22";
+sample	AUGUSTUS	CDS	209048	210483	0.96	-	0	transcript_id "g22.t1"; gene_id "g22";
+sample	AUGUSTUS	exon	209048	210483	.	-	.	transcript_id "g22.t1"; gene_id "g22";
+sample	AUGUSTUS	start_codon	210481	210483	.	-	0	transcript_id "g22.t1"; gene_id "g22";
+sample	AUGUSTUS	gene	213085	214811	.	-	.	g23
+sample	AUGUSTUS	transcript	213085	214811	0.22	-	.	g23.t1
+sample	AUGUSTUS	stop_codon	213085	213087	.	-	0	transcript_id "g23.t1"; gene_id "g23";
+sample	AUGUSTUS	CDS	213085	213306	0.92	-	0	transcript_id "g23.t1"; gene_id "g23";
+sample	AUGUSTUS	exon	213085	213306	.	-	.	transcript_id "g23.t1"; gene_id "g23";
+sample	AUGUSTUS	intron	213307	214670	0.92	-	.	transcript_id "g23.t1"; gene_id "g23";
+sample	AUGUSTUS	CDS	214671	214811	0.22	-	0	transcript_id "g23.t1"; gene_id "g23";
+sample	AUGUSTUS	exon	214671	214811	.	-	.	transcript_id "g23.t1"; gene_id "g23";
+sample	AUGUSTUS	start_codon	214809	214811	.	-	0	transcript_id "g23.t1"; gene_id "g23";
+sample	AUGUSTUS	gene	247941	253489	.	+	.	g24
+sample	AUGUSTUS	transcript	247941	253489	0.82	+	.	g24.t1
+sample	AUGUSTUS	start_codon	247941	247943	.	+	0	transcript_id "g24.t1"; gene_id "g24";
+sample	AUGUSTUS	CDS	247941	248171	0.99	+	0	transcript_id "g24.t1"; gene_id "g24";
+sample	AUGUSTUS	exon	247941	248171	.	+	.	transcript_id "g24.t1"; gene_id "g24";
+sample	AUGUSTUS	intron	248172	248225	1	+	.	transcript_id "g24.t1"; gene_id "g24";
+sample	AUGUSTUS	CDS	248226	248260	0.88	+	0	transcript_id "g24.t1"; gene_id "g24";
+sample	AUGUSTUS	exon	248226	248260	.	+	.	transcript_id "g24.t1"; gene_id "g24";
+sample	AUGUSTUS	intron	248261	248312	0.87	+	.	transcript_id "g24.t1"; gene_id "g24";
+sample	AUGUSTUS	CDS	248313	248429	0.98	+	1	transcript_id "g24.t1"; gene_id "g24";
+sample	AUGUSTUS	exon	248313	248429	.	+	.	transcript_id "g24.t1"; gene_id "g24";
+sample	AUGUSTUS	intron	248430	253419	0.96	+	.	transcript_id "g24.t1"; gene_id "g24";
+sample	AUGUSTUS	CDS	253420	253489	0.96	+	1	transcript_id "g24.t1"; gene_id "g24";
+sample	AUGUSTUS	exon	253420	253489	.	+	.	transcript_id "g24.t1"; gene_id "g24";
+sample	AUGUSTUS	stop_codon	253487	253489	.	+	0	transcript_id "g24.t1"; gene_id "g24";
+sample	AUGUSTUS	gene	273844	275247	.	+	.	g25
+sample	AUGUSTUS	transcript	273844	275247	0.41	+	.	g25.t1
+sample	AUGUSTUS	start_codon	273844	273846	.	+	0	transcript_id "g25.t1"; gene_id "g25";
+sample	AUGUSTUS	CDS	273844	275247	0.41	+	0	transcript_id "g25.t1"; gene_id "g25";
+sample	AUGUSTUS	exon	273844	275247	.	+	.	transcript_id "g25.t1"; gene_id "g25";
+sample	AUGUSTUS	stop_codon	275245	275247	.	+	0	transcript_id "g25.t1"; gene_id "g25";
+sample	AUGUSTUS	gene	279082	282365	.	-	.	g26
+sample	AUGUSTUS	transcript	279082	282365	0.97	-	.	g26.t1
+sample	AUGUSTUS	stop_codon	279082	279084	.	-	0	transcript_id "g26.t1"; gene_id "g26";
+sample	AUGUSTUS	CDS	279082	279253	1	-	1	transcript_id "g26.t1"; gene_id "g26";
+sample	AUGUSTUS	exon	279082	279253	.	-	.	transcript_id "g26.t1"; gene_id "g26";
+sample	AUGUSTUS	intron	279254	279728	1	-	.	transcript_id "g26.t1"; gene_id "g26";
+sample	AUGUSTUS	CDS	279729	279797	1	-	1	transcript_id "g26.t1"; gene_id "g26";
+sample	AUGUSTUS	exon	279729	279797	.	-	.	transcript_id "g26.t1"; gene_id "g26";
+sample	AUGUSTUS	intron	279798	279922	1	-	.	transcript_id "g26.t1"; gene_id "g26";
+sample	AUGUSTUS	CDS	279923	279949	1	-	1	transcript_id "g26.t1"; gene_id "g26";
+sample	AUGUSTUS	exon	279923	279949	.	-	.	transcript_id "g26.t1"; gene_id "g26";
+sample	AUGUSTUS	intron	279950	280227	1	-	.	transcript_id "g26.t1"; gene_id "g26";
+sample	AUGUSTUS	CDS	280228	280375	1	-	2	transcript_id "g26.t1"; gene_id "g26";
+sample	AUGUSTUS	exon	280228	280375	.	-	.	transcript_id "g26.t1"; gene_id "g26";
+sample	AUGUSTUS	intron	280376	280550	1	-	.	transcript_id "g26.t1"; gene_id "g26";
+sample	AUGUSTUS	CDS	280551	280656	0.99	-	0	transcript_id "g26.t1"; gene_id "g26";
+sample	AUGUSTUS	exon	280551	280656	.	-	.	transcript_id "g26.t1"; gene_id "g26";
+sample	AUGUSTUS	intron	280657	281008	0.97	-	.	transcript_id "g26.t1"; gene_id "g26";
+sample	AUGUSTUS	CDS	281009	281282	1	-	1	transcript_id "g26.t1"; gene_id "g26";
+sample	AUGUSTUS	exon	281009	281282	.	-	.	transcript_id "g26.t1"; gene_id "g26";
+sample	AUGUSTUS	intron	281283	282297	1	-	.	transcript_id "g26.t1"; gene_id "g26";
+sample	AUGUSTUS	CDS	282298	282365	1	-	0	transcript_id "g26.t1"; gene_id "g26";
+sample	AUGUSTUS	exon	282298	282365	.	-	.	transcript_id "g26.t1"; gene_id "g26";
+sample	AUGUSTUS	start_codon	282363	282365	.	-	0	transcript_id "g26.t1"; gene_id "g26";
+sample	AUGUSTUS	gene	291438	299620	.	-	.	g27
+sample	AUGUSTUS	transcript	291438	299620	0.83	-	.	g27.t1
+sample	AUGUSTUS	stop_codon	291438	291440	.	-	0	transcript_id "g27.t1"; gene_id "g27";
+sample	AUGUSTUS	CDS	291438	291524	0.97	-	0	transcript_id "g27.t1"; gene_id "g27";
+sample	AUGUSTUS	exon	291438	291524	.	-	.	transcript_id "g27.t1"; gene_id "g27";
+sample	AUGUSTUS	intron	291525	298411	0.83	-	.	transcript_id "g27.t1"; gene_id "g27";
+sample	AUGUSTUS	CDS	298412	299620	0.83	-	0	transcript_id "g27.t1"; gene_id "g27";
+sample	AUGUSTUS	exon	298412	299620	.	-	.	transcript_id "g27.t1"; gene_id "g27";
+sample	AUGUSTUS	start_codon	299618	299620	.	-	0	transcript_id "g27.t1"; gene_id "g27";
+sample	AUGUSTUS	gene	309405	309879	.	+	.	g28
+sample	AUGUSTUS	transcript	309405	309879	0.7	+	.	g28.t1
+sample	AUGUSTUS	start_codon	309405	309407	.	+	0	transcript_id "g28.t1"; gene_id "g28";
+sample	AUGUSTUS	CDS	309405	309421	0.72	+	0	transcript_id "g28.t1"; gene_id "g28";
+sample	AUGUSTUS	exon	309405	309421	.	+	.	transcript_id "g28.t1"; gene_id "g28";
+sample	AUGUSTUS	intron	309422	309677	0.7	+	.	transcript_id "g28.t1"; gene_id "g28";
+sample	AUGUSTUS	CDS	309678	309879	0.72	+	1	transcript_id "g28.t1"; gene_id "g28";
+sample	AUGUSTUS	exon	309678	309879	.	+	.	transcript_id "g28.t1"; gene_id "g28";
+sample	AUGUSTUS	stop_codon	309877	309879	.	+	0	transcript_id "g28.t1"; gene_id "g28";
+sample	AUGUSTUS	gene	310793	312445	.	-	.	g29
+sample	AUGUSTUS	transcript	310793	312445	0.83	-	.	g29.t1
+sample	AUGUSTUS	stop_codon	310793	310795	.	-	0	transcript_id "g29.t1"; gene_id "g29";
+sample	AUGUSTUS	CDS	310793	312445	0.83	-	0	transcript_id "g29.t1"; gene_id "g29";
+sample	AUGUSTUS	exon	310793	312445	.	-	.	transcript_id "g29.t1"; gene_id "g29";
+sample	AUGUSTUS	start_codon	312443	312445	.	-	0	transcript_id "g29.t1"; gene_id "g29";
+sample	AUGUSTUS	gene	317645	328409	.	+	.	g30
+sample	AUGUSTUS	transcript	317645	328409	0.48	+	.	g30.t1
+sample	AUGUSTUS	start_codon	317645	317647	.	+	0	transcript_id "g30.t1"; gene_id "g30";
+sample	AUGUSTUS	CDS	317645	317818	0.59	+	0	transcript_id "g30.t1"; gene_id "g30";
+sample	AUGUSTUS	exon	317645	317818	.	+	.	transcript_id "g30.t1"; gene_id "g30";
+sample	AUGUSTUS	intron	317819	327391	0.75	+	.	transcript_id "g30.t1"; gene_id "g30";
+sample	AUGUSTUS	CDS	327392	327485	0.75	+	0	transcript_id "g30.t1"; gene_id "g30";
+sample	AUGUSTUS	exon	327392	327485	.	+	.	transcript_id "g30.t1"; gene_id "g30";
+sample	AUGUSTUS	intron	327486	328371	0.71	+	.	transcript_id "g30.t1"; gene_id "g30";
+sample	AUGUSTUS	CDS	328372	328409	0.71	+	2	transcript_id "g30.t1"; gene_id "g30";
+sample	AUGUSTUS	exon	328372	328409	.	+	.	transcript_id "g30.t1"; gene_id "g30";
+sample	AUGUSTUS	stop_codon	328407	328409	.	+	0	transcript_id "g30.t1"; gene_id "g30";
+sample	AUGUSTUS	gene	335171	335586	.	-	.	g31
+sample	AUGUSTUS	transcript	335171	335586	0.67	-	.	g31.t1
+sample	AUGUSTUS	stop_codon	335171	335173	.	-	0	transcript_id "g31.t1"; gene_id "g31";
+sample	AUGUSTUS	CDS	335171	335449	0.67	-	0	transcript_id "g31.t1"; gene_id "g31";
+sample	AUGUSTUS	exon	335171	335449	.	-	.	transcript_id "g31.t1"; gene_id "g31";
+sample	AUGUSTUS	intron	335450	335562	0.67	-	.	transcript_id "g31.t1"; gene_id "g31";
+sample	AUGUSTUS	CDS	335563	335586	0.96	-	0	transcript_id "g31.t1"; gene_id "g31";
+sample	AUGUSTUS	exon	335563	335586	.	-	.	transcript_id "g31.t1"; gene_id "g31";
+sample	AUGUSTUS	start_codon	335584	335586	.	-	0	transcript_id "g31.t1"; gene_id "g31";
+sample	AUGUSTUS	gene	354588	356135	.	+	.	g32
+sample	AUGUSTUS	transcript	354588	356135	1	+	.	g32.t1
+sample	AUGUSTUS	start_codon	354588	354590	.	+	0	transcript_id "g32.t1"; gene_id "g32";
+sample	AUGUSTUS	CDS	354588	356135	1	+	0	transcript_id "g32.t1"; gene_id "g32";
+sample	AUGUSTUS	exon	354588	356135	.	+	.	transcript_id "g32.t1"; gene_id "g32";
+sample	AUGUSTUS	stop_codon	356133	356135	.	+	0	transcript_id "g32.t1"; gene_id "g32";
+sample	AUGUSTUS	gene	363607	363861	.	-	.	g33
+sample	AUGUSTUS	transcript	363607	363861	0.63	-	.	g33.t1
+sample	AUGUSTUS	stop_codon	363607	363609	.	-	0	transcript_id "g33.t1"; gene_id "g33";
+sample	AUGUSTUS	CDS	363607	363861	0.63	-	0	transcript_id "g33.t1"; gene_id "g33";
+sample	AUGUSTUS	exon	363607	363861	.	-	.	transcript_id "g33.t1"; gene_id "g33";
+sample	AUGUSTUS	start_codon	363859	363861	.	-	0	transcript_id "g33.t1"; gene_id "g33";
+sample	AUGUSTUS	gene	366730	381098	.	+	.	g34
+sample	AUGUSTUS	transcript	366730	381098	0.7	+	.	g34.t1
+sample	AUGUSTUS	start_codon	366730	366732	.	+	0	transcript_id "g34.t1"; gene_id "g34";
+sample	AUGUSTUS	CDS	366730	366839	0.77	+	0	transcript_id "g34.t1"; gene_id "g34";
+sample	AUGUSTUS	exon	366730	366839	.	+	.	transcript_id "g34.t1"; gene_id "g34";
+sample	AUGUSTUS	intron	366840	366963	0.78	+	.	transcript_id "g34.t1"; gene_id "g34";
+sample	AUGUSTUS	CDS	366964	367121	0.78	+	1	transcript_id "g34.t1"; gene_id "g34";
+sample	AUGUSTUS	exon	366964	367121	.	+	.	transcript_id "g34.t1"; gene_id "g34";
+sample	AUGUSTUS	intron	367122	372187	0.85	+	.	transcript_id "g34.t1"; gene_id "g34";
+sample	AUGUSTUS	CDS	372188	372234	0.85	+	2	transcript_id "g34.t1"; gene_id "g34";
+sample	AUGUSTUS	exon	372188	372234	.	+	.	transcript_id "g34.t1"; gene_id "g34";
+sample	AUGUSTUS	intron	372235	380025	0.86	+	.	transcript_id "g34.t1"; gene_id "g34";
+sample	AUGUSTUS	CDS	380026	380102	0.97	+	0	transcript_id "g34.t1"; gene_id "g34";
+sample	AUGUSTUS	exon	380026	380102	.	+	.	transcript_id "g34.t1"; gene_id "g34";
+sample	AUGUSTUS	intron	380103	380329	1	+	.	transcript_id "g34.t1"; gene_id "g34";
+sample	AUGUSTUS	CDS	380330	380517	1	+	1	transcript_id "g34.t1"; gene_id "g34";
+sample	AUGUSTUS	exon	380330	380517	.	+	.	transcript_id "g34.t1"; gene_id "g34";
+sample	AUGUSTUS	intron	380518	381027	0.96	+	.	transcript_id "g34.t1"; gene_id "g34";
+sample	AUGUSTUS	CDS	381028	381098	0.96	+	2	transcript_id "g34.t1"; gene_id "g34";
+sample	AUGUSTUS	exon	381028	381098	.	+	.	transcript_id "g34.t1"; gene_id "g34";
+sample	AUGUSTUS	stop_codon	381096	381098	.	+	0	transcript_id "g34.t1"; gene_id "g34";
+sample	AUGUSTUS	gene	386171	387172	.	+	.	g35
+sample	AUGUSTUS	transcript	386171	387172	0.96	+	.	g35.t1
+sample	AUGUSTUS	start_codon	386171	386173	.	+	0	transcript_id "g35.t1"; gene_id "g35";
+sample	AUGUSTUS	CDS	386171	387172	0.96	+	0	transcript_id "g35.t1"; gene_id "g35";
+sample	AUGUSTUS	exon	386171	387172	.	+	.	transcript_id "g35.t1"; gene_id "g35";
+sample	AUGUSTUS	stop_codon	387170	387172	.	+	0	transcript_id "g35.t1"; gene_id "g35";
+sample	AUGUSTUS	gene	390095	390686	.	-	.	g36
+sample	AUGUSTUS	transcript	390095	390686	0.91	-	.	g36.t1
+sample	AUGUSTUS	stop_codon	390095	390097	.	-	0	transcript_id "g36.t1"; gene_id "g36";
+sample	AUGUSTUS	CDS	390095	390349	1	-	0	transcript_id "g36.t1"; gene_id "g36";
+sample	AUGUSTUS	exon	390095	390349	.	-	.	transcript_id "g36.t1"; gene_id "g36";
+sample	AUGUSTUS	intron	390350	390386	0.98	-	.	transcript_id "g36.t1"; gene_id "g36";
+sample	AUGUSTUS	CDS	390387	390497	0.98	-	0	transcript_id "g36.t1"; gene_id "g36";
+sample	AUGUSTUS	exon	390387	390497	.	-	.	transcript_id "g36.t1"; gene_id "g36";
+sample	AUGUSTUS	intron	390498	390557	1	-	.	transcript_id "g36.t1"; gene_id "g36";
+sample	AUGUSTUS	CDS	390558	390686	0.93	-	0	transcript_id "g36.t1"; gene_id "g36";
+sample	AUGUSTUS	exon	390558	390686	.	-	.	transcript_id "g36.t1"; gene_id "g36";
+sample	AUGUSTUS	start_codon	390684	390686	.	-	0	transcript_id "g36.t1"; gene_id "g36";
+sample	AUGUSTUS	gene	391781	393693	.	+	.	g37
+sample	AUGUSTUS	transcript	391781	393693	0.53	+	.	g37.t1
+sample	AUGUSTUS	start_codon	391781	391783	.	+	0	transcript_id "g37.t1"; gene_id "g37";
+sample	AUGUSTUS	CDS	391781	392254	0.62	+	0	transcript_id "g37.t1"; gene_id "g37";
+sample	AUGUSTUS	exon	391781	392254	.	+	.	transcript_id "g37.t1"; gene_id "g37";
+sample	AUGUSTUS	intron	392255	392421	0.94	+	.	transcript_id "g37.t1"; gene_id "g37";
+sample	AUGUSTUS	CDS	392422	392851	0.94	+	0	transcript_id "g37.t1"; gene_id "g37";
+sample	AUGUSTUS	exon	392422	392851	.	+	.	transcript_id "g37.t1"; gene_id "g37";
+sample	AUGUSTUS	intron	392852	393282	1	+	.	transcript_id "g37.t1"; gene_id "g37";
+sample	AUGUSTUS	CDS	393283	393509	1	+	2	transcript_id "g37.t1"; gene_id "g37";
+sample	AUGUSTUS	exon	393283	393509	.	+	.	transcript_id "g37.t1"; gene_id "g37";
+sample	AUGUSTUS	intron	393510	393579	1	+	.	transcript_id "g37.t1"; gene_id "g37";
+sample	AUGUSTUS	CDS	393580	393693	0.86	+	0	transcript_id "g37.t1"; gene_id "g37";
+sample	AUGUSTUS	exon	393580	393693	.	+	.	transcript_id "g37.t1"; gene_id "g37";
+sample	AUGUSTUS	stop_codon	393691	393693	.	+	0	transcript_id "g37.t1"; gene_id "g37";
+sample	AUGUSTUS	gene	394465	395171	.	+	.	g38
+sample	AUGUSTUS	transcript	394465	395171	0.47	+	.	g38.t1
+sample	AUGUSTUS	start_codon	394465	394467	.	+	0	transcript_id "g38.t1"; gene_id "g38";
+sample	AUGUSTUS	CDS	394465	394741	0.58	+	0	transcript_id "g38.t1"; gene_id "g38";
+sample	AUGUSTUS	exon	394465	394741	.	+	.	transcript_id "g38.t1"; gene_id "g38";
+sample	AUGUSTUS	intron	394742	394968	0.94	+	.	transcript_id "g38.t1"; gene_id "g38";
+sample	AUGUSTUS	CDS	394969	395171	0.73	+	2	transcript_id "g38.t1"; gene_id "g38";
+sample	AUGUSTUS	exon	394969	395171	.	+	.	transcript_id "g38.t1"; gene_id "g38";
+sample	AUGUSTUS	stop_codon	395169	395171	.	+	0	transcript_id "g38.t1"; gene_id "g38";
+sample	AUGUSTUS	gene	400223	404294	.	-	.	g39
+sample	AUGUSTUS	transcript	400223	404294	0.84	-	.	g39.t1
+sample	AUGUSTUS	stop_codon	400223	400225	.	-	0	transcript_id "g39.t1"; gene_id "g39";
+sample	AUGUSTUS	CDS	400223	400415	1	-	1	transcript_id "g39.t1"; gene_id "g39";
+sample	AUGUSTUS	exon	400223	400415	.	-	.	transcript_id "g39.t1"; gene_id "g39";
+sample	AUGUSTUS	intron	400416	400475	1	-	.	transcript_id "g39.t1"; gene_id "g39";
+sample	AUGUSTUS	CDS	400476	400597	1	-	0	transcript_id "g39.t1"; gene_id "g39";
+sample	AUGUSTUS	exon	400476	400597	.	-	.	transcript_id "g39.t1"; gene_id "g39";
+sample	AUGUSTUS	intron	400598	400684	1	-	.	transcript_id "g39.t1"; gene_id "g39";
+sample	AUGUSTUS	CDS	400685	402710	1	-	1	transcript_id "g39.t1"; gene_id "g39";
+sample	AUGUSTUS	exon	400685	402710	.	-	.	transcript_id "g39.t1"; gene_id "g39";
+sample	AUGUSTUS	intron	402711	403713	1	-	.	transcript_id "g39.t1"; gene_id "g39";
+sample	AUGUSTUS	CDS	403714	403930	1	-	2	transcript_id "g39.t1"; gene_id "g39";
+sample	AUGUSTUS	exon	403714	403930	.	-	.	transcript_id "g39.t1"; gene_id "g39";
+sample	AUGUSTUS	intron	403931	404056	1	-	.	transcript_id "g39.t1"; gene_id "g39";
+sample	AUGUSTUS	CDS	404057	404294	0.84	-	0	transcript_id "g39.t1"; gene_id "g39";
+sample	AUGUSTUS	exon	404057	404294	.	-	.	transcript_id "g39.t1"; gene_id "g39";
+sample	AUGUSTUS	start_codon	404292	404294	.	-	0	transcript_id "g39.t1"; gene_id "g39";
+sample	AUGUSTUS	gene	405144	410393	.	-	.	g40
+sample	AUGUSTUS	transcript	405144	410393	0.31	-	.	g40.t1
+sample	AUGUSTUS	stop_codon	405144	405146	.	-	0	transcript_id "g40.t1"; gene_id "g40";
+sample	AUGUSTUS	CDS	405144	407251	0.39	-	2	transcript_id "g40.t1"; gene_id "g40";
+sample	AUGUSTUS	exon	405144	407251	.	-	.	transcript_id "g40.t1"; gene_id "g40";
+sample	AUGUSTUS	intron	407252	407476	0.39	-	.	transcript_id "g40.t1"; gene_id "g40";
+sample	AUGUSTUS	CDS	407477	407595	0.68	-	1	transcript_id "g40.t1"; gene_id "g40";
+sample	AUGUSTUS	exon	407477	407595	.	-	.	transcript_id "g40.t1"; gene_id "g40";
+sample	AUGUSTUS	intron	407596	407655	1	-	.	transcript_id "g40.t1"; gene_id "g40";
+sample	AUGUSTUS	CDS	407656	407903	0.99	-	0	transcript_id "g40.t1"; gene_id "g40";
+sample	AUGUSTUS	exon	407656	407903	.	-	.	transcript_id "g40.t1"; gene_id "g40";
+sample	AUGUSTUS	intron	407904	407988	0.99	-	.	transcript_id "g40.t1"; gene_id "g40";
+sample	AUGUSTUS	CDS	407989	408492	0.92	-	0	transcript_id "g40.t1"; gene_id "g40";
+sample	AUGUSTUS	exon	407989	408492	.	-	.	transcript_id "g40.t1"; gene_id "g40";
+sample	AUGUSTUS	intron	408493	408839	0.92	-	.	transcript_id "g40.t1"; gene_id "g40";
+sample	AUGUSTUS	CDS	408840	409305	0.94	-	1	transcript_id "g40.t1"; gene_id "g40";
+sample	AUGUSTUS	exon	408840	409305	.	-	.	transcript_id "g40.t1"; gene_id "g40";
+sample	AUGUSTUS	intron	409306	410196	0.93	-	.	transcript_id "g40.t1"; gene_id "g40";
+sample	AUGUSTUS	CDS	410197	410393	0.83	-	0	transcript_id "g40.t1"; gene_id "g40";
+sample	AUGUSTUS	exon	410197	410393	.	-	.	transcript_id "g40.t1"; gene_id "g40";
+sample	AUGUSTUS	start_codon	410391	410393	.	-	0	transcript_id "g40.t1"; gene_id "g40";
+sample	AUGUSTUS	gene	410695	411102	.	-	.	g41
+sample	AUGUSTUS	transcript	410695	411102	0.59	-	.	g41.t1
+sample	AUGUSTUS	stop_codon	410695	410697	.	-	0	transcript_id "g41.t1"; gene_id "g41";
+sample	AUGUSTUS	CDS	410695	411102	0.59	-	0	transcript_id "g41.t1"; gene_id "g41";
+sample	AUGUSTUS	exon	410695	411102	.	-	.	transcript_id "g41.t1"; gene_id "g41";
+sample	AUGUSTUS	start_codon	411100	411102	.	-	0	transcript_id "g41.t1"; gene_id "g41";
+sample	AUGUSTUS	gene	411785	414072	.	-	.	g42
+sample	AUGUSTUS	transcript	411785	414072	0.98	-	.	g42.t1
+sample	AUGUSTUS	stop_codon	411785	411787	.	-	0	transcript_id "g42.t1"; gene_id "g42";
+sample	AUGUSTUS	CDS	411785	411910	0.98	-	0	transcript_id "g42.t1"; gene_id "g42";
+sample	AUGUSTUS	exon	411785	411910	.	-	.	transcript_id "g42.t1"; gene_id "g42";
+sample	AUGUSTUS	intron	411911	413727	1	-	.	transcript_id "g42.t1"; gene_id "g42";
+sample	AUGUSTUS	CDS	413728	414072	1	-	0	transcript_id "g42.t1"; gene_id "g42";
+sample	AUGUSTUS	exon	413728	414072	.	-	.	transcript_id "g42.t1"; gene_id "g42";
+sample	AUGUSTUS	start_codon	414070	414072	.	-	0	transcript_id "g42.t1"; gene_id "g42";
+sample	AUGUSTUS	gene	428479	429748	.	-	.	g43
+sample	AUGUSTUS	transcript	428479	429748	0.77	-	.	g43.t1
+sample	AUGUSTUS	stop_codon	428479	428481	.	-	0	transcript_id "g43.t1"; gene_id "g43";
+sample	AUGUSTUS	CDS	428479	429006	1	-	0	transcript_id "g43.t1"; gene_id "g43";
+sample	AUGUSTUS	exon	428479	429006	.	-	.	transcript_id "g43.t1"; gene_id "g43";
+sample	AUGUSTUS	intron	429007	429079	1	-	.	transcript_id "g43.t1"; gene_id "g43";
+sample	AUGUSTUS	CDS	429080	429273	1	-	2	transcript_id "g43.t1"; gene_id "g43";
+sample	AUGUSTUS	exon	429080	429273	.	-	.	transcript_id "g43.t1"; gene_id "g43";
+sample	AUGUSTUS	intron	429274	429469	1	-	.	transcript_id "g43.t1"; gene_id "g43";
+sample	AUGUSTUS	CDS	429470	429578	1	-	0	transcript_id "g43.t1"; gene_id "g43";
+sample	AUGUSTUS	exon	429470	429578	.	-	.	transcript_id "g43.t1"; gene_id "g43";
+sample	AUGUSTUS	intron	429579	429643	1	-	.	transcript_id "g43.t1"; gene_id "g43";
+sample	AUGUSTUS	CDS	429644	429748	0.77	-	0	transcript_id "g43.t1"; gene_id "g43";
+sample	AUGUSTUS	exon	429644	429748	.	-	.	transcript_id "g43.t1"; gene_id "g43";
+sample	AUGUSTUS	start_codon	429746	429748	.	-	0	transcript_id "g43.t1"; gene_id "g43";
+sample	AUGUSTUS	gene	444429	445393	.	-	.	g44
+sample	AUGUSTUS	transcript	444429	445393	0.98	-	.	g44.t1
+sample	AUGUSTUS	stop_codon	444429	444431	.	-	0	transcript_id "g44.t1"; gene_id "g44";
+sample	AUGUSTUS	CDS	444429	445125	1	-	1	transcript_id "g44.t1"; gene_id "g44";
+sample	AUGUSTUS	exon	444429	445125	.	-	.	transcript_id "g44.t1"; gene_id "g44";
+sample	AUGUSTUS	intron	445126	445190	1	-	.	transcript_id "g44.t1"; gene_id "g44";
+sample	AUGUSTUS	CDS	445191	445393	0.98	-	0	transcript_id "g44.t1"; gene_id "g44";
+sample	AUGUSTUS	exon	445191	445393	.	-	.	transcript_id "g44.t1"; gene_id "g44";
+sample	AUGUSTUS	start_codon	445391	445393	.	-	0	transcript_id "g44.t1"; gene_id "g44";
+sample	AUGUSTUS	gene	446127	447711	.	+	.	g45
+sample	AUGUSTUS	transcript	446127	447711	0.69	+	.	g45.t1
+sample	AUGUSTUS	start_codon	446127	446129	.	+	0	transcript_id "g45.t1"; gene_id "g45";
+sample	AUGUSTUS	CDS	446127	446275	1	+	0	transcript_id "g45.t1"; gene_id "g45";
+sample	AUGUSTUS	exon	446127	446275	.	+	.	transcript_id "g45.t1"; gene_id "g45";
+sample	AUGUSTUS	intron	446276	446338	1	+	.	transcript_id "g45.t1"; gene_id "g45";
+sample	AUGUSTUS	CDS	446339	446553	0.99	+	1	transcript_id "g45.t1"; gene_id "g45";
+sample	AUGUSTUS	exon	446339	446553	.	+	.	transcript_id "g45.t1"; gene_id "g45";
+sample	AUGUSTUS	intron	446554	446618	0.97	+	.	transcript_id "g45.t1"; gene_id "g45";
+sample	AUGUSTUS	CDS	446619	446926	0.71	+	2	transcript_id "g45.t1"; gene_id "g45";
+sample	AUGUSTUS	exon	446619	446926	.	+	.	transcript_id "g45.t1"; gene_id "g45";
+sample	AUGUSTUS	intron	446927	446982	0.74	+	.	transcript_id "g45.t1"; gene_id "g45";
+sample	AUGUSTUS	CDS	446983	447105	0.95	+	0	transcript_id "g45.t1"; gene_id "g45";
+sample	AUGUSTUS	exon	446983	447105	.	+	.	transcript_id "g45.t1"; gene_id "g45";
+sample	AUGUSTUS	intron	447106	447168	0.96	+	.	transcript_id "g45.t1"; gene_id "g45";
+sample	AUGUSTUS	CDS	447169	447711	0.99	+	0	transcript_id "g45.t1"; gene_id "g45";
+sample	AUGUSTUS	exon	447169	447711	.	+	.	transcript_id "g45.t1"; gene_id "g45";
+sample	AUGUSTUS	stop_codon	447709	447711	.	+	0	transcript_id "g45.t1"; gene_id "g45";
+sample	AUGUSTUS	gene	448259	449551	.	-	.	g46
+sample	AUGUSTUS	transcript	448259	449551	1	-	.	g46.t1
+sample	AUGUSTUS	stop_codon	448259	448261	.	-	0	transcript_id "g46.t1"; gene_id "g46";
+sample	AUGUSTUS	CDS	448259	449551	1	-	0	transcript_id "g46.t1"; gene_id "g46";
+sample	AUGUSTUS	exon	448259	449551	.	-	.	transcript_id "g46.t1"; gene_id "g46";
+sample	AUGUSTUS	start_codon	449549	449551	.	-	0	transcript_id "g46.t1"; gene_id "g46";
+sample	AUGUSTUS	gene	450575	450829	.	+	.	g47
+sample	AUGUSTUS	transcript	450575	450829	0.55	+	.	g47.t1
+sample	AUGUSTUS	start_codon	450575	450577	.	+	0	transcript_id "g47.t1"; gene_id "g47";
+sample	AUGUSTUS	CDS	450575	450829	0.55	+	0	transcript_id "g47.t1"; gene_id "g47";
+sample	AUGUSTUS	exon	450575	450829	.	+	.	transcript_id "g47.t1"; gene_id "g47";
+sample	AUGUSTUS	stop_codon	450827	450829	.	+	0	transcript_id "g47.t1"; gene_id "g47";
+sample	AUGUSTUS	gene	452690	453334	.	+	.	g48
+sample	AUGUSTUS	transcript	452690	453334	0.85	+	.	g48.t1
+sample	AUGUSTUS	start_codon	452690	452692	.	+	0	transcript_id "g48.t1"; gene_id "g48";
+sample	AUGUSTUS	CDS	452690	453334	0.85	+	0	transcript_id "g48.t1"; gene_id "g48";
+sample	AUGUSTUS	exon	452690	453334	.	+	.	transcript_id "g48.t1"; gene_id "g48";
+sample	AUGUSTUS	stop_codon	453332	453334	.	+	0	transcript_id "g48.t1"; gene_id "g48";
+sample	AUGUSTUS	gene	454412	457661	.	-	.	g49
+sample	AUGUSTUS	transcript	454412	457661	0.55	-	.	g49.t1
+sample	AUGUSTUS	stop_codon	454412	454414	.	-	0	transcript_id "g49.t1"; gene_id "g49";
+sample	AUGUSTUS	CDS	454412	454610	0.93	-	1	transcript_id "g49.t1"; gene_id "g49";
+sample	AUGUSTUS	exon	454412	454610	.	-	.	transcript_id "g49.t1"; gene_id "g49";
+sample	AUGUSTUS	intron	454611	454696	0.93	-	.	transcript_id "g49.t1"; gene_id "g49";
+sample	AUGUSTUS	CDS	454697	455256	0.93	-	0	transcript_id "g49.t1"; gene_id "g49";
+sample	AUGUSTUS	exon	454697	455256	.	-	.	transcript_id "g49.t1"; gene_id "g49";
+sample	AUGUSTUS	intron	455257	456126	0.93	-	.	transcript_id "g49.t1"; gene_id "g49";
+sample	AUGUSTUS	CDS	456127	456248	0.73	-	2	transcript_id "g49.t1"; gene_id "g49";
+sample	AUGUSTUS	exon	456127	456248	.	-	.	transcript_id "g49.t1"; gene_id "g49";
+sample	AUGUSTUS	intron	456249	456441	0.71	-	.	transcript_id "g49.t1"; gene_id "g49";
+sample	AUGUSTUS	CDS	456442	457045	0.89	-	0	transcript_id "g49.t1"; gene_id "g49";
+sample	AUGUSTUS	exon	456442	457045	.	-	.	transcript_id "g49.t1"; gene_id "g49";
+sample	AUGUSTUS	intron	457046	457412	1	-	.	transcript_id "g49.t1"; gene_id "g49";
+sample	AUGUSTUS	CDS	457413	457661	0.88	-	0	transcript_id "g49.t1"; gene_id "g49";
+sample	AUGUSTUS	exon	457413	457661	.	-	.	transcript_id "g49.t1"; gene_id "g49";
+sample	AUGUSTUS	start_codon	457659	457661	.	-	0	transcript_id "g49.t1"; gene_id "g49";
+sample	GeneMark.hmm3	transcript	454412	457592	.	-	.	g49.t2
+sample	GeneMark.hmm3	stop_codon	454412	454414	.	-	0	transcript_id "g49.t2"; gene_id "g49";
+sample	GeneMark.hmm3	CDS	454412	454610	.	-	1	transcript_id "g49.t2"; gene_id "g49";
+sample	GeneMark.hmm3	exon	454412	454610	0	-	.	transcript_id "g49.t2"; gene_id "g49";
+sample	GeneMark.hmm3	intron	454611	454696	.	-	0	transcript_id "g49.t2"; gene_id "g49";
+sample	GeneMark.hmm3	CDS	454697	455256	.	-	0	transcript_id "g49.t2"; gene_id "g49";
+sample	GeneMark.hmm3	exon	454697	455256	0	-	.	transcript_id "g49.t2"; gene_id "g49";
+sample	GeneMark.hmm3	intron	455257	456126	.	-	2	transcript_id "g49.t2"; gene_id "g49";
+sample	GeneMark.hmm3	CDS	456127	456248	.	-	2	transcript_id "g49.t2"; gene_id "g49";
+sample	GeneMark.hmm3	exon	456127	456248	0	-	.	transcript_id "g49.t2"; gene_id "g49";
+sample	GeneMark.hmm3	intron	456249	456441	.	-	0	transcript_id "g49.t2"; gene_id "g49";
+sample	GeneMark.hmm3	CDS	456442	457045	.	-	0	transcript_id "g49.t2"; gene_id "g49";
+sample	GeneMark.hmm3	exon	456442	457045	0	-	.	transcript_id "g49.t2"; gene_id "g49";
+sample	GeneMark.hmm3	intron	457046	457412	.	-	0	transcript_id "g49.t2"; gene_id "g49";
+sample	GeneMark.hmm3	CDS	457413	457592	.	-	0	transcript_id "g49.t2"; gene_id "g49";
+sample	GeneMark.hmm3	exon	457413	457592	0	-	.	transcript_id "g49.t2"; gene_id "g49";
+sample	GeneMark.hmm3	start_codon	457590	457592	.	-	0	transcript_id "g49.t2"; gene_id "g49";
+sample	AUGUSTUS	gene	459062	462454	.	+	.	g50
+sample	AUGUSTUS	transcript	459062	462454	1	+	.	g50.t1
+sample	AUGUSTUS	start_codon	459062	459064	.	+	0	transcript_id "g50.t1"; gene_id "g50";
+sample	AUGUSTUS	CDS	459062	459150	1	+	0	transcript_id "g50.t1"; gene_id "g50";
+sample	AUGUSTUS	exon	459062	459150	.	+	.	transcript_id "g50.t1"; gene_id "g50";
+sample	AUGUSTUS	intron	459151	459190	1	+	.	transcript_id "g50.t1"; gene_id "g50";
+sample	AUGUSTUS	CDS	459191	459594	1	+	1	transcript_id "g50.t1"; gene_id "g50";
+sample	AUGUSTUS	exon	459191	459594	.	+	.	transcript_id "g50.t1"; gene_id "g50";
+sample	AUGUSTUS	intron	459595	459804	1	+	.	transcript_id "g50.t1"; gene_id "g50";
+sample	AUGUSTUS	CDS	459805	460154	1	+	2	transcript_id "g50.t1"; gene_id "g50";
+sample	AUGUSTUS	exon	459805	460154	.	+	.	transcript_id "g50.t1"; gene_id "g50";
+sample	AUGUSTUS	intron	460155	460212	1	+	.	transcript_id "g50.t1"; gene_id "g50";
+sample	AUGUSTUS	CDS	460213	461658	1	+	0	transcript_id "g50.t1"; gene_id "g50";
+sample	AUGUSTUS	exon	460213	461658	.	+	.	transcript_id "g50.t1"; gene_id "g50";
+sample	AUGUSTUS	intron	461659	461725	1	+	.	transcript_id "g50.t1"; gene_id "g50";
+sample	AUGUSTUS	CDS	461726	462148	1	+	0	transcript_id "g50.t1"; gene_id "g50";
+sample	AUGUSTUS	exon	461726	462148	.	+	.	transcript_id "g50.t1"; gene_id "g50";
+sample	AUGUSTUS	intron	462149	462262	1	+	.	transcript_id "g50.t1"; gene_id "g50";
+sample	AUGUSTUS	CDS	462263	462454	1	+	0	transcript_id "g50.t1"; gene_id "g50";
+sample	AUGUSTUS	exon	462263	462454	.	+	.	transcript_id "g50.t1"; gene_id "g50";
+sample	AUGUSTUS	stop_codon	462452	462454	.	+	0	transcript_id "g50.t1"; gene_id "g50";
+sample	AUGUSTUS	gene	462819	463679	.	-	.	g51
+sample	AUGUSTUS	transcript	462819	463679	0.48	-	.	g51.t1
+sample	AUGUSTUS	stop_codon	462819	462821	.	-	0	transcript_id "g51.t1"; gene_id "g51";
+sample	AUGUSTUS	CDS	462819	463032	0.98	-	1	transcript_id "g51.t1"; gene_id "g51";
+sample	AUGUSTUS	exon	462819	463032	.	-	.	transcript_id "g51.t1"; gene_id "g51";
+sample	AUGUSTUS	intron	463033	463292	0.74	-	.	transcript_id "g51.t1"; gene_id "g51";
+sample	AUGUSTUS	CDS	463293	463593	0.55	-	2	transcript_id "g51.t1"; gene_id "g51";
+sample	AUGUSTUS	exon	463293	463593	.	-	.	transcript_id "g51.t1"; gene_id "g51";
+sample	AUGUSTUS	intron	463594	463651	0.73	-	.	transcript_id "g51.t1"; gene_id "g51";
+sample	AUGUSTUS	CDS	463652	463679	0.66	-	0	transcript_id "g51.t1"; gene_id "g51";
+sample	AUGUSTUS	exon	463652	463679	.	-	.	transcript_id "g51.t1"; gene_id "g51";
+sample	AUGUSTUS	start_codon	463677	463679	.	-	0	transcript_id "g51.t1"; gene_id "g51";
+sample	AUGUSTUS	gene	464311	466939	.	-	.	g52
+sample	AUGUSTUS	transcript	464311	466939	0.65	-	.	g52.t1
+sample	AUGUSTUS	stop_codon	464311	464313	.	-	0	transcript_id "g52.t1"; gene_id "g52";
+sample	AUGUSTUS	CDS	464311	464576	0.98	-	2	transcript_id "g52.t1"; gene_id "g52";
+sample	AUGUSTUS	exon	464311	464576	.	-	.	transcript_id "g52.t1"; gene_id "g52";
+sample	AUGUSTUS	intron	464577	464632	1	-	.	transcript_id "g52.t1"; gene_id "g52";
+sample	AUGUSTUS	CDS	464633	464814	1	-	1	transcript_id "g52.t1"; gene_id "g52";
+sample	AUGUSTUS	exon	464633	464814	.	-	.	transcript_id "g52.t1"; gene_id "g52";
+sample	AUGUSTUS	intron	464815	464873	1	-	.	transcript_id "g52.t1"; gene_id "g52";
+sample	AUGUSTUS	CDS	464874	465617	1	-	1	transcript_id "g52.t1"; gene_id "g52";
+sample	AUGUSTUS	exon	464874	465617	.	-	.	transcript_id "g52.t1"; gene_id "g52";
+sample	AUGUSTUS	intron	465618	465911	1	-	.	transcript_id "g52.t1"; gene_id "g52";
+sample	AUGUSTUS	CDS	465912	466039	0.93	-	0	transcript_id "g52.t1"; gene_id "g52";
+sample	AUGUSTUS	exon	465912	466039	.	-	.	transcript_id "g52.t1"; gene_id "g52";
+sample	AUGUSTUS	intron	466040	466747	0.81	-	.	transcript_id "g52.t1"; gene_id "g52";
+sample	AUGUSTUS	CDS	466748	466939	0.71	-	0	transcript_id "g52.t1"; gene_id "g52";
+sample	AUGUSTUS	exon	466748	466939	.	-	.	transcript_id "g52.t1"; gene_id "g52";
+sample	AUGUSTUS	start_codon	466937	466939	.	-	0	transcript_id "g52.t1"; gene_id "g52";
+sample	AUGUSTUS	gene	469730	472415	.	-	.	g53
+sample	AUGUSTUS	transcript	469730	472415	0.21	-	.	g53.t1
+sample	AUGUSTUS	stop_codon	469730	469732	.	-	0	transcript_id "g53.t1"; gene_id "g53";
+sample	AUGUSTUS	CDS	469730	470658	0.75	-	2	transcript_id "g53.t1"; gene_id "g53";
+sample	AUGUSTUS	exon	469730	470658	.	-	.	transcript_id "g53.t1"; gene_id "g53";
+sample	AUGUSTUS	intron	470659	472336	0.21	-	.	transcript_id "g53.t1"; gene_id "g53";
+sample	AUGUSTUS	CDS	472337	472415	0.21	-	0	transcript_id "g53.t1"; gene_id "g53";
+sample	AUGUSTUS	exon	472337	472415	.	-	.	transcript_id "g53.t1"; gene_id "g53";
+sample	AUGUSTUS	start_codon	472413	472415	.	-	0	transcript_id "g53.t1"; gene_id "g53";
+sample	GeneMark.hmm3	gene	469730	477951	.	-	.	g54
+sample	GeneMark.hmm3	transcript	469730	477951	.	-	.	g54.t1
+sample	GeneMark.hmm3	stop_codon	469730	469732	.	-	0	transcript_id "g54.t1"; gene_id "g54";
+sample	GeneMark.hmm3	CDS	469730	470674	.	-	0	transcript_id "g54.t1"; gene_id "g54";
+sample	GeneMark.hmm3	exon	469730	470674	0	-	.	transcript_id "g54.t1"; gene_id "g54";
+sample	GeneMark.hmm3	intron	470675	477843	.	-	0	transcript_id "g54.t1"; gene_id "g54";
+sample	GeneMark.hmm3	CDS	477844	477951	.	-	0	transcript_id "g54.t1"; gene_id "g54";
+sample	GeneMark.hmm3	exon	477844	477951	0	-	.	transcript_id "g54.t1"; gene_id "g54";
+sample	GeneMark.hmm3	start_codon	477949	477951	.	-	0	transcript_id "g54.t1"; gene_id "g54";
+sample	AUGUSTUS	gene	479876	481823	.	+	.	g55
+sample	AUGUSTUS	transcript	479876	481823	0.53	+	.	g55.t1
+sample	AUGUSTUS	start_codon	479876	479878	.	+	0	transcript_id "g55.t1"; gene_id "g55";
+sample	AUGUSTUS	CDS	479876	480089	1	+	0	transcript_id "g55.t1"; gene_id "g55";
+sample	AUGUSTUS	exon	479876	480089	.	+	.	transcript_id "g55.t1"; gene_id "g55";
+sample	AUGUSTUS	intron	480090	480294	1	+	.	transcript_id "g55.t1"; gene_id "g55";
+sample	AUGUSTUS	CDS	480295	481339	0.9	+	2	transcript_id "g55.t1"; gene_id "g55";
+sample	AUGUSTUS	exon	480295	481339	.	+	.	transcript_id "g55.t1"; gene_id "g55";
+sample	AUGUSTUS	intron	481340	481393	1	+	.	transcript_id "g55.t1"; gene_id "g55";
+sample	AUGUSTUS	CDS	481394	481823	0.58	+	1	transcript_id "g55.t1"; gene_id "g55";
+sample	AUGUSTUS	exon	481394	481823	.	+	.	transcript_id "g55.t1"; gene_id "g55";
+sample	AUGUSTUS	stop_codon	481821	481823	.	+	0	transcript_id "g55.t1"; gene_id "g55";
+sample	AUGUSTUS	gene	481882	483023	.	-	.	g56
+sample	AUGUSTUS	transcript	481882	483023	1	-	.	g56.t1
+sample	AUGUSTUS	stop_codon	481882	481884	.	-	0	transcript_id "g56.t1"; gene_id "g56";
+sample	AUGUSTUS	CDS	481882	482039	1	-	2	transcript_id "g56.t1"; gene_id "g56";
+sample	AUGUSTUS	exon	481882	482039	.	-	.	transcript_id "g56.t1"; gene_id "g56";
+sample	AUGUSTUS	intron	482040	482101	1	-	.	transcript_id "g56.t1"; gene_id "g56";
+sample	AUGUSTUS	CDS	482102	482358	1	-	1	transcript_id "g56.t1"; gene_id "g56";
+sample	AUGUSTUS	exon	482102	482358	.	-	.	transcript_id "g56.t1"; gene_id "g56";
+sample	AUGUSTUS	intron	482359	482667	1	-	.	transcript_id "g56.t1"; gene_id "g56";
+sample	AUGUSTUS	CDS	482668	483023	1	-	0	transcript_id "g56.t1"; gene_id "g56";
+sample	AUGUSTUS	exon	482668	483023	.	-	.	transcript_id "g56.t1"; gene_id "g56";
+sample	AUGUSTUS	start_codon	483021	483023	.	-	0	transcript_id "g56.t1"; gene_id "g56";
+sample	AUGUSTUS	gene	483985	484545	.	+	.	g57
+sample	AUGUSTUS	transcript	483985	484545	1	+	.	g57.t1
+sample	AUGUSTUS	start_codon	483985	483987	.	+	0	transcript_id "g57.t1"; gene_id "g57";
+sample	AUGUSTUS	CDS	483985	484545	1	+	0	transcript_id "g57.t1"; gene_id "g57";
+sample	AUGUSTUS	exon	483985	484545	.	+	.	transcript_id "g57.t1"; gene_id "g57";
+sample	AUGUSTUS	stop_codon	484543	484545	.	+	0	transcript_id "g57.t1"; gene_id "g57";
+sample	AUGUSTUS	gene	484891	485565	.	-	.	g58
+sample	AUGUSTUS	transcript	484891	485565	1	-	.	g58.t1
+sample	AUGUSTUS	stop_codon	484891	484893	.	-	0	transcript_id "g58.t1"; gene_id "g58";
+sample	AUGUSTUS	CDS	484891	485565	1	-	0	transcript_id "g58.t1"; gene_id "g58";
+sample	AUGUSTUS	exon	484891	485565	.	-	.	transcript_id "g58.t1"; gene_id "g58";
+sample	AUGUSTUS	start_codon	485563	485565	.	-	0	transcript_id "g58.t1"; gene_id "g58";
+sample	AUGUSTUS	gene	491960	494260	.	+	.	g59
+sample	AUGUSTUS	transcript	491960	494260	0.64	+	.	g59.t1
+sample	AUGUSTUS	start_codon	491960	491962	.	+	0	transcript_id "g59.t1"; gene_id "g59";
+sample	AUGUSTUS	CDS	491960	492057	0.64	+	0	transcript_id "g59.t1"; gene_id "g59";
+sample	AUGUSTUS	exon	491960	492057	.	+	.	transcript_id "g59.t1"; gene_id "g59";
+sample	AUGUSTUS	intron	492058	493172	1	+	.	transcript_id "g59.t1"; gene_id "g59";
+sample	AUGUSTUS	CDS	493173	493452	1	+	1	transcript_id "g59.t1"; gene_id "g59";
+sample	AUGUSTUS	exon	493173	493452	.	+	.	transcript_id "g59.t1"; gene_id "g59";
+sample	AUGUSTUS	intron	493453	493540	1	+	.	transcript_id "g59.t1"; gene_id "g59";
+sample	AUGUSTUS	CDS	493541	493621	1	+	0	transcript_id "g59.t1"; gene_id "g59";
+sample	AUGUSTUS	exon	493541	493621	.	+	.	transcript_id "g59.t1"; gene_id "g59";
+sample	AUGUSTUS	intron	493622	493682	1	+	.	transcript_id "g59.t1"; gene_id "g59";
+sample	AUGUSTUS	CDS	493683	493822	1	+	0	transcript_id "g59.t1"; gene_id "g59";
+sample	AUGUSTUS	exon	493683	493822	.	+	.	transcript_id "g59.t1"; gene_id "g59";
+sample	AUGUSTUS	intron	493823	493881	1	+	.	transcript_id "g59.t1"; gene_id "g59";
+sample	AUGUSTUS	CDS	493882	494260	1	+	1	transcript_id "g59.t1"; gene_id "g59";
+sample	AUGUSTUS	exon	493882	494260	.	+	.	transcript_id "g59.t1"; gene_id "g59";
+sample	AUGUSTUS	stop_codon	494258	494260	.	+	0	transcript_id "g59.t1"; gene_id "g59";
+sample	AUGUSTUS	gene	500367	501498	.	-	.	g60
+sample	AUGUSTUS	transcript	500367	501498	1	-	.	g60.t1
+sample	AUGUSTUS	stop_codon	500367	500369	.	-	0	transcript_id "g60.t1"; gene_id "g60";
+sample	AUGUSTUS	CDS	500367	500502	1	-	1	transcript_id "g60.t1"; gene_id "g60";
+sample	AUGUSTUS	exon	500367	500502	.	-	.	transcript_id "g60.t1"; gene_id "g60";
+sample	AUGUSTUS	intron	500503	500568	1	-	.	transcript_id "g60.t1"; gene_id "g60";
+sample	AUGUSTUS	CDS	500569	500738	1	-	0	transcript_id "g60.t1"; gene_id "g60";
+sample	AUGUSTUS	exon	500569	500738	.	-	.	transcript_id "g60.t1"; gene_id "g60";
+sample	AUGUSTUS	intron	500739	501154	1	-	.	transcript_id "g60.t1"; gene_id "g60";
+sample	AUGUSTUS	CDS	501155	501314	1	-	1	transcript_id "g60.t1"; gene_id "g60";
+sample	AUGUSTUS	exon	501155	501314	.	-	.	transcript_id "g60.t1"; gene_id "g60";
+sample	AUGUSTUS	intron	501315	501385	1	-	.	transcript_id "g60.t1"; gene_id "g60";
+sample	AUGUSTUS	CDS	501386	501498	1	-	0	transcript_id "g60.t1"; gene_id "g60";
+sample	AUGUSTUS	exon	501386	501498	.	-	.	transcript_id "g60.t1"; gene_id "g60";
+sample	AUGUSTUS	start_codon	501496	501498	.	-	0	transcript_id "g60.t1"; gene_id "g60";
+sample	GeneMark.hmm3	transcript	500565	501498	.	-	.	g60.t2
+sample	GeneMark.hmm3	stop_codon	500565	500567	.	-	0	transcript_id "g60.t2"; gene_id "g60";
+sample	GeneMark.hmm3	CDS	500565	500738	.	-	0	transcript_id "g60.t2"; gene_id "g60";
+sample	GeneMark.hmm3	exon	500565	500738	0	-	.	transcript_id "g60.t2"; gene_id "g60";
+sample	GeneMark.hmm3	intron	500739	501154	.	-	1	transcript_id "g60.t2"; gene_id "g60";
+sample	GeneMark.hmm3	CDS	501155	501314	.	-	1	transcript_id "g60.t2"; gene_id "g60";
+sample	GeneMark.hmm3	exon	501155	501314	0	-	.	transcript_id "g60.t2"; gene_id "g60";
+sample	GeneMark.hmm3	intron	501315	501385	.	-	0	transcript_id "g60.t2"; gene_id "g60";
+sample	GeneMark.hmm3	CDS	501386	501498	.	-	0	transcript_id "g60.t2"; gene_id "g60";
+sample	GeneMark.hmm3	exon	501386	501498	0	-	.	transcript_id "g60.t2"; gene_id "g60";
+sample	GeneMark.hmm3	start_codon	501496	501498	.	-	0	transcript_id "g60.t2"; gene_id "g60";
+sample	AUGUSTUS	gene	502325	504016	.	-	.	g61
+sample	AUGUSTUS	transcript	502325	504016	0.82	-	.	g61.t1
+sample	AUGUSTUS	stop_codon	502325	502327	.	-	0	transcript_id "g61.t1"; gene_id "g61";
+sample	AUGUSTUS	CDS	502325	504016	0.82	-	0	transcript_id "g61.t1"; gene_id "g61";
+sample	AUGUSTUS	exon	502325	504016	.	-	.	transcript_id "g61.t1"; gene_id "g61";
+sample	AUGUSTUS	start_codon	504014	504016	.	-	0	transcript_id "g61.t1"; gene_id "g61";
+sample	AUGUSTUS	gene	505369	509300	.	-	.	g62
+sample	AUGUSTUS	transcript	505369	509300	0.82	-	.	g62.t1
+sample	AUGUSTUS	stop_codon	505369	505371	.	-	0	transcript_id "g62.t1"; gene_id "g62";
+sample	AUGUSTUS	CDS	505369	505426	0.84	-	1	transcript_id "g62.t1"; gene_id "g62";
+sample	AUGUSTUS	exon	505369	505426	.	-	.	transcript_id "g62.t1"; gene_id "g62";
+sample	AUGUSTUS	intron	505427	506195	0.84	-	.	transcript_id "g62.t1"; gene_id "g62";
+sample	AUGUSTUS	CDS	506196	506353	0.98	-	0	transcript_id "g62.t1"; gene_id "g62";
+sample	AUGUSTUS	exon	506196	506353	.	-	.	transcript_id "g62.t1"; gene_id "g62";
+sample	AUGUSTUS	intron	506354	509084	0.98	-	.	transcript_id "g62.t1"; gene_id "g62";
+sample	AUGUSTUS	CDS	509085	509300	1	-	0	transcript_id "g62.t1"; gene_id "g62";
+sample	AUGUSTUS	exon	509085	509300	.	-	.	transcript_id "g62.t1"; gene_id "g62";
+sample	AUGUSTUS	start_codon	509298	509300	.	-	0	transcript_id "g62.t1"; gene_id "g62";
+sample	AUGUSTUS	gene	515698	526115	.	-	.	g63
+sample	AUGUSTUS	transcript	515698	526115	0.1	-	.	g63.t1
+sample	AUGUSTUS	stop_codon	515698	515700	.	-	0	transcript_id "g63.t1"; gene_id "g63";
+sample	AUGUSTUS	CDS	515698	515778	0.52	-	0	transcript_id "g63.t1"; gene_id "g63";
+sample	AUGUSTUS	exon	515698	515778	.	-	.	transcript_id "g63.t1"; gene_id "g63";
+sample	AUGUSTUS	intron	515779	519059	0.51	-	.	transcript_id "g63.t1"; gene_id "g63";
+sample	AUGUSTUS	CDS	519060	519261	0.88	-	1	transcript_id "g63.t1"; gene_id "g63";
+sample	AUGUSTUS	exon	519060	519261	.	-	.	transcript_id "g63.t1"; gene_id "g63";
+sample	AUGUSTUS	intron	519262	519417	0.98	-	.	transcript_id "g63.t1"; gene_id "g63";
+sample	AUGUSTUS	CDS	519418	519580	0.97	-	2	transcript_id "g63.t1"; gene_id "g63";
+sample	AUGUSTUS	exon	519418	519580	.	-	.	transcript_id "g63.t1"; gene_id "g63";
+sample	AUGUSTUS	intron	519581	519647	0.92	-	.	transcript_id "g63.t1"; gene_id "g63";
+sample	AUGUSTUS	CDS	519648	519790	0.92	-	1	transcript_id "g63.t1"; gene_id "g63";
+sample	AUGUSTUS	exon	519648	519790	.	-	.	transcript_id "g63.t1"; gene_id "g63";
+sample	AUGUSTUS	intron	519791	520065	0.87	-	.	transcript_id "g63.t1"; gene_id "g63";
+sample	AUGUSTUS	CDS	520066	520158	0.87	-	1	transcript_id "g63.t1"; gene_id "g63";
+sample	AUGUSTUS	exon	520066	520158	.	-	.	transcript_id "g63.t1"; gene_id "g63";
+sample	AUGUSTUS	intron	520159	520481	0.88	-	.	transcript_id "g63.t1"; gene_id "g63";
+sample	AUGUSTUS	CDS	520482	520654	1	-	0	transcript_id "g63.t1"; gene_id "g63";
+sample	AUGUSTUS	exon	520482	520654	.	-	.	transcript_id "g63.t1"; gene_id "g63";
+sample	AUGUSTUS	intron	520655	520725	0.98	-	.	transcript_id "g63.t1"; gene_id "g63";
+sample	AUGUSTUS	CDS	520726	521275	0.97	-	1	transcript_id "g63.t1"; gene_id "g63";
+sample	AUGUSTUS	exon	520726	521275	.	-	.	transcript_id "g63.t1"; gene_id "g63";
+sample	AUGUSTUS	intron	521276	522060	0.67	-	.	transcript_id "g63.t1"; gene_id "g63";
+sample	AUGUSTUS	CDS	522061	522215	0.68	-	0	transcript_id "g63.t1"; gene_id "g63";
+sample	AUGUSTUS	exon	522061	522215	.	-	.	transcript_id "g63.t1"; gene_id "g63";
+sample	AUGUSTUS	intron	522216	522276	1	-	.	transcript_id "g63.t1"; gene_id "g63";
+sample	AUGUSTUS	CDS	522277	522383	1	-	2	transcript_id "g63.t1"; gene_id "g63";
+sample	AUGUSTUS	exon	522277	522383	.	-	.	transcript_id "g63.t1"; gene_id "g63";
+sample	AUGUSTUS	intron	522384	522566	1	-	.	transcript_id "g63.t1"; gene_id "g63";
+sample	AUGUSTUS	CDS	522567	523099	0.54	-	1	transcript_id "g63.t1"; gene_id "g63";
+sample	AUGUSTUS	exon	522567	523099	.	-	.	transcript_id "g63.t1"; gene_id "g63";
+sample	AUGUSTUS	intron	523100	524560	0.54	-	.	transcript_id "g63.t1"; gene_id "g63";
+sample	AUGUSTUS	CDS	524561	525161	0.41	-	2	transcript_id "g63.t1"; gene_id "g63";
+sample	AUGUSTUS	exon	524561	525161	.	-	.	transcript_id "g63.t1"; gene_id "g63";
+sample	AUGUSTUS	intron	525162	525889	0.7	-	.	transcript_id "g63.t1"; gene_id "g63";
+sample	AUGUSTUS	CDS	525890	525993	0.71	-	1	transcript_id "g63.t1"; gene_id "g63";
+sample	AUGUSTUS	exon	525890	525993	.	-	.	transcript_id "g63.t1"; gene_id "g63";
+sample	AUGUSTUS	intron	525994	526089	0.71	-	.	transcript_id "g63.t1"; gene_id "g63";
+sample	AUGUSTUS	CDS	526090	526115	0.71	-	0	transcript_id "g63.t1"; gene_id "g63";
+sample	AUGUSTUS	exon	526090	526115	.	-	.	transcript_id "g63.t1"; gene_id "g63";
+sample	AUGUSTUS	start_codon	526113	526115	.	-	0	transcript_id "g63.t1"; gene_id "g63";
+sample	AUGUSTUS	gene	526612	527408	.	+	.	g64
+sample	AUGUSTUS	transcript	526612	527408	0.88	+	.	g64.t1
+sample	AUGUSTUS	start_codon	526612	526614	.	+	0	transcript_id "g64.t1"; gene_id "g64";
+sample	AUGUSTUS	CDS	526612	526933	0.99	+	0	transcript_id "g64.t1"; gene_id "g64";
+sample	AUGUSTUS	exon	526612	526933	.	+	.	transcript_id "g64.t1"; gene_id "g64";
+sample	AUGUSTUS	intron	526934	527124	1	+	.	transcript_id "g64.t1"; gene_id "g64";
+sample	AUGUSTUS	CDS	527125	527321	1	+	2	transcript_id "g64.t1"; gene_id "g64";
+sample	AUGUSTUS	exon	527125	527321	.	+	.	transcript_id "g64.t1"; gene_id "g64";
+sample	AUGUSTUS	intron	527322	527387	0.89	+	.	transcript_id "g64.t1"; gene_id "g64";
+sample	AUGUSTUS	CDS	527388	527408	0.89	+	0	transcript_id "g64.t1"; gene_id "g64";
+sample	AUGUSTUS	exon	527388	527408	.	+	.	transcript_id "g64.t1"; gene_id "g64";
+sample	AUGUSTUS	stop_codon	527406	527408	.	+	0	transcript_id "g64.t1"; gene_id "g64";
+sample	AUGUSTUS	gene	539336	540618	.	-	.	g65
+sample	AUGUSTUS	transcript	539336	540618	1	-	.	g65.t1
+sample	AUGUSTUS	stop_codon	539336	539338	.	-	0	transcript_id "g65.t1"; gene_id "g65";
+sample	AUGUSTUS	CDS	539336	539917	1	-	0	transcript_id "g65.t1"; gene_id "g65";
+sample	AUGUSTUS	exon	539336	539917	.	-	.	transcript_id "g65.t1"; gene_id "g65";
+sample	AUGUSTUS	intron	539918	540357	1	-	.	transcript_id "g65.t1"; gene_id "g65";
+sample	AUGUSTUS	CDS	540358	540618	1	-	0	transcript_id "g65.t1"; gene_id "g65";
+sample	AUGUSTUS	exon	540358	540618	.	-	.	transcript_id "g65.t1"; gene_id "g65";
+sample	AUGUSTUS	start_codon	540616	540618	.	-	0	transcript_id "g65.t1"; gene_id "g65";
+sample	AUGUSTUS	gene	560821	561174	.	-	.	g66
+sample	AUGUSTUS	transcript	560821	561174	1	-	.	g66.t1
+sample	AUGUSTUS	stop_codon	560821	560823	.	-	0	transcript_id "g66.t1"; gene_id "g66";
+sample	AUGUSTUS	CDS	560821	561174	1	-	0	transcript_id "g66.t1"; gene_id "g66";
+sample	AUGUSTUS	exon	560821	561174	.	-	.	transcript_id "g66.t1"; gene_id "g66";
+sample	AUGUSTUS	start_codon	561172	561174	.	-	0	transcript_id "g66.t1"; gene_id "g66";
+sample	AUGUSTUS	gene	565215	569658	.	-	.	g67
+sample	AUGUSTUS	transcript	565215	569658	0.12	-	.	g67.t1
+sample	AUGUSTUS	stop_codon	565215	565217	.	-	0	transcript_id "g67.t1"; gene_id "g67";
+sample	AUGUSTUS	CDS	565215	568156	0.25	-	2	transcript_id "g67.t1"; gene_id "g67";
+sample	AUGUSTUS	exon	565215	568156	.	-	.	transcript_id "g67.t1"; gene_id "g67";
+sample	AUGUSTUS	intron	568157	568322	0.13	-	.	transcript_id "g67.t1"; gene_id "g67";
+sample	AUGUSTUS	CDS	568323	569658	0.25	-	0	transcript_id "g67.t1"; gene_id "g67";
+sample	AUGUSTUS	exon	568323	569658	.	-	.	transcript_id "g67.t1"; gene_id "g67";
+sample	AUGUSTUS	start_codon	569656	569658	.	-	0	transcript_id "g67.t1"; gene_id "g67";
+sample	AUGUSTUS	gene	580264	581041	.	-	.	g68
+sample	AUGUSTUS	transcript	580264	581041	0.97	-	.	g68.t1
+sample	AUGUSTUS	stop_codon	580264	580266	.	-	0	transcript_id "g68.t1"; gene_id "g68";
+sample	AUGUSTUS	CDS	580264	580853	0.97	-	2	transcript_id "g68.t1"; gene_id "g68";
+sample	AUGUSTUS	exon	580264	580853	.	-	.	transcript_id "g68.t1"; gene_id "g68";
+sample	AUGUSTUS	intron	580854	580980	0.97	-	.	transcript_id "g68.t1"; gene_id "g68";
+sample	AUGUSTUS	CDS	580981	581041	0.97	-	0	transcript_id "g68.t1"; gene_id "g68";
+sample	AUGUSTUS	exon	580981	581041	.	-	.	transcript_id "g68.t1"; gene_id "g68";
+sample	AUGUSTUS	start_codon	581039	581041	.	-	0	transcript_id "g68.t1"; gene_id "g68";
+sample	AUGUSTUS	gene	581605	583000	.	+	.	g69
+sample	AUGUSTUS	transcript	581605	583000	1	+	.	g69.t1
+sample	AUGUSTUS	start_codon	581605	581607	.	+	0	transcript_id "g69.t1"; gene_id "g69";
+sample	AUGUSTUS	CDS	581605	581673	1	+	0	transcript_id "g69.t1"; gene_id "g69";
+sample	AUGUSTUS	exon	581605	581673	.	+	.	transcript_id "g69.t1"; gene_id "g69";
+sample	AUGUSTUS	intron	581674	581746	1	+	.	transcript_id "g69.t1"; gene_id "g69";
+sample	AUGUSTUS	CDS	581747	581970	1	+	0	transcript_id "g69.t1"; gene_id "g69";
+sample	AUGUSTUS	exon	581747	581970	.	+	.	transcript_id "g69.t1"; gene_id "g69";
+sample	AUGUSTUS	intron	581971	582253	1	+	.	transcript_id "g69.t1"; gene_id "g69";
+sample	AUGUSTUS	CDS	582254	582362	1	+	1	transcript_id "g69.t1"; gene_id "g69";
+sample	AUGUSTUS	exon	582254	582362	.	+	.	transcript_id "g69.t1"; gene_id "g69";
+sample	AUGUSTUS	intron	582363	582422	1	+	.	transcript_id "g69.t1"; gene_id "g69";
+sample	AUGUSTUS	CDS	582423	582548	1	+	0	transcript_id "g69.t1"; gene_id "g69";
+sample	AUGUSTUS	exon	582423	582548	.	+	.	transcript_id "g69.t1"; gene_id "g69";
+sample	AUGUSTUS	intron	582549	582844	1	+	.	transcript_id "g69.t1"; gene_id "g69";
+sample	AUGUSTUS	CDS	582845	583000	1	+	0	transcript_id "g69.t1"; gene_id "g69";
+sample	AUGUSTUS	exon	582845	583000	.	+	.	transcript_id "g69.t1"; gene_id "g69";
+sample	AUGUSTUS	stop_codon	582998	583000	.	+	0	transcript_id "g69.t1"; gene_id "g69";
+sample	AUGUSTUS	gene	583551	584495	.	-	.	g70
+sample	AUGUSTUS	transcript	583551	584495	0.89	-	.	g70.t1
+sample	AUGUSTUS	stop_codon	583551	583553	.	-	0	transcript_id "g70.t1"; gene_id "g70";
+sample	AUGUSTUS	CDS	583551	583703	1	-	0	transcript_id "g70.t1"; gene_id "g70";
+sample	AUGUSTUS	exon	583551	583703	.	-	.	transcript_id "g70.t1"; gene_id "g70";
+sample	AUGUSTUS	intron	583704	583774	1	-	.	transcript_id "g70.t1"; gene_id "g70";
+sample	AUGUSTUS	CDS	583775	584276	1	-	1	transcript_id "g70.t1"; gene_id "g70";
+sample	AUGUSTUS	exon	583775	584276	.	-	.	transcript_id "g70.t1"; gene_id "g70";
+sample	AUGUSTUS	intron	584277	584343	1	-	.	transcript_id "g70.t1"; gene_id "g70";
+sample	AUGUSTUS	CDS	584344	584495	0.89	-	0	transcript_id "g70.t1"; gene_id "g70";
+sample	AUGUSTUS	exon	584344	584495	.	-	.	transcript_id "g70.t1"; gene_id "g70";
+sample	AUGUSTUS	start_codon	584493	584495	.	-	0	transcript_id "g70.t1"; gene_id "g70";
+sample	GeneMark.hmm3	transcript	583754	584495	.	-	.	g70.t2
+sample	GeneMark.hmm3	stop_codon	583754	583756	.	-	0	transcript_id "g70.t2"; gene_id "g70";
+sample	GeneMark.hmm3	CDS	583754	584276	.	-	1	transcript_id "g70.t2"; gene_id "g70";
+sample	GeneMark.hmm3	exon	583754	584276	0	-	.	transcript_id "g70.t2"; gene_id "g70";
+sample	GeneMark.hmm3	intron	584277	584343	.	-	0	transcript_id "g70.t2"; gene_id "g70";
+sample	GeneMark.hmm3	CDS	584344	584495	.	-	0	transcript_id "g70.t2"; gene_id "g70";
+sample	GeneMark.hmm3	exon	584344	584495	0	-	.	transcript_id "g70.t2"; gene_id "g70";
+sample	GeneMark.hmm3	start_codon	584493	584495	.	-	0	transcript_id "g70.t2"; gene_id "g70";
+sample	AUGUSTUS	gene	585578	590240	.	-	.	g71
+sample	AUGUSTUS	transcript	585578	590240	1	-	.	g71.t1
+sample	AUGUSTUS	stop_codon	585578	585580	.	-	0	transcript_id "g71.t1"; gene_id "g71";
+sample	AUGUSTUS	CDS	585578	585707	1	-	1	transcript_id "g71.t1"; gene_id "g71";
+sample	AUGUSTUS	exon	585578	585707	.	-	.	transcript_id "g71.t1"; gene_id "g71";
+sample	AUGUSTUS	intron	585708	585767	1	-	.	transcript_id "g71.t1"; gene_id "g71";
+sample	AUGUSTUS	CDS	585768	585970	1	-	0	transcript_id "g71.t1"; gene_id "g71";
+sample	AUGUSTUS	exon	585768	585970	.	-	.	transcript_id "g71.t1"; gene_id "g71";
+sample	AUGUSTUS	intron	585971	586398	1	-	.	transcript_id "g71.t1"; gene_id "g71";
+sample	AUGUSTUS	CDS	586399	588180	1	-	0	transcript_id "g71.t1"; gene_id "g71";
+sample	AUGUSTUS	exon	586399	588180	.	-	.	transcript_id "g71.t1"; gene_id "g71";
+sample	AUGUSTUS	intron	588181	590016	1	-	.	transcript_id "g71.t1"; gene_id "g71";
+sample	AUGUSTUS	CDS	590017	590118	1	-	0	transcript_id "g71.t1"; gene_id "g71";
+sample	AUGUSTUS	exon	590017	590118	.	-	.	transcript_id "g71.t1"; gene_id "g71";
+sample	AUGUSTUS	intron	590119	590189	1	-	.	transcript_id "g71.t1"; gene_id "g71";
+sample	AUGUSTUS	CDS	590190	590240	1	-	0	transcript_id "g71.t1"; gene_id "g71";
+sample	AUGUSTUS	exon	590190	590240	.	-	.	transcript_id "g71.t1"; gene_id "g71";
+sample	AUGUSTUS	start_codon	590238	590240	.	-	0	transcript_id "g71.t1"; gene_id "g71";
+sample	AUGUSTUS	gene	596012	597834	.	+	.	g72
+sample	AUGUSTUS	transcript	596012	597834	0.41	+	.	g72.t1
+sample	AUGUSTUS	start_codon	596012	596014	.	+	0	transcript_id "g72.t1"; gene_id "g72";
+sample	AUGUSTUS	CDS	596012	596015	0.7	+	0	transcript_id "g72.t1"; gene_id "g72";
+sample	AUGUSTUS	exon	596012	596015	.	+	.	transcript_id "g72.t1"; gene_id "g72";
+sample	AUGUSTUS	intron	596016	596074	0.51	+	.	transcript_id "g72.t1"; gene_id "g72";
+sample	AUGUSTUS	CDS	596075	596666	0.47	+	2	transcript_id "g72.t1"; gene_id "g72";
+sample	AUGUSTUS	exon	596075	596666	.	+	.	transcript_id "g72.t1"; gene_id "g72";
+sample	AUGUSTUS	intron	596667	596888	0.83	+	.	transcript_id "g72.t1"; gene_id "g72";
+sample	AUGUSTUS	CDS	596889	597834	0.84	+	1	transcript_id "g72.t1"; gene_id "g72";
+sample	AUGUSTUS	exon	596889	597834	.	+	.	transcript_id "g72.t1"; gene_id "g72";
+sample	AUGUSTUS	stop_codon	597832	597834	.	+	0	transcript_id "g72.t1"; gene_id "g72";
+sample	AUGUSTUS	gene	598307	598764	.	+	.	g73
+sample	AUGUSTUS	transcript	598307	598764	0.98	+	.	g73.t1
+sample	AUGUSTUS	start_codon	598307	598309	.	+	0	transcript_id "g73.t1"; gene_id "g73";
+sample	AUGUSTUS	CDS	598307	598335	0.98	+	0	transcript_id "g73.t1"; gene_id "g73";
+sample	AUGUSTUS	exon	598307	598335	.	+	.	transcript_id "g73.t1"; gene_id "g73";
+sample	AUGUSTUS	intron	598336	598397	1	+	.	transcript_id "g73.t1"; gene_id "g73";
+sample	AUGUSTUS	CDS	598398	598764	1	+	1	transcript_id "g73.t1"; gene_id "g73";
+sample	AUGUSTUS	exon	598398	598764	.	+	.	transcript_id "g73.t1"; gene_id "g73";
+sample	AUGUSTUS	stop_codon	598762	598764	.	+	0	transcript_id "g73.t1"; gene_id "g73";
+sample	AUGUSTUS	gene	599095	600874	.	-	.	g74
+sample	AUGUSTUS	transcript	599095	600874	0.94	-	.	g74.t1
+sample	AUGUSTUS	stop_codon	599095	599097	.	-	0	transcript_id "g74.t1"; gene_id "g74";
+sample	AUGUSTUS	CDS	599095	600595	1	-	1	transcript_id "g74.t1"; gene_id "g74";
+sample	AUGUSTUS	exon	599095	600595	.	-	.	transcript_id "g74.t1"; gene_id "g74";
+sample	AUGUSTUS	intron	600596	600652	1	-	.	transcript_id "g74.t1"; gene_id "g74";
+sample	AUGUSTUS	CDS	600653	600810	1	-	0	transcript_id "g74.t1"; gene_id "g74";
+sample	AUGUSTUS	exon	600653	600810	.	-	.	transcript_id "g74.t1"; gene_id "g74";
+sample	AUGUSTUS	intron	600811	600865	0.94	-	.	transcript_id "g74.t1"; gene_id "g74";
+sample	AUGUSTUS	CDS	600866	600874	0.94	-	0	transcript_id "g74.t1"; gene_id "g74";
+sample	AUGUSTUS	exon	600866	600874	.	-	.	transcript_id "g74.t1"; gene_id "g74";
+sample	AUGUSTUS	start_codon	600872	600874	.	-	0	transcript_id "g74.t1"; gene_id "g74";
+sample	AUGUSTUS	gene	601553	602703	.	+	.	g75
+sample	AUGUSTUS	transcript	601553	602703	0.5	+	.	g75.t1
+sample	AUGUSTUS	start_codon	601553	601555	.	+	0	transcript_id "g75.t1"; gene_id "g75";
+sample	AUGUSTUS	CDS	601553	601636	0.59	+	0	transcript_id "g75.t1"; gene_id "g75";
+sample	AUGUSTUS	exon	601553	601636	.	+	.	transcript_id "g75.t1"; gene_id "g75";
+sample	AUGUSTUS	intron	601637	601697	1	+	.	transcript_id "g75.t1"; gene_id "g75";
+sample	AUGUSTUS	CDS	601698	602344	1	+	0	transcript_id "g75.t1"; gene_id "g75";
+sample	AUGUSTUS	exon	601698	602344	.	+	.	transcript_id "g75.t1"; gene_id "g75";
+sample	AUGUSTUS	intron	602345	602406	1	+	.	transcript_id "g75.t1"; gene_id "g75";
+sample	AUGUSTUS	CDS	602407	602520	1	+	1	transcript_id "g75.t1"; gene_id "g75";
+sample	AUGUSTUS	exon	602407	602520	.	+	.	transcript_id "g75.t1"; gene_id "g75";
+sample	AUGUSTUS	intron	602521	602576	1	+	.	transcript_id "g75.t1"; gene_id "g75";
+sample	AUGUSTUS	CDS	602577	602703	0.86	+	1	transcript_id "g75.t1"; gene_id "g75";
+sample	AUGUSTUS	exon	602577	602703	.	+	.	transcript_id "g75.t1"; gene_id "g75";
+sample	AUGUSTUS	stop_codon	602701	602703	.	+	0	transcript_id "g75.t1"; gene_id "g75";
+sample	AUGUSTUS	gene	603352	604230	.	+	.	g76
+sample	AUGUSTUS	transcript	603352	604230	0.78	+	.	g76.t1
+sample	AUGUSTUS	start_codon	603352	603354	.	+	0	transcript_id "g76.t1"; gene_id "g76";
+sample	AUGUSTUS	CDS	603352	603370	0.78	+	0	transcript_id "g76.t1"; gene_id "g76";
+sample	AUGUSTUS	exon	603352	603370	.	+	.	transcript_id "g76.t1"; gene_id "g76";
+sample	AUGUSTUS	intron	603371	603433	0.96	+	.	transcript_id "g76.t1"; gene_id "g76";
+sample	AUGUSTUS	CDS	603434	604230	0.96	+	2	transcript_id "g76.t1"; gene_id "g76";
+sample	AUGUSTUS	exon	603434	604230	.	+	.	transcript_id "g76.t1"; gene_id "g76";
+sample	AUGUSTUS	stop_codon	604228	604230	.	+	0	transcript_id "g76.t1"; gene_id "g76";
+sample	AUGUSTUS	gene	605058	615830	.	-	.	g77
+sample	AUGUSTUS	transcript	605058	615830	0.72	-	.	g77.t1
+sample	AUGUSTUS	stop_codon	605058	605060	.	-	0	transcript_id "g77.t1"; gene_id "g77";
+sample	AUGUSTUS	CDS	605058	605240	0.99	-	0	transcript_id "g77.t1"; gene_id "g77";
+sample	AUGUSTUS	exon	605058	605240	.	-	.	transcript_id "g77.t1"; gene_id "g77";
+sample	AUGUSTUS	intron	605241	605315	1	-	.	transcript_id "g77.t1"; gene_id "g77";
+sample	AUGUSTUS	CDS	605316	605417	1	-	0	transcript_id "g77.t1"; gene_id "g77";
+sample	AUGUSTUS	exon	605316	605417	.	-	.	transcript_id "g77.t1"; gene_id "g77";
+sample	AUGUSTUS	intron	605418	605486	1	-	.	transcript_id "g77.t1"; gene_id "g77";
+sample	AUGUSTUS	CDS	605487	605852	1	-	0	transcript_id "g77.t1"; gene_id "g77";
+sample	AUGUSTUS	exon	605487	605852	.	-	.	transcript_id "g77.t1"; gene_id "g77";
+sample	AUGUSTUS	intron	605853	605907	1	-	.	transcript_id "g77.t1"; gene_id "g77";
+sample	AUGUSTUS	CDS	605908	606108	1	-	0	transcript_id "g77.t1"; gene_id "g77";
+sample	AUGUSTUS	exon	605908	606108	.	-	.	transcript_id "g77.t1"; gene_id "g77";
+sample	AUGUSTUS	intron	606109	606773	1	-	.	transcript_id "g77.t1"; gene_id "g77";
+sample	AUGUSTUS	CDS	606774	606950	1	-	0	transcript_id "g77.t1"; gene_id "g77";
+sample	AUGUSTUS	exon	606774	606950	.	-	.	transcript_id "g77.t1"; gene_id "g77";
+sample	AUGUSTUS	intron	606951	607064	1	-	.	transcript_id "g77.t1"; gene_id "g77";
+sample	AUGUSTUS	CDS	607065	607241	1	-	0	transcript_id "g77.t1"; gene_id "g77";
+sample	AUGUSTUS	exon	607065	607241	.	-	.	transcript_id "g77.t1"; gene_id "g77";
+sample	AUGUSTUS	intron	607242	607741	1	-	.	transcript_id "g77.t1"; gene_id "g77";
+sample	AUGUSTUS	CDS	607742	609672	1	-	2	transcript_id "g77.t1"; gene_id "g77";
+sample	AUGUSTUS	exon	607742	609672	.	-	.	transcript_id "g77.t1"; gene_id "g77";
+sample	AUGUSTUS	intron	609673	609727	1	-	.	transcript_id "g77.t1"; gene_id "g77";
+sample	AUGUSTUS	CDS	609728	609998	1	-	0	transcript_id "g77.t1"; gene_id "g77";
+sample	AUGUSTUS	exon	609728	609998	.	-	.	transcript_id "g77.t1"; gene_id "g77";
+sample	AUGUSTUS	intron	609999	610048	1	-	.	transcript_id "g77.t1"; gene_id "g77";
+sample	AUGUSTUS	CDS	610049	611278	1	-	0	transcript_id "g77.t1"; gene_id "g77";
+sample	AUGUSTUS	exon	610049	611278	.	-	.	transcript_id "g77.t1"; gene_id "g77";
+sample	AUGUSTUS	intron	611279	611357	1	-	.	transcript_id "g77.t1"; gene_id "g77";
+sample	AUGUSTUS	CDS	611358	611601	1	-	1	transcript_id "g77.t1"; gene_id "g77";
+sample	AUGUSTUS	exon	611358	611601	.	-	.	transcript_id "g77.t1"; gene_id "g77";
+sample	AUGUSTUS	intron	611602	612088	1	-	.	transcript_id "g77.t1"; gene_id "g77";
+sample	AUGUSTUS	CDS	612089	612246	1	-	0	transcript_id "g77.t1"; gene_id "g77";
+sample	AUGUSTUS	exon	612089	612246	.	-	.	transcript_id "g77.t1"; gene_id "g77";
+sample	AUGUSTUS	intron	612247	613380	0.82	-	.	transcript_id "g77.t1"; gene_id "g77";
+sample	AUGUSTUS	CDS	613381	613994	0.75	-	2	transcript_id "g77.t1"; gene_id "g77";
+sample	AUGUSTUS	exon	613381	613994	.	-	.	transcript_id "g77.t1"; gene_id "g77";
+sample	AUGUSTUS	intron	613995	615604	0.92	-	.	transcript_id "g77.t1"; gene_id "g77";
+sample	AUGUSTUS	CDS	615605	615830	0.96	-	0	transcript_id "g77.t1"; gene_id "g77";
+sample	AUGUSTUS	exon	615605	615830	.	-	.	transcript_id "g77.t1"; gene_id "g77";
+sample	AUGUSTUS	start_codon	615828	615830	.	-	0	transcript_id "g77.t1"; gene_id "g77";
+sample	AUGUSTUS	gene	620537	623967	.	+	.	g78
+sample	AUGUSTUS	transcript	620537	623967	0.43	+	.	g78.t1
+sample	AUGUSTUS	start_codon	620537	620539	.	+	0	transcript_id "g78.t1"; gene_id "g78";
+sample	AUGUSTUS	CDS	620537	620581	1	+	0	transcript_id "g78.t1"; gene_id "g78";
+sample	AUGUSTUS	exon	620537	620581	.	+	.	transcript_id "g78.t1"; gene_id "g78";
+sample	AUGUSTUS	intron	620582	620650	1	+	.	transcript_id "g78.t1"; gene_id "g78";
+sample	AUGUSTUS	CDS	620651	620813	1	+	0	transcript_id "g78.t1"; gene_id "g78";
+sample	AUGUSTUS	exon	620651	620813	.	+	.	transcript_id "g78.t1"; gene_id "g78";
+sample	AUGUSTUS	intron	620814	620897	1	+	.	transcript_id "g78.t1"; gene_id "g78";
+sample	AUGUSTUS	CDS	620898	621147	1	+	2	transcript_id "g78.t1"; gene_id "g78";
+sample	AUGUSTUS	exon	620898	621147	.	+	.	transcript_id "g78.t1"; gene_id "g78";
+sample	AUGUSTUS	intron	621148	621942	1	+	.	transcript_id "g78.t1"; gene_id "g78";
+sample	AUGUSTUS	CDS	621943	622183	1	+	1	transcript_id "g78.t1"; gene_id "g78";
+sample	AUGUSTUS	exon	621943	622183	.	+	.	transcript_id "g78.t1"; gene_id "g78";
+sample	AUGUSTUS	intron	622184	622426	1	+	.	transcript_id "g78.t1"; gene_id "g78";
+sample	AUGUSTUS	CDS	622427	622580	1	+	0	transcript_id "g78.t1"; gene_id "g78";
+sample	AUGUSTUS	exon	622427	622580	.	+	.	transcript_id "g78.t1"; gene_id "g78";
+sample	AUGUSTUS	intron	622581	622622	1	+	.	transcript_id "g78.t1"; gene_id "g78";
+sample	AUGUSTUS	CDS	622623	622726	1	+	2	transcript_id "g78.t1"; gene_id "g78";
+sample	AUGUSTUS	exon	622623	622726	.	+	.	transcript_id "g78.t1"; gene_id "g78";
+sample	AUGUSTUS	intron	622727	623955	0.43	+	.	transcript_id "g78.t1"; gene_id "g78";
+sample	AUGUSTUS	CDS	623956	623967	0.43	+	0	transcript_id "g78.t1"; gene_id "g78";
+sample	AUGUSTUS	exon	623956	623967	.	+	.	transcript_id "g78.t1"; gene_id "g78";
+sample	AUGUSTUS	stop_codon	623965	623967	.	+	0	transcript_id "g78.t1"; gene_id "g78";
+sample	AUGUSTUS	gene	624176	625616	.	-	.	g79
+sample	AUGUSTUS	transcript	624176	625616	0.83	-	.	g79.t1
+sample	AUGUSTUS	stop_codon	624176	624178	.	-	0	transcript_id "g79.t1"; gene_id "g79";
+sample	AUGUSTUS	CDS	624176	624734	0.83	-	1	transcript_id "g79.t1"; gene_id "g79";
+sample	AUGUSTUS	exon	624176	624734	.	-	.	transcript_id "g79.t1"; gene_id "g79";
+sample	AUGUSTUS	intron	624735	624787	0.98	-	.	transcript_id "g79.t1"; gene_id "g79";
+sample	AUGUSTUS	CDS	624788	624987	1	-	0	transcript_id "g79.t1"; gene_id "g79";
+sample	AUGUSTUS	exon	624788	624987	.	-	.	transcript_id "g79.t1"; gene_id "g79";
+sample	AUGUSTUS	intron	624988	625055	1	-	.	transcript_id "g79.t1"; gene_id "g79";
+sample	AUGUSTUS	CDS	625056	625616	1	-	0	transcript_id "g79.t1"; gene_id "g79";
+sample	AUGUSTUS	exon	625056	625616	.	-	.	transcript_id "g79.t1"; gene_id "g79";
+sample	AUGUSTUS	start_codon	625614	625616	.	-	0	transcript_id "g79.t1"; gene_id "g79";
+sample	AUGUSTUS	gene	627242	628231	.	-	.	g80
+sample	AUGUSTUS	transcript	627242	628231	0.79	-	.	g80.t1
+sample	AUGUSTUS	stop_codon	627242	627244	.	-	0	transcript_id "g80.t1"; gene_id "g80";
+sample	AUGUSTUS	CDS	627242	627863	1	-	1	transcript_id "g80.t1"; gene_id "g80";
+sample	AUGUSTUS	exon	627242	627863	.	-	.	transcript_id "g80.t1"; gene_id "g80";
+sample	AUGUSTUS	intron	627864	627926	1	-	.	transcript_id "g80.t1"; gene_id "g80";
+sample	AUGUSTUS	CDS	627927	628231	0.79	-	0	transcript_id "g80.t1"; gene_id "g80";
+sample	AUGUSTUS	exon	627927	628231	.	-	.	transcript_id "g80.t1"; gene_id "g80";
+sample	AUGUSTUS	start_codon	628229	628231	.	-	0	transcript_id "g80.t1"; gene_id "g80";
+sample	AUGUSTUS	gene	633872	636343	.	-	.	g81
+sample	AUGUSTUS	transcript	633872	636343	0.29	-	.	g81.t1
+sample	AUGUSTUS	stop_codon	633872	633874	.	-	0	transcript_id "g81.t1"; gene_id "g81";
+sample	AUGUSTUS	CDS	633872	633922	0.61	-	0	transcript_id "g81.t1"; gene_id "g81";
+sample	AUGUSTUS	exon	633872	633922	.	-	.	transcript_id "g81.t1"; gene_id "g81";
+sample	AUGUSTUS	intron	633923	633990	0.59	-	.	transcript_id "g81.t1"; gene_id "g81";
+sample	AUGUSTUS	CDS	633991	634146	0.49	-	0	transcript_id "g81.t1"; gene_id "g81";
+sample	AUGUSTUS	exon	633991	634146	.	-	.	transcript_id "g81.t1"; gene_id "g81";
+sample	AUGUSTUS	intron	634147	634507	0.85	-	.	transcript_id "g81.t1"; gene_id "g81";
+sample	AUGUSTUS	CDS	634508	634712	0.97	-	1	transcript_id "g81.t1"; gene_id "g81";
+sample	AUGUSTUS	exon	634508	634712	.	-	.	transcript_id "g81.t1"; gene_id "g81";
+sample	AUGUSTUS	intron	634713	635127	1	-	.	transcript_id "g81.t1"; gene_id "g81";
+sample	AUGUSTUS	CDS	635128	635353	1	-	2	transcript_id "g81.t1"; gene_id "g81";
+sample	AUGUSTUS	exon	635128	635353	.	-	.	transcript_id "g81.t1"; gene_id "g81";
+sample	AUGUSTUS	intron	635354	635450	0.87	-	.	transcript_id "g81.t1"; gene_id "g81";
+sample	AUGUSTUS	CDS	635451	635965	0.87	-	1	transcript_id "g81.t1"; gene_id "g81";
+sample	AUGUSTUS	exon	635451	635965	.	-	.	transcript_id "g81.t1"; gene_id "g81";
+sample	AUGUSTUS	intron	635966	636035	1	-	.	transcript_id "g81.t1"; gene_id "g81";
+sample	AUGUSTUS	CDS	636036	636343	0.67	-	0	transcript_id "g81.t1"; gene_id "g81";
+sample	AUGUSTUS	exon	636036	636343	.	-	.	transcript_id "g81.t1"; gene_id "g81";
+sample	AUGUSTUS	start_codon	636341	636343	.	-	0	transcript_id "g81.t1"; gene_id "g81";
+sample	AUGUSTUS	gene	636910	637339	.	-	.	g82
+sample	AUGUSTUS	transcript	636910	637339	0.92	-	.	g82.t1
+sample	AUGUSTUS	stop_codon	636910	636912	.	-	0	transcript_id "g82.t1"; gene_id "g82";
+sample	AUGUSTUS	CDS	636910	636965	0.92	-	2	transcript_id "g82.t1"; gene_id "g82";
+sample	AUGUSTUS	exon	636910	636965	.	-	.	transcript_id "g82.t1"; gene_id "g82";
+sample	AUGUSTUS	intron	636966	637173	0.92	-	.	transcript_id "g82.t1"; gene_id "g82";
+sample	AUGUSTUS	CDS	637174	637339	0.92	-	0	transcript_id "g82.t1"; gene_id "g82";
+sample	AUGUSTUS	exon	637174	637339	.	-	.	transcript_id "g82.t1"; gene_id "g82";
+sample	AUGUSTUS	start_codon	637337	637339	.	-	0	transcript_id "g82.t1"; gene_id "g82";
+sample	AUGUSTUS	gene	640940	644158	.	+	.	g83
+sample	AUGUSTUS	transcript	640940	644158	0.24	+	.	g83.t1
+sample	AUGUSTUS	start_codon	640940	640942	.	+	0	transcript_id "g83.t1"; gene_id "g83";
+sample	AUGUSTUS	CDS	640940	641002	0.46	+	0	transcript_id "g83.t1"; gene_id "g83";
+sample	AUGUSTUS	exon	640940	641002	.	+	.	transcript_id "g83.t1"; gene_id "g83";
+sample	AUGUSTUS	intron	641003	641520	0.97	+	.	transcript_id "g83.t1"; gene_id "g83";
+sample	AUGUSTUS	CDS	641521	641601	0.97	+	0	transcript_id "g83.t1"; gene_id "g83";
+sample	AUGUSTUS	exon	641521	641601	.	+	.	transcript_id "g83.t1"; gene_id "g83";
+sample	AUGUSTUS	intron	641602	642410	0.97	+	.	transcript_id "g83.t1"; gene_id "g83";
+sample	AUGUSTUS	CDS	642411	642584	1	+	0	transcript_id "g83.t1"; gene_id "g83";
+sample	AUGUSTUS	exon	642411	642584	.	+	.	transcript_id "g83.t1"; gene_id "g83";
+sample	AUGUSTUS	intron	642585	643204	0.96	+	.	transcript_id "g83.t1"; gene_id "g83";
+sample	AUGUSTUS	CDS	643205	643318	0.8	+	0	transcript_id "g83.t1"; gene_id "g83";
+sample	AUGUSTUS	exon	643205	643318	.	+	.	transcript_id "g83.t1"; gene_id "g83";
+sample	AUGUSTUS	intron	643319	644125	0.68	+	.	transcript_id "g83.t1"; gene_id "g83";
+sample	AUGUSTUS	CDS	644126	644158	0.68	+	0	transcript_id "g83.t1"; gene_id "g83";
+sample	AUGUSTUS	exon	644126	644158	.	+	.	transcript_id "g83.t1"; gene_id "g83";
+sample	AUGUSTUS	stop_codon	644156	644158	.	+	0	transcript_id "g83.t1"; gene_id "g83";
+sample	AUGUSTUS	gene	652164	653597	.	-	.	g84
+sample	AUGUSTUS	transcript	652164	653597	1	-	.	g84.t1
+sample	AUGUSTUS	stop_codon	652164	652166	.	-	0	transcript_id "g84.t1"; gene_id "g84";
+sample	AUGUSTUS	CDS	652164	653597	1	-	0	transcript_id "g84.t1"; gene_id "g84";
+sample	AUGUSTUS	exon	652164	653597	.	-	.	transcript_id "g84.t1"; gene_id "g84";
+sample	AUGUSTUS	start_codon	653595	653597	.	-	0	transcript_id "g84.t1"; gene_id "g84";
+sample	AUGUSTUS	gene	673633	681793	.	+	.	g85
+sample	AUGUSTUS	transcript	673633	681793	0.04	+	.	g85.t1
+sample	AUGUSTUS	start_codon	673633	673635	.	+	0	transcript_id "g85.t1"; gene_id "g85";
+sample	AUGUSTUS	CDS	673633	673813	0.58	+	0	transcript_id "g85.t1"; gene_id "g85";
+sample	AUGUSTUS	exon	673633	673813	.	+	.	transcript_id "g85.t1"; gene_id "g85";
+sample	AUGUSTUS	intron	673814	674312	0.65	+	.	transcript_id "g85.t1"; gene_id "g85";
+sample	AUGUSTUS	CDS	674313	674428	0.66	+	2	transcript_id "g85.t1"; gene_id "g85";
+sample	AUGUSTUS	exon	674313	674428	.	+	.	transcript_id "g85.t1"; gene_id "g85";
+sample	AUGUSTUS	intron	674429	677229	0.24	+	.	transcript_id "g85.t1"; gene_id "g85";
+sample	AUGUSTUS	CDS	677230	677499	0.46	+	0	transcript_id "g85.t1"; gene_id "g85";
+sample	AUGUSTUS	exon	677230	677499	.	+	.	transcript_id "g85.t1"; gene_id "g85";
+sample	AUGUSTUS	intron	677500	681043	0.48	+	.	transcript_id "g85.t1"; gene_id "g85";
+sample	AUGUSTUS	CDS	681044	681176	0.44	+	0	transcript_id "g85.t1"; gene_id "g85";
+sample	AUGUSTUS	exon	681044	681176	.	+	.	transcript_id "g85.t1"; gene_id "g85";
+sample	AUGUSTUS	intron	681177	681247	0.57	+	.	transcript_id "g85.t1"; gene_id "g85";
+sample	AUGUSTUS	CDS	681248	681342	0.56	+	2	transcript_id "g85.t1"; gene_id "g85";
+sample	AUGUSTUS	exon	681248	681342	.	+	.	transcript_id "g85.t1"; gene_id "g85";
+sample	AUGUSTUS	intron	681343	681721	0.57	+	.	transcript_id "g85.t1"; gene_id "g85";
+sample	AUGUSTUS	CDS	681722	681793	0.54	+	0	transcript_id "g85.t1"; gene_id "g85";
+sample	AUGUSTUS	exon	681722	681793	.	+	.	transcript_id "g85.t1"; gene_id "g85";
+sample	AUGUSTUS	stop_codon	681791	681793	.	+	0	transcript_id "g85.t1"; gene_id "g85";
+sample	AUGUSTUS	gene	685812	691016	.	-	.	g86
+sample	AUGUSTUS	transcript	685812	691016	0.98	-	.	g86.t1
+sample	AUGUSTUS	stop_codon	685812	685814	.	-	0	transcript_id "g86.t1"; gene_id "g86";
+sample	AUGUSTUS	CDS	685812	687185	1	-	0	transcript_id "g86.t1"; gene_id "g86";
+sample	AUGUSTUS	exon	685812	687185	.	-	.	transcript_id "g86.t1"; gene_id "g86";
+sample	AUGUSTUS	intron	687186	687269	1	-	.	transcript_id "g86.t1"; gene_id "g86";
+sample	AUGUSTUS	CDS	687270	688430	1	-	0	transcript_id "g86.t1"; gene_id "g86";
+sample	AUGUSTUS	exon	687270	688430	.	-	.	transcript_id "g86.t1"; gene_id "g86";
+sample	AUGUSTUS	intron	688431	688493	1	-	.	transcript_id "g86.t1"; gene_id "g86";
+sample	AUGUSTUS	CDS	688494	689229	1	-	1	transcript_id "g86.t1"; gene_id "g86";
+sample	AUGUSTUS	exon	688494	689229	.	-	.	transcript_id "g86.t1"; gene_id "g86";
+sample	AUGUSTUS	intron	689230	690634	1	-	.	transcript_id "g86.t1"; gene_id "g86";
+sample	AUGUSTUS	CDS	690635	690846	0.98	-	0	transcript_id "g86.t1"; gene_id "g86";
+sample	AUGUSTUS	exon	690635	690846	.	-	.	transcript_id "g86.t1"; gene_id "g86";
+sample	AUGUSTUS	intron	690847	690956	0.98	-	.	transcript_id "g86.t1"; gene_id "g86";
+sample	AUGUSTUS	CDS	690957	691016	0.98	-	0	transcript_id "g86.t1"; gene_id "g86";
+sample	AUGUSTUS	exon	690957	691016	.	-	.	transcript_id "g86.t1"; gene_id "g86";
+sample	AUGUSTUS	start_codon	691014	691016	.	-	0	transcript_id "g86.t1"; gene_id "g86";
+sample	AUGUSTUS	gene	692128	694377	.	-	.	g87
+sample	AUGUSTUS	transcript	692128	694377	0.71	-	.	g87.t1
+sample	AUGUSTUS	stop_codon	692128	692130	.	-	0	transcript_id "g87.t1"; gene_id "g87";
+sample	AUGUSTUS	CDS	692128	692151	1	-	0	transcript_id "g87.t1"; gene_id "g87";
+sample	AUGUSTUS	exon	692128	692151	.	-	.	transcript_id "g87.t1"; gene_id "g87";
+sample	AUGUSTUS	intron	692152	692219	1	-	.	transcript_id "g87.t1"; gene_id "g87";
+sample	AUGUSTUS	CDS	692220	692447	1	-	0	transcript_id "g87.t1"; gene_id "g87";
+sample	AUGUSTUS	exon	692220	692447	.	-	.	transcript_id "g87.t1"; gene_id "g87";
+sample	AUGUSTUS	intron	692448	692572	1	-	.	transcript_id "g87.t1"; gene_id "g87";
+sample	AUGUSTUS	CDS	692573	692728	0.9	-	0	transcript_id "g87.t1"; gene_id "g87";
+sample	AUGUSTUS	exon	692573	692728	.	-	.	transcript_id "g87.t1"; gene_id "g87";
+sample	AUGUSTUS	intron	692729	692774	0.9	-	.	transcript_id "g87.t1"; gene_id "g87";
+sample	AUGUSTUS	CDS	692775	692801	1	-	0	transcript_id "g87.t1"; gene_id "g87";
+sample	AUGUSTUS	exon	692775	692801	.	-	.	transcript_id "g87.t1"; gene_id "g87";
+sample	AUGUSTUS	intron	692802	693399	1	-	.	transcript_id "g87.t1"; gene_id "g87";
+sample	AUGUSTUS	CDS	693400	693428	1	-	2	transcript_id "g87.t1"; gene_id "g87";
+sample	AUGUSTUS	exon	693400	693428	.	-	.	transcript_id "g87.t1"; gene_id "g87";
+sample	AUGUSTUS	intron	693429	693488	1	-	.	transcript_id "g87.t1"; gene_id "g87";
+sample	AUGUSTUS	CDS	693489	693531	0.83	-	0	transcript_id "g87.t1"; gene_id "g87";
+sample	AUGUSTUS	exon	693489	693531	.	-	.	transcript_id "g87.t1"; gene_id "g87";
+sample	AUGUSTUS	intron	693532	694311	0.79	-	.	transcript_id "g87.t1"; gene_id "g87";
+sample	AUGUSTUS	CDS	694312	694377	0.79	-	0	transcript_id "g87.t1"; gene_id "g87";
+sample	AUGUSTUS	exon	694312	694377	.	-	.	transcript_id "g87.t1"; gene_id "g87";
+sample	AUGUSTUS	start_codon	694375	694377	.	-	0	transcript_id "g87.t1"; gene_id "g87";
+sample	AUGUSTUS	gene	694450	695859	.	+	.	g88
+sample	AUGUSTUS	transcript	694460	695859	0.98	+	.	g88.t1
+sample	AUGUSTUS	start_codon	694460	694462	.	+	0	transcript_id "g88.t1"; gene_id "g88";
+sample	AUGUSTUS	CDS	694460	694569	0.98	+	0	transcript_id "g88.t1"; gene_id "g88";
+sample	AUGUSTUS	exon	694460	694569	.	+	.	transcript_id "g88.t1"; gene_id "g88";
+sample	AUGUSTUS	intron	694570	694622	1	+	.	transcript_id "g88.t1"; gene_id "g88";
+sample	AUGUSTUS	CDS	694623	695049	1	+	1	transcript_id "g88.t1"; gene_id "g88";
+sample	AUGUSTUS	exon	694623	695049	.	+	.	transcript_id "g88.t1"; gene_id "g88";
+sample	AUGUSTUS	intron	695050	695108	1	+	.	transcript_id "g88.t1"; gene_id "g88";
+sample	AUGUSTUS	CDS	695109	695450	1	+	0	transcript_id "g88.t1"; gene_id "g88";
+sample	AUGUSTUS	exon	695109	695450	.	+	.	transcript_id "g88.t1"; gene_id "g88";
+sample	AUGUSTUS	intron	695451	695505	1	+	.	transcript_id "g88.t1"; gene_id "g88";
+sample	AUGUSTUS	CDS	695506	695859	1	+	0	transcript_id "g88.t1"; gene_id "g88";
+sample	AUGUSTUS	exon	695506	695859	.	+	.	transcript_id "g88.t1"; gene_id "g88";
+sample	AUGUSTUS	stop_codon	695857	695859	.	+	0	transcript_id "g88.t1"; gene_id "g88";
+sample	GeneMark.hmm3	transcript	694450	695859	.	+	.	g88.t2
+sample	GeneMark.hmm3	start_codon	694450	694452	.	+	0	transcript_id "g88.t2"; gene_id "g88";
+sample	GeneMark.hmm3	CDS	694450	695049	.	+	0	transcript_id "g88.t2"; gene_id "g88";
+sample	GeneMark.hmm3	exon	694450	695049	0	+	.	transcript_id "g88.t2"; gene_id "g88";
+sample	GeneMark.hmm3	intron	695050	695108	.	+	0	transcript_id "g88.t2"; gene_id "g88";
+sample	GeneMark.hmm3	CDS	695109	695450	.	+	0	transcript_id "g88.t2"; gene_id "g88";
+sample	GeneMark.hmm3	exon	695109	695450	0	+	.	transcript_id "g88.t2"; gene_id "g88";
+sample	GeneMark.hmm3	intron	695451	695505	.	+	0	transcript_id "g88.t2"; gene_id "g88";
+sample	GeneMark.hmm3	CDS	695506	695859	.	+	0	transcript_id "g88.t2"; gene_id "g88";
+sample	GeneMark.hmm3	exon	695506	695859	0	+	.	transcript_id "g88.t2"; gene_id "g88";
+sample	GeneMark.hmm3	stop_codon	695857	695859	.	+	0	transcript_id "g88.t2"; gene_id "g88";
+sample	AUGUSTUS	gene	695981	696998	.	-	.	g89
+sample	AUGUSTUS	transcript	695981	696998	1	-	.	g89.t1
+sample	AUGUSTUS	stop_codon	695981	695983	.	-	0	transcript_id "g89.t1"; gene_id "g89";
+sample	AUGUSTUS	CDS	695981	696879	1	-	2	transcript_id "g89.t1"; gene_id "g89";
+sample	AUGUSTUS	exon	695981	696879	.	-	.	transcript_id "g89.t1"; gene_id "g89";
+sample	AUGUSTUS	intron	696880	696931	1	-	.	transcript_id "g89.t1"; gene_id "g89";
+sample	AUGUSTUS	CDS	696932	696998	1	-	0	transcript_id "g89.t1"; gene_id "g89";
+sample	AUGUSTUS	exon	696932	696998	.	-	.	transcript_id "g89.t1"; gene_id "g89";
+sample	AUGUSTUS	start_codon	696996	696998	.	-	0	transcript_id "g89.t1"; gene_id "g89";
+sample	AUGUSTUS	gene	697479	699085	.	+	.	g90
+sample	AUGUSTUS	transcript	697479	699085	1	+	.	g90.t1
+sample	AUGUSTUS	start_codon	697479	697481	.	+	0	transcript_id "g90.t1"; gene_id "g90";
+sample	AUGUSTUS	CDS	697479	697750	1	+	0	transcript_id "g90.t1"; gene_id "g90";
+sample	AUGUSTUS	exon	697479	697750	.	+	.	transcript_id "g90.t1"; gene_id "g90";
+sample	AUGUSTUS	intron	697751	698244	1	+	.	transcript_id "g90.t1"; gene_id "g90";
+sample	AUGUSTUS	CDS	698245	699085	1	+	1	transcript_id "g90.t1"; gene_id "g90";
+sample	AUGUSTUS	exon	698245	699085	.	+	.	transcript_id "g90.t1"; gene_id "g90";
+sample	AUGUSTUS	stop_codon	699083	699085	.	+	0	transcript_id "g90.t1"; gene_id "g90";
+sample	AUGUSTUS	gene	699296	700743	.	-	.	g91
+sample	AUGUSTUS	transcript	699296	700743	1	-	.	g91.t1
+sample	AUGUSTUS	stop_codon	699296	699298	.	-	0	transcript_id "g91.t1"; gene_id "g91";
+sample	AUGUSTUS	CDS	699296	700365	1	-	2	transcript_id "g91.t1"; gene_id "g91";
+sample	AUGUSTUS	exon	699296	700365	.	-	.	transcript_id "g91.t1"; gene_id "g91";
+sample	AUGUSTUS	intron	700366	700434	1	-	.	transcript_id "g91.t1"; gene_id "g91";
+sample	AUGUSTUS	CDS	700435	700523	1	-	1	transcript_id "g91.t1"; gene_id "g91";
+sample	AUGUSTUS	exon	700435	700523	.	-	.	transcript_id "g91.t1"; gene_id "g91";
+sample	AUGUSTUS	intron	700524	700585	1	-	.	transcript_id "g91.t1"; gene_id "g91";
+sample	AUGUSTUS	CDS	700586	700743	1	-	0	transcript_id "g91.t1"; gene_id "g91";
+sample	AUGUSTUS	exon	700586	700743	.	-	.	transcript_id "g91.t1"; gene_id "g91";
+sample	AUGUSTUS	start_codon	700741	700743	.	-	0	transcript_id "g91.t1"; gene_id "g91";
+sample	AUGUSTUS	gene	701680	706445	.	+	.	g92
+sample	AUGUSTUS	transcript	701680	706445	1	+	.	g92.t1
+sample	AUGUSTUS	start_codon	701680	701682	.	+	0	transcript_id "g92.t1"; gene_id "g92";
+sample	AUGUSTUS	CDS	701680	701821	1	+	0	transcript_id "g92.t1"; gene_id "g92";
+sample	AUGUSTUS	exon	701680	701821	.	+	.	transcript_id "g92.t1"; gene_id "g92";
+sample	AUGUSTUS	intron	701822	701882	1	+	.	transcript_id "g92.t1"; gene_id "g92";
+sample	AUGUSTUS	CDS	701883	702220	1	+	2	transcript_id "g92.t1"; gene_id "g92";
+sample	AUGUSTUS	exon	701883	702220	.	+	.	transcript_id "g92.t1"; gene_id "g92";
+sample	AUGUSTUS	intron	702221	702725	1	+	.	transcript_id "g92.t1"; gene_id "g92";
+sample	AUGUSTUS	CDS	702726	702738	1	+	0	transcript_id "g92.t1"; gene_id "g92";
+sample	AUGUSTUS	exon	702726	702738	.	+	.	transcript_id "g92.t1"; gene_id "g92";
+sample	AUGUSTUS	intron	702739	702960	1	+	.	transcript_id "g92.t1"; gene_id "g92";
+sample	AUGUSTUS	CDS	702961	703967	1	+	2	transcript_id "g92.t1"; gene_id "g92";
+sample	AUGUSTUS	exon	702961	703967	.	+	.	transcript_id "g92.t1"; gene_id "g92";
+sample	AUGUSTUS	intron	703968	704029	1	+	.	transcript_id "g92.t1"; gene_id "g92";
+sample	AUGUSTUS	CDS	704030	704178	1	+	0	transcript_id "g92.t1"; gene_id "g92";
+sample	AUGUSTUS	exon	704030	704178	.	+	.	transcript_id "g92.t1"; gene_id "g92";
+sample	AUGUSTUS	intron	704179	705323	1	+	.	transcript_id "g92.t1"; gene_id "g92";
+sample	AUGUSTUS	CDS	705324	705462	1	+	1	transcript_id "g92.t1"; gene_id "g92";
+sample	AUGUSTUS	exon	705324	705462	.	+	.	transcript_id "g92.t1"; gene_id "g92";
+sample	AUGUSTUS	intron	705463	705537	1	+	.	transcript_id "g92.t1"; gene_id "g92";
+sample	AUGUSTUS	CDS	705538	705741	1	+	0	transcript_id "g92.t1"; gene_id "g92";
+sample	AUGUSTUS	exon	705538	705741	.	+	.	transcript_id "g92.t1"; gene_id "g92";
+sample	AUGUSTUS	intron	705742	705806	1	+	.	transcript_id "g92.t1"; gene_id "g92";
+sample	AUGUSTUS	CDS	705807	705992	1	+	0	transcript_id "g92.t1"; gene_id "g92";
+sample	AUGUSTUS	exon	705807	705992	.	+	.	transcript_id "g92.t1"; gene_id "g92";
+sample	AUGUSTUS	intron	705993	706052	1	+	.	transcript_id "g92.t1"; gene_id "g92";
+sample	AUGUSTUS	CDS	706053	706202	1	+	0	transcript_id "g92.t1"; gene_id "g92";
+sample	AUGUSTUS	exon	706053	706202	.	+	.	transcript_id "g92.t1"; gene_id "g92";
+sample	AUGUSTUS	intron	706203	706265	1	+	.	transcript_id "g92.t1"; gene_id "g92";
+sample	AUGUSTUS	CDS	706266	706445	1	+	0	transcript_id "g92.t1"; gene_id "g92";
+sample	AUGUSTUS	exon	706266	706445	.	+	.	transcript_id "g92.t1"; gene_id "g92";
+sample	AUGUSTUS	stop_codon	706443	706445	.	+	0	transcript_id "g92.t1"; gene_id "g92";
+sample	AUGUSTUS	gene	707157	710057	.	-	.	g93
+sample	AUGUSTUS	transcript	707157	710057	1	-	.	g93.t1
+sample	AUGUSTUS	stop_codon	707157	707159	.	-	0	transcript_id "g93.t1"; gene_id "g93";
+sample	AUGUSTUS	CDS	707157	710057	1	-	0	transcript_id "g93.t1"; gene_id "g93";
+sample	AUGUSTUS	exon	707157	710057	.	-	.	transcript_id "g93.t1"; gene_id "g93";
+sample	AUGUSTUS	start_codon	710055	710057	.	-	0	transcript_id "g93.t1"; gene_id "g93";
+sample	AUGUSTUS	gene	710985	715813	.	+	.	g94
+sample	AUGUSTUS	transcript	710985	715813	0.66	+	.	g94.t1
+sample	AUGUSTUS	start_codon	710985	710987	.	+	0	transcript_id "g94.t1"; gene_id "g94";
+sample	AUGUSTUS	CDS	710985	711079	0.95	+	0	transcript_id "g94.t1"; gene_id "g94";
+sample	AUGUSTUS	exon	710985	711079	.	+	.	transcript_id "g94.t1"; gene_id "g94";
+sample	AUGUSTUS	intron	711080	711149	1	+	.	transcript_id "g94.t1"; gene_id "g94";
+sample	AUGUSTUS	CDS	711150	711317	1	+	1	transcript_id "g94.t1"; gene_id "g94";
+sample	AUGUSTUS	exon	711150	711317	.	+	.	transcript_id "g94.t1"; gene_id "g94";
+sample	AUGUSTUS	intron	711318	712078	1	+	.	transcript_id "g94.t1"; gene_id "g94";
+sample	AUGUSTUS	CDS	712079	712600	1	+	1	transcript_id "g94.t1"; gene_id "g94";
+sample	AUGUSTUS	exon	712079	712600	.	+	.	transcript_id "g94.t1"; gene_id "g94";
+sample	AUGUSTUS	intron	712601	712654	1	+	.	transcript_id "g94.t1"; gene_id "g94";
+sample	AUGUSTUS	CDS	712655	713304	1	+	1	transcript_id "g94.t1"; gene_id "g94";
+sample	AUGUSTUS	exon	712655	713304	.	+	.	transcript_id "g94.t1"; gene_id "g94";
+sample	AUGUSTUS	intron	713305	713470	0.7	+	.	transcript_id "g94.t1"; gene_id "g94";
+sample	AUGUSTUS	CDS	713471	713597	0.7	+	2	transcript_id "g94.t1"; gene_id "g94";
+sample	AUGUSTUS	exon	713471	713597	.	+	.	transcript_id "g94.t1"; gene_id "g94";
+sample	AUGUSTUS	intron	713598	714254	1	+	.	transcript_id "g94.t1"; gene_id "g94";
+sample	AUGUSTUS	CDS	714255	714727	1	+	1	transcript_id "g94.t1"; gene_id "g94";
+sample	AUGUSTUS	exon	714255	714727	.	+	.	transcript_id "g94.t1"; gene_id "g94";
+sample	AUGUSTUS	intron	714728	714951	0.98	+	.	transcript_id "g94.t1"; gene_id "g94";
+sample	AUGUSTUS	CDS	714952	715510	0.98	+	2	transcript_id "g94.t1"; gene_id "g94";
+sample	AUGUSTUS	exon	714952	715510	.	+	.	transcript_id "g94.t1"; gene_id "g94";
+sample	AUGUSTUS	intron	715511	715563	1	+	.	transcript_id "g94.t1"; gene_id "g94";
+sample	AUGUSTUS	CDS	715564	715693	1	+	1	transcript_id "g94.t1"; gene_id "g94";
+sample	AUGUSTUS	exon	715564	715693	.	+	.	transcript_id "g94.t1"; gene_id "g94";
+sample	AUGUSTUS	intron	715694	715786	1	+	.	transcript_id "g94.t1"; gene_id "g94";
+sample	AUGUSTUS	CDS	715787	715813	1	+	0	transcript_id "g94.t1"; gene_id "g94";
+sample	AUGUSTUS	exon	715787	715813	.	+	.	transcript_id "g94.t1"; gene_id "g94";
+sample	AUGUSTUS	stop_codon	715811	715813	.	+	0	transcript_id "g94.t1"; gene_id "g94";
+sample	AUGUSTUS	gene	716203	719804	.	-	.	g95
+sample	AUGUSTUS	transcript	716203	719804	0.65	-	.	g95.t1
+sample	AUGUSTUS	stop_codon	716203	716205	.	-	0	transcript_id "g95.t1"; gene_id "g95";
+sample	AUGUSTUS	CDS	716203	716319	1	-	0	transcript_id "g95.t1"; gene_id "g95";
+sample	AUGUSTUS	exon	716203	716319	.	-	.	transcript_id "g95.t1"; gene_id "g95";
+sample	AUGUSTUS	intron	716320	716389	1	-	.	transcript_id "g95.t1"; gene_id "g95";
+sample	AUGUSTUS	CDS	716390	716663	1	-	1	transcript_id "g95.t1"; gene_id "g95";
+sample	AUGUSTUS	exon	716390	716663	.	-	.	transcript_id "g95.t1"; gene_id "g95";
+sample	AUGUSTUS	intron	716664	716945	1	-	.	transcript_id "g95.t1"; gene_id "g95";
+sample	AUGUSTUS	CDS	716946	717057	1	-	2	transcript_id "g95.t1"; gene_id "g95";
+sample	AUGUSTUS	exon	716946	717057	.	-	.	transcript_id "g95.t1"; gene_id "g95";
+sample	AUGUSTUS	intron	717058	717121	1	-	.	transcript_id "g95.t1"; gene_id "g95";
+sample	AUGUSTUS	CDS	717122	717574	1	-	2	transcript_id "g95.t1"; gene_id "g95";
+sample	AUGUSTUS	exon	717122	717574	.	-	.	transcript_id "g95.t1"; gene_id "g95";
+sample	AUGUSTUS	intron	717575	717636	1	-	.	transcript_id "g95.t1"; gene_id "g95";
+sample	AUGUSTUS	CDS	717637	717859	1	-	0	transcript_id "g95.t1"; gene_id "g95";
+sample	AUGUSTUS	exon	717637	717859	.	-	.	transcript_id "g95.t1"; gene_id "g95";
+sample	AUGUSTUS	intron	717860	717963	1	-	.	transcript_id "g95.t1"; gene_id "g95";
+sample	AUGUSTUS	CDS	717964	719015	1	-	2	transcript_id "g95.t1"; gene_id "g95";
+sample	AUGUSTUS	exon	717964	719015	.	-	.	transcript_id "g95.t1"; gene_id "g95";
+sample	AUGUSTUS	intron	719016	719073	1	-	.	transcript_id "g95.t1"; gene_id "g95";
+sample	AUGUSTUS	CDS	719074	719307	1	-	2	transcript_id "g95.t1"; gene_id "g95";
+sample	AUGUSTUS	exon	719074	719307	.	-	.	transcript_id "g95.t1"; gene_id "g95";
+sample	AUGUSTUS	intron	719308	719524	1	-	.	transcript_id "g95.t1"; gene_id "g95";
+sample	AUGUSTUS	CDS	719525	719804	0.65	-	0	transcript_id "g95.t1"; gene_id "g95";
+sample	AUGUSTUS	exon	719525	719804	.	-	.	transcript_id "g95.t1"; gene_id "g95";
+sample	AUGUSTUS	start_codon	719802	719804	.	-	0	transcript_id "g95.t1"; gene_id "g95";
+sample4	AUGUSTUS	gene	2126	3863	.	+	.	g96
+sample4	AUGUSTUS	transcript	2126	3863	0.37	+	.	g96.t1
+sample4	AUGUSTUS	start_codon	2126	2128	.	+	0	transcript_id "g96.t1"; gene_id "g96";
+sample4	AUGUSTUS	CDS	2126	2199	1	+	0	transcript_id "g96.t1"; gene_id "g96";
+sample4	AUGUSTUS	exon	2126	2199	.	+	.	transcript_id "g96.t1"; gene_id "g96";
+sample4	AUGUSTUS	intron	2200	2257	1	+	.	transcript_id "g96.t1"; gene_id "g96";
+sample4	AUGUSTUS	CDS	2258	3224	1	+	1	transcript_id "g96.t1"; gene_id "g96";
+sample4	AUGUSTUS	exon	2258	3224	.	+	.	transcript_id "g96.t1"; gene_id "g96";
+sample4	AUGUSTUS	intron	3225	3283	1	+	.	transcript_id "g96.t1"; gene_id "g96";
+sample4	AUGUSTUS	CDS	3284	3490	0.63	+	0	transcript_id "g96.t1"; gene_id "g96";
+sample4	AUGUSTUS	exon	3284	3490	.	+	.	transcript_id "g96.t1"; gene_id "g96";
+sample4	AUGUSTUS	intron	3491	3548	0.59	+	.	transcript_id "g96.t1"; gene_id "g96";
+sample4	AUGUSTUS	CDS	3549	3603	0.54	+	0	transcript_id "g96.t1"; gene_id "g96";
+sample4	AUGUSTUS	exon	3549	3603	.	+	.	transcript_id "g96.t1"; gene_id "g96";
+sample4	AUGUSTUS	intron	3604	3768	0.52	+	.	transcript_id "g96.t1"; gene_id "g96";
+sample4	AUGUSTUS	CDS	3769	3863	0.44	+	2	transcript_id "g96.t1"; gene_id "g96";
+sample4	AUGUSTUS	exon	3769	3863	.	+	.	transcript_id "g96.t1"; gene_id "g96";
+sample4	AUGUSTUS	stop_codon	3861	3863	.	+	0	transcript_id "g96.t1"; gene_id "g96";
+sample4	AUGUSTUS	gene	4248	6494	.	-	.	g97
+sample4	AUGUSTUS	transcript	4248	6494	1	-	.	g97.t1
+sample4	AUGUSTUS	stop_codon	4248	4250	.	-	0	transcript_id "g97.t1"; gene_id "g97";
+sample4	AUGUSTUS	CDS	4248	4759	1	-	2	transcript_id "g97.t1"; gene_id "g97";
+sample4	AUGUSTUS	exon	4248	4759	.	-	.	transcript_id "g97.t1"; gene_id "g97";
+sample4	AUGUSTUS	intron	4760	4929	1	-	.	transcript_id "g97.t1"; gene_id "g97";
+sample4	AUGUSTUS	CDS	4930	5539	1	-	0	transcript_id "g97.t1"; gene_id "g97";
+sample4	AUGUSTUS	exon	4930	5539	.	-	.	transcript_id "g97.t1"; gene_id "g97";
+sample4	AUGUSTUS	intron	5540	6038	1	-	.	transcript_id "g97.t1"; gene_id "g97";
+sample4	AUGUSTUS	CDS	6039	6494	1	-	0	transcript_id "g97.t1"; gene_id "g97";
+sample4	AUGUSTUS	exon	6039	6494	.	-	.	transcript_id "g97.t1"; gene_id "g97";
+sample4	AUGUSTUS	start_codon	6492	6494	.	-	0	transcript_id "g97.t1"; gene_id "g97";
