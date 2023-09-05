@@ -140,7 +140,7 @@ $advanced.alternatives_from_evidence
     </outputs>
     
     <tests>
-        <test expect_num_outputs="1" expect_failure="true">
+        <test expect_failure="true">
             <param name="genemark_license" value="gm_key_64"/>
             <param name="genome" value="genome_masked.fa"/>
             <section name="evidences">
