@@ -1,4 +1,4 @@
-<tool id="braker" name="BRAKER3" version="@TOOL_VERSION@+galaxy@VERSION_SUFFIX@" profile="22.05">
+<tool id="braker3" name="BRAKER3" version="@TOOL_VERSION@+galaxy@VERSION_SUFFIX@" profile="22.05">
     <description>genome annotation</description>
     <macros>
         <import>macros.xml</import>
@@ -21,7 +21,7 @@ cp '${genemark_license}' ~/.gm_key &&
 
 braker.pl
 --genome '${genome}'
-
+cd 
 $softmasking
 
 #if $evidences.bam:
