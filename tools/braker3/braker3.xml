@@ -193,11 +193,11 @@ $advanced.alternatives_from_evidence
     
     <help><![CDATA[
 
-Braker_ allows for fully automated training of the gene prediction tools GeneMark-EX and AUGUSTUS from RNA-Seq and/or protein homology information, and that integrates the extrinsic evidence from RNA-Seq and protein homology information into the prediction.
+Braker3_ allows for fully automated training of the gene prediction tools GeneMark-EX and AUGUSTUS from RNA-Seq and/or protein homology information, and that integrates the extrinsic evidence from RNA-Seq and protein homology information into the prediction.
 
-In contrast to other available methods that rely on protein homology information, BRAKER reaches high gene prediction accuracy even in the absence of the annotation of very closely related species and in the absence of RNA-Seq data.
+In contrast to other available methods that rely on protein homology information, BRAKER3 reaches high gene prediction accuracy even in the absence of the annotation of very closely related species and in the absence of RNA-Seq data.
 
-.. _Braker: https://github.com/Gaius-Augustus/BRAKER
+.. _Braker3: https://github.com/Gaius-Augustus/BRAKER
     ]]></help>
     <expand macro="citations" />
 </tool>
