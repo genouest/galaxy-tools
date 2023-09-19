@@ -11,8 +11,11 @@
 
     <command detect_errors="exit_code"><![CDATA[
 
-        ## /usr/local/bin/fetch_helixer_models.py
+        /usr/local/bin/fetch_helixer_models.py
+
+        &&
     
+        Helixer.py
         --fasta-path '$input'
         --species '$species'
         --lineage $lineage.lineages
