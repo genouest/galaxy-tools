@@ -9,7 +9,7 @@
     </xml>
 
     <xml name="requirements">
-        <container type="docker">gglyptodon/helixer-docker:helixer_v@TOOL_VERSION@_cuda_11.2.0-cudnn8</container>
+        <container type="docker">gglyptodon/helixer-docker:helixer_v0.3.2_cuda_11.8.0-cudnn8</container>
     </xml>
 
     <xml name="subseq" tokens="length,offset,offsetlen">
