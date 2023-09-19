@@ -67,7 +67,7 @@
             </sanitizer>
             <validator type="regex">[0-9a-zA-Z_]+</validator>
         </param>
-        <param name="size" argument="--batch-size" type="interger" value="8" label="Batch size" help="It may then be necessary to reduce it if the GPU runs out of memory" />
+        <param name="size" argument="--batch-size" type="integer" value="8" label="Batch size" help="It may then be necessary to reduce it if the GPU runs out of memory" />
         <section name="post_processing" title="Post-processing">
             <param argument="--window-size" type="integer" min="0" value="100" label="Window size" help="This determines the number of bases averaged during the sliding window approach"/>
             <param argument="--edge-threshold" type="float" min="0" max="1" value="0.1" label="Edge threshold" help="This threshold specifies the genic score which defines the start / end boundaries of each candidate region"/>
