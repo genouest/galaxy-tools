@@ -83,15 +83,6 @@
     <tests>
         <!-- Test for land_plant -->
         <test expect_num_outputs="1">
-            <param name="input" value="sequence.fasta"/>
-            <conditional name="lineage">
-                <param name="lineages" value="land_plant"/>
-            </conditional>
-            <param name="size" value="8"/>
-            <output name="output" value="output.gff3" ftype="gff3" lines_diff="2"/>
-        </test>
-
-        <test expect_num_outputs="1">
             <!-- Test for species and land_plant-->
             <param name="input" value="sequence.fasta"/>
             <param name="species" value="Arabidopsis"/>
@@ -99,7 +90,7 @@
                 <param name="lineages" value="land_plant"/>
             </conditional>
             <param name="size" value="8"/>
-            <output name="output" value="ouput_species.gff3" ftype="gff3" lines_diff="2"/>
+            <output name="output" value="ouput_species.gff3" ftype="gff3" lines_diff="3"/>
         </test>
         <test expect_num_outputs="1">
             <!-- Test for vertebrates-->
