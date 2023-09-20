@@ -88,7 +88,7 @@
                 <param name="lineages" value="land_plant"/>
             </conditional>
             <param name="size" value="8"/>
-            <output name="output" value="output.gff3" ftype="gff3" lines_diff="2" />
+            <output name="output" value="output.gff3" ftype="gff3" lines_diff="2"/>
         </test>
 
         <test expect_num_outputs="1">
@@ -99,7 +99,7 @@
                 <param name="lineages" value="land_plant"/>
             </conditional>
             <param name="size" value="8"/>
-            <output name="output" value="ouput_species.gff3" ftype="gff3" lines_diff="2" />
+            <output name="output" value="ouput_species.gff3" ftype="gff3" lines_diff="2"/>
         </test>
         <test expect_num_outputs="1">
             <!-- Test for vertebrates-->
@@ -108,7 +108,7 @@
                 <param name="lineages" value="vertebrate"/>
             </conditional>
             <param name="size" value="8"/>
-            <output name="output" value="vertebrate.gff3" ftype="gff3" compare="contains"/>
+            <output name="output" value="vertebrate.gff3" ftype="gff3" lines_diff="2"/>
         </test>
         <test expect_num_outputs="1">
             <!-- Test for invertebrates-->
@@ -117,7 +117,7 @@
                 <param name="lineages" value="invertebrate"/>
             </conditional>
             <param name="size" value="8"/>
-            <output name="output" value="invertebrate.gff3" ftype="gff3" compare="contains"/>
+            <output name="output" value="invertebrate.gff3" ftype="gff3" lines_diff="2"/>
         </test>
         <test expect_num_outputs="1">
             <!-- Test for fungi-->
@@ -126,7 +126,7 @@
                 <param name="lineages" value="fungi"/>
             </conditional>
             <param name="size" value="8"/>
-            <output name="output" value="fungi.gff3" ftype="gff3" compare="contains"/>
+            <output name="output" value="fungi.gff3" ftype="gff3" lines_diff="2"/>
         </test>
     </tests>
 
