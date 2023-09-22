@@ -9,9 +9,9 @@
     </xml>
 
     <xml name="requirements">
-        <container type="docker">gglyptodon/helixer-docker:helixer_v0.3.2_cuda_11.8.0-cudnn8</container>
+        <container type="docker">gglyptodon/helixer-docker:helixer_v@TOOL_VERSION@_cuda_11.8.0-cudnn8</container>
     </xml>
-
+    
     <xml name="subseq" tokens="length,offset,offsetlen">
         <param argument="--subsequence-length" type="integer" min="0" max="213840" value="@LENGTH@" label="Subsequence length: how much of the genome the Neural Network can see at once" help="Should ideally be comfortably longer than the typical gene. For genomes with large genes (>20kpb) it is recommended to increase this parameter."></param>
         <conditional name="option_overlap">
@@ -26,6 +26,5 @@
             <when value="false"/>
         </conditional>
     </xml>
-
 </macros>
 

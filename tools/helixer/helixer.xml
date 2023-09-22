@@ -11,10 +11,7 @@
 
     <command detect_errors="exit_code"><![CDATA[
 
-        /usr/local/bin/fetch_helixer_models.py
-
-        &&
-    
+        /usr/local/bin/fetch_helixer_models.py &&
         Helixer.py
         --fasta-path '$input'
         --species '$species'
@@ -67,7 +64,7 @@
             </sanitizer>
             <validator type="regex">[0-9a-zA-Z_]+</validator>
         </param>
-        <param name="size" argument="--batch-size" type="integer" value="8" label="Batch size" help="It may then be necessary to reduce it if the GPU runs out of memory" />
+        <param name="size" argument="--batch-size" type="integer" value="8" label="Batch size" help="It may be necessary to reduce it if the GPU runs out of memory" />
         <section name="post_processing" title="Post-processing">
             <param argument="--window-size" type="integer" min="0" value="100" label="Window size" help="This determines the number of bases averaged during the sliding window approach"/>
             <param argument="--edge-threshold" type="float" min="0" max="1" value="0.1" label="Edge threshold" help="This threshold specifies the genic score which defines the start / end boundaries of each candidate region"/>
@@ -81,7 +78,6 @@
         </data>
     </outputs>
     <tests>
-        <!-- Test for land_plant -->
         <test expect_num_outputs="1">
             <!-- Test for species and land_plant-->
             <param name="input" value="sequence.fasta"/>
@@ -90,7 +86,7 @@
                 <param name="lineages" value="land_plant"/>
             </conditional>
             <param name="size" value="8"/>
-            <output name="output" value="ouput_species.gff3" ftype="gff3" lines_diff="3"/>
+            <output name="output" value="ouput_species.gff3" ftype="gff3" compare="sim_size" delta="100"/>
         </test>
         <test expect_num_outputs="1">
             <!-- Test for vertebrates-->
