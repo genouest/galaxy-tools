@@ -1,6 +1,6 @@
 ##gff-version 3.2.1
 ##species 
-# f0e00efcbea83c66b69258d11119a691  /tmp/tmpyabgcmro/job_working_directory/000/2/home/.local/share/Helixer/models/land_plant/land_plant_v0.3_a_0080.h5
+# f0e00efcbea83c66b69258d11119a691  /shared/ifbstor1/galaxy/jobs/003/517/3517613/home/.local/share/Helixer/models/land_plant/land_plant_v0.3_a_0080.h5
 ##sequence-region NC_034365.1:c72045-70009 1 2037
 NC_034365.1:c72045-70009	Helixer	gene	1035	1269	.	+	.	ID=_NC_034365.1:c72045-70009_000001
 NC_034365.1:c72045-70009	Helixer	mRNA	1035	1269	.	+	.	ID=_NC_034365.1:c72045-70009_000001.1;Parent=_NC_034365.1:c72045-70009_000001
