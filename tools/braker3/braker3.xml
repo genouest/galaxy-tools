@@ -82,6 +82,7 @@ $advanced.alternatives_from_evidence
 #end if
 
 --threads  \${GALAXY_SLOTS:-2}
+--useexisting
 ]]></command>
     <inputs>
         <param name="genemark_license" type="data" format="txt" label="GeneMark license file" help="Braker uses GeneMark, which is not a free software, to use it download and unzip a license from http://topaz.gatech.edu/GeneMark/license_download.cgi (ES/ET/EP version). GeneMark needs to be installed manually by Galaxy administrators." />
