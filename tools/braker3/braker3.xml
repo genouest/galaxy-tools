@@ -48,7 +48,7 @@ $augustus.crf
 $augustus.AUGUSTUS_ab_initio
 $augustus.keepCrf
 
-$advanced.UTR
+##$advanced.UTR
 
 $advanced.filterOutShort
 
@@ -110,7 +110,7 @@ $advanced.alternatives_from_evidence
         </section>
 
         <section name="advanced" expanded="false" title="Advanced">
-            <param argument="--UTR" type="boolean" checked="false" truevalue="--UTR=on" falsevalue="" label="" help="Experimental, requires RNASeq data (bam) and a softmasked genome" />
+            <!--param argument="-\-UTR" type="boolean" checked="false" truevalue="-\-UTR=on" falsevalue="" label="" help="Experimental, requires RNASeq data (bam) and a softmasked genome" /-->
             <param argument="--filterOutShort" type="boolean" checked="false" truevalue="--filterOutShort" falsevalue="" label="Filter out too short traingin gene predicted by GeneMark-EX" />
             <param argument="--eval" type="data" format="gtf" optional="true" label="Reference set to evaluate predictions" help="using evaluation scripts from GaTech" />
             <param argument="--eval_pseudo" type="data" format="gff3" optional="true" label="File with pseudogenes that will be excluded from accuracy evaluation" />
