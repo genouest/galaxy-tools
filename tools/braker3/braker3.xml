@@ -18,7 +18,6 @@ export PATH="\$GENEMARK_PATH/../tools/:\$PATH" &&
 
 braker.pl
 --genome '${genome}'
-cd 
 $softmasking
 
 #if $evidences.bam:
