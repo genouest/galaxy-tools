@@ -16,12 +16,8 @@ if [ ! -f "\$GENEMARK_PATH/gmes/gmes_petap.pl" ] ; then echo "GeneMark is not in
 
 export PATH="\$GENEMARK_PATH/../tools/:\$PATH" &&
 
-## GeneMark only search for license in ~/.gm_key
-cp '${genemark_license}' ~/.gm_key &&
-
 braker.pl
 --genome '${genome}'
-cd 
 $softmasking
 
 #if $evidences.bam:
@@ -85,8 +81,6 @@ $advanced.alternatives_from_evidence
 --useexisting
 ]]></command>
     <inputs>
-        <param name="genemark_license" type="data" format="txt" label="GeneMark license file" help="Braker uses GeneMark, which is not a free software, to use it download and unzip a license from http://topaz.gatech.edu/GeneMark/license_download.cgi (ES/ET/EP version). GeneMark needs to be installed manually by Galaxy administrators." />
-
         <param argument="--genome" type="data" format="fasta" label="Assembly to annotate" help="The assembly should preferably be soft-masked (with RepeatMasker for example)" />
 
         <param argument="--softmasking" type="boolean" checked="true" truevalue="" falsevalue="--softmasking_off" label="Genome sequence is soft-masked" />
@@ -132,17 +126,16 @@ $advanced.alternatives_from_evidence
     </inputs>
 
     <outputs>
-        <data name='output_gtf' format='gtf' label="GTF Annotation" from_work_dir="braker/braker.gtf">
+        <data name='output_gtf' format='gtf' label="${tool.name} on ${on_string}: GTF Annotation" from_work_dir="braker/braker.gtf">
             <filter>output_format == 'gtf'</filter>
         </data>
-        <data name='output_gff' format='gff3' label="GFF Annotation" from_work_dir="braker/braker.gff3">
+        <data name='output_gff' format='gff3' label="${tool.name} on ${on_string}: GFF Annotation" from_work_dir="braker/braker.gff3">
             <filter>output_format == 'gff3'</filter>
         </data>
     </outputs>
     
     <tests>
         <test expect_failure="true">
-            <param name="genemark_license" value="gm_key_64"/>
             <param name="genome" value="genome_masked.fa"/>
             <section name="evidences">
                 <param name="bam" value="SRR7458692.bam"/>
@@ -152,7 +145,6 @@ $advanced.alternatives_from_evidence
     </tests>
 
     <!-- <test expect_num_outputs="1">
-            <param name="genemark_license" value="gm_key_64" />
             <param name="genome" value="genome_masked.fa" />
             <section name="augustus">
                 <param name="rounds" value="2" />
