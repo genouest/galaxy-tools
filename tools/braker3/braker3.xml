@@ -16,6 +16,10 @@ if [ ! -f "\$GENEMARK_PATH/gmes/gmes_petap.pl" ] ; then echo "GeneMark is not in
 
 export PATH="\$GENEMARK_PATH/../tools/:\$PATH" &&
 
+## Copy Augustus config dir to work dir, to make sure it's writable when running with containers
+cp -r "\$AUGUSTUS_CONFIG_PATH/" augustus_dir/ &&
+export AUGUSTUS_CONFIG_PATH=`pwd`/augustus_dir/ &&
+
 braker.pl
 --genome '${genome}'
 $softmasking
@@ -133,7 +137,7 @@ $advanced.alternatives_from_evidence
             <filter>output_format == 'gff3'</filter>
         </data>
     </outputs>
-    
+
     <tests>
         <test expect_failure="true">
             <param name="genome" value="genome_masked.fa"/>
@@ -183,7 +187,7 @@ $advanced.alternatives_from_evidence
             <output name="output_gff" file="out_genome/braker.gff3"/>
         </test> -->
 
-    
+
     <help><![CDATA[
 
 Braker3_ allows for fully automated training of the gene prediction tools GeneMark-EX and AUGUSTUS from RNA-Seq and/or protein homology information, and that integrates the extrinsic evidence from RNA-Seq and protein homology information into the prediction.
