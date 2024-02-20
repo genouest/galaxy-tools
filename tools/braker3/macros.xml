@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <macros>
     <token name="@TOOL_VERSION@">3.0.8</token>
-    <token name="@VERSION_SUFFIX@">4</token>
+    <token name="@VERSION_SUFFIX@">0</token>
 
     <xml name="requirements">
         <requirement type="package" version="@TOOL_VERSION@">braker3</requirement>
