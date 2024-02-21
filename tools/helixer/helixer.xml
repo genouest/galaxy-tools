@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<tool id="helixer" name="Helixer" version="@TOOL_VERSION@" profile="21.05">
+<tool id="helixer" name="Helixer" version="@TOOL_VERSION@+galaxy@VERSION_SUFFIX@" profile="21.05">
     <description>gene calling</description>
     <macros>
         <import>macros.xml</import>
@@ -11,51 +11,50 @@
 
     <command detect_errors="exit_code"><![CDATA[
 
-        /usr/local/bin/fetch_helixer_models.py &&
         Helixer.py
         --fasta-path '$input'
         --species '$species'
-        --lineage $lineage.lineages
+        --lineage $lineages
         --gff-output-path '$output'
 
         --temporary-dir ./
 
-        --subsequence-length $lineage.subsequence_length
-        #if str($lineage.option_overlap.use_overlap) == "true":
-            --overlap-offset $lineage.option_overlap.overlap_offset
-            --overlap-core-length $lineage.option_overlap.overlap_core_length
-        #else:
-            --no-overlap
+        #set default_subsequence_length = {"fungi": 21384, "land_plant": 106920, "invertebrate": 213840, "vertebrate": 213840}
+        #set default_overlap_offset = {"fungi": 10692, "land_plant": 53460, "invertebrate": 106920, "vertebrate": 106920}
+        #set default_overlap_core_length = {"fungi": 16038, "land_plant": 80190, "invertebrate": 160380, "vertebrate": 160380}
+
+        #if str($custom_opt.custom) == "default":
+            --subsequence-length $default_subsequence_length
+            #if ($custom_opt.use_overlap) == "true":
+                --overlap-offset $default_overlap_offset
+                --overlap-core-length $default_overlap_core_length
+            #end if
+        #elif str($custom_opt.custom) == "new_value":
+            --subsequence-length '$custom_opt.subsequence_length'
+            #if str( $custom_opt.option_overlap.use_overlap ) == "true":
+                --overlap-offset '$custom_opt.option_overlap.overlap_offset'
+                --overlap-core-length '$custom_opt.option_overlap.overlap_core_length'
+            #end if
         #end if
+
         --batch-size $size
         --window-size $post_processing.window_size
         --min-coding-length $post_processing.min_coding_length
         --edge-threshold $post_processing.edge_threshold
         --peak-threshold $post_processing.peak_threshold
+
     ]]></command>
 
     <inputs>
         <param argument="--fasta-path" name="input" type="data" format="fasta,fasta.gz" label="Genomic sequence"></param>
-        <conditional name="lineage">
-            <param argument="--lineage" name="lineages" type="select" label="Available lineages" help="Choose the model to use for the annotation">
-                <option value="land_plant">land plant</option>
-                <option value="vertebrate">vertebrate</option>
-                <option value="invertebrate">invertebrate</option>
-                <option value="fungi">fungi</option>
-            </param>
-            <when value="land_plant">
-                <expand macro="subseq" length="106920" offset="53460" offsetlen="80190" />
-            </when>
-            <when value="vertebrate">
-                <expand macro="subseq" length="213840" offset="106920" offsetlen="160380" />
-            </when>
-            <when value="invertebrate">
-                <expand macro="subseq" length="213840" offset="106920" offsetlen="160380" />
-            </when>
-            <when value="fungi">
-                <expand macro="subseq" length="21384" offset="10692" offsetlen="16038" />
-            </when>
-        </conditional>
+        
+        <param argument="--lineage" name="lineages" type="select" label="Available lineages" help="Choose the model to use for the annotation">
+            <option value="land_plant">land plant</option>
+            <option value="vertebrate">vertebrate</option>
+            <option value="invertebrate">invertebrate</option>
+            <option value="fungi">fungi</option>
+        </param>
+
         <param argument="--species" type="text" optional="true" label="Species name">
             <sanitizer invalid_char="">
                 <valid initial="string.letters,string.digits">
@@ -71,6 +70,33 @@
             <param argument="--peak-threshold" type="float" min="0" max="1" value="0.8" label="Peak threshold" help="This threshold specifies the minimum peak genic score required to accept the candidate region"/>
             <param argument="--min-coding-length" type="integer"  min="0" value="100" label="Minimum coding length"/>
         </section>
+
+        <conditional name="custom_opt">
+            <param name="custom" type="select" label="Do you want to keep the default values or change them?" help="">
+                <option value="default" selected="true">Default value</option>
+                <option value="new_value">Modify value</option>
+            </param>
+            <when value="default">
+                <param name="use_overlap" type="select" label="Enable overlapping step after predictions" help="This step combines predictions made on each subsequences, to improve quality near start and end of subsequences">
+                    <option value="true" selected="true">Yes</option>
+                    <option value="false">No</option>
+                </param>
+            </when>
+            <when value="new_value">
+                <param name="subsequence_length" type="text"  label="Subsequence length: how much of the genome the Neural Network can see at once" help="Default values are 21384 for fungi, 106920 for land plant, and 213840 for vertebrates and invertebrates"/>
+                <conditional name="option_overlap">
+                    <param name="use_overlap" type="select" label="Enable overlapping step after predictions" help="This step combines predictions made on each subsequences, to improve quality near start and end of subsequences.">
+                        <option value="true" selected="true">Yes</option>
+                        <option value="false">No</option>
+                    </param>
+                    <when value="true">
+                        <param name="overlap_offset" type="text"  label="Overlap offset" help="Default values are 10692 for fungi, 53460 for land plant, and 106920 for vertebrates and invertebrates."/>
+                        <param name="overlap_core_length" type="text" label="Overlap core length" help="Default values are 16038 for fungi, 80190 for land plant, and 160380 for vertebrates and invertebrates."/>
+                    </when>
+                    <when value="false"/>
+                </conditional>
+            </when>
+        </conditional>
     </inputs>
 
     <outputs>
@@ -79,42 +105,42 @@
     </outputs>
     <tests>
         <test expect_num_outputs="1">
-            <!-- Test for species and land_plant-->
+            <!-- Test for species and land_plant-->        
             <param name="input" value="sequence.fasta"/>
+            <param name="lineages" value="land_plant"/>
             <param name="species" value="Arabidopsis"/>
-            <conditional name="lineage">
-                <param name="lineages" value="land_plant"/>
-            </conditional>
             <param name="size" value="8"/>
+            <section name="post_processing">
+                <param name="window_size" value="100"/>
+                <param name="edge_threshold" value="0.1"/>
+                <param name="peak_threshold" value="0.8"/>
+                <param name="min_coding_length" value="100"/>
+            </section>
+            <conditional name="custom_opt">
+                <param name="custom" value="default"/>
+                <param name="use_overlap" value="true"/>
+            </conditional>
             <output name="output" value="ouput_species.gff3" ftype="gff3" compare="sim_size" delta="100"/>
         </test>
+        
         <test expect_num_outputs="1">
             <!-- Test for vertebrates-->
             <param name="input" value="sequence.fasta"/>
-            <conditional name="lineage">
-                <param name="lineages" value="vertebrate"/>
-            </conditional>
+            <param name="lineages" value="vertebrate"/>
             <param name="size" value="8"/>
+            <section name="post_processing">
+                <param name="window_size" value="100"/>
+                <param name="edge_threshold" value="0.1"/>
+                <param name="peak_threshold" value="0.8"/>
+                <param name="min_coding_length" value="100"/>
+            </section>
+            <conditional name="custom_opt">
+                <param name="custom" value="default"/>
+                <param name="use_overlap" value="true"/>
+            </conditional>
             <output name="output" value="vertebrate.gff3" ftype="gff3" lines_diff="2"/>
         </test>
-        <test expect_num_outputs="1">
-            <!-- Test for invertebrates-->
-            <param name="input" value="sequence.fasta"/>
-            <conditional name="lineage">
-                <param name="lineages" value="invertebrate"/>
-            </conditional>
-            <param name="size" value="8"/>
-            <output name="output" value="invertebrate.gff3" ftype="gff3" lines_diff="2"/>
-        </test>
-        <test expect_num_outputs="1">
-            <!-- Test for fungi-->
-            <param name="input" value="sequence.fasta"/>
-            <conditional name="lineage">
-                <param name="lineages" value="fungi"/>
-            </conditional>
-            <param name="size" value="8"/>
-            <output name="output" value="fungi.gff3" ftype="gff3" lines_diff="2"/>
-        </test>
+        
     </tests>
 
     <help><![CDATA[
