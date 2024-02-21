@@ -20,20 +20,29 @@
         --temporary-dir ./
 
         #set default_subsequence_length = {"fungi": 21384, "land_plant": 106920, "invertebrate": 213840, "vertebrate": 213840}
+        #set subsequence_len = default_subsequence_length[$lineages]
         #set default_overlap_offset = {"fungi": 10692, "land_plant": 53460, "invertebrate": 106920, "vertebrate": 106920}
+        #set overlap_off = default_overlap_offset[$lineages]
         #set default_overlap_core_length = {"fungi": 16038, "land_plant": 80190, "invertebrate": 160380, "vertebrate": 160380}
+        #set overlap_core_len = default_overlap_core_length[$lineages]
 
-        #if str($custom_opt.custom) == "default":
-            --subsequence-length $default_subsequence_length
-            #if ($custom_opt.use_overlap) == "true":
-                --overlap-offset $default_overlap_offset
-                --overlap-core-length $default_overlap_core_length
+        #if str($subsequence_length) == "":
+            --subsequence-length '$subsequence_len'
+        #else:
+            --subsequence-length '$subsequence_length'
+        #end if
+
+        #if str($option_overlap.use_overlap) == "true":
+            #if str($option_overlap.overlap_offset) == "":
+                --overlap-offset '$overlap_off'
+            #else:
+                --overlap-offset '$overlap_offset'
             #end if
-        #elif str($custom_opt.custom) == "new_value":
-            --subsequence-length '$custom_opt.subsequence_length'
-            #if str( $custom_opt.option_overlap.use_overlap ) == "true":
-                --overlap-offset '$custom_opt.option_overlap.overlap_offset'
-                --overlap-core-length '$custom_opt.option_overlap.overlap_core_length'
+
+            #if str($option_overlap.overlap_core_length) == "":
+                --overlap-core-length '$overlap_core_len'
+            #else:
+                --overlap-core-length '$overlap_core_length'
             #end if
         #end if
 
@@ -71,31 +80,18 @@
             <param argument="--min-coding-length" type="integer"  min="0" value="100" label="Minimum coding length"/>
         </section>
 
-        <conditional name="custom_opt">
-            <param name="custom" type="select" label="Do you want to keep the default values or change them?" help="">
-                <option value="default" selected="true">Default value</option>
-                <option value="new_value">Modify value</option>
+        <param name="subsequence_length" type="text" label="If you do not want to keep the default value, please enter the new value." help="Default values are 21384 for fungi, 106920 for land plant, and 213840 for vertebrates and invertebrates"/>
+
+        <conditional name="option_overlap">
+            <param name="use_overlap" type="select" label="Enable overlapping step after predictions" help="This step combines predictions made on each subsequences, to improve quality near start and end of subsequences.">
+                <option value="true" selected="true">Yes</option>
+                <option value="false">No</option>
             </param>
-            <when value="default">
-                <param name="use_overlap" type="select" label="Enable overlapping step after predictions" help="This step combines predictions made on each subsequences, to improve quality near start and end of subsequences">
-                    <option value="true" selected="true">Yes</option>
-                    <option value="false">No</option>
-                </param>
+            <when value="true">
+                <param name="overlap_offset" type="text"  label="If you do not want to keep the default value, please enter the new value." help="Default values are 10692 for fungi, 53460 for land plant, and 106920 for vertebrates and invertebrates."/>
+                <param name="overlap_core_length" type="text" label="If you do not want to keep the default value, please enter the new value." help="Default values are 16038 for fungi, 80190 for land plant, and 160380 for vertebrates and invertebrates."/>
             </when>
-            <when value="new_value">
-                <param name="subsequence_length" type="text"  label="Subsequence length: how much of the genome the Neural Network can see at once" help="Default values are 21384 for fungi, 106920 for land plant, and 213840 for vertebrates and invertebrates"/>
-                <conditional name="option_overlap">
-                    <param name="use_overlap" type="select" label="Enable overlapping step after predictions" help="This step combines predictions made on each subsequences, to improve quality near start and end of subsequences.">
-                        <option value="true" selected="true">Yes</option>
-                        <option value="false">No</option>
-                    </param>
-                    <when value="true">
-                        <param name="overlap_offset" type="text"  label="Overlap offset" help="Default values are 10692 for fungi, 53460 for land plant, and 106920 for vertebrates and invertebrates."/>
-                        <param name="overlap_core_length" type="text" label="Overlap core length" help="Default values are 16038 for fungi, 80190 for land plant, and 160380 for vertebrates and invertebrates."/>
-                    </when>
-                    <when value="false"/>
-                </conditional>
-            </when>
+            <when value="false"/>
         </conditional>
     </inputs>
 
