@@ -14,17 +14,17 @@
         Helixer.py
         --fasta-path '$input'
         --species '$species'
-        --lineage $lineages
+        --lineage '$lineages'
         --gff-output-path '$output'
 
         --temporary-dir ./
 
         #set default_subsequence_length = {"fungi": 21384, "land_plant": 106920, "invertebrate": 213840, "vertebrate": 213840}
-        #set subsequence_len = default_subsequence_length[$lineages]
+        #set subsequence_len = default_subsequence_length.get(str($lineages))
         #set default_overlap_offset = {"fungi": 10692, "land_plant": 53460, "invertebrate": 106920, "vertebrate": 106920}
-        #set overlap_off = default_overlap_offset[$lineages]
+        #set overlap_off = default_overlap_offset.get(str($lineages))
         #set default_overlap_core_length = {"fungi": 16038, "land_plant": 80190, "invertebrate": 160380, "vertebrate": 160380}
-        #set overlap_core_len = default_overlap_core_length[$lineages]
+        #set overlap_core_len = default_overlap_core_length.get(str($lineages))
 
         #if str($subsequence_length) == "":
             --subsequence-length '$subsequence_len'
@@ -80,7 +80,7 @@
             <param argument="--min-coding-length" type="integer"  min="0" value="100" label="Minimum coding length"/>
         </section>
 
-        <param name="subsequence_length" type="text" label="If you do not want to keep the default value, please enter the new value." help="Default values are 21384 for fungi, 106920 for land plant, and 213840 for vertebrates and invertebrates"/>
+        <param name="subsequence_length" type="text" label="subsequence-length parameter - If you do not want to keep the default value, please enter the new value." help="Default values are 21384 for fungi, 106920 for land plant, and 213840 for vertebrates and invertebrates"/>
 
         <conditional name="option_overlap">
             <param name="use_overlap" type="select" label="Enable overlapping step after predictions" help="This step combines predictions made on each subsequences, to improve quality near start and end of subsequences.">
@@ -88,8 +88,8 @@
                 <option value="false">No</option>
             </param>
             <when value="true">
-                <param name="overlap_offset" type="text"  label="If you do not want to keep the default value, please enter the new value." help="Default values are 10692 for fungi, 53460 for land plant, and 106920 for vertebrates and invertebrates."/>
-                <param name="overlap_core_length" type="text" label="If you do not want to keep the default value, please enter the new value." help="Default values are 16038 for fungi, 80190 for land plant, and 160380 for vertebrates and invertebrates."/>
+                <param name="overlap_offset" type="text"  label="overlap-offset parameter - If you do not want to keep the default value, please enter the new value." help="Default values are 10692 for fungi, 53460 for land plant, and 106920 for vertebrates and invertebrates."/>
+                <param name="overlap_core_length" type="text" label="overlap-core-length parameter - If you do not want to keep the default value, please enter the new value." help="Default values are 16038 for fungi, 80190 for land plant, and 160380 for vertebrates and invertebrates."/>
             </when>
             <when value="false"/>
         </conditional>
@@ -106,16 +106,18 @@
             <param name="lineages" value="land_plant"/>
             <param name="species" value="Arabidopsis"/>
             <param name="size" value="8"/>
-            <section name="post_processing">
-                <param name="window_size" value="100"/>
-                <param name="edge_threshold" value="0.1"/>
-                <param name="peak_threshold" value="0.8"/>
-                <param name="min_coding_length" value="100"/>
-            </section>
-            <conditional name="custom_opt">
-                <param name="custom" value="default"/>
-                <param name="use_overlap" value="true"/>
-            </conditional>
+            <param name="subsequence_length" value=""/>
+        <section name="post_processing">
+            <param name="window_size" value="100"/>
+            <param name="edge_threshold" value="0.1"/>
+            <param name="peak_threshold" value="0.8"/>
+            <param name="min_coding_length" value="100"/>
+        </section>
+        <conditional name="option_overlap">
+            <param name="use_overlap" value="true"/>
+            <param name="overlap_offset" value=""/>
+            <param name="overlap_core_length" value=""/>
+        </conditional>
             <output name="output" value="ouput_species.gff3" ftype="gff3" compare="sim_size" delta="100"/>
         </test>
         
@@ -124,19 +126,21 @@
             <param name="input" value="sequence.fasta"/>
             <param name="lineages" value="vertebrate"/>
             <param name="size" value="8"/>
-            <section name="post_processing">
-                <param name="window_size" value="100"/>
-                <param name="edge_threshold" value="0.1"/>
-                <param name="peak_threshold" value="0.8"/>
-                <param name="min_coding_length" value="100"/>
-            </section>
-            <conditional name="custom_opt">
-                <param name="custom" value="default"/>
-                <param name="use_overlap" value="true"/>
-            </conditional>
+            <param name="size" value="8"/>
+            <param name="subsequence_length" value=""/>
+        <section name="post_processing">
+            <param name="window_size" value="100"/>
+            <param name="edge_threshold" value="0.1"/>
+            <param name="peak_threshold" value="0.8"/>
+            <param name="min_coding_length" value="100"/>
+        </section>
+        <conditional name="option_overlap">
+            <param name="use_overlap" value="true"/>
+            <param name="overlap_offset" value=""/>
+            <param name="overlap_core_length" value=""/>
+        </conditional>
             <output name="output" value="vertebrate.gff3" ftype="gff3" lines_diff="2"/>
         </test>
-        
     </tests>
 
     <help><![CDATA[
