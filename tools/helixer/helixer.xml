@@ -90,7 +90,7 @@
             </param>
             <when value="true">
                 <param name="overlap_offset" type="text"  label="Overlap offset: Smaller values may lead to better predictions but will take longer" help="If you do not want to keep the default value, please enter the new value. Default values are 10692 for fungi, 53460 for land plant, and 106920 for vertebrates and invertebrates."/>
-                <param name="overlap_core_length" type="text" label="Overlap core length: icted subsequences will be cut to this length to increase prediction quality. Smaller values may lead to better predictions but will take longer" help="If you do not want to keep the default value, please enter the new value. Default values are 16038 for fungi, 80190 for land plant, and 160380 for vertebrates and invertebrates."/>
+                <param name="overlap_core_length" type="text" label="Overlap core length: Predicted subsequences will be cut to this length to increase prediction quality. Smaller values may lead to better predictions but will take longer" help="If you do not want to keep the default value, please enter the new value. Default values are 16038 for fungi, 80190 for land plant, and 160380 for vertebrates and invertebrates."/>
             </when>
             <when value="false"/>
         </conditional>
