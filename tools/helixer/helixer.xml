@@ -81,7 +81,7 @@
             <param argument="--min-coding-length" type="integer"  min="0" value="100" label="Minimum coding length"/>
         </section>
 
-        <param name="subsequence_length" type="text" label="subsequence-length parameter - If you do not want to keep the default value, please enter the new value." help="Default values are 21384 for fungi, 106920 for land plant, and 213840 for vertebrates and invertebrates"/>
+        <param name="subsequence_length" type="text" label="Subsequence length: how much of the genome the Neural Network can see at once" help="If you do not want to keep the default value, please enter the new value. Default values are 21384 for fungi, 106920 for land plant, and 213840 for vertebrates and invertebrates"/>
 
         <conditional name="option_overlap">
             <param name="use_overlap" type="select" label="Enable overlapping step after predictions" help="This step combines predictions made on each subsequences, to improve quality near start and end of subsequences.">
@@ -89,8 +89,8 @@
                 <option value="false">No</option>
             </param>
             <when value="true">
-                <param name="overlap_offset" type="text"  label="overlap-offset parameter - If you do not want to keep the default value, please enter the new value." help="Default values are 10692 for fungi, 53460 for land plant, and 106920 for vertebrates and invertebrates."/>
-                <param name="overlap_core_length" type="text" label="overlap-core-length parameter - If you do not want to keep the default value, please enter the new value." help="Default values are 16038 for fungi, 80190 for land plant, and 160380 for vertebrates and invertebrates."/>
+                <param name="overlap_offset" type="text"  label="Overlap offset: Smaller values may lead to better predictions but will take longer" help="If you do not want to keep the default value, please enter the new value. Default values are 10692 for fungi, 53460 for land plant, and 106920 for vertebrates and invertebrates."/>
+                <param name="overlap_core_length" type="text" label="Overlap core length: icted subsequences will be cut to this length to increase prediction quality. Smaller values may lead to better predictions but will take longer" help="If you do not want to keep the default value, please enter the new value. Default values are 16038 for fungi, 80190 for land plant, and 160380 for vertebrates and invertebrates."/>
             </when>
             <when value="false"/>
         </conditional>
