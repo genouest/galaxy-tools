@@ -1,5 +1,7 @@
 <macros>
     <token name="@TOOL_VERSION@">0.3.2</token>
+    <token name="@VERSION_SUFFIX@">1</token>
+
 
     <xml name="citation">
         <citations>
@@ -11,20 +13,6 @@
     <xml name="requirements">
         <container type="docker">gglyptodon/helixer-docker:helixer_v@TOOL_VERSION@_cuda_11.8.0-cudnn8</container>
     </xml>
-    
-    <xml name="subseq" tokens="length,offset,offsetlen">
-        <param argument="--subsequence-length" type="integer" min="0" max="213840" value="@LENGTH@" label="Subsequence length: how much of the genome the Neural Network can see at once" help="Should ideally be comfortably longer than the typical gene. For genomes with large genes (>20kpb) it is recommended to increase this parameter."></param>
-        <conditional name="option_overlap">
-            <param name="use_overlap" type="select" label="Enable overlapping step after predictions" help="This step combines predictions made on each subsequences, to improve quality near start and end of subsequences">
-                <option value="true" selected="true">Yes</option>
-                <option value="false">No</option>
-            </param>
-            <when value="true">
-                <param argument="--overlap-offset" type="integer" min="0" value="@OFFSET@" label="Overlap offset" help="Smaller values may lead to better predictions but will take longer. The subsequence length should be evenly divisible by this value."/>
-                <param argument="--overlap-core-length" type="integer" min="0" value="@OFFSETLEN@" label="Overlap core length" help="Predicted subsequences will be cut to this length to increase prediction quality. Smaller values may lead to better predictions but will take longer. Has to be smaller than subsequence_length."/>
-            </when>
-            <when value="false"/>
-        </conditional>
-    </xml>
+
 </macros>
 
