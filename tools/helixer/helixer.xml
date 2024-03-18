@@ -4,7 +4,9 @@
     <macros>
         <import>macros.xml</import>
     </macros>
-
+    <xrefs>
+        <xref type="bio.tools">helixer</xref>
+    </xrefs>
     <requirements>
         <expand macro="requirements"/>
     </requirements>
