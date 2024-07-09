@@ -12,14 +12,11 @@
     </requirements>
 
     <command detect_errors="exit_code"><![CDATA[
-
         /usr/local/bin/fetch_helixer_models.py &&
         Helixer.py
         --fasta-path '$input'
         --species '$species'
-        --lineage '$lineages'
         --gff-output-path '$output'
-
         --temporary-dir ./
 
         #set default_subsequence_length = {"fungi": 21384, "land_plant": 106920, "invertebrate": 213840, "vertebrate": 213840}
@@ -29,23 +26,30 @@
         #set default_overlap_core_length = {"fungi": 16038, "land_plant": 80190, "invertebrate": 160380, "vertebrate": 160380}
         #set overlap_core_len = default_overlap_core_length.get(str($lineages))
 
-        #if str($subsequence_length) == "":
-            --subsequence-length '$subsequence_len'
-        #else:
+        #if str($input_model) != "" and str($input_model) != "None":
+            --model-filepath '$input_model'
             --subsequence-length '$subsequence_length'
-        #end if
-
-        #if str($option_overlap.use_overlap) == "true":
-            #if str($option_overlap.overlap_offset) == "":
-                --overlap-offset '$overlap_off'
+            
+        #else:
+            --lineage '$lineages'
+            #if str($subsequence_length) == "":
+                --subsequence-length '$subsequence_len'
             #else:
-                --overlap-offset '$overlap_offset'
+                --subsequence-length '$subsequence_length'
             #end if
 
-            #if str($option_overlap.overlap_core_length) == "":
-                --overlap-core-length '$overlap_core_len'
-            #else:
-                --overlap-core-length '$overlap_core_length'
+            #if str($option_overlap.use_overlap) == "true":
+                #if str($option_overlap.overlap_offset) == "":
+                    --overlap-offset '$overlap_off'
+                #else:
+                    --overlap-offset '$overlap_offset'
+                #end if
+
+                #if str($option_overlap.overlap_core_length) == "":
+                    --overlap-core-length '$overlap_core_len'
+                #else:
+                    --overlap-core-length '$overlap_core_length'
+                #end if
             #end if
         #end if
 
@@ -59,7 +63,7 @@
 
     <inputs>
         <param argument="--fasta-path" name="input" type="data" format="fasta,fasta.gz" label="Genomic sequence"></param>
-        
+        <param argument="--model-filepath" optional="true" name="input_model" type="data" format="h5" label="Lineage model" help="Import your lineage model to replace the default lineage. Please enter a value for the --subsequence_length parameter."></param>
         <param argument="--lineage" name="lineages" type="select" label="Available lineages" help="Choose the model to use for the annotation">
             <option value="land_plant">land plant</option>
             <option value="vertebrate">vertebrate</option>
@@ -125,7 +129,7 @@
         </test>
         
         <test expect_num_outputs="1">
-            <!-- Test for vertebrates-->
+        <!-- Test for vertebrates -->
             <param name="input" value="sequence.fasta"/>
             <param name="lineages" value="vertebrate"/>
             <param name="size" value="8"/>
@@ -143,6 +147,26 @@
             <param name="overlap_core_length" value=""/>
         </conditional>
             <output name="output" value="vertebrate.gff3" ftype="gff3" lines_diff="2"/>
+        </test>
+
+        <test expect_failure="true">        
+        <!-- Test for model-filepath -->
+            <param name="input" value="sequence.fasta"/>
+            <param name="input_model" value="test.h5"/>
+            <param name="size" value="8"/>
+            <param name="size" value="8"/>
+            <param name="subsequence_length" value="1000"/>
+        <section name="post_processing">
+            <param name="window_size" value="100"/>
+            <param name="edge_threshold" value="0.1"/>
+            <param name="peak_threshold" value="0.8"/>
+            <param name="min_coding_length" value="100"/>
+        </section>
+        <conditional name="option_overlap">
+            <param name="use_overlap" value="true"/>
+            <param name="overlap_offset" value=""/>
+            <param name="overlap_core_length" value=""/>
+        </conditional>
         </test>
     </tests>
 
