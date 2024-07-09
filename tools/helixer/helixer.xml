@@ -59,15 +59,11 @@
         --edge-threshold $post_processing.edge_threshold
         --peak-threshold $post_processing.peak_threshold
 
-
     ]]></command>
 
     <inputs>
         <param argument="--fasta-path" name="input" type="data" format="fasta,fasta.gz" label="Genomic sequence"></param>
-        
         <param argument="--model-filepath" optional="true" name="input_model" type="data" format="h5" label="Lineage model" help="Import your lineage model to replace the default lineage. Please enter a value for the --subsequence_length parameter."></param>
-
-
         <param argument="--lineage" name="lineages" type="select" label="Available lineages" help="Choose the model to use for the annotation">
             <option value="land_plant">land plant</option>
             <option value="vertebrate">vertebrate</option>
@@ -172,12 +168,7 @@
             <param name="overlap_core_length" value=""/>
         </conditional>
         </test>
-
-
     </tests>
-
-
-    
 
     <help><![CDATA[
         Helixer_: Gene calling with Deep Neural Networks.
