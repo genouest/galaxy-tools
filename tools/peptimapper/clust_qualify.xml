@@ -1,7 +1,7 @@
-<tool id="peptimapper_clustqualify" name="ClustQualify" version="2.0">
+<tool id="peptimapper_clustqualify" name="ClustQualify" version="2.1">
     <description>annotates clusters according to gff annotation files</description>
     <requirements>
-        <container type="docker">dockerprotim/peptimapper</container>
+        <container type="docker">dockerprotim/peptimapper:d3eb807d7d5a</container>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
 ln -s '$clustersfile' 'in.clusters' &&
