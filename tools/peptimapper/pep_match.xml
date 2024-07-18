@@ -1,7 +1,7 @@
 <tool id="peptimapper_pep_match" name="PepMatch" version="2.1">
     <description>align PSTs on sequence and cluster hits</description>
     <requirements>
-        <container type="docker">dockerprotim/peptimapper:d3eb807d7d5a</container>
+        <container type="docker">dockerprotim/peptimapper:d3eb807d7d5aa155f7b39d05a47420e0a0a9191d5fa867b6ca1be763f8a23bf1</container>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
 ln -s '$fastafile' 'in.fa' &&
