@@ -1,5 +1,6 @@
 categories: [Proteomics]
 description: "Proteogenomics workflow for the expert annotation of eukaryotic genomes"
+remote_repository_url: https://github.com/genouest/galaxy-tools/tree/master/tools/peptimapper
 homepage_url: https://bmcgenomics.biomedcentral.com/articles/10.1186/s12864-019-5431-9
 long_description: Peptimapper is a proteogenomics workflow for the expert annotation of eukaryotic genomes.
 owner: genouest
