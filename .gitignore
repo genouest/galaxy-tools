@@ -60,7 +60,6 @@ target/
 *.jar
 *.rar
 *.tar
-*.zip
 #*.bz
 .hg
 *.swp
