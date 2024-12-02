@@ -1,9 +1,9 @@
-<tool id="gcms2isocor" name="Conversion GCMS PostRun Analysis to IsoCor" version="0.1.0" profile="20.09">
-    <requirements>
-        <requirement type="package" version="8.0.121">openjdk</requirement>
+<tool id="gcms2isocor" name="Conversion GCMS PostRun Analysis to IsoCor" version="1.0.0">
+    <requirements>	
+        <container type="docker">inraep2m2/p2m2tools:0.1.5</container>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
-      java -jar '$__tool_directory__/P2M2WorkflowsTools-assembly-0.1.jar'
+      p2m2tools fr.inrae.metabolomics.p2m2.command.GCMS2IsocorCommand 
        #for $input in $input_gcms_files
          #if $input
            $input
@@ -33,5 +33,7 @@
 
 	Example: the name “ProlineC2C5_TMS_m0” is for the GC-MS fragment m/z 142 (integrated peak) containing the C2-C3-C4-C5 carbon skeleton of proline and 1 TMS derivative. m0 refers to the carbon isotopologue
 	monitored (m0 for m/z = 142, m1 for m/z = 143, m2 for m/z = 144, m3 for m/z = 145, m4 for m/z = 146).
+
+    Questions, suggestions or bugs report, please submit an issue at https://github.com/p2m2/p2m2tools/issues/new?labels=bug&title=[GCMS2IsocorCommand].
     ]]></help>
 </tool>
