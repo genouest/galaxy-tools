@@ -7,22 +7,9 @@
         <xref type="bio.tools">braker3</xref>
     </xrefs>
     <requirements>
-        <expand macro="requirements" />
+        <expand macro="requirements"/>
     </requirements>
-    <version_command><![CDATA[braker.pl --version; $GENEMARK_PATH/gmes/gmes_petap.pl | grep version]]></version_command>
-    <command><![CDATA[
-if [ -z "\$GENEMARK_PATH" ] ; then echo "GeneMark is not installed on this Galaxy server." >&2 ; exit 1 ; fi &&
-if [ ! -f "\$GENEMARK_PATH/gmes/gmes_petap.pl" ] ; then echo "GeneMark is not installed properly on this Galaxy server." >&2 ; exit 1 ; fi &&
-
-## This specific GeneMark version has some tools bundled with it, forced to use it.
-## I feel dirty. Pardon me.
-
-export PATH="\$GENEMARK_PATH/../tools/:\$PATH" &&
-
-## Copy Augustus config dir to work dir, to make sure it's writable when running with containers
-cp -r "\$AUGUSTUS_CONFIG_PATH/" augustus_dir/ &&
-export AUGUSTUS_CONFIG_PATH=`pwd`/augustus_dir/ &&
-
+    <command detect_errors="exit_code"><![CDATA[
 braker.pl
 --genome '${genome}'
 $softmasking
@@ -87,6 +74,7 @@ $advanced.alternatives_from_evidence
 --threads  \${GALAXY_SLOTS:-2}
 --useexisting
 ]]></command>
+
     <inputs>
         <param argument="--genome" type="data" format="fasta" label="Assembly to annotate" help="The assembly should preferably be soft-masked (with RepeatMasker for example)" />
 

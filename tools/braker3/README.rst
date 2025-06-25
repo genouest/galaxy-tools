@@ -1,41 +1,42 @@
 Braker3
 =======
 
-This tool is not in IUC because of the license issues with GeneMark and
-ProtHint that makes it impossible to test it using CI.
+This wrapper runs BRAKER3 using the official Docker image: ``teambraker/braker3:v3.0.7.5``.
 
-GeneMark and ProtHint
----------------------
+It no longer requires a custom installation of GeneMark or ProtHint on the host system, as these are bundled inside the container.
 
-Braker requires GeneMark to predict gene, but due to licensing issues, we
-are not allowed to distribute GeneMark automatically.
+Docker container
+----------------
 
-Braker also requires ProtHint to use protein sequences as hints to predict
-genes, but, again, due to licensing issues, we are not allowed to distribute
-ProtHint automatically.
+BRAKER3 depends on GeneMark and ProtHint for gene prediction from RNA-Seq and protein evidence.
+Due to licensing issues, these tools cannot be redistributed directly, but the official BRAKER3 Docker image includes the required versions.
 
-To use Braker3, the Galaxy administrator needs to install
-GeneMark, and set the ``GENEMARK_PATH`` variable on the job destination.
+The wrapper uses this image via the Galaxy `<container type="docker">` mechanism:
 
-The only working version of GeneMark to install needs to be downloaded from
-http://topaz.gatech.edu/GeneMark/etp.for_braker.tar.gz
-This archive also contains ProtHint and various other tools in specific versions needed by Braker3.
+.. code-block:: xml
 
-Unzip it, and set the ``GENEMARK_PATH`` variable to point to the extracted ``bin``
-directory.
+    <container type="docker">teambraker/braker3:v3.0.7.5</container>
 
-Also set the ``PROTHINT_PATH`` variable on the job destination, pointing to the extracted
-``bin/gmes/ProtHint/bin/`` directory
+Running
+-------
 
-Running tests
--------------
+To run this tool during development, use Planemo with Docker support enabled:
 
-Tests require working GeneMark and ProtHint installations, which means
-both GENEMARK_PATH and PROTHINT_PATH are set in job_conf_braker3.xml.
+.. code-block:: bash
 
-You should then use the ``--job_config_file job_conf_braker3.xml``
-option for planemo commands.
+    planemo serve --docker
+    planemo test --docker
 
-You should also copy a valid GeneMark license (from
-http://topaz.gatech.edu/GeneMark/license_download.cgi) in
-test-data/gm_key_64.
+There is no longer any need to manually set ``GENEMARK_PATH`` or ``PROTHINT_PATH`` via the job configuration.
+
+License
+-------
+
+A valid GeneMark license is still required **inside the container**, but the official Docker image ships with compatible versions and is prepared accordingly by the authors.
+
+Testing
+-------
+
+Tests no longer rely on custom environment variables. Docker ensures a reproducible and portable environment for development and execution.
+
+``job_conf_braker3.xml`` is now obsolete for this wrapper version.
