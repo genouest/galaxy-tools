@@ -4,7 +4,7 @@
     <token name="@VERSION_SUFFIX@">1</token>
 
     <xml name="requirements">
-        <container type="docker">teambraker/braker3:v3.0.7.5</container>        
+        <container type="docker">teambraker/braker3:v3.0.7.6</container>
     </xml>
 
     <xml name="citations">
