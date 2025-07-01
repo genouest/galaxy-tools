@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <macros>
     <token name="@TOOL_VERSION@">3.0.8</token>
-    <token name="@VERSION_SUFFIX@">0</token>
+    <token name="@VERSION_SUFFIX@">1</token>
 
     <xml name="requirements">
-        <requirement type="package" version="@TOOL_VERSION@">braker3</requirement>
+        <container type="docker">teambraker/braker3:v3.0.7.6</container>
     </xml>
 
     <xml name="citations">
