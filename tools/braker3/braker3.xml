@@ -10,6 +10,12 @@
         <expand macro="requirements"/>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
+
+## Copy Augustus config dir to work dir, to make sure it's writable when running with containers
+cp -r "\$AUGUSTUS_CONFIG_PATH/" augustus_dir/ &&
+export AUGUSTUS_CONFIG_PATH=`pwd`/augustus_dir/ &&
+
+
 braker.pl
 --genome '${genome}'
 $softmasking

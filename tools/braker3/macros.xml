@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <macros>
     <token name="@TOOL_VERSION@">3.0.8</token>
-    <token name="@VERSION_SUFFIX@">1</token>
+    <token name="@VERSION_SUFFIX@">2</token>
 
     <xml name="requirements">
         <container type="docker">teambraker/braker3:v3.0.7.6</container>
