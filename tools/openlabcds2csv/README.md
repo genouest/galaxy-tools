@@ -1,16 +1,11 @@
-### generation avec planemo
+### dev notes
 
-```
-cp ../../target/scala-2.13/P2M2WorkflowsTools-assembly-*.jar .
-```
+## repo
 
-dans openlabcds2csv.xml balise <command>
+https://github.com/p2m2/p2m2tools
 
-`openlabcds2csv` doit etre remplacer par `java -jar '$__tool_directory__/P2M2WorkflowsTools-assembly-xxxx.jar'`
+## planemo
 
-planemo l
-planemo t
+planemo l --report_level error
+planemo t --docker
 
-### todo
-
-paquet bioconda
