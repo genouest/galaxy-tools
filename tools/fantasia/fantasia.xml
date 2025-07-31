@@ -1,0 +1,68 @@
+<tool id="fantasia" name="FANTASIA" version="@TOOL_VERSION@+galaxy@VERSION_SUFFIX@" profile="21.05">
+    <description>Annotate GO terms in protein sequence files</description>
+    <macros>
+        <import>macros.xml</import>
+    </macros>
+    <xrefs>
+        <xref type="bio.tools">fantasia</xref>
+    </xrefs>
+    <requirements>
+        <expand macro="requirements"/>
+    </requirements>
+
+    <command detect_errors="exit_code"><![CDATA[
+        ./fantasia
+        --infile '$input_protein'
+    
+        #if str('$input_iso') != '' and str('$input_iso') == "None":
+            --allisoforms '$input_iso'
+        #end if
+        #if str($prefix) != '':
+            --prefix '$prefix'
+        #end if
+
+    ]]></command>
+
+    <inputs>
+        <param argument="--infile" name="input_protein" type="data" format="fasta,fasta.gz" label="Protein sequence"/>
+        <param argument="--allisoforms" name="input_iso" type="data" optional="true" format="txt" label="List of isoforms" help="Annotate genes using isoforms"/>
+        <param name="prefix" type="text" optional="true" label="Prefix for output folders and files">
+            <sanitizer invalid_char="">
+                <valid initial="string.letters,string.digits">
+                    <add value="_" />
+                </valid>
+            </sanitizer>
+            <validator type="regex">[0-9a-zA-Z_]+</validator>
+        </param>
+    </inputs>
+
+    <outputs>
+        <data name="filtered_sequences" format="fasta" label="${tool.name} on ${on_string}: Filtered Protein Sequences" from_work_dir="/*_cdhit100_5k_removed.pep"/>
+        <data name="headers_larger_5k" format="txt" label="${tool.name} on ${on_string}: Headers of Proteins Larger than 5k" from_work_dir="/*_cdhit100_headers_larger5k.txt"/>
+        <data name="headers_smaller_5k" format="txt" label="${tool.name} on ${on_string}: Headers of Proteins Smaller than 5k" from_work_dir="/*_cdhit100_headers_smaller5k.txt"/>
+        <data name="sequences_oneline" format="fasta" label="${tool.name} on ${on_string}: Protein Sequences in One Line Format" from_work_dir="/*_cdhit100_oneline.pep"/>
+        <data name="sequences_larger_5k" format="txt" label="${tool.name} on ${on_string}: Protein Sequences Larger than 5k" from_work_dir="/*_cdhit100_seqs_larger5k.txt"/>
+        <data name="clustered_sequences" format="fasta" label="${tool.name} on ${on_string}: Clustered Protein Sequences (CD-HIT)" from_work_dir="/*_cdhit100.pep"/>
+        <data name="clusters" format="txt" label="${tool.name} on ${on_string}: CD-HIT Cluster Information" from_work_dir="/*_cdhit100.pep.clstr"/>
+    </outputs>
+    
+    <tests>
+        <test expect_num_outputs="7">
+            <param name="input_protein" value="input_query.fasta.gz"/>
+            <output name="filtered_sequences" value="filtered_sequences.fasta" ftype="fasta" lines_diff="2"/>
+            <output name="headers_larger_5k" value="headers_larger_5k.txt" ftype="txt" lines_diff="2"/>
+            <output name="headers_smaller_5k" value="headers_smaller_5k.txt" ftype="txt" lines_diff="2"/>
+            <output name="sequences_oneline" value="sequences_oneline.fasta" ftype="fasta" lines_diff="2"/>
+            <output name="sequences_larger_5k" value="sequences_larger_5k.txt" ftype="txt" lines_diff="2"/>
+            <output name="clustered_sequences" value="clustered_sequences.fasta" ftype="fasta" lines_diff="2"/>
+            <output name="clusters" value="clusters.txt" ftype="txt" lines_diff="2"/>
+        </test>
+    </tests>
+
+    <help><![CDATA[
+        Fantasia_: Gene calling with Deep Neural Networks.
+
+        .. _Fantasia: https://github.com/MetazoaPhylogenomicsLab/FANTASIA
+    ]]></help>
+    <expand macro="citation"></expand>
+</tool>

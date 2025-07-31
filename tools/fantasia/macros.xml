@@ -1,0 +1,16 @@
+<macros>
+    <token name="@TOOL_VERSION@">1.0</token>
+    <token name="@VERSION_SUFFIX@">0</token>
+
+    <xml name="citation">
+        <citations>
+            <citation type="doi">10.1101/2024.02.28.582465</citation>
+            <citation type="doi">10.1101/2024.02.14.580341</citation>
+        </citations>
+    </xml>
+
+    <xml name="requirements">
+        <container type="singularity">library://gemma.martinezredondo/fantasia/fantasia:sha256.06f759be1e48bf4f72aed0d4bb4fe2fd6e05774bb58131b131f0128c7b0efc84</container>    
+    </xml>
+
+</macros>
