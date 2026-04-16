@@ -13,12 +13,13 @@
 
     <command detect_errors="exit_code"><![CDATA[
 
-            /usr/local/bin/fetch_helixer_models.py &&
+            /usr/local/bin/fetch_helixer_models.py --custom-path '${TMPDIR:-/tmp}' &&
 
             Helixer.py
             --fasta-path '$input'
             --species '$species'
             --gff-output-path '$output'
+            --downloaded-model-path '${TMPDIR:-/tmp}'
 
             #set default_subsequence_length = {"fungi": 21384, "land_plant": 106920, "invertebrate": 213840, "vertebrate": 213840}
             #set subsequence_len = default_subsequence_length.get(str($lineages))
