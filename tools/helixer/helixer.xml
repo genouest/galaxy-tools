@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<tool id="helixer" name="Helixer" version="@TOOL_VERSION@+galaxy@VERSION_SUFFIX@" profile="22.05">
+<tool id="helixer" name="Helixer" version="@TOOL_VERSION@+galaxy@VERSION_SUFFIX@" profile="25.0">
     <description>gene calling</description>
     <macros>
         <import>macros.xml</import>
@@ -57,13 +57,12 @@
             --min-coding-length $post_processing.min_coding_length
             --edge-threshold $post_processing.edge_threshold
             --peak-threshold $post_processing.peak_threshold
+            --min-intron-length $post_processing.min_intron_length
+            --min-intron-length-u12 $post_processing.min_intron_length_u12
+
             
             #if $write_by:
                 --write-by $write_by
-            #end if
-                  
-            #if $no_multiprocess == "true":
-                --no-multiprocess
             #end if
         
     ]]></command>
@@ -93,6 +92,8 @@
             <param argument="--edge-threshold" type="float" min="0" max="1" value="0.1" label="Edge threshold" help="This threshold specifies the genic score which defines the start / end boundaries of each candidate region"/>
             <param argument="--peak-threshold" type="float" min="0" max="1" value="0.8" label="Peak threshold" help="This threshold specifies the minimum peak genic score required to accept the candidate region"/>
             <param argument="--min-coding-length" type="integer"  min="0" value="60" label="Minimum coding length"/>
+            <param argument="--min-intron-length" type="integer"  min="0" value="50" label="Minimum intron length in bp for U2-type introns (GT-AG and GC-AG, also covers U12-type GT-AG introns)" help="Values below 2 act as 2"/>
+            <param argument="--min-intron-length-u12" type="integer"  min="0" value="30" label="Minimum intron length in bp for U12-type AT-AC introns" help="Values below 2 act as 2. Setting it to the same value as --min-intron-length is a reasonable choice."/>
         </section>
 
         <param name="subsequence_length" type="text" label="Subsequence length: how much of the genome the Neural Network can see at once" help="If you do not want to keep the default value, please enter the new value. Default values are 21384 for fungi, 106920 for land plant, and 213840 for vertebrates and invertebrates"/>
@@ -109,7 +110,6 @@
             <when value="false"/>
         </conditional>
         <param name="write_by" type="integer" value="20000000" optional="true" label="Number of base pairs per super-chunk" help="For lower memory consumption, consider setting a lower number. Please note that this value must be greater than or equal to « --subsequence-length »"/>
-        <param name="no_multiprocess" type="boolean" truevalue="--no_multiprocess" falsevalue="" checked="false" label="Do you want to disable multiprocessing?" help="By disabling it, you will reduce RAM consumption. You can do this especially on small genomes."/>
     </inputs>
 
     <outputs>

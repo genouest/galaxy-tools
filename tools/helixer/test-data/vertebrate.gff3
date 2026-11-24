@@ -1,4 +1,6 @@
-##gff-version 3.2.1
+##gff-version 3.1.26
 ##species 
-# acedf94d7c4f811e877da07844bc58f4  /shared/ifbstor1/galaxy/jobs/003/517/3517614/home/.local/share/Helixer/models/vertebrate/vertebrate_v0.3_m_0080.h5
+# acedf94d7c4f811e877da07844bc58f4  /tmp/tmpjcb9mvhm/job_working_directory/000/4/home/.local/share/Helixer/models/vertebrate/vertebrate_v0.3_m_0080.h5
+# Helixer version 0.3.8
+# HelixerPost version 0.4.0
 ##sequence-region NC_034365.1:c72045-70009 1 2037
